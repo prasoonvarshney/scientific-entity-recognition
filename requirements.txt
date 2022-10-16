@@ -1,0 +1,9 @@
+requests
+pandas
+tqdm
+spacy
+bs4
+pytz
+python-dateutil
+
+PyPDF2

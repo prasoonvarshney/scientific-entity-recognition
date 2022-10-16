@@ -1,0 +1,573 @@
+{
+    "authors": "Ali Modarressi; Hosein Mohebbi; Mohammad Taher Pilehvar",
+    "pub_date": "",
+    "title": "AdapLeR: Speeding up Inference by Adaptive Length Reduction",
+    "abstract": "Pre-trained language models have shown stellar performance in various downstream tasks. But, this usually comes at the cost of high latency and computation, hindering their usage in resource-limited settings. In this work, we propose a novel approach for reducing the computational cost of BERT with minimal loss in downstream performance. Our method dynamically eliminates less contributing tokens through layers, resulting in shorter lengths and consequently lower computational cost. To determine the importance of each token representation, we train a Contribution Predictor for each layer using a gradient-based saliency method. Our experiments on several diverse classification tasks show speedups up to 22x during inference time without much sacrifice in performance. We also validate the quality of the selected tokens in our method using human annotations in the ERASER benchmark. In comparison to other widely used strategies for selecting important tokens, such as saliency and attention, our proposed method has a significantly lower false positive rate in generating rationales. Our code is freely available at https://github.com/amodaresi/ AdapLeR.",
+    "sections": [
+        {
+            "heading": "Introduction",
+            "text": "While large-scale pre-trained language models exhibit remarkable performances on various NLP benchmarks, their excessive computational costs and high inference latency have limited their usage in resource-limited settings. In this regard, there have been various attempts at improving the efficiency of BERT-based models (Devlin et al., 2019), including knowledge distilation (Hinton et al., 2015;Sanh et al., 2019;Sun et al., 2019Sun et al., , 2020;;Jiao et al., 2020), quantization (Gong et al., 2014;Shen et al., 2020;Tambe et al., 2021), weight \u22c6 Equal Contribution.\n\u2020 Work done as a Master's student at IUST.\npruning (Han et al., 2016;He et al., 2017;Michel et al., 2019;Sanh et al., 2020), and progressive module replacing (Xu et al., 2020). Despite providing significant reduction in model size, these techniques are generally static at inference time, i.e., they dedicate the same amount of computation to all inputs, irrespective of their difficulty.\nA number of techniques have been also proposed in order to make efficiency enhancement sensitive to inputs. Early exit mechanism (Schwartz et al., 2020b;Liao et al., 2021;Xin et al., 2020;Liu et al., 2020;Xin et al., 2021;Sun et al., 2021;Eyzaguirre et al., 2021) is a commonly used method in which each layer in the model is coupled with an intermediate classifier to predict the target label. At inference, a halting condition is used to determine whether the model allows an example to exit without passing through all layers. Various halting conditions have been proposed, including Shannon's entropy (Xin et al., 2020;Liu et al., 2020), softmax outputs with temperature calibration (Schwartz et al., 2020b), trained confidence predictors (Xin et al., 2021), or the number of agreements between predictions of intermediate classifiers (Zhou et al., 2020).\nMost of these input-adaptive techniques compress the model from the depth perspective (i.e., reducing the number of involved encoder layers). However, one can view compression from the width perspective (Goyal et al., 2020;Ye et al., 2021), i.e., reducing the length of hidden states. (Ethayarajh, 2019;Klafka and Ettinger, 2020). This is particularly promising as recent analytical studies showed that there are redundant encoded information in token representations (Klafka and Ettinger, 2020;Ethayarajh, 2019). Among these redundancies, some tokens carry more task-specific information than others (Mohebbi et al., 2021), suggesting that only these tokens could be considered through the model. Moreover, in contrast to layer-wise pruning, token-level pruning does not come at the cost of reducing model's capacity in complex reasoning (Sanh et al., 2019;Sun et al., 2019). PoWER-BERT (Goyal et al., 2020) is one of the first such techniques which reduces inference time by eliminating redundant token representations through layers based on self-attention weights. Several studies have followed (Kim and Cho, 2021;Wang et al., 2021); However, they usually optimize a single token elimination configuration across the entire dataset, resulting in a static model. In addition, their token selection strategies are based on attention weights which can result in a suboptimal solution (Ye et al., 2021).\nIn this work, we introduce Adaptive Length Reduction (AdapLeR). Instead of relying on attention weights, our method trains a set of Contribution Predictors (CP) to estimate tokens' saliency scores at inference. We show that this choice results in more reliable scores than attention weights in measuring tokens' contributions. The most related study to ours is TR-BERT (Ye et al., 2021) which leverages reinforcement learning to develop an input-adaptive token selection policy network. However, as pointed out by the authors, the problem has a large search space, making it difficult for RL to solve. To mitigate this, they resorted to extra heuristics such as imitation learning (Hussein et al., 2017) for warming up the training of the policy network, action sampling for limiting the search space, and knowledge distillation for transferring knowledge from the intact backbone fine-tuned model. All of these steps significantly increase the training cost. Hence, they only perform token selection at two layers. In contrast, we propose a simple but effective method to gradually eliminate tokens in each layer throughout the training phase using a soft-removal function which allows the model to be adaptable to various inputs in a batch-wise mode. It is also worth noting in contrast to our approach above studies are based on top-k operations for identifying the k most important tokens during training or inference, which can be expensive without a specific hardware architecture (Wang et al., 2021).\nIn summary, our contributions are threefold:\n\u2022 We couple a simple Contribution Predictor (CP) with each layer of the model to estimate tokens' contribution scores to eliminate redundant representations. \u2022 Instead of an instant token removal, we gradually mask out less contributing token repre-sentations by employing a novel soft-removal function. \u2022 We also show the superiority of our token selection strategy over the other widely used strategies by using human rationales.",
+            "n_publication_ref": 42,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Background",
+            "text": "2.1 Self-attention Weights\nSelf-attention is a core component of the Transformers (Vaswani et al., 2017) which looks for the relation between different positions of a single sequence of token representations (x 1 , ..., x n ) to build contextualized representations. To this end, each input vector x i is multiplied by the corresponding trainable matrices Q, K, and V to respectively produce query (q i ), key (k i ), and value (v i ) vectors. To construct the output representation z i , a series of weights is computed by the dot product of q i with every k j in all time steps. Before applying a softmax function, these values are divided by a scaling factor and then added to an attention mask vector m, which is zero for positions we wish to attend and \u2212\u221e (in practice, \u221210000) for padded tokens (Vaswani et al., 2017). Mathematically, for a single attention head, the weight attention from token x i to token x j in the same input sequence can be written as:\n\u03b1 i,j = softmax x j \u2208X q i k \u22a4 j \u221a d + m i \u2208 R(1)\nThe time complexity for this is O(n 2 ) given the dot product q i k \u22a4 j , where n is the input sequence length. This impedes the usage of self-attention based models in low-resource settings.\nWhile self-attention is one of the most white-box components in transformer-based models, relying on raw attention weights as an explanation could be misleading given that they are not necessarily responsible for determining the contribution of each token in the final classifier's decision (Jain and Wallace, 2019;Serrano and Smith, 2019;Abnar and Zuidema, 2020). This is based on the fact that raw attentions are being faithful to the local mixture of information in each layer and are unable to obtain a global perspective of the information flow through the entire model (Pascual et al., 2021).",
+            "n_publication_ref": 6,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Gradient-based Saliency Scores",
+            "text": "Gradient-based methods provide alternatives to attention weights to compute the importance of a  specific input feature. Despite having been widely utilized in other fields earlier (Ancona et al., 2018;Simonyan et al., 2013;Sundararajan et al., 2017;Smilkov et al., 2017), they have only recently become popular in NLP studies (Bastings and Filippova, 2020;Li et al., 2016;Yuan et al., 2019). These methods are based on computing the firstorder derivative of the output logit y c w.r.t. the input embedding h 0 i (initial hidden states), where c could be true class label to find the most important input features or the predicted class to interpret model's behavior. After taking the norm of output derivatives, we get sensitivity (Ancona et al., 2018), which indicates the changes in model's output with respect to the changes in specific input dimensions. Instead, by multiplying gradients with input features, we arrive at gradient\u00d7input (Bastings and Filippova, 2020), also known as saliency, which also considers the direction of input vectors to determine the most important tokens. Since these scores are computed for each dimension of embedding vectors, an aggregation method such as L2 norm or mean is needed to produce one score per input token (Atanasova et al., 2020a):\nS i =\u2225 \u2202y c \u2202h 0 i \u2299 h 0 i \u2225 2 (2)\n3 Methodology\nAs shown in Figure 1, our approach relies on dropping low contributing tokens in each layer and passing only the more important ones to the next. Therefore, one important step is to measure the importance of each token. To this end, we opted for saliency scores which have been recently shown as a reliable criterion in measuring token's contributions (Bastings and Filippova, 2020;Pascual et al., 2021). In Section 5.1 we will show results for a series quantitative analyses that supports this choice. In what follows, we first describe how we estimate saliency scores at inference time using a set of Contribution Predictors (CPs) and then elaborate on how we leverage these predictors during inference (Section 3.2) and training (Section 3.3).",
+            "n_publication_ref": 12,
+            "n_figure_ref": 1
+        },
+        {
+            "heading": "Contribution Predictor",
+            "text": "Computing gradients during inference is problematic as backpropagation computation prolongs inference time, which is contrary to our main goal.\nTo circumvent this, we simply add a CP after each layer \u2113 in the model to estimate contribution score for each token representation, i.e., S\u2113 i . The model then decides on the tokens that should be passed to the next layer based on the values of S\u2113 i . CP computes S\u2113 i for each token using an MLP followed by a softmax activation function. We argue that, despite being limited in learning capacity, the MLP is sufficient for estimating scores that are more generalized and relevant than vanilla saliency values. We will present a quantitative analysis on this topic in Section 5.",
+            "n_publication_ref": 0,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Model Inference",
+            "text": "Most BERT-based models consist of L encoder layers. The input sequence of n tokens is usually passed through an embedding layer to build the initial hidden states of the model h 0 . Each encoder layer then produces the next hidden states using the ones from the previous layer:\nh \u2113 = Encoder \u2113 (h \u2113\u22121 )(3)\nIn our approach, we eliminate less contributing token representations before delivering hidden states to the next encoder. Tokens are selected based on the contribution scores S\u2113 obtained from the CP of the corresponding layer \u2113. As the sum of these scores is equal to one, a uniform level indicates that all tokens contribute equally to the prediction and should be retained. On the other hand, the lower-scoring tokens could be viewed as unnecessary tokens if the contribution scores are concentrated only on a subset of tokens. Given that the final classification head uses the last hidden state of the [CLS] token, we preserve this token's representation in all layers. Despite preserving this, other tokens might be removed from a layer when [CLS] has a significantly high estimated contribution score than others. Based on this intuition, we define a cutoff threshold based on the uniform level as: \u03b4 \u2113 = \u03b7 \u2113 \u2022 1 /n with 0 < \u03b7 \u2113 \u2264 1 to distinguish important tokens. Tokens are considered important if their contribution score exceeds \u03b4 (which is a value equal or smaller than the uniform score). Intuitively, a larger \u03b7 provides a higher \u03b4 cutoff level, thereby dropping a larger number of tokens, hence, yielding more speedup. The value of \u03b7 determines the extent to which we can rely on CP's estimations. In case the estimations of CP are deemed to be inaccurate, its impact can be reduced by lowering \u03b7. We train each layer's \u03b7 \u2113 using an auxiliary training objective, which allows the model to adjust the cutoff value to control the speedup-performance tradeoff. Also, since each input instance has a different computational path during token removal process, it is obvious that at inference time, the batch size should be equal to one (single instance usage), similarly to other dynamic approaches (Zhou et al., 2020;Liu et al., 2020;Ye et al., 2021;Eyzaguirre et al., 2021;Xin et al., 2020).",
+            "n_publication_ref": 5,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Model Training",
+            "text": "Training consists of three phases: initial finetuning, saliency extraction, and adaptive length retraining. In the first phase, we simply fine-tune the backbone model (BERT) on a given target task. We then extract the saliencies of three top-perfroming checkpoints from the fine-tuning process and compute the average of them to mitigate potential inconsistencies in saliency scores (cf. Section 2.2). The final step is to train a pre-trained model using an adaptive length reduction procedure. In this phase, a non-linear function gradually fades out the representations throughout the training process. Each CP is jointly trained with the rest of the model using the saliencies extracted in the previous phase alongside with the target task labels. We also define a speedup tuning objective to determine the thresholds (via tuning \u03b7) to control the performance-speedup trade-off. In the following, we elaborate on the procedure.\nSoft-removal function. During training, if tokens are immediately dropped similarly to the inference mode, the effect of dropping tokens cannot be captured using a gradient backpropagation procedure. Using batch-wise training in this scenario will also be problematic as the structure will vary with each example. Hence, inspired by the padding mechanism of self-attention models (Vaswani et al., 2017) we introduce a new procedure that gradually masks out less contributing token representations. In each layer, after predicting contribution scores, instead of instantly removing the token representations, we accumulate a negative mask to the attention mask vector M using a soft-removal function:\nm \u2212 i ( S\u2113 i ) = \uf8f1 \uf8f4 \uf8f4 \uf8f2 \uf8f4 \uf8f4 \uf8f3 \u03bb adj ( S\u2113 i \u2212 \u03b4 \u2113 ) \u2212 \u03b2 \u03bb S\u2113 i < \u03b4 \u2113 ( S\u2113 i \u2212 1)\u03b2 (1 \u2212 \u03b4 \u2113 )\u03bb S\u2113 i \u2265 \u03b4 \u2113 (4)\nThis function consists of two main zones (Figure 2). In the first term, the less important tokens with scores lower than the threshold (\u03b4 \u2113 ) are assigned higher negative masking as they get more distant from \u03b4. The slope is determined by \u03bb adj = \u03bb /\u03b4, where \u03bb is a hyperparameter that is increased exponentially after each epoch (e.g., \u03bb \u2190 10 \u00d7 \u03bb after finishing each epoch). Increasing \u03bb makes the soft-removal function stronger and more decisive in masking the representations. To avoid undergoing zero gradients during training, we define 0 < \u03b2 < 0.1 to construct a small negative slope (similar to the well known Leaky-ReLU of Maas et al. 2013) for those tokens with higher contributing scores than \u03b4 \u2113 threshold. Consider a scenario in which \u03b7 \u2113 sharply drops, causing most of S\u2113 i get over the \u03b4 \u2113 threshold. In this case, the non-zero value in the second term of Equation 4, which facilitates optimizing \u03b7 \u2113 .\nTraining the Contribution Predictors. The CPs are trained by an additional term which is based on the KL-divergence 1 of each layer's CP output with the extracted saliencies. The main training objective is a minimization of the following loss:\nL = L CE + \u03b3L CP (5\n)\nWhere \u03b3 is a hyperparameter which that specifies the amount of emphasis on the CP training loss:\nL CP = L\u22121 \u2113=0 (L \u2212 \u2113)D KL ( \u015c\u2113 || S\u2113 ) = L\u22121 \u2113=0 (L \u2212 \u2113) N i=1 \u015c\u2113 i log( \u015c\u2113 i S\u2113 i )(6)\nSince S is based on the input embeddings, the [CLS] token usually shows a low amount of contribution due to not having any contextualism in the input. As we leverage the representation of the [CLS] token in the last layer for classification, this token acts as a pooler and gathers information about the context of the input. In other words, the token can potentially have more contribution as it passes through the model. To this end, we amplify the contribution score of [CLS] and renormalize the distribution ( \u015c\u2113 ) with a trainable parameter \u03b8 \u2113 :\n\u015c\u2113 i = \u03b8 \u2113 S \u2113 1 1[i = 1] + S \u2113 i 1[i > 1] \u03b8 \u2113 S \u2113 1 + n i=2 S \u2113 i (7)\nBy this procedure, the next objective (discussed in the next paragraph) will have the capability of tuning the amount of pooling, consequently controlling the amount of speedup. Larger \u03b8 push the 1 Inclusive KL loss. Check Appendix A.\nCPs to shift the contribution towards the [CLS] token to gather most of the task-specific information and avoids carrying redundant tokens through the model.\nSpeedup Tuning. In the speedup tuning process, we combine the cross-entropy loss of the target classification task with a length loss which is the expected number of unmasked token representations in all layers. Considering that we have a non-positive and continuous attention mask M , the length loss of a single layer would be the summation over the exponential of the mask values exp(m i ) to map the masking range [\u2212\u221e, 0] to a [0 (fully masked/removed), 1 (fully retained)] bound.\nL SPD./PERF. = L CE + \u03d5L LENGTH L LENGTH = L l=1 n i=1 exp(m \u2113 i )(8)\nEquation 8 demonstrates how the length loss is computed inside the model and how it is added to the main classification loss. During training, we assign a separate optimization process which tunes \u03b7 and \u03b8 to adjust the thresholds and the amount of [CLS] pooling 2 alongside with the CP training. The reason that this objective is treated as a separate problem instead of merging it with the previous one, is because in the latter case the CPs could be influenced by the length loss and try to manipulate the contribution scores for some tokens regardless of their real influence. So in other words, the first objective is to solve the task and make it explainable with the CPs, and the secondary objective builds the speedup using tuning the threshold levels and the amount of pooling in each layer.",
+            "n_publication_ref": 2,
+            "n_figure_ref": 1
+        },
+        {
+            "heading": "Experiments 4.1 Datasets",
+            "text": "To verify the effectiveness of AdapLeR on inference speedup, we selected eight various text classification datasets. In order to incorporate a variety of tasks, we utilized SST-2 (Socher et al., 2013) and IMDB (Maas et al., 2011) for sentiment, MRPC (Dolan and Brockett, 2005) for paraphrase, AG's News (Zhang et al., 2015) for topic classification, DBpedia (Lehmann et al., 2015) for knowledge extraction, MNLI (Williams et al., 2018)  Table 1: Comparison of our proposed method (AdapLeR) with other baselines in eight classification tasks in terms of performance and speedup. For each dataset the corresponding metric has been reported (Accuracy: Acc., F1: F-1 Score). In the MNLI task, the speedup and performance values are the average of the evaluations on the matched and mismatched test sets.\nQNLI (Rajpurkar et al., 2016) for question answering, and HateXplain (Mathew et al., 2021) for hate speech. 3 Evaluations are based on the test split of each dataset. For those datasets that are in the GLUE Benchmark (Wang et al., 2018), test results were acquired by submitting the test predictions to the evaluation server.",
+            "n_publication_ref": 9,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Experimental Setup",
+            "text": "As our baseline, we report results for the pretrained BERT model (base-uncased) (Devlin et al., 2019) which is also the backbone of AdapLeR. We also compare against three other approaches: DistilBERT (uncased) (Sanh et al., 2019) as a static compression method, PoWER-BERT and TR-BERT as two strong length reduction methods (cf. Sec. 1). We used the provided implementations and suggested hyperparameters 4 to train these baselines. To fine-tune the backbone model, we used same hyperparameters over all tasks (see Section D for details). The backbone model and our model implementation is based on the Hug-gingFace's Transformers library (Wolf et al., 2020).\nTrainings and evaluations were conducted on a dual 2080Ti 11GB GPU machine with multiple runs.\nHyperparameter Selection. Overall, we introduced four hyperparameters (\u03b3, \u03d5, \u03bb, \u03b2) 5 which are involved in the training process. Among these, \u03d5 and \u03b3 are the primary terms that have considerable effects on AdapLeR's downstream performance and speedup. This makes our approach comparable to existing techniques (Goyal et al., 2020;Ye et al., 2021) which usually have two or three hyperparameters adjusted per task. We used grid search to find the optimal values for these two terms, while keeping the other hyperparameters constant over all datasets. Hyperparamter selection is further discussed in Section D.\nFLOPs Computation. We followed Ye et al. (2021) and Liu et al. (2020) and measured computational complexity in terms of FLOPs, i.e., the number of floating-point operations (FLOPs) in a single inference procedure. This allows us to assess models' speedups independently of their operating environment (e.g., CPU/GPU). The total FLOPs of a given model is a summation of the measured FLOPs over all test examples. Then, a model's speedup can be defined as the total FLOPs measured on BERT (our baseline) divided by the corresponding model's total FLOPs. To have a fair comparison, we also computed FLOPs for PoWER-BERT in a single instance mode, described in Section C.",
+            "n_publication_ref": 7,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Results",
+            "text": "Table 1 shows performance and speedup for AdapLeR and other comparison models across eight different datasets. While preserving the same level of performance, AdapLeR outperforms other techniques in terms of speedup across all tasks (ranging from +0.2x to +7.4x compared to the best model in each dataset).\nIt is noteworthy that the results also reveal some form of dependency on the type of the tasks. Some tasks may need less amount of contextualism during inference and could be classified by using only a fraction of input tokens. For instance, in AG's News, the topic of a sentence might be identifiable with a single token (e.g., soccer \u2192 Topic: Sports, see Figure 6 in the Appendix for an example). PoWER-BERT adopts attention weights in its token selection which requires at least one layer of computation to be determined, and TR-BERT ap-  plies token elimination only in two layers to reduce the training search space. In contrast, our procedure performs token elimination for all layers of the model, enabling a more effective removal of redundant tokens. On the other hand, we observe that TR-BERT and PoWER-BERT lack any speedup gains for tasks such as QNLI, MNLI, and MRPC which need a higher degree of contextualism during inference. However, AdapLeR can offer some speedups even for these tasks.\nSpeedup-Performance Tradeoff. To provide a closer look at the efficiency of AdapLeR in comparison with the other state-of-the-art length reduction methods, we illustrate speedup-accuracy curves in Figure 3. We provide these curves for two tasks in which other length reduction methods show comparable speedups to AdapLeR. For each curve, the points were obtained by tuning the most influential hyperparameters of the corresponding model. As we can see, AdapLeR significantly outperforms the other two approaches in all two tasks. An interesting observation here is that the curves for TR-BERT and AdapLeR are much higher than that of PoWER-BERT. This can be attributed to the input-adaptive procedure employed by the former two methods for determining the number of reduced tokens (whereas PoWER-BERT adopts a fixed retention configuration in token elimination). ",
+            "n_publication_ref": 0,
+            "n_figure_ref": 2
+        },
+        {
+            "heading": "Analysis",
+            "text": "In this section, we first conduct an experiment to support our choice of saliency scores as a supervision in measuring the importance of token representations. Next, we evaluate the behavior of Contribution Predictors in identifying the most important tokens in the AdapLeR.",
+            "n_publication_ref": 0,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Rationale as an Upper Bound",
+            "text": "A natural question that arises when dealing with token pruning is that of importance measure: what is the most appropriate criterion for assessing the relative importance of tokens within a sentence?\nWe resort to human rationale as a reliable upper bound for measuring token importance. To this end, we used the ERASER benchmark (DeYoung et al., 2020), which contains multiple tasks for which important spans of the input text have been highlighted as supporting evidence (aka \"rationale\") by human. Among the tasks in the benchmark, we opted for two diverse classification tasks: Movie reviews (Zaidan and Eisner, 2008) and MultiRC (Khashabi et al., 2018). In the former task, the model predicts the sentiment of the passage. Whereas the latter contains a passage, a question, and multiple candidate answers, which is cast as a binary classification task of passage/question/answer triplets in the ERASER benchmark.\nIn order to verify the reliability of human rationales, we fine-tuned BERT based on the rationales only, i.e., by excluding those tokens that are not highlighted as being important in the input. In Table 2, the first two rows show the performance of BERT on the two tasks with full input and with human rationales only. We see that fine-tuning merely on rationales not only yields less computation cost, but also results in a better performance when compared with the full input setting. Obviously, human annotations are not available for a whole range of downstream NLP tasks; therefore, this criterion is infeasible in practice and can only be viewed as an upper bound for evaluating different strategies in measuring token importance.",
+            "n_publication_ref": 3,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Saliency vs. Attention",
+            "text": "We investigated the effectiveness of saliency and self-attention weights as two commonly used strategies for measuring the importance of tokens in pre-trained language models. To compute these, we first fine-tuned BERT with all tokens in the input for a given target task. We then obtained saliency scores with respect to the tokens in the input embedding layer. This brings about two advantages. Firstly, representations in the embedding layer are non-contextualized, allowing us to measure the importance of each token independently from the others. Secondly, the backpropagation of gradients through layers to the beginning of the model provides us with aggregated values for the relative importance of each token based on the entire model. Similarly, we aggregated the selfattention weights across all layers of the model using a post-processed variant of attentions called attention rollout (Abnar and Zuidema, 2020), a popular technique in which the attention weight matrix in each layer is multiplied with the preceding ones to form aggregated attention values.\nTo assign an importance score to each token, we examined two different interpretation of attention weights. The first strategy is the one adopted by PoWER-BERT (Goyal et al., 2020) in which for each token we accumulate attention values from other tokens. Additionally, we measured how much the [CLS] token attends to each token in the sentence, a strategy which has been widely used in interpretability studies around BERT (Abnar and Zuidema, 2020;Chrysostomou and Aletras, 2021;Jain et al., 2020, inter alia). For a fair comparison, for each sentence in the test set, we selected the top-k salient and attended words, with k being the number of words that are annotated as rationales.\nResults in Table 2 show that fine-tuning on the most salient tokens outperforms that based on the most attended tokens. This denotes that saliency is a better indicator for the importance of tokens. Nonetheless, recent length reduction techniques (Goyal et al., 2020;Kim and Cho, 2021;Wang et al., 2021) have mostly adopted attention weights as their criterion for selecting important tokens. Computing these weights is convenient as they are already computed during the forward pass, whereas computing saliency requires an additional backpropagation step. Note that in our approach, saliency scores are easily estimated within inference time by the pre-trained CPs.",
+            "n_publication_ref": 8,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Contribution Predictor Evaluation",
+            "text": "In this section we validate our Contribution Predictors in selecting the most contributed tokens. Figure 4 illustrates two examples from the SST-2 and QNLI datasets in which CPs identify and gradually drop the irrelevant tokens through layers, finally focusing mostly on the most important token representations; pedestrian (adjective) in SST-2 and tesla coil in the passage part of QNLI (both of which are highly aligned with human rationale).\nIn order to quantify the extent to which AdapLeR's CPs can preserve rationales without requiring direct human annotations in an unsuper- vised manner we carried out the following experiment. To investigate the effectiveness of trained CPs in predicting human rationales we computed the output scores of CPs in AdapLeR for each token representation in each layer. We also fine-tuned a BERT model on the Movie Review dataset and computed layer-wise raw attention, attention rollout, and saliency scores for each token representation. Since human rationales are annotated at the word level, we sum the scores across tokens corresponding to each word to arrive at word-level importance scores. In addition to these soft scores, we used the uniform-level threshold (i.e., 1 /n) to reach a binary score indicating tokens selected in each layer.\nAs for evaluation, we used the Average Precision (AP) and False Positive Rate (FPR) metrics by comparing the remaining tokens to the human rationale annotations. The first metric measures whether the model assigns higher continuous scores to those tokens that are annotated by humans as rationales. Whereas, the intuition behind the second metric is how many irrelevant tokens are selected by the model to be passed to subsequent layers. We used soft scores for computing AP and binary scores for computing FPR.\nFigure 5 shows the agreement between human rationales and the selected tokens based on the two metrics. In comparison with the other widely used strategies for selecting important tokens, such as salinecy and attention, our CPs have significantly less false positive rate in preserving ratio-nales through layers. Despite having similar FPRs at the final layer, CP is preferable to attention in that it can better identify rationales at the earlier layers, allowing the model to combine the most relevant token representations when building the final one. This in turn results in better performance, as was also shown in the previous experiment in Section 5.2. Also, we see that the curve of mAP for saliency is consistently higher than other strategies in terms of alignment with human rationales which supports our choice of saliency as a measure for token importance.\nFinally, we note that there is a line of research that attempts at guiding models to perform humanlike reasoning by training rationale generation simultaneously with the target task that requires human annotation (Atanasova et al., 2020b;Zhao et al., 2020;Li et al., 2018). As a by-product of the contribution estimation process, our trained CPs are able to generate these rationales at inference without the need for human-generated annotations.",
+            "n_publication_ref": 4,
+            "n_figure_ref": 1
+        },
+        {
+            "heading": "Conclusion",
+            "text": "In this paper, we introduced AdapLeR, a novel method that accelerates inference by dynamically identifying and dropping less contributing token representations through layers of BERT-based models. Specifically, AdapLeR accomplishes this by training a set of Contribution Predictors based on saliencies extracted from a fine-tuned model and applying a gradual masking technique to simulate input-adaptive token removal during training. Empirical results on eight diverse text classification tasks show considerable improvements over existing methods. Furthermore, we demonstrated that contribution predictors generate rationales that are highly in line with those manually specified by humans. As future work, we aim to apply our technique to more tasks and see whether it can be adapted to those tasks that require all token representations to be present in the final layer of the model (e.g., question answering). Additionally, combining our width-based strategy with a depthbased one (e.g., early exiting) might potentially yield greater efficiency, something we plan to pursue as future work.",
+            "n_publication_ref": 0,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Broader Impact",
+            "text": "Using our proposed method, pre-trained language models can use fewer FLOPs, reducing energy use and carbon emissions (Schwartz et al., 2020a).\nTherefore, during training, we can compute the gradient w.r.t. the dummy variable \u03b8 \u2113 d and then divide it by \u03b8 \u2113 .",
+            "n_publication_ref": 1,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "C Evaluating PoWER-BERT in Single",
+            "text": "Instance Mode\nDue to the static structure of PoWER-BERT, the speedup ratios reported in Goyal et al. (2020) are based on wall time acceleration with batch-wise inference procedure. This means that some inputs might need extra padding to make all inputs with the same token length. However, since our approach and other dynamic approaches are based on single instance inference, in our procedure inputs are fed without being padded. To even out this discrepancy, we apply a single instance flops computation on the PoWER-BERT, which means we compute the computational cost for all input lengths that appear in the test dataset. Some instnaces may have shorter input length than some values in the resulting retention configuration (number of tokens that are retained in each layer). To overcome this issue, we update the retention configuration by selecting the minimum between the input length and each layers' number of tokens retained, to build a new retention configuration for each input length. For instance, if the retention configuration trained model on a given task be (153,125,111,105,85,80,72,48,35,27,22,5), for an input with 75 tokens length, the new configuration which is used for speedup computation will be: (75,75,75,75,75,75,72,48,35,27,22,5).",
+            "n_publication_ref": 25,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "D AdapLeR Training Hyperparameters",
+            "text": "For the initial step of fine-tuning BERT, we used the hyperparameters in Table 3. For both fine-tuning and training with length reduction, we employed an AdamW optimizer (Loshchilov and Hutter, 2019) with a weight decay rate of 0.1, warmup proportion 6% of total training steps and a linear learning rate decay which reaches to zero at the end of training.\nFor the adaptive length reduction training step, we also used the same hyperparameters in Table 3 with two differences: Since MRPC and CoLA have small training sets, to prolong the gradual softremoval process, we increased the training duration to 10 epochs. Moreover, we increase the learning rate to 3e-5. Other hyperparameters are stated in Table 4. To set a trend for \u03bb, it needs to start from a small but effective value (10 < \u03bb < 100) and grow exponentially per each epoch to reach an ex-   ",
+            "n_publication_ref": 1,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "A Inclusive KL Loss Consideration",
+            "text": "We opted for an inclusive KL loss since CPs should be trained to cover all tokens considered important by saliency and not to be mode seeking (i.e., covering a subset of high contributing tokens considered by the saliency scores.). Suppose an exclusive KL is selected. Due to the limited learning capacity of the CP and miscalculation possibility from the saliency, the CP may be trained to maximize its contribution on noninformative tokens. While in an inclusive setting, it trains to extend its coverage over all high-saliency tokens.\nAdditionally, our initial research indicated that using a symmetric loss (e.g. Jensen-Shannon divergence) would produce similar results but with a significantly longer convergence time.",
+            "n_publication_ref": 0,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "B Optimization of \u03b8",
+            "text": "In Section 3.3, we introduced \u03b8 \u2113 as a trainable parameter that increases the saliency score of [CLS]. We can deduce from Equations 6 and 7 that this parameter does not exist in the model's computational DAG and we need to compute the derivative of S\u2113 w.r.t. \u03b8 \u2113 to train this parameter. Hence, first we assume that S\u2113 is a close estimate of \u015c\u2113 (due to the CPs' training objective). Second, using a dummy variable \u03b8 \u2113 d -that is involved in the computational graph and is always equal to 1-we reformulate S\u2113 :\nThis reformulation is valid due to \u03b8 \u2113 d = 1 and n i=1\nS\u2113 i = 1. Now we compute the partial derivative w.r.t. \u03b8 \u2113 d which is the gradient that is computed in the backpropagation:\n10) By knowing that \u03b8 \u2113 d = 1:\nNow using our initial assumption ( \u015c\u2113 i \u2248 S\u2113 i ), we can substitute S\u2113 i with \u015c\u2113 i based on Equation 7:\n12) In addition, the gradient of \u015c\u2113 i w.r.t. \u03b8 \u2113 is as follows (cf. Equation 7):\n13) By comparing Equations 12 and 13, these derivatives are related with a term of \u03b8 \u2113 :   ",
+            "n_publication_ref": 1,
+            "n_figure_ref": 0
+        }
+    ],
+    "references": [
+        {
+            "title": "Quantifying attention flow in transformers",
+            "journal": "Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Samira Abnar; Willem Zuidema"
+        },
+        {
+            "title": "Towards better understanding of gradient-based attribution methods for deep neural networks",
+            "journal": "",
+            "year": "2018",
+            "authors": "Marco Ancona; Enea Ceolini; Cengiz \u00d6ztireli; Markus Gross"
+        },
+        {
+            "title": "A diagnostic study of explainability techniques for text classification",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Pepa Atanasova; Jakob Grue Simonsen; Christina Lioma; Isabelle Augenstein"
+        },
+        {
+            "title": "Generating fact checking explanations",
+            "journal": "",
+            "year": "2020",
+            "authors": "Pepa Atanasova; Jakob Grue Simonsen; Christina Lioma; Isabelle Augenstein"
+        },
+        {
+            "title": "The elephant in the interpretability room: Why use attention as explanation when we have saliency methods?",
+            "journal": "",
+            "year": "2020",
+            "authors": "Jasmijn Bastings; Katja Filippova"
+        },
+        {
+            "title": "Enjoy the salience: Towards better transformer-based faithful explanations with word salience",
+            "journal": "",
+            "year": "2021",
+            "authors": "George Chrysostomou; Nikolaos Aletras"
+        },
+        {
+            "title": "BERT: Pre-training of deep bidirectional transformers for language understanding",
+            "journal": "Association for Computational Linguistics",
+            "year": "2019",
+            "authors": "Jacob Devlin; Ming-Wei Chang; Kenton Lee; Kristina Toutanova"
+        },
+        {
+            "title": "ERASER: A benchmark to evaluate rationalized NLP models",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Jay Deyoung; Sarthak Jain; Nazneen Fatema Rajani; Eric Lehman; Caiming Xiong; Richard Socher; Byron C Wallace"
+        },
+        {
+            "title": "Automatically constructing a corpus of sentential paraphrases",
+            "journal": "",
+            "year": "2005",
+            "authors": "B William; Chris Dolan;  Brockett"
+        },
+        {
+            "title": "How contextual are contextualized word representations? Comparing the geometry of BERT, ELMo, and GPT-2 embeddings",
+            "journal": "Association for Computational Linguistics",
+            "year": "2019",
+            "authors": "Kawin Ethayarajh"
+        },
+        {
+            "title": "DACT-BERT: Differentiable adaptive computation time for an efficient bert inference",
+            "journal": "",
+            "year": "2021",
+            "authors": "Crist\u00f3bal Eyzaguirre; Felipe Del R\u00edo; Vladimir Araujo; \u00c1lvaro Soto"
+        },
+        {
+            "title": "Compressing deep convolutional networks using vector quantization",
+            "journal": "ArXiv",
+            "year": "2014",
+            "authors": "Yunchao Gong; L Liu; Ming Yang; Lubomir D Bourdev"
+        },
+        {
+            "title": "Power-bert: Accelerating bert inference via progressive word-vector elimination",
+            "journal": "PMLR",
+            "year": "2020",
+            "authors": "Saurabh Goyal; Anamitra Roy Choudhury; Saurabh Raje; Venkatesan Chakaravarthy; Yogish Sabharwal; Ashish Verma"
+        },
+        {
+            "title": "Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding",
+            "journal": "",
+            "year": "2016-05-02",
+            "authors": "Song Han; Huizi Mao; William J Dally"
+        },
+        {
+            "title": "Channel pruning for accelerating very deep neural networks",
+            "journal": "",
+            "year": "2017",
+            "authors": "Yihui He; Xiangyu Zhang; Jian Sun"
+        },
+        {
+            "title": "Distilling the knowledge in a neural network",
+            "journal": "ArXiv",
+            "year": "2015",
+            "authors": "Geoffrey E Hinton; Oriol Vinyals; Jeffrey Dean"
+        },
+        {
+            "title": "Imitation learning: A survey of learning methods",
+            "journal": "ACM Computing Surveys (CSUR)",
+            "year": "2017",
+            "authors": "Ahmed Hussein; Mohamed Medhat Gaber; Eyad Elyan; Chrisina Jayne"
+        },
+        {
+            "title": "Attention is not Explanation",
+            "journal": "Association for Computational Linguistics",
+            "year": "2019",
+            "authors": "Sarthak Jain; Byron C Wallace"
+        },
+        {
+            "title": "Learning to faithfully rationalize by construction",
+            "journal": "",
+            "year": "2020",
+            "authors": "Sarthak Jain; Sarah Wiegreffe; Yuval Pinter; Byron C Wallace"
+        },
+        {
+            "title": "",
+            "journal": "",
+            "year": "2020",
+            "authors": "Xiaoqi Jiao; Yichun Yin; Lifeng Shang; Xin Jiang; Xiao Chen; Linlin Li; Fang Wang; Qun Liu"
+        },
+        {
+            "title": "Distilling BERT for natural language understanding",
+            "journal": "",
+            "year": "",
+            "authors": " Tinybert"
+        },
+        {
+            "title": "Looking beyond the surface: A challenge set for reading comprehension over multiple sentences",
+            "journal": "",
+            "year": "2018",
+            "authors": "Daniel Khashabi; Snigdha Chaturvedi; Michael Roth; Shyam Upadhyay; Dan Roth"
+        },
+        {
+            "title": "Lengthadaptive transformer: Train once with length drop, use anytime with search",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2021",
+            "authors": "Gyuwan Kim; Kyunghyun Cho"
+        },
+        {
+            "title": "Spying on your neighbors: Fine-grained probing of contextual embeddings for information about surrounding words",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Josef Klafka; Allyson Ettinger"
+        },
+        {
+            "title": "Dbpedia-a large-scale, multilingual knowledge base extracted from wikipedia",
+            "journal": "",
+            "year": "2015",
+            "authors": "Jens Lehmann; Robert Isele; Max Jakob; Anja Jentzsch; Dimitris Kontokostas; Pablo N Mendes; Sebastian Hellmann; Mohamed Morsey; Patrick Van Kleef; S\u00f6ren Auer"
+        },
+        {
+            "title": "Visualizing and understanding neural models in NLP",
+            "journal": "Association for Computational Linguistics",
+            "year": "2016",
+            "authors": "Jiwei Li; Xinlei Chen; Eduard Hovy; Dan Jurafsky"
+        },
+        {
+            "title": "An end-to-end multi-task learning model for fact checking",
+            "journal": "",
+            "year": "2018",
+            "authors": "Sizhen Li; Shuai Zhao; Bo Cheng; Hao Yang"
+        },
+        {
+            "title": "Xu Sun, and Bin He. 2021. A global past-future early exit method for accelerating inference of pretrained language models",
+            "journal": "",
+            "year": "",
+            "authors": "Kaiyuan Liao; Yi Zhang; Xuancheng Ren; Qi Su"
+        },
+        {
+            "title": "FastBERT: a selfdistilling BERT with adaptive inference time",
+            "journal": "",
+            "year": "2020",
+            "authors": "Weijie Liu; Peng Zhou; Zhiruo Wang; Zhe Zhao; Haotang Deng; Qi Ju"
+        },
+        {
+            "title": "Decoupled weight decay regularization",
+            "journal": "",
+            "year": "2019",
+            "authors": "Ilya Loshchilov; Frank Hutter"
+        },
+        {
+            "title": "Learning word vectors for sentiment analysis",
+            "journal": "",
+            "year": "2011",
+            "authors": "Andrew L Maas; Raymond E Daly; Peter T Pham; Dan Huang; Andrew Y Ng; Christopher Potts"
+        },
+        {
+            "title": "Rectifier nonlinearities improve neural network acoustic models",
+            "journal": "",
+            "year": "2013",
+            "authors": "Andrew L Maas; Awni Y Hannun; Andrew Y Ng"
+        },
+        {
+            "title": "Hatexplain: A benchmark dataset for explainable hate speech detection",
+            "journal": "",
+            "year": "2021",
+            "authors": "Binny Mathew; Punyajoy Saha; Chris Seid Muhie Yimam; Pawan Biemann; Animesh Goyal;  Mukherjee"
+        },
+        {
+            "title": "Are sixteen heads really better than one?",
+            "journal": "",
+            "year": "2019",
+            "authors": "Paul Michel; Omer Levy; Graham Neubig"
+        },
+        {
+            "title": "Exploring the role of BERT token representations to explain sentence probing results",
+            "journal": "Association for Computational Linguistics",
+            "year": "2021",
+            "authors": "Hosein Mohebbi; Ali Modarressi; Mohammad Taher Pilehvar"
+        },
+        {
+            "title": "Telling BERT's full story: from local attention to global aggregation",
+            "journal": "",
+            "year": "2021",
+            "authors": "Damian Pascual; Gino Brunner; Roger Wattenhofer"
+        },
+        {
+            "title": "SQuAD: 100,000+ questions for machine comprehension of text",
+            "journal": "Association for Computational Linguistics",
+            "year": "2016",
+            "authors": "Pranav Rajpurkar; Jian Zhang; Konstantin Lopyrev; Percy Liang"
+        },
+        {
+            "title": "Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter",
+            "journal": "",
+            "year": "2019",
+            "authors": "Victor Sanh; Lysandre Debut; Julien Chaumond; Thomas Wolf"
+        },
+        {
+            "title": "Movement pruning: Adaptive sparsity by fine-tuning",
+            "journal": "",
+            "year": "2020",
+            "authors": "Victor Sanh; Thomas Wolf; Alexander Rush"
+        },
+        {
+            "title": "",
+            "journal": "Communications of the ACM",
+            "year": "",
+            "authors": ""
+        },
+        {
+            "title": "The right tool for the job: Matching model and instance complexities",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Roy Schwartz; Gabriel Stanovsky; Swabha Swayamdipta; Jesse Dodge; Noah A Smith"
+        },
+        {
+            "title": "Is attention interpretable?",
+            "journal": "Association for Computational Linguistics",
+            "year": "2019",
+            "authors": "Sofia Serrano; Noah A Smith"
+        },
+        {
+            "title": "Q-bert: Hessian based ultra low precision quantization of bert",
+            "journal": "",
+            "year": "2020",
+            "authors": "Sheng Shen; Zhen Dong; Jiayu Ye; Linjian Ma; Zhewei Yao; Amir Gholami; Michael W Mahoney; Kurt Keutzer"
+        },
+        {
+            "title": "Deep inside convolutional networks: Visualising image classification models and saliency maps",
+            "journal": "",
+            "year": "2013",
+            "authors": "Karen Simonyan; Andrea Vedaldi; Andrew Zisserman"
+        },
+        {
+            "title": "Smoothgrad: removing noise by adding noise. arxiv",
+            "journal": "",
+            "year": "2017",
+            "authors": "D Smilkov;  Thorat;  Kim; M Vi\u00e9gas;  Wattenberg"
+        },
+        {
+            "title": "Recursive deep models for semantic compositionality over a sentiment treebank",
+            "journal": "Association for Computational Linguistics",
+            "year": "2013",
+            "authors": "Richard Socher; Alex Perelygin; Jean Wu; Jason Chuang; Christopher D Manning; Andrew Ng; Christopher Potts"
+        },
+        {
+            "title": "Patient knowledge distillation for BERT model compression",
+            "journal": "",
+            "year": "2019",
+            "authors": "Siqi Sun; Yu Cheng; Zhe Gan; Jingjing Liu"
+        },
+        {
+            "title": "Xuanjing Huang, and Xipeng Qiu. 2021. Early exiting with ensemble internal classifiers",
+            "journal": "",
+            "year": "",
+            "authors": "Tianxiang Sun; Yunhua Zhou; Xiangyang Liu; Xinyu Zhang; Hao Jiang; Zhao Cao"
+        },
+        {
+            "title": "MobileBERT: a compact task-agnostic BERT for resource-limited devices",
+            "journal": "",
+            "year": "2020",
+            "authors": "Zhiqing Sun; Hongkun Yu; Xiaodan Song; Renjie Liu; Yiming Yang; Denny Zhou"
+        },
+        {
+            "title": "Axiomatic attribution for deep networks",
+            "journal": "",
+            "year": "2017",
+            "authors": "Mukund Sundararajan; Ankur Taly; Qiqi Yan"
+        },
+        {
+            "title": "Edgebert: Sentence-level energy optimizations for latencyaware multi-task nlp inference",
+            "journal": "",
+            "year": "2021",
+            "authors": "Thierry Tambe; Coleman Hooper; Lillian Pentecost; Tianyu Jia; En-Yu Yang; Marco Donato; Victor Sanh; Paul N Whatmough; Alexander M Rush; David Brooks; Gu-Yeon Wei"
+        },
+        {
+            "title": "Attention is all you need",
+            "journal": "Curran Associates, Inc",
+            "year": "2017",
+            "authors": "Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N Gomez; Illia Kaiser;  Polosukhin"
+        },
+        {
+            "title": "GLUE: A multi-task benchmark and analysis platform for natural language understanding",
+            "journal": "",
+            "year": "2018",
+            "authors": "Alex Wang; Amanpreet Singh; Julian Michael; Felix Hill; Omer Levy; Samuel Bowman"
+        },
+        {
+            "title": "Spatten: Efficient sparse attention architecture with cascade token and head pruning",
+            "journal": "",
+            "year": "2021",
+            "authors": "Hanrui Wang; Zhekai Zhang; Song Han"
+        },
+        {
+            "title": "A broad-coverage challenge corpus for sentence understanding through inference",
+            "journal": "Long Papers",
+            "year": "2018",
+            "authors": "Adina Williams; Nikita Nangia; Samuel Bowman"
+        },
+        {
+            "title": "Transformers: State-of-the-art natural language processing",
+            "journal": "Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Thomas Wolf; Lysandre Debut; Victor Sanh; Julien Chaumond; Clement Delangue; Anthony Moi; Pierric Cistac; Tim Rault; Remi Louf; Morgan Funtowicz; Joe Davison; Sam Shleifer; Clara Patrick Von Platen; Yacine Ma; Julien Jernite; Canwen Plu; Teven Le Xu; Sylvain Scao; Mariama Gugger; Quentin Drame; Alexander Lhoest;  Rush"
+        },
+        {
+            "title": "DeeBERT: Dynamic early exiting for accelerating BERT inference",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2020",
+            "authors": "Ji Xin; Raphael Tang; Jaejun Lee; Yaoliang Yu; Jimmy Lin"
+        },
+        {
+            "title": "BERxiT: Early exiting for BERT with better fine-tuning and extension to regression",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2021",
+            "authors": "Ji Xin; Raphael Tang; Yaoliang Yu; Jimmy Lin"
+        },
+        {
+            "title": "BERT-of-theseus: Compressing BERT by progressive module replacing",
+            "journal": "",
+            "year": "2020",
+            "authors": "Canwen Xu; Wangchunshu Zhou; Tao Ge; Furu Wei; Ming Zhou"
+        },
+        {
+            "title": "TR-BERT: Dynamic token reduction for accelerating BERT inference",
+            "journal": "Online. Association for Computational Linguistics",
+            "year": "2021",
+            "authors": "Deming Ye; Yankai Lin; Yufei Huang; Maosong Sun"
+        },
+        {
+            "title": "Interpreting deep models for text analysis via optimization and regularization methods",
+            "journal": "",
+            "year": "2019",
+            "authors": "Yongjun Hao Yuan; Xia Chen; Shuiwang Hu;  Ji"
+        },
+        {
+            "title": "Modeling annotators: A generative approach to learning from annotator rationales",
+            "journal": "Association for Computational Linguistics",
+            "year": "2008",
+            "authors": "Omar Zaidan; Jason Eisner"
+        },
+        {
+            "title": "Character-level convolutional networks for text classification",
+            "journal": "",
+            "year": "2015",
+            "authors": "Xiang Zhang; Junbo Jake Zhao; Yann Lecun"
+        },
+        {
+            "title": "Transformer-xh: Multi-evidence reasoning with extra hop attention",
+            "journal": "",
+            "year": "2020",
+            "authors": "Chen Zhao; Chenyan Xiong; Corby Rosset; Xia Song; Paul Bennett; Saurabh Tiwary"
+        },
+        {
+            "title": "Layer 2: [CLS] league of development major league soccer plans to start a new league to develop young players , part of its 10 -year sponsorship deal with adi ##das",
+            "journal": "Curran Associates",
+            "year": "2020",
+            "authors": "Wangchunshu Zhou; Canwen Xu; Tao Ge; Julian Mcauley; Ke Xu; Furu Wei"
+        }
+    ],
+    "figures": [
+        {
+            "figure_label": "1",
+            "figure_type": "",
+            "figure_id": "fig_0",
+            "figure_caption": "Figure 1 :1Figure 1: To reduce the inference computation, in each layer (1) the attribution score of the token representation is estimated and (2) based on a reduced uniform-level threshold (\u03b4 \u2113 = \u03b7 \u2113/n) token representations with low importance score are removed. Since the final layer's classifier is connected to the [CLS] token and it could act as a pooler within each layer it is the only token that would remain regardless of its score.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "2",
+            "figure_type": "",
+            "figure_id": "fig_1",
+            "figure_caption": "Figure 2 :2Figure 2: The soft-removal function plotted with \u03bb \u2208 {3, 9, 27, 81} and \u03b4 \u2113 = 0.25. As \u03bb increases, the removal region (1) gets steeper while the other zone (2), which is almost horizontal, approaches the zero level.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "3",
+            "figure_type": "",
+            "figure_id": "fig_2",
+            "figure_caption": "Figure 3 :3Figure 3: Accuracy-Speedup trade-off curve for AdapLeR and two other state-of-the-art reduction methods; TR: TR-BERT, PoWER: PoWER-BERT on two different tasks.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "2",
+            "figure_type": "",
+            "figure_id": "fig_3",
+            "figure_caption": "SST- 22Figure 4: The illustration of contribution scores obtained by CPs in three different layers of the model for two input examples from SST-2 (sentiment) and QNLI (Question-answering NLI) tasks. The contribution scores are shown by color intensity. Only the highlighted token representations are processed in each layer. See more full-layer plots in the appendix 6.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "5",
+            "figure_type": "",
+            "figure_id": "fig_4",
+            "figure_caption": "Figure 5 :5Figure 5: Agreement with human rationales in terms of mean Average Precision and False Positive Rate for Contribution Predictor (CP) and three alternative techniques.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "",
+            "figure_type": "table",
+            "figure_id": "tab_1",
+            "figure_caption": "for NLI,",
+            "figure_data": "ModelSST-2IMDBHateXplainMRPCMNLIQNLIAG's newsDBpediaAcc. Speedup Acc. Speedup Acc Speedup F1. Speedup Acc. Speedup Acc. Speedup Acc. Speedup Acc. SpeedupBERT92.7 1.00x93.8 1.00x 68.3 1.00x 87.5 1.00x84.2 1.00x90.3 1.00x94.4 1.00x99.3 1.00xDistilBERT92.2 2.00x92.9 2.00x 68.2 2.00x 88.0 2.00x81.8 2.00x88.1 2.00x94.2 2.00x99.3 2.00xPoWER-BERT 92.1 1.18x92.2 1.70x 66.9 2.69x 88.0 1.07x82.9 1.10x89.7 1.23x92.1 12.50x98.1 14.80xTR-BERT92.1 1.46x93.2 2.90x 67.9 2.23x 81.9 1.16x84.8 1.00x89.0 1.09x93.2 10.20x98.9 10.01xAdapLeR92.3 1.49x91.7 3.21x 68.6 4.73x 87.6 1.27x82.9 1.42x89.3 1.47x92.5 17.10x98.9 22.23x"
+        },
+        {
+            "figure_label": "3",
+            "figure_type": "table",
+            "figure_id": "tab_5",
+            "figure_caption": "Hyperparameters in each dataset; LR: Learning rate; BSZ: Batch size; MaxLen: Maximum Token Length tremely high amount at the end of the training to mimic a hard removal function (1e+5 < \u03bb). Hence, datasets with the same amount of training epochs have similar \u03bb trends.",
+            "figure_data": "Dataset\u03b3\u03d5\u03bbSST-25e-3 5e-410 EpochIMDB5e-3 5e-410 EpochHateXplain 5e-2 2e-250 EpochMRPC3e-2 5e-2 10 \u00d7 3 EpochMNLI5e-3 5e-450 EpochQNLI5e-3 1e-410 EpochAG's News 1e-1 1e-110 EpochDBPedia1e-1 1e-150 Epoch"
+        },
+        {
+            "figure_label": "4",
+            "figure_type": "table",
+            "figure_id": "tab_6",
+            "figure_caption": "AdapLeR hyperparameters in each dataset; Since \u03bb increases exponentially on each epoch the coorresponding formula is written.",
+            "figure_data": ""
+        }
+    ],
+    "doi": "10.18653/v1/2020.acl-main.385"
+}
