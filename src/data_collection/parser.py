@@ -62,6 +62,6 @@ if __name__ == "__main__":
 
     # Save down summary of URLs and saved processed files
     summary = {"parsed_pds": all_parsed_pdfs}
-    summary_json = json.dumps(summary)
+    summary_json = json.dumps(summary, indent=4)
     with open(os.path.join(FILE_PATH, "summary.json"), 'w') as f: 
         f.write(summary_json)
