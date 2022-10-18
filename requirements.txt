@@ -5,5 +5,6 @@ spacy
 bs4
 pytz
 python-dateutil
+lxml
 
 PyPDF2
