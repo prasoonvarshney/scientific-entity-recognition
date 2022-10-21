@@ -1,5 +1,11 @@
 import json
 import pickle
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--source", type=str, default="bert.json")
+args = parser.parse_args()
+source = args.source  # annotation file
 
 mapping = {}
 labels = 'MethodName HyperparameterName HyperparameterValue DatasetName MetricValue MetricName TaskName'.split()
@@ -7,7 +13,7 @@ labels = 'MethodName HyperparameterName HyperparameterValue DatasetName MetricVa
 for label in labels:
     mapping[label] = set()
 
-with open('bert.json', 'r') as file:
+with open(source, 'r') as file:
     data = json.load(file)
 
 for item in data:
