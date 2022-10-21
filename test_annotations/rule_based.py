@@ -1,9 +1,15 @@
 import json
 import pickle
 import random
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--source", type=str, default="bert.json")
+args = parser.parse_args()
+source = args.source
 
 MAPPING_FILE = 'reverse_mapping.pkl'
-DATA_FILE = 'bert.json'
+DATA_FILE = source
 OUTPUT_FILE = DATA_FILE.split('.')[0] + '_edited.json'
 
 def generate_id():
