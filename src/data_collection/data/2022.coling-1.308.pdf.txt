@@ -1,0 +1,194 @@
+KOCHET : a Korean Cultural Heritage corpus for Entity - related Tasks .
+As digitized traditional cultural heritage documents have rapidly increased , resulting in an increased need for preservation and management , practical recognition of entities and typification of their classes has become essential .
+To achieve this , we propose KOCHET -a Korean cultural heritage corpus for the typical entity - related tasks , i.e. , named entity recognition ( NER ) , relation extraction ( RE ) , and entity typing ( ET ) .
+Advised by cultural heritage experts based on the data construction guidelines of government - affiliated organizations , KOCHET consists of respectively 112,362 , 38,765 , 113,198 examples for NER , RE , and ET tasks , covering all entity types related to Korean cultural heritage .
+Moreover , unlike the existing public corpora , modified redistribution can be allowed both domestic and foreign researchers .
+Our experimental results make the practical usability of KO - CHET more valuable in terms of cultural heritage .
+We also provide practical insights of KOCHET in terms of statistical and linguistic analysis .
+Our corpus is freely available at https://github.com/Gyeongmin47/KoCHET .
+Introduction .
+Recently there has been an increasing interest in the preservation of national historical artifacts and traditional cultural heritage , and also grows up the importance of effective management of them through digitization and archival .
+As the amount of digitized information materials increases rapidly , information extraction ( IE ) tasks in natural language processing ( NLP ) , such as named entity recognition ( NER ) , relation extraction ( RE ) , and entity typing ( ET ) , have become an essential and fundamental step in the field of historical document analysis .
+Despite the necessity of a well - refined entitycentric corpus specialized in domestic cultural her - itage , unfortunately , there no exists any cultural heritage domain - specialized corpus in Korean .
+Moreover , conventional entity - related systems deal only with a coarse set of entity types such as person , location , and organization which is significantly limited in terms of application ( Kim et al . , 2020 ) .
+This absence of cultural heritage domain - specialized corpus and narrow coverage of entity types hinders the effective digitization of domestic historical documents because training the model with general corpus for entity - related tasks can not afford to learn enough significant entity types such as pagodas , historical sites and intangible heritage , and their relations .
+Furthermore , not in the cultural heritage domain , the existing entity - related datasets supervised by the public institutions have a complicated procedure for data acquisition , and they are also restricted from modification and redistribution .
+These cumbersome procedures and restrictions have been stumbling blocks for researchers against the rapid increase in digitized cultural heritage materials over the past few decades .
+To address these difficulties against the conservation of Korean cultural heritage , we introduce a new dataset collection called KOCHET -Korean Cultural Heritage corpus for Entity - related Tasks , a high - quality Korean cultural heritage domainspecialized dataset for NER , RE , and ET tasks .
+For corpus construction , we crawled the e - museum digitized data of the National Museum of Korea 1 ( including data from all 50 museums ) as the source text which is for the interested public .
+We selectively used resources from the museums in which the details of artifacts were registered ; moreover , for the completeness of the attribute data , we limited the chronological range of the data from the prehistoric era to the Korean Empire era , excluding the Japanese colonial period .
+For the annotation , the categorization for classes and attributes appropriate was defined and developed following the 2020 Named Entity Corpus Research Analysis 2 which was published under the guidelines as institutional organizations .
+As our corpus focuses on the entity features , it has more detailed and abundant entity types including diverse cultural heritage artifacts , compared to the existing accessible datasets that aim to deal with several downstream tasks in addition to entityrelated tasks .
+Furthermore , the ET of KOCHET is the first freely available corpus for the ET task in Korea .
+In addition to providing these values , this paper provides detailed statistics and linguistic analysis of KOCHET for each entity - related task to demonstrate their applicability and enhance understanding of the data , along with baseline experiments with language models .
+Our contributions are summarized as follows : • We introduce KOCHET designed for entityrelated tasks .
+This guarantees a high - quality corpus without restrictions regarding modification and redistribution .
+Moreover , to the best of our knowledge , the ET corpus is the first proposed corpus in Korean .
+• We categorized the detailed entity types specialized in the cultural heritage domain , which is essential for preserving our cultural and historical artifacts , thereby contributing as an alternative to the increased demand for the digitalized archiving of cultural heritage documents .
+• We prove the applicability of our entityabundant corpus in each task by providing statistics and linguistic analysis , along with the experiments with pre - trained language models .
+Related Works .
+As domains that require expertise , such as the cultural heritage , contain entities or relationships that rarely appear in general domains , the necessity of a corpus specialized in the domain is obvious .
+Despite such demand , Korean does not yet have a corpus specialized in the cultural heritage area , unlike other languages .
+General cultural heritage corpora .
+There have been the disclosures of corpora in an effort to preserve traditional culture including the 2 https://www.korean.go.kr cultural heritage , composing data from the perspective of the entity - related tasks that we deal with .
+For example , these include a Czech NER corpus constructed based on public optical character recognition data of Czech historical newspapers ( Hubková et al . , 2020 ) , a Chinese corpus suitable for the computational analysis of historical lexicon and semantic change ( Zinin and Xu , 2020 ) , and an English corpus that is one of the most commonly used large corpora in diachronic studies in English ( Alatrash et al . , 2020 ) .
+Korean public corpora .
+The National Institute of Korean Language , which is an institution that has established the norms for Korean linguistics , constructed a largescale dataset 3 for the study of new computational linguistics of Korean ( Kim , 2006 ) .
+AI HUB is a massive dataset integration platform 4 hosted by the National Information Society Agency ( NIA ) 5 , a government - affiliated organization .
+To support the development of the Korean artificial intelligence industry for the NLP field , the NIA disclosed domain - specific corpora and 27 datasets have been released or are being prepared .
+Electronics and Telecommunications Research .
+Institute , as part of the Exo - brain project 6 , provides corpora for NLP tasks such as morphological analysis , entity recognition , dependency parsing , and question answering , and guidelines for building such high - quality corpora 7 .
+In addition to public datasets opened by public institutions , there is a Korean dataset publicly available for free without the requirement for an access request .
+Korean Language Understanding Evaluation ( KLUE ) dataset was recently released to evaluate the ability of Korean models to understand natural languages with eight diverse and typical tasks ( Park et al . , 2021b ) .
+The tasks include natural language inference , semantic textual similarity , dependency parsing , NER , and RE .
+KOCHET .
+Following the guidelines of Korean institutional organizations , KOCHET is a domain specialized corpus for cultural heritage , which ensures quality and can be freely accessed .
+In this section , we report the annotation process and guidelines in detail .
+Annotation Process .
+To improve the quality of annotations on our entityrich corpus related to cultural heritage , we conducted the annotation process based on expertise in the cultural heritage domain .
+Annotation Guidelines .
+The raw corpus annotated by each annotator is equally divided by the category .
+The annotators were instructed to follow two types of rules by the aforementioned entity guidelines in Section 1 ; one is related to tagging units and categories , and the other is the principle of unique tagging .
+The minimum unit is based on one word for the tagging units and categories .
+In addition , it is applied only to cases written in Korean , where the notation is possible .
+It is not tagged in the case of Chinese characters and English , but if it is read in Korean , it is included in the tagging range .
+For the principle of unique tagging , there are cases of duplication in entities that belong to two or more semantic regions .
+This guideline grants a single tag to a semantically suitable word and refers to assigning only one tag by prioritizing it accordingly .
+There are two cases in which this principle should be applied .
+The first case is where the entity belongs to two semantic categories regardless of the context .
+The second refers to the case where it may vary depending on the context .
+In both cases , tagging is determined according to the pre - defined priority .
+Annotator Training and Cross - Checking We recruited 34 college and graduate annotators who have been professionally educated on the cultural heritage domain in Korea to participate in the annotation process .
+All annotators were trained for a week , and each of them was familiarized with the annotation guideline and conducted practice annotation on test samples .
+The annotation team met once every week to review and discuss each member 's work during the annotation process .
+All entity types and relations were reviewed by four crosschecking annotators , afterward , were additionally checked by two expert supervisors .
+The discrepancy between annotators on the annotated entity types and relations is also discussed and agreed upon in the period .
+These procedures allowed the reliability and validity of KOCHET on the cultural heritage objects to be improved .
+Table 1 : The counts of entities and their distributions ( % ) in our NER data .
+Schema for .
+As described in Table 1 , we defined 12 entity types .
+They were tagged with the character - level beginning - inside - outside ( BIO ) tagging scheme , which is the generally adopted method for sequence labeling problems .
+For example , " 아시아 ( Asia ): Geographical Location ( LCG ) " is tagged as " 아 : B - LCG , " " 시 : I - LCG , " " 아 : I - LCG . " Therefore , we evaluated the model not only with entity - level F1 score but also with character - level F1 score ( Park et al . , 2021b ) .
+Label Description .
+• Artifacts ( AF ) generally refer to objects created by humans corresponding to common and proper nouns and also include cultural properties .
+Therefore , artificial materials such as buildings , civil engineering constructions , playground names , apartments , and bridges fall under this category .
+• Person ( PS ) is a category for content related to people , including real persons , mythical figures , fictional characters in games / novels , occupations , and human relationships .
+• Term ( TM ) includes the color , direction , shape , or form that describes an artifact .
+Patterns and drawings are classified as TM , owing to the characteristics of movable cultural properties .
+• Civilization ( CV ) is defined as terms related to civilization / culture .
+It targets words classified by detailed civilizations / cultures , such as clothing and food .
+• Date ( DT ) includes all entities related to date and time , such as date , period , specific day , or season , month , year , era / dynasty .
+However , in the case of an unclear period that can not be tagged with a separate entity , tagging is not performed .
+• Material ( MT ) includes a substance used as a material or an expression for the substance .
+In other words , it indicates the entity corresponding to the detailed classification of a substance ( metal , rock , wood , etc . ) .
+When an entity can be tagged as both natural objects ( AM , PT ) and MT , tagging as MT takes precedence .
+• Geographical location ( LCG ) , Political location ( LCP ) , and Location ( LC ) are defined as geographical names , administrative districts , and other places , respectively .
+• Animal ( AM ) and Plant ( PT ) are defined as animals and plants , respectively , excluding humans .
+If it is applied as a subject of a picture , it is also included in the category of animals and plants .
+• Event ( EV ) contains entities for a specific event / accident .
+In principle , social movements and declarations , wars , revolutions , events , festivals , etc . , fall under this category and should be classified only if they exist as a separate entity .
+Relation Extraction .
+Unlike the other existing corpora , our corpus has the advantage of capturing various relationships between multiple entities that are included in a sentence because more than one relation can exist per raw sentence .
+We consider the relations between annotated entities in the NER annotation procedure .
+In the case of certain tokens , it can be a subject or an object depending on the relationship with other tokens .
+A relationship in the form of a selfrelationship between identical tokens does not exist .
+As shown in Table 2 , our RE corpus consists of 14 labels , and these were defined based on the Encyves ontology research of the National Culture Research Institute 8 .
+Label Description .
+• " A depicts B " implies the relationship between an object and its color , shape or pattern , etc .
+For example , " Green Door " corresponds to this relationship .
+It can also represent a descriptive relationship such as " Picture of a place - the place where it was taken " or " Picture of a person - the person who is the object of the painting . " • " A documents B " implies " ∼ records - . " ; a relationship such as " Record - The person who records it " can be represented by this .
+It also indicates the relationship like a record written on an object such as " Postcard - Explanation " or a specific language written on a document such as " Record - Chinese characters . " • " A hasSection B " indicates " ∼ is located at - . " It represents the relationship between a statue , building , or specific attraction and a location , such as a certain city and place .
+• " A servedAs B " implies " ∼ is the role of - , " which corresponds to the relationship between a person , and his / her position or occupation , etc .
+• " A hasCreated B " demonstrates , for example , " Person - Documents " or " Person - Painting , " which refers to the relationship between a person and a document such as a book , map , or drawing , or his / her activities to record works .
+• " A OriginatedIn B " means " ∼ is discovered at - " or " ∼ is produced at -(time ) . " It indicates that cultural property is produced at a specific time such as " Craft - Year " or is discovered at a particular place such as " Object - Place , " or is produced at a certain site such as " Document - Place . " For example , the relation between earrings and tombs or a newspaper and the company of the newspaper fall into this .
+• " A consistsOf B " refers to the relation between an object and its raw ingredients , such as soil , iron , and wood that constitute an object .
+• " A isConnectedWith B " represents a personto - person association .
+The relationships between two positions or a person and the position he or she holds do not fall into this .
+• " A fallsWithin B " implies " ∼ is denominated as - . " It indicates the relationship of alternate names such as " Person - Specific name , " or between a name and designation in front of the name , or between words that refer to synonymous concepts such as " Verse - Poetry . " • " A isUsedIn B " indicates " ∼ is used for the purpose of - " or literally " ∼ is used in - . " For example , it can also indicate the material used for a certain object , such as " Raw material - Clothes . " The relationship between an object and the place where the object is used , such as a signboard and a palace , or the relationship between certain means of performing a function and an object such as " Bowl - Rice cake " can correspond to this category .
+• " A hasTime B " implies " ∼ has happened at - . " For example , it can indicate the relationship between a particular event and a specific date , such as " Presidential election-1928 . " The relation between a specific date and a certain work , such as the year of production of a work and the year of construction of a building , can fall under this category , for example , " Year - Craftwork . " • " A wears B " implies " ∼ puts -on . " For instance , not only clothes such as school uniforms but also crafts , etc .
+may correspond to the object argument .
+• " A hasCarriedOut B " indicates " -is caused by ∼. " It can represent a relationship between a specific organization or group and an event conducted by it , such as a festival or social movement .
+• " A hasDestroyed B " implies the event that caused destruction such as " War - Destroyed place , " or the collapse of a country in a specific year such as " Country - Year , " or the relationship in which a building , structure , monument , etc .
+is destroyed at a particular period .
+Fine - grained Entity Typing .
+Given a sentence and entity mention within it , the ET task predicts a set of noun phrases that describe the mention type .
+For example , in " 김홍도는 조선 후기의 화가이다 .
+( Kim Hong - do was a painter of the Joseon era of Korea . ) , " Joseon should be typed as " dynasty / Date " and not " country / Location . " This typification is crucial for context - sensitive tasks such as RE , coreference resolution , and question answering ( e.g. , " In which era was Kim Hongdo , an artist ? " ) .
+Unlike high resource languages , we found that the Korean corpus for the ET task has not been released .
+In dealing with this data scarcity problem and promoting universal studies , we release a Korean ET task corpus for the first time , to the best of our knowledge .
+The schema for the ET task was designed with reference to the data construction process of the Fine - Grained Entity Recognition dataset ( Ling and Weld , 2012 ) .
+Considering the properties of the cultural heritage domain , we categorized the 12 general entity types aforementioned in the NER task ( Section 3.2.1 ) into a fine - grained set of 94 types with detailed meanings .
+Particularly , the cultural taxonomy defined in the Cultural Properties Protection Law 9 was applied to AF , and the 2004 Cavalier - Smith 's classification system ( Cavalier - Smith , 2004 ) was applied to the biological scope of PT and AM .
+All fine - grained entity types are detailed in Figure 1 .
+The fine - grained entities for entity - related downstream tasks in the cultural heritage domain enable a more detailed contextualized representation for each entity mention than the previous typing schemas , which only predict relatively coarse types of entities .
+Table 3 lists three example sentences with entity mention that can represent several fine - grained types .
+Given a sentence with an entity mention , the appropriate type that describes the role of the entity span in the sentence should be predicted .
+Our fine - grained entity types can embrace all the existing general types and categorize them in greater detail .
+Accordingly , they can let models understand richly the noun phrases including entity , compared to when the models are trained to predict only relatively coarse types .
+For Figure 1 , the circle on the left shows the visualization of fine - grained entity types that possess approximately 84 % among all labels in the corpus , and the set on the right shows the detailed distributions of all fine - grained types .
+Each example includes 2.94 fine - grained entities on average ; there are up to nine several fine - grained 9 www.cha.go.kr entity types per entity .
+The category to which the most entities belong is " AF_DOCUMENTS , " which possesses 17.9 % , and that on the second place is " PS_NAME , " having 16.7 % .
+Label Description .
+• 12 general types : PS , AF , AM , CV , DT , EV , PT , MT , TM , LC , LCG , LCP • 94 fine - grained types , which were mapped to the cultural heritage - specialized finegrained entity labels , were inspired by prior works ( Ling and Weld , 2012;Gillick et al . , 2014;Choi et al . , 2018 ) .
+Analysis on KOCHET .
+Diachronic and Linguistic Analysis .
+There are mainly two differences between the entities in the proposed corpus and those commonly used .
+First , archaic expressions that are not used in modern times are frequently shown in our corpus .
+Specifically , such expressions continually appear when ancient documents or historical artifacts are quoted .
+Let us consider the phrase " 한번사신레꼬 - 드는승질상밧고거 - 나믈느지는안슴니다 " in sentence 1 in Table 4 .
+Although it is written using syllables of modern Korean , the grammar and the vocabulary are fairly dissimilar from those of contemporary Korean , such as word spacing and syllabification , i.e. , separation rule between the units of the word .
+When translating the sentence with quotation marks into modern Korean , it can be expressed as " 한번 사신 레코드는 성질상 바꾸거나 무르지는 않습니다 ( Once a record is purchased , it can not be exchanged or refunded due to its characteristics ) . " Index Example sentences 1 앞면 좌측 하단에 ' 한번사신레꼬 - 드는승질상밧고거 - 나믈느지는안슴니다 ' 문구가 있음 .
+There is a phrase ' 한번사신레꼬 - 드는승질상밧고거 - 나믈느지는안슴니다'(archaic Korean ) on the left corner of the front side .
+Second , several entities contained in KOCHET written in Korean are followed by the descriptions written in either Chinese or Japanese characters .
+For example , as shown in sentence 2 in Table 4 , the description with Chinese characters in parentheses follows the entity " 안창호씨 , " and is usually written such as " 안창호씨(安昌浩氏 ) . " Further , Japanese characters are also present throughout the corpus , enhancing the polyglot property of the corpus , as shown in sentence 3 .
+Therefore , to fully understand such expression types in our corpus , multilingual factors of language models should be considered ; particularly in the case of token classification tasks , in which the meaning of each token directly affects the model performance .
+Statistics .
+The overall statistics of KOCHET are showed in Table 5 .
+For the NER corpus , 457,232 entities from 112,362 examples in total .
+For the RE corpus , 79,942 relations from 38,765 examples were annotated in total .
+For the ET corpus , 332,830 entity mentions from 113,198 examples were annotated in total .
+The annotated corpus was divided into three subsets for each task , i.e. , a ratio of 8:1:1 for training , development , and testing , respectively .
+In this section , we describe our corpus statistically in the order of NER , RE , and ET .
+First , as shown in Table 1 , we used 12 entity types for our cultural heritage NER corpus .
+Due to the properties of the cultural heritage domain , the three primary entity types , i.e. , artifacts ( AF ) , person ( PS ) , and term ( TM ) , account for the majority of the total entity population .
+AF , PS , and TM entities possess approximately 36 % , 20 % , and 10 % , respectively , which are used as crucial information in the cultural heritage domain .
+The AF type includes cultural assets and historical landmarks , the TM type includes patterns or traces engraved on certain cultural assets , and the PS type particularly includes not only general people but also particular types of persons such as mythical figures .
+On the other hand , the EV type occupies the most minor proportion , approximately 0.8 % , because our corpus especially aims to concentrate on the cultural heritage .
+Second , Table 2 demonstrates the distribution of 14 RE labels .
+In the case of " A depicts B " and " A documents B , " cultural assets left in a specific form such as records , drawings , and photographs are included , whereas " A hasSection B " contains cultural heritage or historical landmarks located at a specific place .
+Among them , " A depicts B , " " A documents B , " and " A hasSection B " are the most relationship labels with approximately 22 % , 16 % , and 10 % of the total , respectively .
+" A depicts B " and " A documents B " include cultural assets left in a specific form such as records , drawings , and photographs , whereas " A hasSection B " contains cultural heritage or historical landmarks located at a particular place .
+" A hasDestroyed B " has the smallest proportion with ten relations in total because , in actual history , significant events such as the collapse of a nation or the loss of cultural properties are not as diverse as the types of general cultural assets .
+Finally , among the fine - grained entity types , the " AF_DOCUMENTS " type , such as historical documents , occupies the largest part with 17.9 % , and " PS_NAME " including the names of historical figures , takes second place by occupying 11.5 % .
+On the other hand , the entity types to which belong to the AM , PT , MT , and EV almost account for under 1.0 % .
+Experiment .
+The detailed experimental settings are in Appendix A.
+Experimental results According to Table 6 , two tendencies are observed .
+One is that in the NER task , the multilingual models , i.e. , multilingual BERT and xlm - RoBERTa - base , showed better performance by more than 30 % difference in both Entity F1 and Character F1 scores compared to the Korean models , i.e. , KLUE - BERT - base and KLUE - RoBERTa - base .
+The other is that in the RE and ET tasks , the performances of the Korean models were at least 1.1 % higher than those of the multilingual models .
+Experimental Analysis As the token classification tasks are directly affected by segmentation ( Kim et al . , 2021;Park et al . , 2021a ) , models with linguistic knowledge of Chinese and Japanese overperform in such tasks ( Pires et al . , 2019 ) other words , the multilingual models are considered to segment better each token composed of various languages , especially in the NER corpus .
+In addition , in Table 7 , the Korean models , i.e. , KLUE - BERT - base and KLUE - RoBERTa - base show a significantly higher ratio of unknown tokens than the multilingual language models .
+It is attributed that the NER task requires more polyglot features of the model compared to the other tasks , i.e. , RE and ET , which has the properties of sentence classification tasks .
+On the other hand , as the RE or ET task does not classify all tokens in a sentence , the correct answer can be satisfactorily inferred from only the given Korean words ; thereby , the language models pre - trained in Korean show better performance in the two tasks compared to the multilingual model .
+Conclusion .
+In this paper , we introduced KOCHET -a Korean cultural heritage corpus for three typical entityrelated tasks , i.e. , NER , RE , and ET .
+Unlike the existing public Korean datasets with additional restrictions , KOCHET obviated the cumbersome prerequisite and can be freely modified and redistributed .
+Furthermore , we proved the applicability of our entity - abundant corpus with the experiments employing the various pre - trained language models and provided practical insights regarding the statistical , diachronic , and linguistic analysis .
+Above all , the most significant contributing point is that the disclosure of our corpus is expected to serve as a cornerstone for the development of IE tasks for a traditional cultural heritage .
+We hope that the continuous effort to preserve cultural heritage with the effective management of digitized documents containing cultural artifacts is encouraged by this research .
+A Experimental Setup .
+As the baseline models , we employed two global language models : multilingual bidirectional encoder representations from transformers ( BERT ) ( Devlin et al . , 2019 ) and a cross - lingual language model XLM - RoBERTa - base ( Conneau et al . , 2020 ) containing the Korean language , and two KLUE language models : KLUE - BERT - base , KLUE - RoBERTa - base , which were recently published covering various Korean downstream tasks .
+In all the model experiments , the performance of each model was measured five times , and the average of each result was evaluated as the final result .
+Further , we set our environment for the experiment with four A6000 GPUs and 384 GB memory .
+The hyperparameters in the fine - tuning step were set as follows .
+The learning rate and weight decay were consistently set at 5e-5 and 0.01 across all three tasks .
+The number of training epochs was set to 10 in NER , RE and 3 in ET .
+The batch size in training and testing procedures was set to 128 in NER , RE and 256 in ET .
+In the case of max sequence length , the lengths of 256 and 128 were used for each task .
+We evaluated our system by employing F1 score , which is standard metric for classification tasks .
+Specifically , the evaluation metrics for NER task were Entity F1 and Character F1 based on previous research ( Park et al . , 2021b ) .
+Entity F1 is a metric that is recognized as a correct answer only when all types included in an entity are matched accurately .
+Conversely , Character F1 is a metric that evaluates each type of syllable in a sentence individually .
+The evaluation metrics for the RE task were F1 score in the Scikit - learn library ( Pedregosa et al . , 2011 ) .
+As for ET , we adopted the evaluation metrics of loose F1 score following the same evaluation criteria used in previous works ( Ling and Weld , 2012;Wang et al . , 2020 ) .
+Acknowledgements .

@@ -1,0 +1,157 @@
+Active Testing : An Unbiased Evaluation Method for Distantly Supervised Relation Extraction .
+Distant supervision has been a widely used method for neural relation extraction for its convenience of automatically labeling datasets .
+However , existing works on distantly supervised relation extraction suffer from the low quality of test set , which leads to considerable biased performance evaluation .
+These biases not only result in unfair evaluations but also mislead the optimization of neural relation extraction .
+To mitigate this problem , we propose a novel evaluation method named active testing through utilizing both the noisy test set and a few manual annotations .
+Experiments on a widely used benchmark show that our proposed approach can yield approximately unbiased evaluations for distantly supervised relation extractors .
+Introduction .
+Relation extraction aims to identify relations between a pair of entities in a sentence .
+It has been thoroughly researched by supervised methods with hand - labeled data .
+To break the bottleneck of manual labeling , distant supervision ( Mintz et al . , 2009 ) automatically labels raw text with knowledge bases .
+It assumes that if a pair of entities have a known relation in a knowledge base , all sentences with these two entities may express the same relation .
+Clearly , the automatically labeled datasets in distant supervision contain amounts of sentences with wrong relation labels .
+However , previous works only focus on wrongly labeled instances in training sets but neglect those in test sets .
+Most of them estimate their performance with the held - out evaluation on noisy test sets , which will yield inaccurate evaluations of existing models and seriously mislead the model optimization .
+As shown in Table 1 , we compare the results of held - out evaluation and human evaluation for the same model on a widely used * Corresponding author : jiawj@bnu.edu.cn .
+benchmark dataset NYT-10 ( Riedel et al . , 2010 ) .
+The biases between human evaluation and existing held - out evaluation are over 10 % , which are mainly caused by wrongly labeled instances in the test set , especially false negative instances .
+Evaluations P@100 P@200 P@300 Held - out Evaluation 83 77 69 Human Evaluation 93(+10 ) 92.5(+15.5 ) 91(+22 ) Table 1 : The Precision at top K predictions ( % ) of the model Lin et al .
+( 2016 ) upon held - out evaluation and human evaluation on NYT-10 .
+Results are obtained by our implementations .
+A false negative instance is an entity pair labeled as non - relation , even if it has at least one relation in reality .
+This problem is caused by the incompleteness of existing knowledge bases .
+For example , over 70 % of people included in Freebase have no place of birth ( Dong et al . , 2014 ) .
+From a random sampling , we deduce that about 8.75 % entity pairs in the test set of NYT-10 are misclassified as non - relation .
+1 Clearly , these mislabeled entity pairs yield biased evaluations and lead to inappropriate optimization for distantly supervised relation extraction .
+In this paper , we propose an active testing approach to estimate the performance of distantly supervised relation extraction .
+Active testing has been proved effective in evaluating vision models with large - scale noisy datasets ( Nguyen et al . , 2018 ) .
+In our approach , we design an iterative approach , with two stage per iteration : vetting stage and estimating stage .
+In the vetting stage , we adopt an active strategy to select batches of the most valuable entity pairs from the noisy test set for annotating .
+In the estimating stage , a metric estimator is proposed to obtain a more accurate evaluation .
+With a few vetting - estimating iterations , evaluation results can be dramatically close to that of human evaluation by using limited vetted data and all noisy data .
+Experimental results demonstrate that the proposed evaluation method yields approximately unbiased estimations for distantly supervised relation extraction .
+Related Work .
+Distant supervision ( Mintz et al . , 2009 ) was proposed to deal with large - scale relation extraction with automatic annotations .
+A series of studies have been conducted with human - designed features in distantly supervised relation extraction ( Riedel et al . , 2010;Surdeanu et al . , 2012;Takamatsu et al . , 2012;Angeli et al . , 2014;Han and Sun , 2016 ) .
+In recent years , neural models were widely used to extract semantic meanings accurately without hand - designed features ( Zeng et al . , 2015;Lin et al . , 2017;Zhang et al . , 2019 ) .
+Then , to alleviate the influence of wrongly labeled instances in distant supervision , those neural relation extractors integrated techniques such as attention mechanism ( Lin et al . , 2016;Han et al . , 2018;Huang and Du , 2019 ) , generative adversarial nets ( Qin et al . , 2018a;Li et al . , 2019 ) , and reinforcement learning ( Feng et al . , 2018;Qin et al . , 2018b ) .
+However , none of the above methods pay attention to the biased and inaccurate test set .
+Though human evaluation can yield accurate evaluation results ( Zeng et al . , 2015;Alt et al . , 2019 ) , labeling all the instances in the test set is too costly .
+Task Definition .
+In distant supervision paradigm , all sentences containing the same entity pair constitute a bag .
+Researchers train a relation extractor based on bags of sentences and then use it to predict relations of entity pairs .
+Suppose that a distantly supervised model returns confident score 2 s i = { s i1 , s i2 .
+s ip } for entity pair i ∈ { 1 .
+N } , where p is the number of relations , N is the number of entity pairs , and s ij ∈ ( 0 , 1 ) .
+y i = { y i1 , y i2 .
+y ip } and z i = { z i1 , z i2 .
+z ip } respectively represent automatic labels and true labels for entity pair i , where y ij and z ij are both in { 0 , 1 } 3 .
+In widely used held - out evaluation , existing methods observe two key metrics which are precision at top K ( P @K ) and Precision - Recall curve 2 Confident scores are estimated probabilities for relations .
+3 An entity pair may have more than one relations .
+( PR curve ) .
+To compute both metrics , confident score for all entity pairs are sorted in descending order , which is defined as s = { s 1 , s 2 .
+s P } where P = N p.
+Automatic labels and true labels are denoted as y = { y 1 , .
+, y P } and z = { z 1 , .
+, z P } .
+In summary , P @K and R@K can be described by the following equations , P @K{z 1 .
+z P } = 1 K i≤K z i ( 1 ) R@K{z 1 .
+z P } = i≤K z i i≤P z i ( 2 ) Held - out evaluation replaces z with y to calculate P @K and R@K , which leads to incorrect results obviously .
+Methodology .
+In this section , we present the general framework of our method .
+A small random sampled set is vetted in the initial state .
+In each iteration there are two steps : 1 ) select a batch of entity pairs with a customized vetting strategy , label them manually , and add them to the vetted set ; 2 ) use a new metric estimator to evaluate existing models by the noisy set and the vetted set jointly .
+After a few vetting - evaluating iterations , unbiased performance of relation extraction is appropriately evaluated .
+In summary , our method consists of two key components : a vetting strategy and a metric estimator .
+Metric Estimator .
+Our test set consists of two parts : 1 ) a noisy set U in which we only know automatic label y i ; 2 ) a vetted set V in which we know both automatic label y i and manual label z i .
+We treat the true label z i as a latent variable and z i is its observed value .
+The performance evaluation mainly depends on the estimation of z i .
+In our work , we estimate the probability as p(z i ) = i∈U p(z i |Θ ) i∈V δ(z i = z i ) ( 3 ) where Θ represents all available elements such as confident score , noisy labels and so on .
+We make the assumption that the distribution of true latent labels is conditioned on Θ.
+Given posterior estimates p(z i |Θ ) , we can compute the expected performance by replacing the true latent label by its probability .
+Then , the precision and recall equations can be rewritten as E[P @K ] = 1 K ( i∈V K z i + i∈U K p(z i = 1|Θ ) ) ( 4 ) E[R@K ] = i∈V K z i + i∈U K p(z i = 1|Θ ) i∈V z i + i∈U p(z i = 1|Θ ) ( 5 ) where U K and V K denote the unvetted and vetted subsets of K highest - scoring examples in the total set U ∪ V .
+To predict the true latent label z i for a specific relation , we use noisy label y i and confident score s i .
+This posterior probability can be derived as ( see appendix for proof ) p(z i |y i , s i ) = p(y jk |z jk ) p(z jk |s jk ) v p(y jk |z jk = v)p(z jk = v|s jk ) ( 6 ) where v ∈ { 0 , 1 } .
+s jk , y jk , z jk are the corresponding elements of s i , y i , z i before sorting confident score .
+Given a few vetted data , we fit p(y jk |z jk ) by standard maximum likelihood estimation ( counting frequencies ) .
+p(z jk |s jk ) is fitted by using logistic regression .
+For each relation , there is a specific logistic regression function to fit .
+Vetting Strategy .
+In this work , we apply a strategy based on maximum expected model change(MEMC ) ( Settles , 2009 ) .
+The vetting strategy is to select the sample which can yield a largest expected change of performance estimation .
+Let E p(z |V ) Q be the expected performance based on the distribution p(z |V ) estimated from current vetted set V .
+After vetting example i and updating that estimator , it will become E p(z |V , z i ) Q.
+The change caused by vetting example i can be written as ∆ i ( z i ) = |E p(z |V ) Q − E p(z |V , z i ) Q|(7 ) For precision at top K , this expected change can be written as E p(z i |V ) [ ∆ i ( z i ) ] = 2 K p i ( 1 − p i ) ( 8) where p i = P ( z i = 1|Θ ) .
+For the PR curve , every point depends on P @K for different K.
+Thus , this vetting strategy is also useful for the PR curve .
+With this vetting strategy , the most valuable data is always selected first .
+Therefore , vetting budget is the only factor controlling the vetting procedure .
+In this approach , we take it as a hyper parameter .
+When the budget is used up , the vetting stops .
+The procedure is described in Algorithm 1 .
+Algorithm 1 Active Testing Algorithm .
+Require : unvetted set U , vetted set V , vetting budget T , vetting strategy VS , confident score S , estimator p(z ) 1 : while T > 0 do Initialization .
+We use PCNN+ATT ( Lin et al . , 2016 ) as baseline relation extractors .
+To be more convincing , we provide the experimental results of BGRU+ATT in the appendix .
+The initial state of vetted set includes all the positive entity pairs of the test set in NYT-10 and 150 vetted negative entity pairs .
+The batch size for vetting is 20 and the vetting budget is set to 100 entity pairs .
+Effect of Active Testing .
+We evaluate the performance of PCNN+ATT with held - out evaluation , human evaluation and our method .
+The results are shown in Table 2 : The Precision at top K predictions ( % ) of PCNN+ATT upon held - out evaluation , our method and human evaluation on NYT-10 .
+To measure the distance between two curves , we sample 20 points equidistant on each curve and calculate the Euclidean distance of the two vectors .
+In this way , our method gets the distances 0.17 to the curve of human evaluation while corresponding distances for held - out evaluation is 0.72 .
+We can observe that 1 ) The performance biases between manual evaluation and held - out evaluation are too significant to be neglected .
+2 ) The huge biases caused by wrongly labeled instances are dramatically alleviated by our method .
+Our method obtains at least 8.2 % closer precision to manual evaluation than the held - out evaluation .
+Effect of Vetting Strategy .
+We compare our MEMC strategy with a random vetting strategy as shown in Figure 2 .
+The distance from curves of different vetting strategies to that of human evaluation is 0.176 and 0.284 .
+From the figure , we can conclude that the proposed vetting strategy is much more effective than the random vetting strategy .
+With the same vetting budget , MEMC gets more accurate performance estimation at most parts of the range .
+Re - evaluation of Relation Extractors .
+With the proposed performance estimator , we reevaluate eight up - to - date distantly supervised rela- Model P@100(% ) P@200(% ) P@300(% ) Table 3 : The P@N precision of distantly supervised relation extractors on NYT-10 .
+All the methods are implemented with the same framework and running in the same run - time environment .
+From Table 3 , we can observe that : 1 ) The relative ranking of the models according to precision at top K almost remains the same except Qin et al .
+2018b andQin et al .
+2018a .
+Although GAN and reinforcement learning are helpful to select valuable training instances , they are tendentiously to be overfitted .
+2 ) Most models make the improvements as they mentioned within papers at high confident score interval .
+3 ) BGRU performs better than any other models , while BGRU based method Liu et al .
+2018 achieves highest precision .
+More results and discussions can be found in the Appendix .
+Conclusion .
+In this paper , we propose a novel active testing approach for distantly supervised relation extraction , which evaluates performance of relation extractors with both noisy data and a few vetted data .
+Our experiments show that the proposed evaluation method is appropriately unbiased and significant for optimization of distantly relation extraction in future .
+A Appendices .
+A.1 Logistic Regression .
+Here we provide the derivation of Equation.6 in the main paper .
+p(z i |y i , s i ) = p(z i , y i , s i ) v p(z i = v , y i , s i ) = p(z jk , y jk , s jk ) v p(z jk = v , y jk , s jk ) = p(y jk |z jk , s jk ) p(z jk |s jk ) v p(y jk |z jk = v , s jk ) p(z jk = v|s jk ) We assume that given z jk , the observed label y jk is conditionally independent of s jk , which means p(y jk |z jk , s jk ) = p(y jk |z jk ) .
+The expression is simplified to : p(z i |y i , s k ) = p(y jk |z jk ) p(z jk |s jk ) v p(y jk |z jk = v)p(z jk = v|s jk ) .
+A.2 Vetting Strategy .
+Here we provide the derivation of Equation.8 in the main paper .
+Table 4 : The Precision at top K predictions ( % ) of BGRU+ATT upon held - out evaluation , our method and human evaluation on NYT-10 .
+E p(z i |V ) [ ∆i(z i ) ] = pi 1 K |1 − pi| + ( 1 − pi ) 1 K |0 − pi| = 2 K pi(1 − pi ) .
+A.3 Experimental result of BGRU+ATT .
+We also evaluate the performance of BGRU+ATT with held - out evaluation , human evaluation and our method .
+The results are shown in Table 4 , and Figure 3 .
+Our method gets the distances 0.15 to the curve of human evaluation while corresponding distances for held - out evaluation is 0.55 .
+A.4 The result of different iterations .
+We have recorded the distance of different iterations between the curves obtained by our method and manual evaluation in Figure 4 .
+With the results , we can observe that the evaluation results obtained by our method become closer to human evaluation when the number of annotated entity pairs is less than 100 .
+When the number is more than 100 , the distance no longer drops rapidly but begins to fluctuate .
+B Case Study .
+We present realistic cases in NYT-10 to show the effectiveness of our method .
+In Figure 6 , all cases are selected from Top 300 predictions of PCNN+ATT .
+These instances are all negative instances and has the automatic label N A in NYT-10 .
+In held - out evaluation , relation predictions for these instances are judged as wrong .
+However , part of them are false negative instances in fact and have the corresponding relations , which cause considerable biases between manual and held - out evaluation .
+In .
+C.2 Discussion .
+In this section , we additionally provide PR curves to show the performance of baselines .
+From both Table 3 and Figure 5 , we are aware of that : 1 ) The relative ranking is quite different from that on held - out evaluation according to PR curve .
+2 ) The selective attention has limited help in improving the overall performance , even though it may have positive effects at high confident score .
+4 ) The soft - label method greatly improves the accuracy at high confident score but significantly reduces the overall performance .
+We deduce that it is severely affected by the unbalanced instance numbers of different relations , which will make label generator over - fitting to frequent labels .
+4 ) For the overall performance indicated by PR curves , BGRU is the most solid relation extractor .
+Acknowledgements .

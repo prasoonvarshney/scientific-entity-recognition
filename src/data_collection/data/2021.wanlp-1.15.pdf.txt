@@ -1,0 +1,153 @@
+UL2C : Mapping User Locations to Countries on Arabic Twitter .
+Mapping user locations to countries can be useful for many applications such as dialect identification , author profiling , recommendation systems , etc .
+Twitter allows users to declare their locations as free text , and these userdeclared locations are often noisy and hard to decipher automatically .
+In this paper , we present the largest manually labeled dataset for mapping user locations on Arabic Twitter to their corresponding countries .
+We build effective machine learning models that can automate this mapping with significantly better efficiency compared to libraries such as geopy .
+We also show that our dataset is more effective than data extracted from GeoNames geographical database in this task as the latter covers only locations written in formal ways .
+Introduction .
+Twitter is one of the most popular social media platforms in the Arab region .
+Spoken across more than 20 countries , Arabic is one of the most dominant languages on Twitter .
+Arabic Twittersphere presents us with an audience of diverse demographics .
+Identifying countries of the users can help in various NLP tasks such as dialect identification , author profiling , and recommendation systems .
+Identifying geolocation of Twitter users can also help in event detection ( Agarwal et al . , 2012 ) or disaster management ( Earle et al . , 2012;Carley et al . , 2016 ) .
+Deducing a Twitter user 's location from geotagged tweets is difficult because less than 1 % of tweets are geotagged ( Cheng et al . , 2010;Hecht et al . , 2011 ) .
+Although Twitter provides an option to users to declare their location in their profile , this is often noisy .
+Users can choose to specify their location at the level of countries , regions , cities or towns .
+Many of these names are written in informal way and sometimes in mixed languages .
+Some of these names also contain emojis and special symbols .
+This makes it difficult to automatically infer the country of many users .
+This complication often prompts researchers to manually annotate user profiles for their countries .
+Many works therefore , ( e.g. , ( Bouamor et al . , 2019;Charfi et al . , 2019 ) ) , manually annotate user profiles for their locations .
+Being expensive , manual annotation often limits size of datasets .
+This is evident in the datasets by Bouamor et al .
+( 2019 ) and Charfi et al .
+( 2019 ) since they both contain around 3 K manually annotated users .
+Related works for Arabic primarily focus on dialect identification ( e.g. , ( Bouamor et al . , 2019;Abdelali et al . , 2020;Zaidan and Callison - Burch , 2011 ) , many of which involve manual annotation of dialects for sentences .
+Our focus in this work significantly differs from dialect identification since our purpose is to provide a dataset that can be used to map Twitter user locations to countries , which in turn , can aid in NLP tasks such as dialect identification or event detection .
+To our knowledge , there has been very few works for Arabic that map noisy user locations to countries , with work by Mubarak and Darwish ( 2014 ) being one of the most notable ones and the closest to our work .
+Mubarak and Darwish ( 2014 ) map the most common 10 K locations to Arab countries in order to build a multidialectal Arabic corpus .
+We refer to this dataset as Top10KLoc .
+Our work extends Top10KLoc by increasing unique user locations from most common 10 K to random 28 K user locations obtained from 160 K locations that are self - declared by users 1 .
+The contributions of this paper are summarized below : • We present UL2C ; the largest dataset for mapping user locations on Arabic Twitter to countries which contains more than 28 K unique locations .
+• We perform analysis of the data collected , identifying key characteristics .
+• We show that by using machine learning models trained on our dataset , we can achieve significantly better results compared to existing libraries ( e.g. geopy package ) or resources ( e.g. GeoNames or Top10KLoc 2 datasets ) .
+Models trained on our dataset achieve macroaverage F1 score of 88.1 , which outperforms similar models trained on other datasets with at least 26 % relative improvement .
+• We provide a web interface that users can use to map user locations to countries .
+Related Work .
+There has been a number of works that focus on identifying locations of Twitter users .
+Krishnamurthy et al .
+( 2008 ) Despite Arabic being one of the most popular languages on Twitter , there has been very few works aimed at mapping user location in the Arab region to countries .
+The related field of dialect identification has received significant attention recently .
+Some works identify country - level dialects of Arabic tweets ( e.g. , ( Abdelali et al . , 2020 ) and some focus on dialects at user - level ( Bouamor et al . , 2019 ) .
+While Abdelali et al .
+( 2020 ) automatically labeled 500K+ tweets for their country - level dialects , Bouamor et al .
+( 2019 ) manually labeled about 3 K users for their countries of origin .
+Some works targeted region level classification of Arabic dialects .
+Zaidan and Callison - Burch ( 2011 ) collected a 52 M word dataset from newspapers and annotated them for dialects of 5 Arab regions , namely , Maghrebi , Egyptian , Levantine , Gulf , and Iraqi .
+Alshutayri and Atwell ( 2017 ) As discussed earlier , the closest work to ours that targets converting user locations directly to countries is by Mubarak and Darwish ( 2014 ) .
+The authors collect 10 K top user locations from 92 M tweets .
+To map these locations to countries , the authors first use GeoNames dataset and then manually revise them .
+Further , the authors show that after filtering out non - dialectal tweets , the countries obtained from the user locations can be strong indicator of dialects for the remaining tweets .
+Data Collection .
+We used twarc search API 3 to collect Arabic tweets .
+During the years 2018 , 2019 and 2020 , we collected 88 M tweets with language filter set to Arabic ( lang : ar ) .
+From unique users who authored those tweets , we randomly selected 160 K unique users for which we obtained 28 K unique user locations .
+The user locations are information provided by Twitter users , and they can be real locations ( e.g. , country and city names written in formal , informal ways or nicknames ) , landmarks , or unreal locations , and can be written in any language .
+In our data collection , we found that 62 % of users pro - vided non - empty locations .
+Around 60 % of the non - empty locations are written in Arabic and 40 % are written in other languages , mainly in English .
+Data annotation .
+We used geopy 4 to map user locations to countries .
+geopy is a Python package that locates the coordinates of addresses , cities , countries , and landmarks across the globe using third - party geocoders and other data sources .
+It includes geocoder classes for the OpenStreetMap Nominatim , Google Geocoding API ( V3 ) , and many other geocoding services .
+Figure 1 shows the output from geopy for an arbitrary location .
+In our study , we focus on mapping user locations to countries and we use ISO 3166 - 1 alpha-2 for country codes 5 .
+We observed that geopy has difficulties in identifying many locations when they are short , have special characters , or unreal locations in addition to many correct locations .
+Table 1 shows some examples for these errors .
+We used geopy output as an initial mapping of user locations to countries then all unique user locations were revised manually by an Arabic native speaker .
+In addition to mapping clear locations to countries , the annotator was asked to consider any clues in user location string that indicate belonging to a specific country .
+Some common examples and special annotation cases are shown in Table 2 .
+We randomly selected 500 unique user locations and checked annotation quality .
+We agreed with the manual annotations in 98 % of the cases which indicates that annotation quality is very high .
+User locations and their country mapping ( UL2C dataset ) can be downloaded from this link : https://alt.qcri.org/resources/ UL2C-UserLocationsToCountries.tsv .
+GeoNames Dataset .
+GeoNames geographical database covers all countries and contains over 11 M placenames whereof 4.8 M populated places and 13 M alternate names .
+Users can manually edit , correct and add new names using a user friendly interface .
+Dataset can be downloaded from : Figure 2 shows some information about Damascus , the capital of Syria , and its alternate names written in tens of languages as obtained from GeoNames .
+We extracted Arabic and English names of all places with population of 10 K or more 6 .
+The figure shows also an example of the excluded locations that we anticipate users will not use to describe their locations .
+We ended up with having a list of 66 K English location names ( ASCII name field ) and a shorter list of 13 K Arabic names for some of them .
+In the experiments section , we will examine the efficiency of using GeoNames to identify countries of Twitter users .
+Data Analysis .
+By assigning countries to unique user locations , we could map locations of ≈ 90 K users to countries which represent 56 % of the 160 K users in our dataset .
+Many of user locations were either empty ( 38 % ) or can not be mapped to a specific country ( 6 % ) .
+Distribution of user countries is shown in Figure 3 .
+Although there are 22 Arab countries , in our collection we did n't find locations from two countries , namely Djibouti and Comoros .
+We observe that users from Saudi Arabia ( SA ) represent more than half of Arab Twitter users .
+Around 70 % of Twitter users are from Gulf region ( countries : SA , KW , OM , AE , QA and BH ) , 4 % of users are from Levant region ( JO , PS , LB and SY ) , 3 % of users are from Maghreb region ( DZ , LY , MA and TN ) , and users from other regions ( EG , YE and IQ ) are in between .
+It 's worth mentioning that country distribution obtained from UL2C and Top10KLoc datasets are very similar which indicates that most probably any random big collection of tweets will have similar country distribution .
+From the geographical map of all Twitter users shown in Figure 4 , we can see that Arabic tweets come from almost all world countries .
+The top 5 countries outside the Arab World where Arabic tweets come from are : US ( United States ) , GB ( United Kingdom ) , TR ( Turkey ) , DE ( Germany ) and FR ( France ) in order .
+This can give an estimation about countries that Arabs live in Figure 5 shows the most common words used in user locations for 4 countries , namely SA ( Saudi Arabia ) , EG ( Egypt ) , SY ( Syria ) and DZ ( Algeria ) which represent major regions in the Arab World ( Gulf , Levant , Nile Basin and Maghreb regions respectively ) .
+We can see country and major city names are written in bigger font in different languages .
+For example , while majority of names are written in Arabic in SA ( Gulf region ) , they are written in Arabic , English and French in DZ ( Maghreb region ) .
+Arabic and English names are widely used in EG and SY .
+This gives an indication about the popularity of language usage across different regions in the Arab World .
+Experiments and Results .
+In this section , we compare effectiveness of mapping user locations to countries with classifiers trained on different datasets , namely , UL2C , Top10KLoc , GeoNames and combination of these datasets .
+In our experiments , we merge all countries that are outside Arab region to " UNK / OTHER " class , yielding a total of 21 classes ( 20 Arab countries + Unknown / Other ) .
+Preprocessing text .
+In order to reduce noise in user - declared locations , we perform the following preprocessing steps : • Convert English and Arabic decorated letters ( e.g. some Farsi letters ) to original letters using the mapping list shared by ( Mubarak and Abdelali , 2016).For example , we map " α , β " to " a , B " and " " to " " in order .
+In summary , a location like " αβHA1 :) * , " is converted to " abha " ( city in SA ) after decorated letters mapping and applying other normalization steps .
+Features .
+Word n - gram Since our input text is name of a location and therefore , typically short , we limit range of word n - gram to [ 1 - 2 ] .
+We use term frequency - inverse term document frequency ( tf - idf ) for weighting the n - gram vectors .
+Character n - gram We experimented with character n - grams ranging from [ 2 - 3 ] to [ 2 - 5 ] , beyond which , we did not see any further improvement .
+Similar to word n - gram , we used tf - idf weighting .
+Classification Models geopy baseline .
+The geopy library acts as our baseline .
+We call library with Twitter user locations and extract countries they are mapped to by the library .
+Support Vector Machines ( SVMs ) SVMs have traditionally been used for many classification tasks .
+Even in recent Arabic text classification tasks such as offensive language identification ( Hassan et al . , 2020b , a ) , spam detection ( Mubarak et al . , 2020 ) , adult content detection ( Mubarak et al . , 2021 ) , and dialect identification ( Abdelali et al . , 2020 ) , SVMs have shown promising results .
+We used LibSVM implementation with default parameters by scikit - learn 7 for training .
+Experiment results .
+geopy baseline Serving as our baseline model , geopy achieves F1 score of 69.2 when evaluated on UL2C dataset .
+GeoNames We trained several classifiers on GeoNames dataset and evaluated on our UL2C dataset .
+The classifiers yielded very poor results 7 http://scikit-learn.org/ initially .
+We noticed that many of the locations were outside Arab region which likely caused the poor performance ( omitted here for conciseness ) .
+To address this problem , we rebalanced the dataset to have equal number of locations from within and outside the Arab region .
+This yielded a total of 8,632 unique instances ( 4,316 from the Arab region and 4,316 from outside the Arab region ) .
+The results are summarized in Table 3 .
+We can see that even after rebalancing the data , with maximum F1 score of 50.1 , the classifiers trained on GeoNames are outperformed by all others .
+Top10KLoc We trained similar set of classifiers on Top10KLoc dataset and evaluated on our dataset .
+The models were seen to outperform geopy by a small margin and GeoNames by a large margin with maximum F1 score of 70.5 ( see Table 3 ) .
+UL2C ( Our dataset ) .
+We performed 5 - fold crossvalidation with same set of classifiers on the dataset presented in this paper .
+The results were seen to improve by a significant margin since the best results were obtained by SVM trained with character [ 2 - 5 ] n - grams , a relative improvement of 26 % in F1 score from previous best ( 70.5 ) when trained on Top10KLoc .
+3 that adding our dataset to GeoNames dataset offsets the lower performance when using GeoNames alone and with F1 score of 88.2 , improves the results from using UL2C dataset alone by a small margin .
+UL2C + Top10KLoc Lastly , we modified the cross - validation setting by adding Top10KLoc to each of the folds during training .
+From Table 3 , we see a similar trend where the lower performance of using Top10KLoc only is offset by use of UL2C.
+However , there is no significant improvement when additional data is used compared to when using only UL2C.
+Interface .
+We build an interface for users to map user locations to countries .
+The web interface is added to Arabic Social media Analytics and unDerstanding ( ASAD ) ( Hassan et al . , 2021 ) at https://asad .
+qcri.org .
+Figure 6 shows sample outputs from the website .
+Design .
+The user can type user location to be mapped to countries .
+The user can also test random samples from UL2C dataset to see their mapping .
+This allows the user to easily understand the functionalities of the interface .
+The user is then shown probabilities of the location belonging to different countries .
+To help the users visualize distribution of possible countries related to the location , we dis - play a heatmap of the probabilities .
+We also allow the user to upload a file consisting user locations .
+This allows users to map many user locations at the same time .
+We impose a restriction on file size in order to limit abuse of our system .
+The user is then able to download a file containing predictions and probabilities of the user locations belonging to different countries .
+Implementation .
+We use Bootstrap 8 for our responsive frontend design .
+We use Flask 9 , a python - based web development framework , for backend development and javascript for communication between backend and frontend .
+To visualize the heatmap , we use Leaflet.js 10 and Heatmap.js 11 with Open - StreetMap 12 map server .
+Conclusion .
+In this paper , we have presented a large manually annotated and publicly available dataset of Twitter user locations from the Arab region , mapped to their respective countries .
+We analyzed different characteristics of our data such as country distribution and top locations .
+We built machine learning models that can use the data to map user locations to countries more effectively compared to existing resources such as geopy Python package or GeoNames geographical database .
+Lastly , we provide a web interface to access this service easily .

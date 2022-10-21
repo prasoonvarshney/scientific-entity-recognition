@@ -1,0 +1,252 @@
+Bring you to the past : Automatic Generation of Topically Relevant Event Chronicles .
+An event chronicle provides people with an easy and fast access to learn the past .
+In this paper , we propose the first novel approach to automatically generate a topically relevant event chronicle during a certain period given a reference chronicle during another period .
+Our approach consists of two core components -a timeaware hierarchical Bayesian model for event detection , and a learning - to - rank model to select the salient events to construct the final chronicle .
+Experimental results demonstrate our approach is promising to tackle this new problem .
+Introduction .
+Human civilization has developed for thousands of years .
+During the long period , history witnessed the changes of societies and dynasties , the revolution of science and technology , as well as the emergency of celebrities , which are great wealth for later generations .
+Even nowadays , people usually look back through history either for their work or interests .
+Among various ways to learn history , many people prefer reading an event chronicle summarizing important events in the past , which saves much time and efforts .
+The left part of Figure 1 shows a disaster event chronicle from Infoplease 1 , by which people can easily learn important disaster events in 2009 .
+Unfortunately , almost all the available event chronicles are created and edited manually , which requires editors to learn everything that happened in the past .
+Even if an editor tries her best to generate an event chronicle , she still can not guarantee that all the important events are included .
+Moreover , when new events happen in the future , she 1 http://www.infoplease.com/world/disasters/2009.html needs to update the chronicle in time , which is laborious .
+For example , the event chronicle of 2010 in Wikipedia 2 has been edited 8,488 times by 3,211 distinct editors since this page was created .
+In addition , event chronicles can vary according to topic preferences .
+Some event chronicles are mainly about disasters while others may focus more on sports .
+For people interested in sports , the event chronicle in Figure 1 is undesirable .
+Due to the diversity of event chronicles , it is common that an event chronicle regarding a specific topic for some certain period is unavailable .
+If editing an event chronicle can be done by computers , people can have an overview of any period according to their interests and do not have to wait for human editing , which will largely speed up knowledge acquisition and popularization .
+Based on this motivation , we propose a new task of automatic event chronicle generation , whose goal is to generate a topically relevant event chronicle for some period based on a reference chronicle of another period .
+For example , if an disaster event chronicle during 2009 is available , we can use it to generate a disaster chronicle during 2010 from a news collection , as shown in Figure 1 .
+To achieve this goal , we need to know what events happened during the target period , whether these events are topically relevant to the chronicle , and whether they are important enough to be included , since an event chronicle has only a limited number of entries .
+To tackle these challenges , we propose an approach consisting of two core components -an event detection component based on a novel time - aware hierarchical Bayesian model and a learning - to - rank component to select the salient events to construct the final chronicle .
+Our event detection model can not only learn topic preferences of the reference chronicle and measure topical relevance of an event to the chronicle but also can effectively distinguish similar events by taking into account time information and eventspecific details .
+Experimental results show our approach significantly outperforms baseline methods and that is promising to tackle this new problem .
+The major novel contributions of this paper are : • We propose a new task automatic generation of a topically relevant event chronicle , which is meaningful and has never been studied to the best of our knowledge .
+• We design a general approach to tackle this new problem , which is languageindependent , domain - independent and scalable to any arbitrary topics .
+• We design a novel event detection model .
+It outperforms the state - of - the - art event detection model for generating topically relevant event chronicles .
+2 Terminology and Task Overview As shown in Figure 1 , an event ( entry ) in an event chronicle corresponds to a specific occurrence in the real world , whose granularity depends on the chronicle .
+For a sports chronicle , an event entry may be a match in 2010 World Cup , while for a comprehensive chronicle , the World Cup is regarded as one event .
+In general , an event can be represented by a cluster of documents related to it .
+The topic of an event can be considered as the event class .
+For example , we can call the topic of MH17 crash as air crash ( fine - grained ) or disaster ( coarse - grained ) .
+The relation between topic and event is shown through the example in Figure 2 .
+An event chronicle is a set of important events occurring in the past .
+Event chronicles vary according to topic preferences .
+For the disaster chronicle shown in Figure 1 , earthquakes and air crashes are relevant topics while election is not .
+Hence , we can use a hierarchical structure to organize documents in a corpus , as Figure 2 shows .
+Formally , we define an event chronicle E = { e 1 , e 2 , ... , e n } where e i is an event entry in E and it can be represented by a tuple e i = D e i , t e i , z e i .
+D e i denotes the set of documents about e i , t e i is e i 's time and z e i is e i 's topic .
+Specially , we use Λ to denote the time period ( interval ) covered by E , and θ to denote the topic distribution of E , which reflects E 's topic preferences .
+As shown in Figure 1 , the goal of our task is to generate an ( target ) event chronicle E T during Λ T based on a reference chronicle E R during Λ R .
+The topic distributions of E T and E R ( i.e. , θ T and θ R ) should be consistent .
+For our task , the first step is to detect topically relevant events from a corpus .
+A good event detection model should be able to ( 1 ) measure the topical relevance of a detected event to the reference chronicle .
+( 2 ) consider document time information .
+( 3 ) look into a document 's event - specific details .
+The first requirement is to identify topically relevant events since we want to generate a topically relevant chronicle .
+The second and third requirements are for effectively distinguishing events , especially similar events like the example in Figure 3 .
+To distinguish the similar events , we must consider document time information ( for distinguishing events in d 1 and d 2 ) and look into the document 's event - specific details ( the underlined words in Figure 3 ) ( for distinguishing events in d 1 and d 3 ) .
+TaHBM : A Time - aware Hierarchical Bayesian Model .
+To tackle all the above challenges mentioned in Section 3.1 , which can not be tackled by conventional detection methods ( e.g. , agglomerative clustering ) , we propose a Time - aware Hierarchical Bayesian Model ( TaHBM ) for detecting events .
+The plate diagram and generative story of TaHBM are depicted in Figure 4 and Figure 5 respectively .
+For a corpus with M documents , TaHBM assumes each document has three labelss , z , and e.
+s is a binary variable indicating a document 's topical relevance to the reference event chronicle , whose distribution is a Bernoulli distribution π s drawn from a Beta distribution with Draw π s ∼ Beta(γ s ) For each s ∈ { 0 , 1 } : draw θ ( s ) ∼ Dir(α ) For each z = 1 , 2 , 3 , ... , K : draw φ ( z ) ∼ Dir(ε ) , ψ .
+Model Overview .
+( z ) z ∼ Dir(β z ) For each e = 1 , 2 , 3 , ... , E : draw ψ ( e ) e ∼ Dir(β e ) For each document m = 1 , 2 , 3 , ... , M : Draw s ∼ Bernoulli(π s ) Draw z ∼ M ulti(θ ( s ) ) Draw e ∼ M ulti(φ ( z ) ) Draw t ∼ Gaussian(µ e , σ e ) , t ← t Draw π x ∼ Beta(γ x ) For each word w in document m : Draw x ∼ Bernoulli(π x ) If x = 0 : draw w ∼ ψ ( z ) z Else : draw w ∼ ψ ( e ) e Figure 5 : The generative story of TaHBM symmetric hyperparameter γ s .
+s=1 indicates the document is topically relevant to the chronicle while s=0 means not .
+z is a document 's topic label drawn from a K - dimensional multinomial distribution θ , and e is a document 's event label drawn from an E - dimensional multinomial distribution φ .
+θ and φ are drawn from Dirichlet distributions with symmetric hyperparameter α and ε respectively .
+For an event e , it can be represented by a set of documents whose event label is e .
+In TaHBM , the relations among s , z and e are similar to the hierarchical structure in Figure 2 .
+Based on the dependencies among s , z and e , we can compute the topical relevance of an event to the reference chronicle by Eq ( 1 ) where P ( e|z ) , P ( e ) , P ( s ) and P ( z|s ) can be estimated using Bayesian inference ( some details of estimation of P ( s ) and P ( s|z ) will be discussed in Section 3.3 ) and thus we solve the first challenge in Section 3.1 ( i.e. , topical relevance measure problem ) .
+P ( s|e ) = P ( s ) × P ( z|s ) × P ( e|z ) P ( e)(1 ) Now , we introduce how to tackle the second challenge -how to take into account a document 's time information for distinguishing events .
+In TaHBM , we introduce t , document timestamps .
+We assume t = t where t is drawn from a Gaussian distribution with mean µ and variance σ 2 .
+Each event e corresponds to a specific Gaussian distribution which serves as a temporal con - straint for e.
+A Gaussian distribution has only one peak around where the probability is concentrated .
+Its value trends to zero if a point lies far away from the mean .
+For this reason , a Gaussian distribution is suitable to describe an event 's temporal distribution whose probability usually concentrates around the event 's burst time and it will be close to zero if time lies far from the burst time .
+Figure 6 shows the temporal distribution of the July 2009 Urumqi riots 3 .
+The probability of this event concentrates around the 7th day .
+If we use a Gaussian distribution ( the dashed curve in Figure 6 ) to constrain this event 's time scope , the documents whose timestamps are beyond this scope are unlikely to be grouped into this event 's cluster .
+Now that the problems of topical relevance measure and temporal constraints have been solved , we discuss how to identify event - specific details of a document for distinguishing events .
+By analyzing the documents shown in Figure 3 , we find that general words ( e.g. , earthquake , kill , injury , devastate ) indicate the document 's topic while words about event - specific details ( e.g. , Napa , California , 3.4 - magnitude ) are helpful to determine what events the document talks about .
+Assuming a person is asked to analyze what event a document discusses , it would be a natural way to first determine topic of the document based its general words , and then determine what event it talks about given its topic , timestamp and eventspecific details , which is exactly the way our TaHBM works .
+For simplicity , we call the general words as topic words and call the words describing eventspecific information as event words .
+Inspired by the idea of Chemudugunta et al .
+( 2007 ) , given the different roles these two kinds of words play , we assume words in a document are generated by two distributions : topic words are generated by a topic word distribution ψ z while event words are generated by an event word distribution ψ e .
+ψ z and ψ e are |V |-dimensional multinomial distributions drawn from Dirichlet distributions with symmetric hyperparameter β z and β e respectively , where |V | denotes the size of vocabulary V .
+A binary indicator x , which is generated by a Bernoulli distribution π x drawn from a Beta distribution with symmetric hyperparameter γ x , determines whether a word is generated by ψ z or ψ e .
+Specifically , if x = 0 , a word is drawn from ψ z ; otherwise the word is drawn from ψ e .
+Since ψ z is shared by all events of one topic , it can be seen as a background word distribution which captures general aspects .
+In contrast , ψ e tends to describe the event - specific aspects .
+In this way , we can model a document 's general and specific aspects and use the information to better distinguish similar events 4 .
+Model Inference .
+Like most Bayesian models , we use collapsed Gibbs sampling for model inference in TaHBM .
+For a document m , we present the conditional probability of its latent variables s , z and x for sampling : P ( sm| s¬m , z , γs , α ) = cs + γs s ( cs + γs ) × cs , z m + α z ( cs , z + α)(2 ) P ( zm| z¬m , e , s , wm , xm , α , ε , βz ) = cs m , z + α z ( cs m , z + α ) × cz , e m + ε e ( cz , e + ε ) × Nm n=1 ( cz , w m , n + n−1 i=1 1(wm , i = wm , n ) + βz w∈V ( cz , w + βz ) + n − 1 ) ( 1−xm , n ) ( 3 ) P ( xm , n| wm , x¬m , n , zm , em , γx ) = cm , x + γx Nm + 2γx × ( cz m , wm , n + βz w∈V ( cz m , w + βz ) ) ( 1−x ) × ( ce m , wm , n + βe w∈V ( ce m , w + βe ) ) x ( 4 ) where V denotes the vocabulary , w m , n is the n th word in a document m , c s is the count of documents with topic relevance label s , c s , z is the count of documents with topic relevance label s and topic label z , c z , w is the count of word w whose document 's topic label is z , c m , x is the count of words with binary indicator label x in m and 1(• ) is an indicator function .
+Specially , for variable e which is dependent on the Gaussian distribution , its conditional probability for sampling is computed as Eq ( 5 ): P ( em| e¬m , z , wm , xm , tm , ε , βe , µe , σe ) = cz m , e + ε e ( cz m , e + ε ) × tm+1 tm pG(tm ; µe , σ e ) × Nm n=1 ( ce , w m , n + n−1 i=1 1(wm , i = wm , n ) + βe w∈V ( ce , w + βe ) + n − 1 ) xm , n(5 ) where p G ( x ; µ , σ ) is a Gaussian probability mass function with parameter µ and σ .
+The function p G ( • ) can be seen as the temporal distribution of an event , as discussed before .
+In this sense , the temporal distribution of the whole corpus can be considered as a mixture of Gaussian distributions of events .
+As a natural way to estimate parameters of mixture of Gaussians , we use EM algorithm ( Bilmes , 1998 ) .
+In fact , Eq ( 5 ) can be seen as the E - step .
+The M - step of EM updates µ and σ as follows : µ e = d∈De t d |D e | , σ e = d∈De ( t d − µ e ) 2 |D e |(6 ) where t d is document d 's timestamp and D e is the set of documents with event label e.
+Specially , for sampling e we use σ e defined as σ e = σ e + τ ( τ is a small number for smoothing 5 ) because when σ is very small ( e.g. , σ = 0 ) , an event 's temporal scope will be strictly constrained .
+Using σ e can help the model overcome this " trap " for better parameter estimation .
+Above all , the model inference and parameter estimation procedure can be summarized by algorithm 1 .
+Learn Topic Preferences of the Event Chronicle .
+A prerequisite to use Eq ( 1 ) to compute an event 's topical relevance to an event chronicle is that we know P ( s ) and P ( z|s ) which reflects topic preferences of the event chronicle .
+Nonetheless , P ( s ) and P ( z|s ) vary according to different event chronicles .
+Hence , we can not directly estimate 5 τ is set to 0.5 in our experiments .
+Algorithm 1 Model inference for TaHBM 1 : Initialize parameters in TaHBM ; 2 : for each iteration do 3 : for each document d in the corpus do 4 : sample s according to Eq ( 2 ) 5 : sample z according to Eq ( 3 ) 6 : sample e according to Eq ( 5 ) 7 : for each word w in d do 8 : sample x according to Eq ( 4 ) 9 : end for 10 : end for 11 : for each event e do 12 : update µ e , σ e according to Eq ( 6 ) 13 : end for 14 : end for them in an unsupervised manner ; instead , we provide TaHBM some " supervision " .
+As we mentioned in section 3.2 , the variable s indicates a document 's topical relevance to the event chronicle .
+For some documents , s label can be easily derived with high accuracy so that we can exploit the information to learn the topic preferences .
+To obtain the labeled data , we use the description of each event entry in the reference chronicle E R during period Λ R as a query to retrieve relevant documents in the corpus using Lucene ( Jakarta , 2004 ) which is an information retrieval software library .
+We define R as the set of documents in hits of any event entry in the reference chronicle returned by Lucene : R = ∪ e∈E R Hit(e ) where Hit(e ) is the complete hit list of event e returned by Lucene .
+For document d with timestamp t d , if d / ∈ R and t d ∈ Λ R , then d is considered irrelevant to the event chronicle and thus it would be labeled as a negative example .
+To generate positive examples , we use a strict criterion since we can not guarantee that all the documents in R are actually relevant .
+To precisely generate positive examples , a document d is labeled as positive only if it satisfies the positive condition which is defined as follows : ∃ e∈E R 0 ≤ t d − t e ≤ 10 ∧ sim(d , e ) ≥ 0.4 where t e is time 6 of event e , provided by the reference chronicle .
+sim(d , e ) is Lucene 's score of d given query e.
+According to the positive condition , a positive document example must be lexi - cally similar to some event in the reference chronicle and its timestamp is close to the event 's time .
+As a result , we can use the labeled data to learn topic preferences of the event chronicle .
+For the labeled documents , s is fixed during model inference .
+In contrast , for documents that are not labeled , s is sampled by Eq ( 2 ) .
+In this manner , TaHBM can learn topic preferences ( i.e. , P ( z|s ) ) without any manually labeled data and thus can measure the topical relevance between an event and the reference chronicle .
+Event Ranking .
+Generating an event chronicle is beyond event detection because we can not use all detected events to generate the chronicle with a limited number of entries .
+We propose to use learning - to - rank techniques to select the most salient events to generate the final chronicle since we believe the reference event chronicle can teach us the principles of selecting salient events .
+Specifically , we use SVM - Rank ( Joachims , 2006 ) .
+Training and Test Set Generation .
+The event detection component returns many document clusters , each of which represents an event .
+As Section 3.2 shows , each event has a Gaussian distribution whose mean indicates its burst time in TaHBM .
+We use the events whose burst time is during the reference chronicle 's period as training examples and treat those during the target chronicle 's period as test examples .
+Formally , the training set and test set are defined as follows : T rain = { e|µ e ∈ Λ R } , T est = { e|µ e ∈ Λ T } In the training set , events containing at least one positive document ( i.e. relevant to the event chronicle ) in Section 3.3 are labeled as high rank priority while those without positive documents are labeled as low priority .
+Features .
+We use the following features to train the ranking model , all of which can be provided by TaHBM .
+• P ( s = 1|e ): the probability that an event e is topically relevant to the reference chronicle .
+• P ( e|z ): the probability reflects an event 's impact given its topic .
+• σ e : the parameter of an event e 's Gaussian distribution .
+It determines the ' bandwidth ' of the Gaussian distribution and thus can be considered as the time span of e.
+• |D e | : the number of documents related to event e , reflecting the impact of e.
+• |De| σe : For an event with a long time span ( e.g. , Premier League ) , the number of relevant documents is large but its impact may not be profound .
+Hence , we use |De| σe to normalize |D e | , which may better reflect the impact of e.
+Experiments .
+Experiment Setting .
+Data : We use various event chronicles during 2009 as references to generate their counterparts during 2010 .
+Specifically , we collected disaster , sports , war , politics and comprehensive chronicles during 2009 from mapreport 7 , infoplease and Wikipedia 8 .
+To generate chronicles during 2010 , we use 2009 - 2010 APW and Xinhua news in English Gigaword ( Graff et al . , 2003 ) and remove documents whose titles and first paragraphs do not include any burst words .
+We detect burst words using Kleinberg algorithm ( Kleinberg , 2003 ) , which is a 2 - state finite automaton model and widely used to detect bursts .
+In total , there are 140,557 documents in the corpus .
+Preprocessing : We remove stopwords and use Stanford CoreNLP ( Manning et al . , 2014 ) to do lemmatization .
+Parameter setting : For TaHBM , we empirically set α = 0.05 , β z = 0.005 , β e = 0.0001 , γ s = 0.05 , γ x = 0.5 , ε = 0.01 , the number of topics K = 50 , and the number of events E = 5000 .
+We run Gibbs sampler for 2000 iterations with burn - in period of 500 for inference .
+For event ranking , we set regularization parameter of SVMRank c = 0.1 . Chronicle display : We use a heuristic way to generate the description of each event .
+Since the first paragraph of a news article is usually a good summary of the article and the earliest document in a cluster usually explicitly describes the event , for an event represented by a document cluster , we choose the first paragraph of the earliest document written in 2010 in the cluster to generate the event 's description .
+The earliest document 's timestamp is considered as the event 's time .
+Evaluation Methods and Baselines .
+Since there is no existing evaluation metric for the new task , we design a method for evaluation .
+Although there are manually edited event chronicles on the web , which may serve as references for evaluation , they are often incomplete .
+For example , the 2010 politics event chronicle on Wikipedia has only two event entries .
+Hence , we first pool all event entries of existing chronicles on the web and chronicles generated by approaches evaluated in this paper and then have 3 human assessors judge each event entry for generating a ground truth based on its topical relevance , impact and description according to the standard of the reference chronicles .
+An event entry will be included in the ground - truth only if it is selected as a candidate by at least two human judges .
+On average , the existing event chronicles on the web cover 50.3 % of event entries in the ground - truth .
+Given the ground truth , we can use Precision@k to evaluate an event chronicle 's quality .
+P recision@k = |E G ∩ E topk |/k where E G and E topk are ground - truth chronicle and the chronicle with top k entries generated by an approach respectively .
+If there are multiple event entries corresponding to one event in the ground - truth , only one is counted .
+For comparison , we choose several baseline approaches .
+Note that event detection models except TaHBM do not provide features used in learningto - rank model .
+For these detection models , we use a criterion that considers both relevance and importance to rank events : rankscore basic ( e ) = d∈De max e ∈E R sim(d , e ) where E R is the reference chronicle and sim(d , e ) is Lucene 's score of document d given query e .
+We call this ranking criterion as basic criterion .
+• Random : We randomly select k documents to generate the chronicle .
+• NB+basic : Since TaHBM is essentially an extension of NB , we use Naive Bayes ( NB ) to detect events and basic ranking criterion to rank events .
+• B - HAC+basic : We use hierarchical agglomerative clustering ( HAC ) based on BurstVSM schema ( Zhao et al . , 2012 ) to detect events , which is the state - of - the - art event detection method for general domains .
+• TaHBM+basic : we use this baseline to verify the effectiveness of learning - to - rank .
+As TaHBM , the number of clusters in NB is set to 5000 for comparison .
+For B - HAC , we adopt the same setting with ( Zhao et al . , 2012 ) .
+Experiment Results .
+Using the evaluation method introduced above , we can conduct a quantitative evaluation for event chronicle generation approaches 9 .
+Table 1 shows the overall performance .
+Our approach outperforms the baselines for all chronicles .
+TaHBM beats other detection models for chronicle generation owing to its ability of incorporating the temporal information and identification of event - specific details of a document .
+Moreover , learning - to - ranking is proven more effective to rank events than the basic ranking criterion .
+Among these 5 chronicles , almost all approaches perform best on disaster event chronicle while worst on sports event chronicle .
+We analyzed the results and found that many event entries in the sports event chronicle are about the opening match , or the first - round match of a tournament due to the display method described in Section 5.1 . According to the reference sport event chronicle , however , only matches after quarterfinals in a tournament are qualified to be event entries .
+In other words , a sports chronicle should provide information about the results of semi - final and final , and the champion of the tournament instead of the first - round match 's result , which accounts for the poor performance .
+In contrast , the earliest document about a disaster event always directly describes the disaster event while the following reports usually concern responses to the event such as humanitarian aids and condolence from the world leaders .
+The patterns of reporting war events are similar to those of disasters , thus the quality of war chronicle is also good .
+Politics is somewhat complex because some political events ( e.g. , election ) are arranged in advance while others ( e.g. , government shutdown ) are unexpected .
+It is notable that for generating comprehensive event chronicles , learning - to - rank does sports politics disaster war comprehensive P@50 P@100 P@50 P@100 P@50 P@100 P@50 P@100 P@50 P@100 Random 0.02 not show significant improvement .
+A possible reason is that a comprehensive event chronicle does not care the topical relevance of a event .
+In other words , its ranking problem is simpler so that the learning - to - rank does not improve the basic ranking criterion much .
+Moreover , we analyze the incorrect entries in the chronicles generated by our approaches .
+In general , there are four types of errors .
+Topically irrelevant : the topic of an event entry is irrelevant to the event chronicle .
+Minor events : the event is not important enough to be included .
+For example , " 20100828 : Lebanon beat Canada 81 - 71 in the opening round of the basketball world championships " is a minor event in the sports chronicle because it is about an opening - round match and not important enough .
+Indirect description : the entry does not describe a major event directly .
+For instance , " 20100114 : Turkey expressed sorrow over the Haiti earthquake " is an incorrect entry in the disaster chronicle though it mentions the Haiti earthquake .
+Redundant entries : multiple event entries describe the same event .
+We analyze the errors of the disaster , sports and comprehensive event chronicle since they are representative , as shown in Table 2 .
+Topical irrelevance is a major error source for both disaster and sports event chronicles .
+This problem mainly arises from incorrect identification of topically relevant events during detection .
+Moreover , disaster and sports chronicles have their own more serious problems .
+Disaster event chronicles suffer from the indirect description problem since there are many responses ( e.g. , humanitarian aids ) to a disaster .
+These responses are topically relevant and contain many documents , and thus appear in the top list .
+One possible solution might be to increase the event granularity by adjusting parameters of the detection model so that the documents describing a major event and those discussing in response to this event can be grouped into one cluster ( i.e. , one event ) .
+In contrast , the sports event chronicle 's biggest problem is on minor events , as mentioned before .
+Like the sports chronicle , the comprehensive event chronicle also has many minor event entries but its main problem results from its strict criterion .
+Since comprehensive chronicles can include events of any topic , only extremely important events can be included .
+For example , " Netherlands beat Uruguay to reach final in the World Cup 2010 " may be a correct event entry in sports chronicles but it is not a good entry in comprehensive chronicles .
+Compared with comprehensive event chronicles , events in other chronicles tend to describe more details .
+For example , a sports chronicle may regard each match in the World Cup as an event while comprehensive chronicles consider the World Cup as one event , which requires us to adapt event granularity for different chronicles .
+Also , we evaluate the time of event entries in these five event chronicles because event 's happening time is not always equal to the timestamp of the document creation time ( UzZaman et al . , 2012;Ge et al . , 2013 ) .
+We collect existing manually edited 2010 chronicles on the web and use their event time as gold standard .
+We define a metric to evaluate if the event entry 's time in our chronicle is accurate : Table 3 : Difference between an event 's actual time and the time in our chronicles .
+Time unit is a day .
+diff = e∈E∩E * |(t e − t * Table 3 shows the performance of our approach in labeling event time .
+For disaster , sports and war , the accuracy is desirable since important events about these topics are usually reported in time .
+In contrast , the accuracy of political event time is the lowest .
+The reason is that some political events may be confidential and thus they are not reported as soon as they happen ; on the other hand , some political events ( e.g. , a summit ) are reported several days before the events happen .
+The comprehensive event chronicle includes many political events , which results in a lower accuracy .
+Related Work .
+To the best of our knowledge , there was no previous end - to - end topically relevant event chronicle generation work but there are some related tasks .
+Event detection , sometimes called topic detection ( Allan , 2002 ) , is an important part of our approach .
+Yang et al .
+( 1998 ) used clustering techniques for event detection on news .
+He et al .
+( 2007 ) andZhao et al .
+( 2012 ) designed burst feature representations for detecting bursty events .
+Compared with our TaHBM , these methods lack the ability of distinguishing similar events .
+Similar to event detection , event extraction focuses on finding events from documents .
+Most work regarding event extraction ( Grishman et al . , 2005;Ahn , 2006;Ji and Grishman , 2008;Chen and Ji , 2009;Liao and Grishman , 2010;Hong et al . , 2011;Li et al . , 2012;Chen and Ng , 2012;Li et al . , 2013 ) was developed under Automatic Content Extraction ( ACE ) program .
+The task only defines 33 event types and events are in much finer grain than those in our task .
+Moreover , there was work ( Verhagen et al . , 2005;Chambers and Jurafsky , 2008;Bethard , 2013;Chambers , 2013;Chambers et al . , 2014 ) about temporal event extraction and tracking .
+Like ACE , the granularity of events in this task is too fine to be suitable for our task .
+Also , timeline generation is related to our work .
+Most previous work focused on generating a time - line for a document ( Do et al . , 2012 ) , a centroid entity ( Ji et al . , 2009 ) or one major event ( Hu et al . , 2011;Yan et al . , 2011;Lin et al . , 2012;Li and Li , 2013 ) .
+In addition , Li and Cardie ( 2014 ) generated timelines for users in microblogs .
+The most related work to ours is Swan and Allan ( 2000 ) .
+They used a timeline to show bursty events along the time , which can be seen as an early form of event chronicles .
+Different from their work , we generate a topically relevant event chronicle based on a reference event chronicle .
+Conclusions and Future Work .
+In this paper , we propose a novel task -automatic generation of topically relevant event chronicles .
+It can serve as a new framework to combine the merits of Information Retrieval , Information Extraction and Summarization techniques , to rapidly extract and rank salient events .
+This framework is also able to rapidly and accurately capture a user 's interest and needs based on the reference chronicle ( instead of keywords as in Information Retrieval or event templates as in Guided Summarization ) which can reflect diverse levels of granularity .
+As a preliminary study of this new challenge , this paper focuses on event detection and ranking .
+There are still many challenges for generating high - quality event chronicles .
+In the future , we plan to investigate automatically adapting an event 's granularity and learn the principle of summarizing the event according to the reference event chronicle .
+Moreover , we plan to study the generation of entity - driven event chronicles , leveraging more fine - grained entity and event extraction approaches .
+Acknowledgments .
+We thank the anonymous reviewers for their thought - provoking comments .
+This work is supported by National Key Basic Research Program of China 2014CB340504 , NSFC project 61375074 , China Scholarship Council ( CSC , No . 201406010174 ) and USA ARL NS - CTA No . W911NF-09 - 2 - 0053 .
+The contact author of this paper is Zhifang Sui .
+Yiming Yang , Tom Pierce , and Jaime Carbonell .
+1998 .
+A study of retrospective and on - line event detection .
+In SIGIR .
+Wayne Xin Zhao , Rishan Chen , Kai Fan , Hongfei Yan , and Xiaoming Li . 2012 .
+A novel burst - based text representation model for scalable event detection .
+In ACL .

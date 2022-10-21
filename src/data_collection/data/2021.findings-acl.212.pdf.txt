@@ -1,0 +1,118 @@
+Zero - shot Medical Entity Retrieval without Annotation : Learning From Rich Knowledge Graph Semantics .
+Medical entity retrieval is an integral component for understanding and communicating information across various health systems .
+Current approaches tend to work well on specific medical domains but generalize poorly to unseen sub - specialties .
+This is of increasing concern under a public health crisis as new medical conditions and drug treatments come to light frequently .
+Zero - shot retrieval is challenging due to the high degree of ambiguity and variability in medical corpora , making it difficult to build an accurate similarity measure between mentions and concepts .
+Medical knowledge graphs ( KG ) , however , contain rich semantics including large numbers of synonyms as well as its curated graphical structures .
+To take advantage of this valuable information , we propose a suite of learning tasks designed for training efficient zero - shot entity retrieval models .
+Without requiring any human annotation , our knowledge graph enriched architecture significantly outperforms common zero - shot benchmarks including BM25 and Clinical BERT with 7 % to 30 % higher recall across multiple major medical ontologies , such as UMLS , SNOMED and ICD-10 .
+Introduction .
+Entity retrieval is the task of linking mentions of named entities to concepts in a curated knowledge graph ( KG ) .
+This allows medical researchers and clinicians to search medical literature easily using standardized codes and terms to improve patient care .
+Training an effective entity retrieval system often requires high quality annotations , which are expensive and slow to produce in the medical domain .
+It is therefore not feasible to annotate enough data to cover the millions of concepts in a medical KG , and difficult to adapt quickly enough to those newly appeared medical conditions and drug treatments under a public health crisis .
+Hence , a robust medical entity retrieval system is expected to have decent performance in a zero - shot scenario .
+Zero - shot retrieval is challenging due to the complexity of medical corpora -large numbers of ambiguous terms , copious acronyms and synonymous terms .
+It is difficult to build an accurate similarity measure which can detect the true relatedness between a mention and a concept even when their surface forms differ greatly .
+Early entity retrieval systems use string matching methods such as exact match , approximate match ( Hanisch et al . , 2005 ) and weighted keyword match e.g. BM25 ( Wang et al . , 2020 ) .
+Although annotated training data is not required , such systems typically lack the ability to handle synonyms and paraphrases with large surface form differences .
+In recent years , large scale pretraining ( Devlin et al . , 2019 ) has been widely adopted in the medical domain such as Clinical BERT ( Alsentzer et al . , 2019 ) and BioBERT ( Lee et al . , 2019 ) .
+Agarwal et al .
+( 2019 ) also integrates graph structure information during pretraining .
+Most of them , however , require a finetuning step on annotated training data ( Wu et al . , 2020 ) before being applied to entity retrieval .
+As an alternative to manually annotating a corpus , the rich semantics inside a KG itself can be utilized ( Chang et al . , 2020 ) .
+One important entry is the synonym , whereby two medical terms may be used interchangeably .
+In addition , the graphical structure of a KG contains information on how concepts are related to each other and so can be used as another valuable resource for building an effective similarity measure .
+We therefore design synonym - based tasks and graph - based tasks to mine a medical KG .
+Trained with our proposed tasks , a simple Siamese architecture significantly outperforms common zero - shot benchmarks across multiple major medical ontologies including UMLS , SNOMED and ICD10 .
+Our contributions are as follows .
+( 1 ) We pro - pose a framework which allows the information in medical KGs to be incorporated into entity retrieval models , thereby enabling robust zero - shot performance without the need of human annotations .
+( 2 ) We apply the framework to major medical ontologies and conduct extensive experiments to establish the effectiveness of our framework .
+( 3 ) When annotations are available , we show that the proposed framework can be easily plugged into an existing supervised approach and in so doing , deliver consistent improvements .
+2 Formulation Entity retrieval .
+Given a mention m and a concept c ∈ KG = { c 1 , c 2 , ... , c n } , the goal is to learn a similarity measurement S(m , c ) , so that the most relevant concept is assigned the highest score .
+A concept is also referred to as a node in a KG .
+We use them interchangeably below .
+Zero - shot entity retrieval .
+We examine two zero - shot scenarios : 1 ) zero - shot on mentions only , which assumes unseen mentions but allows seen concepts at test time .
+2 ) zero - shot on mentions and concepts , which assumes both to be unseen at test time .
+Model Architecture .
+Siamese architecture .
+Mention m and concept c are firstly embedded into vectors , using a shared function T : e m = T ( m ) , e c = T ( c ) .
+T is also referred to as an encoder , for which we use the Transformer ( Vaswani et al . , 2017 ) encoder in this work .
+Similarity between a mention and a concept is then measured as the inner product : S(m , c ) = e m , e c .
+Optimization .
+Assume model parameter is θ .
+We use in - batch negatives for optimization .
+Loss function for a batch of size B is defined as mean negative log likelihood : L = − 1 B B i=1 log(P ( ( m i , c i ) |θ ) ) where the conditional probability of each mentionconcept pair ( m i , c i ) in the batch is modeled as a softmax : We design our learning tasks by constructing mention - concept pairs ( m , c ) .
+The goal is to capture multiple layers of semantics from a KG by leveraging its unique structure .
+Since each structure implies its own measure of similarity , we design learning tasks by finding very similar or closely related textual descriptions and use them to construct ( m , c ) pairs .
+We define two major types of tasks : synonym - based tasks and graph - based tasks .
+These are illustrated below for three major medical KG : ICD-10 , SNOMED and UMLS .
+P ( ( m i , c i ) |θ ) = exp(S θ ( m i , c i ) ) B j=1 exp(S θ ( m j , c j ) ) .
+ICD-10 .
+The 10th version of the International Statistical Classification of Diseases , Clinical Modification ( ICD-10 ) is one of the most widely used terminology systems for medical conditions .
+It contains over 69 K concepts , organized in a tree structure of parent - child relationships .
+Synonym - based task .
+In ICD-10 , a child node is a more specific medical condition compared to its parent ( e.g. R07.9 Chest pain , unspecified is a child of R52 Pain , unspecified ) .
+Each node N i has three sections : The Title section contains a subspecifier ( e.g. Chest ) of the title of the parent ( e.g. Pain ) , therefore their concatenation gives the full concept description ( e.g. Chest Pain ) .
+We denote it by N T itleConcatenation i .
+The Code section contains an ICD-10 code and its formal medical definition , denoted by N CodeDescription i .
+The SeeAlso section contains a similar concept , denoted by N SeeAlso i .
+These three sections describe the same medical condition with different surface forms , therefore we define the ICD-10 synonym - based task as : m = N L i , c = N R i N L i , N R i ∈ { N T itleConcatenation i , N CodeDescription i , N SeeAlso i } , L = R We illustrate it with an example in Figure 1 .
+Graph - based task .
+To incorporate the semantics of parent - child relationships into learning , we define ICD-10 graph - based task as : m = N CodeDescription i , c = N CodeDescription j N i .is parent(N j ) .
+SNOMED .
+Systematized Nomenclature of Medicine -Clinical Terms ( SNOMED ) is a standardized clinical terminology used for the electronic exchange of clinical health information with over 360 K active concepts .
+Synonym - based task .
+Each node N i in SNOMED has multiple synonymous descriptions { l 1 i , l 2 i , ... , l d i } , with l 1 i as the main description .
+We therefore define SNOMED synonym - based task as : m = l p i , c = l q i , p > q d * ( d−1)2 unique ( m , c ) pairs are constructed at each node .
+Graph - based task .
+SNOMED is a directed graph with 107 possible relationship types ( e.g. is a , finding site , relative to ) .
+A direct connection between two nodes is likely to imply a certain degree of similarity , thus we define the SNOMED graph - based task as : m = l 1 i , c = l 1 j N i .is connected(N j ) .
+UMLS .
+The Unified Medical Language System ( UMLS ) is a compendium of a large number of curated biomedical vocabularies with over 1MM concepts .
+UMLS has almost the same structure as SNOMED , therefore we define the synonym - based task and graph - based task in a similar fashion to that of SNOMED .
+For each task mentioned above , the ( m , c ) pairs generated at each node are combined and split into train and dev in a 80:20 ratio .
+We also define a comb task , where all the tasks are firstly downsampled to equal sizes and then combined .
+A summary can be found in Table 1 .
+Datasets .
+We include three datasets in zero - shot evaluations .
+MedMention ( Mohan and Li , 2019 ) is a publicly available corpus of 4,392 PubMed 1 abstracts with biomedical entities annotated with UMLS concepts .
+COMETA ( Basaldella et al . , 2020 ) is one of the largest public corpora of social media data with SNOMED annotations .
+It provides four train , dev , test splits : Stratified - General ( SG ) , Stratified - Specific ( SS ) , Zeroshot - General ( ZG ) , Zeroshot - Specific ( ZS ) .
+We also use a de - identified corpus of dictated doctor 's notes named 3DNotes ( Zhu et al . , 2020 ) .
+It has two sets of annotations : one with ICD-10 ( ICD split ) , another with SNOMED ( SN split ) .
+The annotation follows the i2b2 challenge ( Uzuner et al . , 2011 ) guidelines .
+Zero - shot performance is evaluated on the corresponding test sets .
+We report sizes of the test sets in Table 2 Hyperparameters .
+For our Siamese architecture , the transformer encoder is initialized with BERT base .
+We use the BertAdam optimizer with a batch size of 128 , the initial learning rate of 3 × 10 −5 , warm - up ratio of 0.02 , max epochs of 50 , followed by a linear learning rate decay .
+Evaluation metrics .
+Top - k retrieval recalls ( R@1 , R@25 ) are used as metrics .
+We also assume that each mention has a valid gold concept in the KG .
+Results .
+We report overall results in Table 3 .
+Clinical BERT consistently outperforms the other pre - trained counterparts , which are therefore omitted .
+For evaluations of zero - shot on mentions only ( e.g. UMLS tasks evaluated on MedMention which is UMLS annotated ) , we observe 12 % to 45 % gain for R@1 compared to benchmarks .
+For evaluations of zeroshot on mentions and concepts ( e.g. UMLS tasks evaluated on COMETA which is SNOMED annotated ) , 7 % to 30 % higher R@1 is observed .
+Comb task has the most balanced performance gains across all datasets .
+Analysis and Discussion .
+Task comparison .
+To further understand the difference between synonym - based tasks and graphbased tasks , we illustrate qualitative examples in Table 4 .
+A model trained using the synonym task makes better predictions for scenarios involving medical synonyms and acronym ( lines 1 , 2 ) .
+A model trained using the graph task performs better when mention and concept have an is a relationship ( lines 3 , 4 ) .
+Auxiliary task .
+When annotations are available , our learning tasks can be used as an auxiliary to the primary loss .
+Using the 3DNotes - SN 's annotated training set to train the primary supervised task , we set the comb task as its auxiliary counterpart by summing the losses .
+We evaluate zero - shot performance on COMETA - ZS .
+We observe an 8 % increase in R@25 , illustrated in Fig .
+2 .
+Since most annotations cover no more than a couple thousands concepts , which is a tiny portion of a typical medical KG 's size , this demonstrates the generalizing capacity of our approach on the vast majority of unseen concepts .
+Private KG .
+In practice , if the target medical ontology is a private KG ( Wise et al . , 2020;Bhatia et al . , 2020 ) , one can also consider customizing the learning tasks that follow the synonym and graphbased frameworks outlined in this work to bring greater gains .
+Conclusion .
+We present a framework for allowing entity retrieval models to mine rich semantics from a medical KG .
+We show its effectiveness in zero - shot set - tings through extensive experiments .
+In addition , we demonstrate the ease with which the framework can be adapted to serve as an auxiliary task when annotations are available .
+Future research should explore more fine - grained approaches to combine tasks .

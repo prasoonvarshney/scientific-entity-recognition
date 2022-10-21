@@ -1,0 +1,292 @@
+PPT : Pre - trained Prompt Tuning for Few - shot Learning .
+Prompts for pre - trained language models ( PLMs ) have shown remarkable performance by bridging the gap between pre - training tasks and various downstream tasks .
+Among these methods , prompt tuning , which freezes PLMs and only tunes soft prompts , provides an efficient and effective solution for adapting largescale PLMs to downstream tasks .
+However , prompt tuning is yet to be fully explored .
+In our pilot experiments , we find that prompt tuning performs comparably with conventional full - model tuning when downstream data are sufficient , whereas it is much worse under fewshot learning settings , which may hinder the application of prompt tuning .
+We attribute this low performance to the manner of initializing soft prompts .
+Therefore , in this work , we propose to pre - train prompts by adding soft prompts into the pre - training stage to obtain a better initialization .
+We name this Pretrained Prompt Tuning framework " PPT " .
+To ensure the generalization of PPT , we formulate similar classification tasks into a unified task form and pre - train soft prompts for this unified task .
+Extensive experiments show that tuning pre - trained prompts for downstream tasks can reach or even outperform full - model fine - tuning under both full - data and few - shot settings .
+Our approach is effective and efficient for using large - scale PLMs in practice .
+The code is publicly available at https:// github.com/thu-coai/PPT .
+Introduction .
+Fine - tuning pre - trained language models ( PLMs ) ( Devlin et al . , 2019;Radford et al . , 2019;Raffel et al . , 2020 ) has made great progress in recent years .
+By tuning the entire model parameters , the versatile knowledge acquired from large - scale unlabeled corpora can be adapted to handling † Corresponding author .
+* indicates equal contribution .
+various NLP tasks and outperform the approach of learning models from scratch ( Han et al . , 2021a ) .
+For simplicity , we name this full - model tuning as " FT " .
+As shown in Figure 1 ( b ) and ( c ) , there are two mainstream FT approaches .
+The first one is task - oriented fine - tuning , where a task - specific head is added on top of PLMs , and the entire model is then fine - tuned by optimizing task - specific objectives on corresponding training data .
+The second one is prompt - oriented finetuning ( Schick and Schütze , 2021a ) , which is inspired by the recent works utilizing language prompts to probe the knowledge in PLMs ( Petroni et al . , 2019;Brown et al . , 2020 ) .
+In promptoriented fine - tuning , data samples are converted to sequences containing prompt tokens , and downstream tasks are formalized as language modeling problems .
+As shown in Figure 1 ( c ) , by adding the prompt " It was X . " to a sentence , we can determine its sentiment polarity with PLMs by predicting " great " or " terrible " at the mask position .
+As shown in Figure 1 , compared to task - oriented finetuning , prompt - oriented fine - tuning is more similar to the pre - training objectives ( masked language modeling ) , thereby helping to better use knowledge in PLMs and often obtaining better performance .
+Although FT has shown promising results , with the rapid growth of model scale , fine - tuning and storing the entire large model for each downstream task becomes much more expensive .
+To address this challenge , Lester et al .
+( 2021 ) proposes prompt tuning ( PT ) to adapt large PLMs to downstream tasks cheaply , as shown in Figure 1 ( d ) .
+Specifically , PT uses soft prompts composed of continuous embeddings instead of hard prompts ( discrete language phrases ) .
+These continuous prompts are generally randomly initialized and learned end - toend .
+To avoid storing the entire model for each downstream task , PT freezes all PLM parameters and merely tunes soft prompts , without adding any intermediate layers and task - specific components .
+PT has two promising advantages .
+First , soft prompts can be learned end - to - end in comparison to hard prompts .
+Second , PT is an efficient and effective paradigm for the practical use of largescale PLMs , which is comparable to FT when downstream data are sufficient ( Figure 2(a ) ) .
+However , as shown in Figure 2(b ) , we find that PT performs much worse than FT under few - shot settings , which may hinder the application of PT in various low - resource scenarios .
+Hence , in this paper , we explore how to use PLMs for few - shot learning in an efficient and effective manner through PT .
+Specifically , we con - duct pilot experiments to empirically analyze the effectiveness of PT on PLMs in Section 2 , which is ignored by most existing works .
+Our discoveries are as follows : ( 1 ) the verbalizer choice has a large impact on the performance ; ( 2 ) simply initializing soft prompts with concrete word embeddings fails to improve the performance , yet ( 3 ) combining soft and hard prompts is helpful ; and ( 4 ) all these methods can not handle few - shot prompt tuning problems well .
+The above observations reveal that prompt searching for PLMs is not trivial , and carefully initialized soft prompt tokens is crucial .
+To help the model find suitable prompts , we pretrain these tokens with self - supervised tasks on large - scale unlabeled corpora .
+To ensure the generalization of pre - trained prompts , we group typical classification tasks into three formats : sentencepair classification , multiple - choice classification , and single - text classification , each format corresponding to one self - supervised pre - training task .
+In addition , we find multiple - choice classification more general among these formats and we can unify all classification tasks to this format .
+We name this Pre - trained Prompt Tuning framework " PPT " .
+We evaluate PPT on several datasets based on three 11B PLMs : T5 - XXL ( Raffel et al . , 2020 ) , mT5 - XXL ( Xue et al . , 2021 ) and CPM-2 ( Zhang et al . , 2022 ) in few - shot scenarios .
+Experiments show that PPT can not only improve PT by a large margin , reaching or even outperforming FT methods , but also reduce the variance of few - shot learning .
+Besides the effectiveness , PPT also retains the parameter efficiency of PT , which is valuable for future applications on large - scale PLMs . Pilot Experiments .
+In this section , we present pilot experiments of PT for few - shot learning .
+We analyze three strategies including hybrid prompt tuning , verbalizer selec- ( Perez et al . , 2021 ) .
+We follow Zhang et al .
+( 2021 ) and Gao et al .
+( 2021 ) to use the original validation set as the test set D test , which means |D test | |D train | = |D dev | .
+Hybrid Prompt Tuning In hybrid prompt tuning , both soft and hard prompts are used ( Liu et al . , 2021;Han et al . , 2021b ) .
+However , previous works train soft prompts jointly with the entire model .
+In PT where only prompt tokens are tunable , the effectiveness of hybrid prompts is under - explored .
+In Table 1 , we show the results of combining soft prompts P with three manually designed hard prompts and two auto - generated hard prompts ( Gao et al . , 2021 ) on a sentiment classification task ( Socher et al . , 2013 ) .
+We can see that hard prompts improve PT , but still under - perform FT .
+Furthermore , different hard prompts affect the performance remarkably , therefore much human labor for prompt design and selection is needed .
+Verbalizer Selection Verbalizer maps taskspecific labels to concrete tokens .
+For instance , 1 Using 100 soft prompt tokens achieves the best performance in Lester et al .
+( 2021 in Figure 1 ( c ) and ( d ) , the verbalizer maps the label " Positive " to " great " .
+From Table 1 we can see that the choices of verbalizers influence the performance remarkably .
+In general , common words that explain the meaning of corresponding labels work well .
+This also guides our verbalizer selection for PPT in Section 3 .
+Real Word Initialization .
+In real word initialization , we use the embeddings of concrete words to initialize the soft prompt and test four initialization strategies .
+The effectiveness of this approach has been verified on small PLMs ( fewer than 3B parameters ) in previous works ( Lester et al . , 2021 ) .
+However , from the experiments on SST-2 ( Socher et al . , 2013 ) and BoolQ ( Clark et al . , 2019 ) ( Table 2 ) , we find that for the 11B model , real word initialization has little or even negative impact on the performance in few - shot scenarios .
+This suggests that observations on small models can not be directly adapted to large models and finding a good initialization for soft prompts is yet to be explored .
+To summarize , although the above enhancement strategies can not help PT achieve comparable results with FT under few - shot settings , they are still the key factors that influence the PT performance .
+In the following sections , we describe our PPT framework and show in experiments that PPT not only provides a good prompt initialization , but also takes advantage of the good verbalizer , and is complementary to hybrid prompts .
+use these pre - trained prompts for specific tasks .
+Overview .
+Following the approach of T5 ( Raffel et al . , 2020 ) and PT ( Lester et al . , 2021 ) , we solve all downstream tasks in a text - to - text format .
+As shown in Figure 1 ( c ) , to reduce the objective gap between pre - training and downstream tasks , promptoriented fine - tuning converts downstream tasks into cloze - style objectives .
+Taking classification for example , given an input sentence x ∈ V * and its label y ∈ Y , a pattern mapping f : V * → V * is first applied to convert x into a new sequence f ( x ) , where V is the vocabulary of PLMs . f ( x ) not only adds some prompt tokens as hints , but also preserves the mask token X to let PLMs predict tokens at the masked positions .
+Then , a verbalizer v : Y → V * is used to map y to some label tokens v(y ) .
+With f ( • ) and v(• ) , a classification task can be represented by a pattern - verbalizer pair ( f , v ): arg max θ x log p y|x ; θ = arg max θ x log p X = v(y)|f ( x ) ; θ , ( 1 ) where θ indicates all tunable parameters , especially the parameters of PLMs . For convenience , we use " PVP " to denote this pattern - verbalizer pair ( Schick and Schütze , 2021a ) .
+In PT ( Lester et al . , 2021 ) , a set of soft prompts P are concatenated to the beginning of the sequence and the model input becomes [ P ; f ( x ) ] , where [ • ; • ] is the concatenation operation .
+By tuning P , Eq . ( 1 ) is replaced by arg max P x log p X = v(y ) | [ P ; f ( x ) ] ; P .(2 ) Owing to the power of large - scale PLMs , Eq . ( 2 ) is verified to be comparable to these FT methods under full - data settings .
+However , we find it hard to learn effective soft prompts , which may result in low performance in various few - shot scenarios .
+The parameter initialization usually has a large impact on the difficulty of the model training and optimization , and our pilot experiments have shown that existing initialization strategies have little or even negative impact on the PT performance of large - scale PLMs . We refer more details of these pilot experiments to Section 4 .
+Recently , pre - training has been proven to be an effective method to find a good model initialization .
+Inspired by this , we propose to pre - train soft prompts .
+We notice that some groups of downstream tasks are related to certain self - supervised tasks built on unlabeled pre - training corpora .
+For instance , some tasks in the form of sentence - pair classification , such as natural language inference and sentence similarity , are similar to the next sentence prediction ( NSP ) ( Devlin et al . , 2019 ) task used in the pre - training stage .
+As shown in Figure 3 , these tasks all take two sentences as input and compare their semantic meanings .
+Therefore , soft prompts pre - trained by NSP can be a good initialization for these sentence - pair tasks .
+Formally , suppose we can divide downstream tasks into m groups { T 1 , T 2 , ... , T m } , where T i is the set containing n i downstream tasks : { PVP 1 i , PVP 2 i , ... , PVP n i i } , where PVP k i = ( f k i , v k i ) .
+For each group , we design a corresponding pre - training task PVP pre i = ( f pre i , v pre i ) .
+After pre - training soft prompts on these tasks with all model parameters fixed , we get m pre - trained prompts { P 1 , P 2 , ... , P m } .
+Then , for each task PVP k i in T i , we continue to optimize Eq . ( 2 ) by using P i as the soft prompts initialization .
+Designing Pattern - Verbalizer Pairs for Pre - training .
+In this section , we take three typical classification tasks as examples to describe the design of patternverbalizer pairs PVP pre i for prompt pre - training .
+Sentence - Pair Classification .
+Sentence - pair classification tasks such as natural language inference and sentence similarity take two sentences x = ( s 1 , s 2 ) as the input .
+To design a PVP for these tasks , we extend the next sentence prediction in Devlin et al .
+( 2019 ) to a 3 - class classification with labels Y = { 0 , 1 , 2 } as the pretraining task .
+These labels in Y can respectively indicate that the semantic relation between two sentences is coherent ( with label 2 ) , similar ( 1 ) and irrelevant ( 0 ) .
+To construct signal from unlabeled documents , we set the two sentences next to each other as label 2 , those from the same document but not true next sentences as 1 , and those from different documents as 0 .
+We consider the label set |Y| ≤ 3 because this covers most sentence pair tasks .
+PVP pre i = ( f pre i , v pre i ) is given as f pre i ( x ) = " s1 X .s2 " , v pre i ( Y ) = [ no , maybe , yes ] .
+( 3 ) Designing PVP k i = ( f k i , v k i ) according k i = v pre i .
+If a task requires to measure the similarity between two sentences , the probability over { no , yes } can serve for this task .
+Multiple - Choice Classification .
+Many tasks can be formulated as multiple - choice classification , which takes a query and several answer candidates as the input .
+We design a next sentence selection task to pre - train the prompt .
+Given a sentence as the query s q , the model is trained to select the adjacent sentence from six candidates , denoted as s 1 ∼ s 6 and thus the label set is Y = { 1 , 2 , 3 , 4 , 5 , 6 } .
+These candidates consist of the right answer , one sentence from the same document but is not adjacent to the query , and four sentences from other documents .
+For x = ( s q , s 1 , s 2 , • • • , s 6 ) , ( f pre i , v pre i ) is given as f pre i ( x ) = " sq ?
+A.s1 • • • F.s6.Answer is X . " , v pre i ( Y ) = [ A , B , C , D , E , F].(4 ) Most multiple - choice tasks can use { f pre i , v pre i } directly as their PVPs . For tasks like reading comprehension , the input may contain a passage and a question .
+We concatenate them to form the query .
+Single - Sentence Classification .
+For single - sentence classification , we create pseudo labels for prompt pre - training .
+Taking sentiment classification as an example , we use another small model to annotate sentiment labels for the sentences from the pre - training corpus and filter out those with low classification probability .
+In practice , we use a RoBERTa BASE ( Liu et al . , 2019 ) model fine - tuned on a 5 - class sentiment classification dataset other than the few - shot datasets we evaluate on .
+Then with a sentence s from the corpus , we have the input x = ( s ) and the label set Y = { 1 , 2 , 3 , 4 , 5 } .
+( f pre i , v pre i ) is given as f pre i ( x ) = " s.
+X . " , v pre i ( Y ) = [ terrible , bad , maybe , good , great ] .
+( 5 ) For sentiment classification tasks with 5 labels , we can use PVP k i = PVP pre i .
+For those with fewer than 5 labels , we choose a subset from v pre i ( Y ) as labels .
+Although the above method improves the model performance , we have to point out that it is still limited to generalize to other single - text classifications in different domains and with different numbers of labels .
+Therefore , the method described in the following section is proposed to solve this problem .
+Unifying Task Formats .
+The above - mentioned PVPs for pre - training can be unified to a single format : multiple - choice classification .
+Specifically , for sentence - pair classification , the query is the concatenation of the two sentences and there are three options : no , maybe , and yes .
+For single - sentence classification , the query is the input sentence and the options are the concrete labels .
+Note that in this way , the pre - trained PVPs can be used in single text classification tasks from arbitrary domains and with much more labels .
+Constructing a unified PVP is similar to the idea of MultiQA ( Talmor and Berant , 2019 ) and Uni - fiedQA ( Khashabi et al . , 2020 ) .
+Recently , Zhong et al .
+( 2021a ) use some hard prompts to unify several tasks as a meta question answering task .
+They tune the entire model with this meta task on a collection of QA datasets and then transfer to other classification tasks under low - resource settings .
+However , our PPT focuses on tuning soft prompts with the main body of PLMs fixed and our pretraining is conducted on fully unsupervised data , rather than the collection of supervised datasets .
+Since different tasks may have different candidate numbers and lengths , we construct pretraining samples with option numbers varying from 2 to 16 2 and option lengths from 50 to 20 .
+We use the PVP in Section 3.2.2 for pre - training , and then apply pre - trained soft prompts to cover the above mentioned three classification tasks .
+Experiments .
+Setup .
+We conduct experiments on both Chinese and English tasks ( see Table 3 ) .
+As described in Section 2 , for tasks with fewer than 5 labels , we construct D train and D dev with 32 samples from the original training data and ensure the number of labels is balanced .
+For tasks with more than 5 labels like TNews and YahooAnswer , it is hard to compose a dataset with label - balanced samples .
+Therefore , we randomly select 8 samples for each label .
+For English datasets , we conduct PT based on T5 - XXL with 11B parameters because previous works ( Lester et al . , 2021;Zhang et al . , 2022 ) have shown that , T5 - XXL is comparable with FT under the full - data setting .
+We also evaluate FT on various sizes of T5 to verify that larger models perform better and thus improving PT based on T5 - XXL is meaningful .
+For Chinese datasets , we do PT based on a 11B model CPM-2 .
+Since CPM-2 does not provide other size models , we compare it with mT5 ( Xue et al . , 2021 ) of various sizes .
+Consistently , we use 100 soft tokens for PT .
+As a result , the tunable parameters is only 100×4096 = 4.1 × 10 5 = 410K.
+Compared with the 11B ( 1.1 × 10 10 ) parameters of FT , PT only needs to store 3000 times smaller parameters for each task .
+For prompt pre - training , we sample 10 GB data from OpenWebText ( Gokaslan et al . , 2019 ) for English tasks and 10 GB data from WuDaoCorpora ( Yuan et al . , 2021 ) for Chinese tasks .
+We use the Yelp-5 ( Zhang et al . , 2015a ) dataset to train the RoBERTa BASE model mentioned in Section 3.2.3 . More details of the training hyper - parameters can be found in the Appendix C.
+Main Results .
+The main results of English and Chinese datasets are shown in Table 4 .
+In the block FT , we present the FT results of the T5 model from the size small to XXL .
+In the block PT , we show the results of PPT and other baselines .
+The first baseline is Vanilla PT , where the soft prompts are randomly initialized from a normal distribution .
+The second is the hybrid strategy in Section 2 .
+We also consider LM Adaption used in Lester et al .
+( 2021 ) in which the T5 model is further pre - trained for 10 K steps with language modeling to reduce the gap between the pre - training and PT .
+We test two variants of PPT : Hybrid PPT , in which carefully designed hard prompts are combined with pre - trained soft prompt , and Unified PPT , in which all tasks are unified in the multiple - choice classification format .
+Effectiveness From the Table 4 we have four observations .
+First , larger models achieve better overall performance , which means increasing the model size still helps under the few - shot setting .
+Therefore , we study PT on the large - scale pre - trained model .
+Note that for Chinese experiments , CPM-2 and mT5 - XXL share the same parameter scale .
+Since CPM-2 outperforms mT5 - XXL across all tasks , we use CPM-2 as the base model .
+Second , PPT outperforms Vanilla PT and LM Adaption on most datasets significantly .
+Although PPT is worse than Hybrid PT on BoolQ , combining PPT and hard prompts ( Hybrid PPT ) outperforms all baselines .
+This means pre - training soft prompts and using hybrid prompts are complementary .
+Similar phenomenons are observed on other datasets like RACE - m , LCQMC , and C 3 , where adding hard prompts to PPT continues to improve results .
+Third , PPT outperforms FT on all Chinese datasets and most English datasets .
+This indicates that there still remains a gap between masked language modeling and downstream tasks .
+Prompt pre - training bridges this gap to some extend .
+Based on this observation , an intuitive extension of our method is to further pre - train the entire model with PVP pre i and fine - tune the model to the corresponding downstream tasks .
+However , since we focus on PT in this paper , we leave this as future work .
+Fourth , PPT results in lower variances on most of the datasets .
+Few - shot learning is notorious for its instability , which becomes very obvious in Vanilla PT .
+For some datasets like SST-2 , the variance reaches 15.5 which means the model does not perform better than random guesses under some a verbalizer to map the labels to the intuitively selected words .
+PT ( MC ) means we solve the task in a multiple - choice classification format without prompt pre - training .
+We do not use PPT for singlesentence classification discussed in Section 3.2.3 because it is hard to find other suitable datasets to train the pseudo label annotator .
+However , we can see that Unified PPT still achieves the best performance , even exceeding FT by a large margin .
+For the small number of samples , PPT is consistently better than Vanilla PT .
+When the number grows , the performance of these methods becomes closer .
+Table 6 : The performance of FT , PT , PPT , and Unified PPT when the full training datasets are available .
+We report the mean and the standard deviation over 3 random seeds on the validation set .
+Sample Efficiency .
+We discuss how the performance of FT , PT , and PPT varies when the number of training samples increases .
+In Figure 4 , we show the trend of these methods on the RACE - m and CB datasets .
+For 32 to 128 samples , PPT is consistently better than PT , and the performances of the three methods gradually converge when the number grows to 256 .
+We also compare different tuning approaches given the full training data .
+From Table 6 , we can see that PPT and Unified PPT still outperform the Vanilla PT on most datasets .
+In addition , we observe that although PT is faster than FT in a single optimization step , it converges much slower , which results in an even longer training time .
+We argue that PPT can be an effective solution to this problem .
+As shown in Figure 5 , with the pre - trained initialization , PPT speeds up the convergence of Vanilla PT on both RACE - m and CB datasets .
+We give a more detailed analysis of the training consumption in the Appendix E.
+Since PPT still converges a bit slower than FT , how to further accelerate the convergence of PT is worth studying in future work .
+Related Works .
+PLMs and Task - oriented Fine - tuning Recently , various powerful PLMs have been proposed , such as GPT ( Radford et al . , 2018 ) , BERT ( Devlin et al . , 2019 ) , RoBERTa ( Liu et al . , 2019 ) and T5 ( Raffel et al . , 2020 ) .
+To adapt these PLMs to downstream NLP tasks , task - oriented fine - tuning has been proposed , where researchers use PLMs as the backbone and add some task - specific heads to optimize task - specific objectives .
+Then , all parameters of both PLMs and additional heads are tuned using task - specific data .
+Results have shown that task - oriented fine - tuning can outperform models trained from scratch on a series of NLP tasks .
+Prompt - oriented Fine - tuning Most existing PLMs are pre - trained with language modeling objectives , yet the objectives of downstream tasks are quite different .
+To overcome the gap between pretraining and downstream tasks , prompt - oriented fine - tuning is introduced .
+In prompt - oriented finetuning , downstream tasks are also formalized as language modeling problems by inserting language prompts , and the results of language modeling can correspond to the solutions of downstream tasks .
+Knowledge probing ( Petroni et al . , 2019;Trinh and Le , 2018;Davison et al . , 2019 ) is the seminal work that stimulates the development of prompts .
+In knowledge probing , language triggers are widely used to induce PLMs to generate relational facts .
+These pioneering works demonstrate that language prompts can effectively stimulate the knowledge from PLMs . Encouraged by this , manually designing hard prompts consisting of discrete words is first used in prompt - oriented fine - tuning Schick and Schütze ( 2021a , b ) .
+Considering manually designing prompts is both time - consuming and difficult to find the best choice , later works ( Gao et al . , 2021;Jiang et al . , 2020;Shin et al . , 2020 ) proposed to generate prompts automatically .
+However , these works still restrict auto - generated prompts to discrete spaces which are usually sub - optimal .
+To overcome the shortcomings of discrete spaces , Li and Liang ( 2021 ) ; Liu et al .
+( 2021 ) ; Han et al .
+( 2021b ) ; Hambardzumyan et al .
+( 2021 ) ; Zhong et al .
+( 2021b ) explore to combine hard prompts and soft prompts .
+Different from hard prompts using concrete and discrete tokens , soft prompts are composed of several continuous learnable embeddings , and these embeddings are randomly initialized .
+To step forward , some works ( Li and Liang , 2021;Qin and Eisner , 2021;Lester et al . , 2021 ) propose to only tune soft prompts and fix the entire PLM parameters .
+When models are large enough , this method can be comparable to full - model tuning .
+Few - shot Learning with PLMs Since long - tail distribution is common in real - world applications , few - shot learning is quite meaningful for the stable and effective use of PLMs , thereby attracts much attention recently .
+Apart from GPT-3 ( Brown et al . , 2020 ) and PET ( Schick and Schütze , 2021a ) which demonstrates the superiority of PLMs in few - shot scenarios , some later works Perez et al .
+( 2021 ) ; Bragg et al .
+( 2021 ) also discuss reasonable fewshot settings by restricting the size of validation set and proposing a unified framework to evaluate few - shot performance .
+There is also work ( IV et al . , 2021 ) pointing out the low performance of PT for few - shot learning .
+But they mostly focus on PLMs with fewer than 400 M parameters .
+In this paper , we study few - shot learning on large - scale 11B PLMs . Conclusion and Future Work .
+In this paper , we present PPT , a framework that improves prompt tuning for few - shot learning .
+We propose to firstly unify downstream tasks to several formats .
+Then , we design self - supervised pre - training tasks for each format and pre - train prompts on these tasks .
+Finally , we do prompt tuning on downstream tasks based on the pre - trained initialization .
+Extensive experiments show that our method significantly outperforms other prompt tuning baselines , performing comparable or even better than full - model tuning .
+There are three important directions for future work : ( 1 ) Designing unified task formats and the corresponding pre - training objectives for other kinds of tasks such as language generation and relation extraction .
+( 2 ) Evaluating the few - shot performance of other parameter - efficient tuning approaches ( He et al . , 2022 ) and adapting unified task pre - training to them .
+( 3 ) Beyond the soft prompt , studying whether unified task pre - training helps the pre - trained language models itself .
+C Training Details .
+Considering the instability of the few - shot learning , we run each experiment 5 times on the random seed [ 10,20,30,40,50 ] and report the averaged performance as well as the standard deviation .
+Due to the resource limit , for 11B models , we adopt model parallelism ( Shoeybi et al . , 2019 ) and store a model with 4 GPU devices .
+We also use mixedprecision training ( Micikevicius et al . , 2018 ) and ZeRO ( Rajbhandari et al . , 2020 ) stage-1 provided in DeepSpeed ( Rasley et al . , 2020 ) to reduce GPU memory usage .
+For models in other sizes , we all use full - precision training .
+We describe the details of the training hyper - parameters in the following sections .
+C.1 Full - Model Tuning .
+For Full - Model Tuning ( FT ) , we tune the entire parameters of the model without concatenating soft prompts .
+For all models , we fix the batch size as 16 .
+In this way , we train the largest 11B model with 16 NVIDIA V100 32 G GPUs . We find that different sized models prefer significantly different learning rates .
+Therefore , we search for the learning rates in varied intervals and show each model size and its corresponding searching interval in Table 8 .
+We train the model for 50 epochs and do evaluation every 6 optimization steps .
+We choose the model performing the best on the validation set and evaluate it on the test set .
+C.2 Prompt Tuning .
+For Prompt Tuning ( PT ) , we add a set of soft prompts before the input text .
+When adapting the model to downstream tasks , we only tune the soft prompts with the entire model fixed .
+Similar to FT , we fix the batch size as 16 and train the model for 50 epochs , while evaluating the model every 6 Model Size Searching Interval Small 2e-4 , 5e-4 , 1e-3 Base 2e-4 , 5e-4 , 1e-3 Large 5e-5 , 1e-4 , 2e-4 XL 3e-5 , 5e-5 , 1e-4 XXL 3e-6 , 5e-6 , 1e-5 Table 8 : The searching intervals of learning rates for the models with different sizes .
+Generally , small models prefer large learning rates .
+steps .
+Since the tunable parameters are much less in PT , 8 NVIDIA V100 32 G GPUs are enough for the training .
+We find PT requires a much larger learning rate than FT .
+Therefore , we search for the learning rate in [ 5e-3 , 1e-2 , 2e-2 , 5e-2 ] and choose the model with the best performance on the validation set .
+This observation also implies that PT is much harder to train than FT , which is consistent with the experiment results in the main paper .
+C.3 Prompt Pre - Training .
+We use the sampled 10 GB data to construct the pre - training data for each task format for prompt pre - training .
+Across all tasks , we use the " inverse square root " learning rate scheduler ( Raffel et al . , 2020 ) and set the learning rate in this scheduler as 0.1 with no warmup steps .
+We set the batch size as 256 , the max input length as 512 , and train the prompts for at most 200,000 steps .
+We split 5 % data for validation and the rest for pre - training .
+We evaluate the performance on the validation set every 2,000 steps and choose the prompt with the lowest validation loss .
+The details of constructing the pre - training data for each task are as follows .
+Sentence - Pair Classification In the next sentence prediction task , we set the two sentences next to each other as label 2 , those from the same document but not true next sentence as 1 , and those from different documents as 0 .
+We filter out the sentences with less than 5 tokens and the pairs in which the two sentences ' length ratios are larger than 100 .
+Multiple - Choice Classification In the next sentence selection task , giving a query sentence , the options contain one adjacent sentence , one sentence from the same document as the query , and four from the different documents .
+We also filter out the sentences with less than 5 tokens .
+To fit in the max input length , we truncate the query sentence to 389 tokens and the options to 86 tokens .
+For Unified PPT , we uniformly sample the option numbers from 2 to 16 to cover more downstream circumstances .
+The input configurations of different option numbers is shown in Table 9 .
+Single - Sentence Classification We use the RoBERTa BASE model trained on the Yelp-5 dataset to annotate pseudo labels on the unlabeled data .
+We use learning rate 1e-4 , batch size 16 , warm - up rate 0.01 , and train the model for 10 epochs .
+We choose the checkpoint with the highest accuracy on the validation set , which is 70.53 at the 5 - th epoch , to annotate the label .
+We set different minimal classification confidence thresholds for the 5 labels to control annotation quality and balance the label .
+The thresholds of the label 0 ∼ 4 are [ 0.95 , 0.50 , 0.50 , 0.50 , 0.70 ] .
+D Hard Prompts .
+In this section , we describe the hard prompts we use in Hybrid PT and Hybrid PPT .
+For simplicity , we choose the best hard prompts for each task format ( e.g. sentence - pair classification , multiple - choice classification , and single - sentence classification ) based on PT in pilot experiments and directly use them in Hybrid PPT .
+The hard prompts corresponding to each task format are shown in Table 7 .
+E Training Consumption .
+We analyze the time and memory consumption of FT and PT in this section .
+For PPT , the consump- .
+Acknowledgements .
+This work was supported by the National Science Foundation for Distinguished Young Scholars ( with No . 62125604 ) and the NSFC projects ( Key project with No . 61936010 and regular project with No . 61876096 ) .
+This work was also supported by the Guoqiang Institute of Tsinghua University , with Grant No . 2019GQG1 and 2020GQG0005 .
+Appendices .
+A Dataset Information .
+Since some of the test sets of the datasets we used is not publicly available , we follow Zhang et al .
+( 2021 ) and Gao et al .
+( 2021 ) to use original validation sets for testing .
+For English experiments , we use a dataset from GLUE ( Wang et al . , 2019b ) ( SST-2 ( Socher et al . , 2013 ) ) , datasets from Su - perGLUE ( Wang et al . , 2019a ) , ( BoolQ ( Clark et al . , 2019 ) , CB ( De Marneffe et al . , 2019 ) , andRTE ( Dagan et al . , 2006 ) ) , two extra single - text classification datasets ( SST-5 ( Socher et al . , 2013 ) and YahooAnswers ( Zhang et al . , 2015b ) ) , and two standard question answering datasets ( RACEmiddle and RACE - high ) ( Lai et al . , 2017 ) for multiple - choice classification .
+For Chinese experiments , we use four datasets from CLUE ( Xu et al . , 2020 ) ( CMNLI 3 , OCNLI ( Hu et al . , 2020 ) , TNews 3 , C 3 ( Sun et al . , 2020 ) ) , two sentiment analysis datasets ( ChnSent 4 and Amazon Reviews 4 ) , and one extra natural language inference dataset LCQMC ( Liu et al . , 2018 ) .
+B PVPs for Chinese Tasks .
+We describe the PVP pre i for Chinese datasets in this section .
+Just like English scenarios , all these PVPs are simple and intuitive .
+Sentence - Pair Classification Given the input x = ( s 1 , s 2 ) , the label list Y = [ 0 , 1 , 2 ] , we have : Multiple - Choice Classification Given a input x consisting of a query and six candidates : x = ( s q , s 1 , s 2 , • • • , s 6 ) , we convert x to a language sequence by defining the PVP pre i as follows : Single - Sentence Classification Similar to the English scenario , we take sentiment classification as an example .
+Given the input x = ( s ) , we have : Based on the PVP pre i , the design of PVP k i is similar to that of English tasks .

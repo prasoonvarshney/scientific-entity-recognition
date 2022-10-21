@@ -1,0 +1,131 @@
+Mention Extraction and Linking for SQL Query Generation .
+On the WikiSQL benchmark , state - of - the - art text - to - SQL systems typically take a slotfilling approach by building several dedicated models for each type of slots .
+Such modularized systems are not only complex but also of limited capacity for capturing interdependencies among SQL clauses .
+To solve these problems , this paper proposes a novel extraction - linking approach , where a unified extractor recognizes all types of slot mentions appearing in the question sentence before a linker maps the recognized columns to the table schema to generate executable SQL queries .
+Trained with automatically generated annotations , the proposed method achieves the first place on the WikiSQL benchmark .
+Introduction .
+Text - to - SQL systems generate SQL queries according to given natural language questions .
+Textto - SQL technology is very useful as it can empower humans to naturally interact with relational databases , which serve as foundations for the digital world today .
+As a subarea of semantic parsing ( Berant et al . , 2013 ) , text - to - SQL is known to be difficult due to the flexibility in natural language .
+Recently , by the development of deep learning , significant advances have been made in text - to - SQL .
+On the WikiSQL ( Zhong et al . , 2018 ) benchmark for multi - domain , single table text - to - SQL , state - of - the - art systems ( Hwang et al . , 2019;He et al . , 2019 ) can predict more than 80 % of entire SQL queries correctly .
+Most of such systems take a sketch - based approach ( Xu et al . , 2018 ) that builds several specialized modules , each of which is dedicated to predicting a particular type of slots , such as the column in SELECT , or the filter value in WHERE .
+Such dedicated modules are complex and often fall short of capturing inter - dependencies * Equal contributions .
+among SQL sub - clauses , as each type of slots is modeled separately .
+To deal with these drawbacks , this paper formulates text - to - SQL as mention extraction and linking problems in a sequence labeling manner ( Section 2 ) .
+In this new formulation , the key to synthesizing SQL is to extract the mentions of SQL slots and the relations between them .
+Consider the question and its corresponding SQL query in example ( 1 ) , with the headers in the schema being { LANE , NAME , NATIONALITY , SPLIT ( 50 M ) , TIME } .
+( 1 ) a.
+Question : What is the total sum of 50 m splits for Josefin Lillhage in lanes above 8 ?
+b.
+SQL : SELECT SUM ( Split ( 50 m ) ) FROM some table WHERE Name = ' Josefin Lillhage ' AND Lane > 8 We can see that many SQL elements , or slots , such as column names of SPLIT ( 50 M ) and LANE , values like " Josefin Lillhage " and 8 , as well as operators > are mentioned with words similar in form and/or meaning .
+Moreover , the relations between the slot mentions , such as < lanes , above , 8 > forming a filter condition , are represented by proximity in linear order or other linguistic cues .
+Thus , the recognition of the mentions and their relations would mostly reconstruct the intended SQL query from natural language question .
+To this end , we leverage one unified BERT - based ( Devlin et al . , 2019 ) extractor ( Section 2.1 ) to recognize the slot mentions as well as their relations , from the natural language questions .
+The output of the extractor can be deterministically translated into pseudo SQLs , before a BERT - based linker ( Section 2.2 ) maps the column mentions to the table headers to get executable SQL queries .
+A major challenge to the proposed method is the absence of manual annotation of mentions and relations .
+Thus we propose an automatic annotation method ( Section 2.4 ) based on aligning tokens in a SQL with corresponding question .
+Also , preliminary results show that the prediction of aggregation function ( AGG ) restricts model performance , which induces us to put forward AGG prediction enhancement ( AE ) method inspired by Brill ( 1995 ) .
+Trained with such annotations and applied AE method , the proposed method can already achieves the first place on the WikiSQL benchmark .
+The main contribution of this paper is the mention and relation extraction - based approach to textto - SQL task .
+To the best of our knowledge , this is the first work that formulates the task as sequence labeling - based extraction plus linking , which enjoys the advantage of structural simplicity and interdependency awareness .
+In addition , we also propose an automatic method to generate annotations .
+Such annotations can be useful for developing novel methods for text - to - SQL , such as question decomposition - based approaches .
+Method .
+Extractor .
+The extractor recognizes ( 1 ) slot mentions , including the SELECT column with aggregation function , WHERE columns with corresponding values and operators ; and ( 2 ) slot relations , namely associating each WHERE column with its operator and value .
+Most of the SQL slots are mentioned in the question , as shown in Figure 1(a ) .
+As for the slot relations , note that the column , value and operator that form a filter condition relation usually appear in adjacency in the question , such as in lanes above 8 in the example .
+Thus , the extraction of the relations is equivalent to the labeling of the corresponding text span .
+As shown in bel l ∈ { T × { B , I } , O } , where × denotes the Cartesian product of T , the set of functional labels , and the set of positional label of { B , I } , where B and I means the beginning and the continuation of a particular annotation t ∈ T , respectively .
+The standing alone O label is assigned to tokens that are outside of any type of annotation of interest .
+For our task , we define two sets of labels : ( a ) the SQL role labels representing the slot mentions ; ( b ) the span labels representing the slot relations , both of which are shown in Table 1 .
+With these defined label set , the recognition of both slot mentions and slot relations are formulated as sequence labeling .
+Extractor Model The model first encodes the question text and the table headers .
+As pre - trained language models such as BERT achieve state - of - the - art performance on various NLP tasks including sequence labeling , we adopt BERT to get contextualized representations for both role and span labeling .
+Similar to state - of - the - art methods for text - to - SQL such as SQLova ( Hwang et al . , 2019 ) , we concatenate the question text along with the table header as input for BERT , in the form of q 1 , q 2 , .. , q L , [ SEP ] , c 1,1 , c 1,2 , ... , [ SEP ] , c 2,1 , ... , c M,1 ... , where Q ( |Q| = L ) is the question while C = c 1 , .. , c M ( |C| = M ) are the table headers .
+Each header c i may have multiple tokens , thus the 2 - d indexes of c i , j being used .
+Special SEP token is inserted between different headers c i as well as between the question sentence Q and the first header c 1 .
+As the labeling is w.r.t . the question sentence , the conditional random filed ( CRF ) ( Lafferty et al . , 2001 ) layer only is applied to the question segment .
+The full model is described as in equation ( 1 ) , where BERT denotes the BERT model while CRF denotes a CRF layer .
+Q B ; C B = BERT([Q ; C ] ) Q att = Attention(Q B , C B , C B ) + Q B L = CRF(W L Q att ) ( 1 ) Before the BERT representations are fed to the CRF layer , they first go through an attention layer ( Bahdanau et al . , 2014 ) , which encodes the question tokens with columns in the schema .
+The resulting representation is added to the original token representation in an element - wise manner .
+Finally , the resulting token representations are fed to the CRF layer , which yields the label sequence .
+As the two labeling tasks can benefit each other , we fine - tune BERT in a multi - task learning way .
+Schema Linking as Matching .
+The column mentions in the question sentence often differ with the the canonical column names in the table schema in terms of string forms , as shown in Figure 1 , where SPLIT ( 50 M ) is mentioned as 50 m splits and NAME is not mentioned at all .
+The latter case is implicit mention of column , as only the value for the column , Josefin Lillhage , appears in the question .
+Such case is challenging yet not uncommon .
+To convert mention and relation extraction results to SQL , we need a schema linking module to link explicit and implicit column mentions to its canonical column names in the table schema .
+Formally , we define the linker as a text matching model , i.e. estimating a function f ( [ C i ; span ; Q ] ) → { 0 , 1 } , where C i is a header in the table schema , span is the either an extracted column mention ( for linking explicit column mention ) or an extracted value v ( for linking implicit column mention ) .
+Special tokens of [ W ] and [ S ] are used to distinguish SELECT spans from FIL - TER spans .
+Again , BERT is used as the underlying model for its state - of - the - art performance on text matching .
+The matching procedure can be described as in equation ( 2 ) .
+v CLS i = BERT([span ; C i ] ) P ( i ) = Sigmoid(W v CLS ) ( 2 ) .
+AGG prediction enhancement .
+Analysis of preliminary results suggests that aggregation function ( AGG ) prediction is a bottleneck for our system , which is partly attributed to the findings by Hwang et al .
+( 2019 ) that AGG annotations in WikiSQL have up to 10 % of errors .
+In such case , as our extractor model has to take care of other types of slots , these extra constraints make it more challenging for our model to fit flawed data , compared with a dedicated AGG classifier , as in most SOTA methods .
+Another reason may be that no all the aggregation functions are grounded to particular tokens .
+Given the characteristic of the data and the possible limitation of the information extraction - based model , we improve the AGG results over the original model , using only simple association signals in the training data .
+To this end , we adopt transformation - based learning algorithm ( Brill , 1995 ) to update the AGG predictions based on association rules in the form of " change AGG from x to x , given certain word tuple occurrences . " Such rules are mined and ranked from the training data by the algorithm .
+Automatic Annotation via Alignment .
+A challenge for training the extractor is that benchmark datasets have no role or span annotations .
+Since manual annotations are costly , we resort to automatic ways .
+The idea is to annotate mentions by aligning the SQL slots in the query to tokens in the question .
+Figure 1 depicts such alignments with arrows and colors .
+Specifically , the proposed method is a two - step procedure .
+The first step is alignment , which runs two pass of aligning .
+The first pass conducts exact and partial string match to recognize values and some of the columns , while the second pass aligns the remaining SQL slots , by training a statistical aligner with the training set of the data .
+For this purpose , we choose Berkeley aligner ( Liang et al . , 2006 ) , which works by estimating the co - occurrence of tokens in the parallel corpora , which are the question - SQL pairs in our case .
+As statistical aligner can occasionally yield null - alignment for a few tokens , we use another unsupervised word and semantic similarity - based algorithm ( Perez et al . , 2020 ) to complement the missing alignments .
+The second step is label generation , where the roles are generated according to aligned elements , while the span labels are assigned by considering minimal text span that covers all the elements in a SELECT / WHERE clause .
+3 Experiment and Ba , 2014 ) to optimize the model with default hyper - parameters .
+We choose uncased BERT - base pre - trained model with default settings due to resource limitations .
+The training procedures follows Hwang et al .
+( 2019 ) .
+Codes are implemented in Pytorch 1.3 and will be made publicly available 1 .
+Results .
+We compare our method with notable models that have reported results on WikiSQL task , including Seq2SQL ( Zhong et al . , 2018 ) , SQLNet ( Xu et al . , 2018 ) , TypeSQL ( Yu et al . , 2018a ) , Coarseto - Fine ( Dong and Lapata , 2018 ) , SQLova ( Hwang et al . , 2019 ) , X - SQL ( He et al . , 2019 ) and Hy - draNet ( Lyu et al . , 2020 ) in Table 2 .
+Without EG , our method with BERT - base outperforms most of existing methods , including SQLova with BERTlarge and MT - DNN ( Liu et al . , 2019a)-based X - SQL , and ranks right after HydraNet , which is based on RoBerTa ( Liu et al . , 2019b ) large .
+Lyu et al .
+( 2020 ) shows that RoBERTa large outperform BERT large in their setting and Liu et al .
+( 2019a ) shows MT - DNN also outperforms BERT in many tasks .
+Despite disadvantage in underlying pre - trained language model , our model achieves competitive results .
+For the results with the EG in Table 2 , our method outperforms all the existing methods , including SQLova , X - SQL and HydraNet , leading to new state - of - the - art in the SQL accuracies in terms of both logic form and execution .
+shows the slot type - wise results , where our method achieves new state - of - the - art results on the W col , W val and W op accuracies .
+Since the operators and values are directly derived from the extractor , such results are evidence for the effectiveness of our extraction - based approach .
+Before applying AGG enhancement ( AE ) , the bottleneck of our method is on AGG prediction .
+We close such gap with AE using only word co - occurrence features .
+The improved AGG accuracy also leads to the new stateof - the - art for the overall SQL results .
+A limitation of our sequence labeling - based approach is that it performs passably on some questions with nested span structures , as in the question " When does the train [ arriving at [ Bourne ] Estimating Annotation Quality .
+The quality of automatic annotation can be estimated in an oracle extractor setting , where the automatically annotated labels , instead of the extractor prediction , are fed to the linker .
+In this setting , the logic form and execution accuracy on the dev set reaches 92.8 % and 94.2 % , respectively , which are the ceiling for our approach .
+Note that such ceiling is above the human - level accuracy reported in Hwang et al .
+( 2019 ) , suggesting that the quality of the automatic annotation is reasonably good .
+Related Work .
+Semantic parsing ( Berant et al . , 2013 ) is to map natural language utterances to machine - interpretable representations , such as logic forms ( Dong and Lapata , 2016 ) , program codes ( Yin and Neubig , 2017 ) , and SQL queries ( Zhong et al . , 2018 ) .
+Text - to - SQL is a sub - area of semantic parsing , which is widely studied in recent years .
+Earlier work ( Dong and Lapata , 2016;Krishnamurthy et al . , 2017;Zhong et al . , 2018;Sun et al . , 2018;Wang et al . , 2018 ) follow a neural sequence - to - sequence paradigm ( Sutskever et al . , 2014 ) with attention mechanism ( Bahdanau et al . , 2014 ) .
+Pointer networks ( Vinyals et al . , 2015 ) are also commonly adopted .
+These sequence - to - sequence approaches often suffer the " ordering issue " since they are designed to fit an ordered sequence , while the conditions in WHEREclause are unordered in nature .
+SQLNet ( Xu et al . , 2018 ) introduces sketchbased method , which decomposes the SQL synthesis into several independent classification sub - tasks , including select - aggregation / column and wherenumber / column / operator / value .
+Except wherevalue , which is usually predicted by a pointer network , all the other sub - tasks use their own dedicated classifiers to make predictions .
+These sketch - based models raise challenges in training , deployment and maintenance .
+Moreover , each submodule solves its own classification problem , without considering the dependencies with SQL elements modeled by other sub - modules .
+Recent advances ( Yu et al . , 2018a;Dong and Lapata , 2018;Hwang et al . , 2019;He et al . , 2019 ) follow this approach and achieve comparative results on Wik - iSQL , mostly by using pre - trained language models as the encoder .
+While our sequence labeling method is also based on pre - trained language model , it differs from state - of - the - art methods in that it explicitly ex - tracts mentions from the questions and can benefit from inter - dependency modeling between extracted mentions .
+The mentions for values , operators and corresponding columns often appear in proximity in the question , thus the sequence labeling model can better capture their dependencies and benefits the recognition for all of them , as experiment results suggest .
+Furthermore , our extractor - linker architecture is also much simpler than sketch - based methods .
+Recent trend ( Krishnamurthy et al . , 2017;Guo et al . , 2019;Wang et al . , 2020;Choi et al . , 2020 ) in academia starts to shift to multi - table and complex queries setting of text - to - SQL , as in the Spider task ( Yu et al . , 2018b ) .
+State - of - the art methods on Spider typically fall into two categories : grammarbased approach ( Guo et al . , 2019;Wang et al . , 2020 ) , and sketch - based approach , such as RYAN - SQL ( Choi et al . , 2020 ) and RECPARSER ( Zeng et al . , 2020 ) .
+The latter ones have slot prediction modules similar to SQLNet for the WikiSQL , while recursion modules are introduced to handle the generation of complex SQL sketches , a characteristic in Spider but absent in WikiSQL .
+At a high level , our method is along the same line of SQLNet - RYANSQL , yet differs with them , as our method extracts slots in a unified way rather than using dedicated modules to predict each slot type .
+We can extend our method to the Spider task by following existing sketch construction methods as in RYANSQL , while replacing their slot classification modules with our extractor - linker methods .
+Conclusion and Future Work .
+Thanks to the simple , unified model for mention and relation extraction and its capacity for capturing inter mention dependencies , the proposed method proves to be a promising approach to textto - SQL task .
+Equipped with automatic - generated labels and AGG enhancement method , our model achieves state - of - the - art results on the WikiSQL benchmark .
+Since the current automatic - generated annotations are still noisy , it is useful to further improve the automatic annotation procedure .
+We also plan to extend our approach to cope with multitable text - to - SQL task Spider .
+Acknowledgements .
+We thank Jun Xu , Muhua Zhu , Wanxiang Che and Longxu Dou as well as all the anonymous reviewers for their invaluable comments and suggestions .

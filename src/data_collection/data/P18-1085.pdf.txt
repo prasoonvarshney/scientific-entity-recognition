@@ -1,0 +1,265 @@
+Illustrative Language Understanding : Large - Scale Visual Grounding with Image Search .
+We introduce Picturebook , a large - scale lookup operation to ground language via ' snapshots ' of our physical world accessed through image search .
+For each word in a vocabulary , we extract the top - k images from Google image search and feed the images through a convolutional network to extract a word embedding .
+We introduce a multimodal gating function to fuse our Picturebook embeddings with other word representations .
+We also introduce Inverse Picturebook , a mechanism to map a Picturebook embedding back into words .
+We experiment and report results across a wide range of tasks : word similarity , natural language inference , semantic relatedness , sentiment / topic classification , image - sentence ranking and machine translation .
+We also show that gate activations corresponding to Picturebook embeddings are highly correlated to human judgments of concreteness ratings .
+Introduction .
+Constructing grounded representations of natural language is a promising step towards achieving human - like language learning .
+In recent years , a large amount of research has focused on integrating vision and language to obtain visually grounded word and sentence representations .
+One source of grounding , which has been utilized in existing work , is image search engines .
+Search engines allow us to obtain correspondences between language and images that are far less restricted than existing multimodal datasets which typically have restricted vocabularies .
+While true natural language understanding may require fully * Both authors contributed equally to this work .
+embodied cognition , search engines allow us to get a form of quasi - grounding from high - coverage ' snapshots ' of our physical world provided by the interaction of millions of users .
+One place to incorporate grounding is in the lookup table that maps tokens to vectors .
+The dominant approach to learning distributed word representations is through indexing a learned matrix .
+While immensely successful , this lookup operation is typically learned through co - occurrence objectives or a task - dependent reward signal .
+A very different way to obtain word embeddings is to aggregate features obtained by using the word as a query for an image search engine .
+This involves retrieving the top - k images from a search engine , running those through a convolutional network and aggregating the results .
+These word embeddings are grounded via the retrieved images .
+While several authors have considered this approach , it has been largely limited to a few thousand queries and only a small number of tasks .
+In this paper we introduce Picturebook embeddings produced by image search using words as queries .
+Picturebook embeddings are obtained through a convolutional network trained with a semantic ranking objective on a proprietary image dataset with over 100 + million images ( Wang et al . , 2014 ) .
+Using Google image search , a Picturebook embedding for a word is obtained by concatenating the k - feature vectors of our convolutional network on the top - k retrieved search results .
+The main contributions of our work are as follows : • We obtain Picturebook embeddings for the 2.2 million words that occur in the Glove vocabulary ( Pennington et al . , 2014 ) 1 , allowing each word to have a Glove embedding and a parallel grounded word representation .
+This collection of word representations that we visually 1 Common Crawl , 840B tokens ground via image search is 2 - 3 orders of magnitude larger than prior work .
+• We introduce a multimodal gating mechanism to selectively choose between Glove and Picturebook embeddings in a task - dependent way .
+We apply our approach to over a dozen datasets and several different tasks : word similarity , sentence relatedness , natural language inference , topic / sentiment classification , image sentence ranking and Machine Translation ( MT ) .
+• We introduce Inverse Picturebook to perform the inverse lookup operation .
+Given a Picturebook embedding , we find the closest words which would generate the embedding .
+This is useful for generative modelling tasks .
+• We perform an extensive analysis of our gating mechanism , showing that the gate activations for Picturebook embeddings are highly correlated with human judgments of concreteness .
+We also show that Picturebook gate activations are negatively correlated with image dispersion ( Kiela et al . , 2014 ) , indicating that our model selectively chooses between word embeddings based on their abstraction level .
+• We highlight the importance of the convolutional network used to extract embeddings .
+In particular , networks trained with semantic labels result in better embeddings than those trained with visual labels , even when evaluating similarity on concrete words .
+Related Work .
+The use of image search for obtaining word representations is not new .
+Table 1 illustrates existing methods that utilize image search and the tasks considered in their work .
+There has also been other work using other image sources such as ImageNet ( Kiela and Bottou , 2014;Collell and Moens , 2016 ) over the WordNet synset vocabulary , and using Flickr photos and captions ( Joulin et al . , 2016 ) .
+Our approach differs from the above methods in three main ways : a ) we obtain searchgrounded representations for over 2 million words as opposed to a few thousand , b ) we apply our representations to a higher diversity of tasks than previously considered , and c ) we introduce a multimodal gating mechanism that allows for a more flexible integration of features than mere concatenation .
+Our work also relates to existing multimodal models combining different representations of the data ( Hill and Korhonen , 2014 ) .
+Various work has Method tasks ( Bergsma and Durme , 2011 ) bilingual lexicons ( Bergsma and Goebel , 2011 ) lexical preference ( Kiela et al . , 2014 ) word similarity ( Kiela et al . , 2015a ) lexical entailment detection ( Kiela et al . , 2015b ) bilingual lexicons ( Shutova et al . , 2016 ) metaphor identification ( Bulat et al . , 2015 ) predicting property norms ( Kiela , 2016 ) toolbox ( Vulic et al . , 2016 ) bilingual lexicons ( Kiela et al . , 2016 ) word similarity ( Anderson et al . , 2017 ) decoding brain activity ( Glavas et al . , 2017 ) semantic text similarity ( Bhaskar et al . , 2017 ) abstract vs concrete nouns ( Hartmann and Sogaard , 2017 ) bilingual lexicons ( Bulat et al . , 2017 ) decoding brain activity Table 1 : Existing methods that use image search for grounding and their corresponding tasks .
+also fused text - based representations with imagebased representations ( Bruni et al . , 2014;Lazaridou et al . , 2015;Chrupala et al . , 2015;Mao et al . , 2016;Silberer et al . , 2017;Kiela et al . , 2017;Collell et al . , 2017;Zablocki et al . , 2018 ) and representations derived from a knowledge - graph ( Thoma et al . , 2017 ) .
+More recently , gating - based approaches have been developed for fusing traditional word embeddings with visual representations .
+Arevalo et al .
+( 2017 ) introduce a gating mechanism inspired by the LSTM while Kiela et al .
+( 2018 ) describe an asymmetric gate that allows one modality to ' attend ' to the other .
+The work that most closely matches ours is that of Wang et al .
+( 2018 ) who also consider fusing Glove embeddings with visual features .
+However , their analysis is restricted to word similarity tasks and they require text - to - image regression to obtain visual embeddings for unseen words , due to the use of ImageNet .
+The use of image search allows us to obtain visual embeddings for a virtually unlimited vocabulary without needing a mapping function .
+Picturebook Embeddings .
+Our Picturebook embeddings ground language using the ' snapshots ' returned by an image search engine .
+Given a word ( or phrase ) , we image search for the top - k images and extract the images .
+We then pass each image through a CNN trained with a semantic ranking objective to extract its embedding .
+Our Picturebook embeddings reflect the search rankings by concatenating the individual embeddings in the order of the search results .
+We can perform all of these operations offline to construct a matrix E p representing the Picturebook embeddings over a vocabulary .
+Inducing Picturebook Embeddings .
+The convolutional network used to obtain Picturebook embeddings is based off of Wang et al .
+( 2014 ) .
+Let p i , p + i , p i denote a triplet of query , positive and negative images , respectively .
+We define the following hinge loss for a given triplet as follows : l(p i , p + i , p i ) = max{0 , g + D(f ( p i ) , f(p + i ) ) D(f ( p i ) , f(p i ) ) } ( 1 ) where f ( p i ) represents the embedding of image p i , D(• , • ) is the Euclidean distance and g is a margin ( gap ) hyperparameter .
+Suppose we have available pairwise relevance scores r i , j = r(p i , p j ) indicating the similarity of images p i and p j .
+The objective function that is optimized is given by : min X i ⇠ i + kW k 2 2 s.t . : l(p i , p + i , p i )  ⇠ i 8p i , p + i , p i such that r(p i , p + i ) > r(p i , p i ) ( 2 ) where ⇠ i are slack variables and W is a vector of the network 's model parameters .
+The model is trained end - to - end using a proprietary dataset with 100 + million images .
+We refer the reader to Wang et al .
+( 2014 ) for additional details of training , including the specifics of the architecture used .
+After the model is trained , we can use the convolutional network as a feature extractor for images by computing an embedding vector f ( p ) for an image p.
+Suppose we would like to obtain a Picturebook embedding for a given word w.
+We first perform an image search with query w to obtain a ranked list of images p w 1 , .
+, p w k .
+The Picturebook embedding for a word w is then represented as : e p ( w ) = [ f ( p w 1 ) ; f ( p w 2 ) ; .
+; f ( p w k ) ] ( 3 ) namely , the concatenation of the feature vectors in ranked order .
+In our model , each embedding results in a 64 - dimensional vector with the final Picturebook embedding being 64 ⇤ k dimensions .
+Most of our experiments use k = 10 images resulting in a word embedding size of 640 .
+To obtain the full collection of embeddings , we run the full Glove vocabulary ( 2.2 M words ) through image search to obtain a corresponding Picturebook embedding to each word in the Glove vocabulary .
+Visual vs Semantic Similarity .
+The training procedure is heavily influenced by the choice of similarity function r i , j .
+We consider two types of image similarity : visual and semantic .
+As an example , an image of a blue car would have high visual similarity to other blue cars but would have higher semantic similarity to cars of the same make , independent of color .
+In our experiments we consider two types of Picturebook embedding : one trained through optimizing for visual similarity and another for semantic similarity .
+As we will show in our experiments , the semantic Picturebook embeddings result in representations that are more useful for natural language processing tasks than the visual embeddings .
+Multimodal Fusion Gating .
+Picturebook embeddings on their own are likely to be useful for representing concrete words but it is not clear whether they will be of benefit for abstract words .
+Consequently , we would like to fuse our Picturebook embeddings with other sources of information , for example Glove embeddings ( Pennington et al . , 2014 ) or randomly initialized embeddings that will be trained .
+Let e g = e g ( w ) be our other embedding ( i.e. , Glove ) for a word w and e p = e p ( w ) be our Picturebook embedding .
+We fuse our embeddings using a multimodal gating mechanism : g = ( e g , e p ) ( 4 ) e = g ( e g ) + ( 1 g ) ( e p ) ( 5 ) where is a 1 hidden layer DNN with ReLU activations and sigmoid outputs , and are 1 hidden layer DNNs with ReLU activations and tanh outputs .
+The gating DNN allows the model to learn how visual a word is as a function of its input e p and e g .
+Similar gating mechanisms can be found in LSTMs ( Hochreiter and Schmidhuber , 1997 ) and other multimodal models ( Arevalo et al . , 2017;Wang et al . , 2018;Kiela et al . , 2018 ) .
+On some experiments we found it beneficial to include a skip connection from the hidden layer of .
+We chose this form of fusion over other approaches , such as CCA variants and metric learning methods , to allow for easier interpretability and analysis .
+We leave comparison of alternative fusion strategies for future work .
+Contextual Gating .
+The gating described above is non - contextual , in the sense that each embedding computes a gate value independent of the context the words occur in .
+In some cases it may be beneficial to use contextual gates that are aware of the sentence that words appear in to decide how to weight Glove and Picturebook embeddings .
+For contextual gates , we use the same approach as above except we replace the controller ( e g , e p ) with inputs that have been fed through a bidirectional - LSTM , e.g. ( BiLSTM(e g ) , BiLSTM(e p ) ) .
+We experiment with contextual gating for all experiments that use a bidirectional - LSTM encoder .
+Inverse Picturebook .
+Picturebook embeddings can be seen as a form of implicit image search : given a word ( or phrase ) , image search the word query and concatenate the embeddings of the images produced by a CNN .
+Up until now , we have only discussed scenarios where we have a word and we want to perform this implicit search operation .
+In generative modelling problems ( i.e. , MT ) , we want to perform the opposite operation .
+Given a Picturebook embedding , we want to find the closest word or phrase aligned to the representation .
+For example , given the word ' bicycle ' in English and its Picturebook embedding , we want to find the closest French word that would generate this representation ( i.e. , ' vélo ' ) .
+We want to perform this inverse image search operation given its Picturebook embedding .
+We introduce a differentiable mechanism which allows us to align words across source and target languages in the Picturebook embedding domain .
+Let h be our internal representation of our model ( i.e. , seq2seq decoder state ) , and e i be the i - th word embedding from our Picturebook embedding matrix E p : p(y i |h ) = exp(hh , e i i ) P j exp(hh , e j i)(6 ) Given a representation h , Equation 6 simply finds the most similar word in the embedding space .
+This can be easily implemented by setting the output softmax matrix as the transpose of the Picturebook embedding matrix E p .
+In practice , we find adding additional parameters helps with learning : p(y i |h ) = exp(hh , e i + e 0 i i + b i ) P j exp(hh , e j + e 0 j i + b j ) ( 7 ) where e 0 i is a trainable weight vector per word and b i is a trainable bias per word .
+A similar technique to tie the softmax matrix as the transpose of the embedding matrix can be found in language modelling ( Press and Wolf , 2017;Inan et al . , 2017 ) .
+Experiments .
+To evaluate the effectiveness of our embeddings , we perform both quantitative and qualitative evaluation across a wide range of natural language processing tasks .
+Hyperparameter details of each experiment are included in the appendix .
+Since the use of Picturebook embeddings adds extra parameters to our models , we include a baseline for each experiment ( either based on Glove or learned embeddings ) that we extensively tune .
+In most experiments , we end up with baselines that are stronger than what has previously been reported .
+Nearest neighbours .
+In order to get a sense of the representations our model learns , we first compute nearest neighbour results of several words , shown in Table 2 .
+These results can be interpreted as follows : the words that appear as neighbours are those which have semantically similar images to that of the query .
+Often this captures visual similarity as well .
+Some words capture multimodality , such as ' deep ' referring both to deep sea as well as to AI .
+Searching for cities returns cities which have visually similar characteristics .
+Words like ' sun ' also return the corresponding word in different languages , such as ' Sol ' in Spanish and ' Soleil ' in French .
+Finally , it 's worth highlighting that the most frequent association of a word may not be what is represented in image search results .
+For example , the word ' is ' returns words related to terrorists and ISIS and ' it ' returns words related to scary and clowns due to the 2017 film of the same name .
+We also report nearest neighbour examples across languages in Appendix A.1 . Word similarity .
+Our first quantitative experiment aims to determine how well Picturebook embeddings capture word similarity .
+We use the SimLex-999 dataset ( Hill et al . , 2015 ) and report results across 9 categories : all ( the whole evaluation ) , adjectives , nouns , verbs , concreteness quartiles and the hardest 333 pairs .
+For the concreteness quartiles , the first quartile corresponds to the most abstract words , while the last corresponds to the most concrete words .
+The hardest pairs are those for which similarity is difficult to distinguish from relatedness .
+This is an interesting category since image - based word embeddings are perhaps less likely to confuse similarity with relatedness than distributional - based methods .
+For Glove , scores Table 3 : SimLex-999 results ( Spearman 's ⇢ ) .
+Best results overall are bolded .
+Best results per section are underlined .
+Bracketed numbers signify the number of images used .
+Some rows are copied across sections for ease of reading .
+are computed via cosine similarity .
+For computing a score between 2 word pairs with Picturebook , we set s(w ( 1 ) , w ( 2 ) ) = min i , j d(e i , e ( 2 ) j ) .
+2 That is , the score is minus the smallest cosine distance between all pairs of images of the two words .
+Note that this reduces to negative cosine distance when using only 1 image per word .
+We also report results combining Glove and Picturebook by summing their two independent similarity scores .
+By default , we use 10 images for each embedding using the semantic convolutional network .
+Table 3 displays our results , from which several observations can be made .
+First , we observe that combining Glove and Picturebook leads to improved similarity across most categories .
+For adjectives and the most abstract category , Glove performs significantly better , while for the most concrete category Picturebook is significantly better .
+This result confirms that Glove and Picturebook capture very different properties of words .
+Next we observe that the performance of Picturebook gets progressively better across each concreteness quartile rating , with a 20 point improvement over Glove for the most concrete category .
+For the hardest subset of words , Picturebook performs slightly better than Glove while Glove performs better across all pairs .
+We also compare to a convolutional network trained with visual similarity .
+We observe a performance difference between our visual and semantic embeddings : on all categories except verbs , the semantic embeddings outperform visual ones , even on the most concrete categories .
+This indicates the importance of the type of similarity used for training the model .
+Finally we note that adding more images nearly consistently improves similarity scores across categories .
+Kiela et al .
+( 2016 ) showed that after 10 - 20 images , performance tends to saturate .
+All subsequent experiments use 10 images with semantic Picturebook .
+Sentential Inference and Relatedness .
+We next consider experiments on 3 pairwise prediction datasets : SNLI ( Bowman et al . , 2015 ) , MultiNLI ( Williams et al . , 2017 ) and SICK ( Marelli et al . , 2014 ) .
+The first two are natural language inference tasks and the third is a sentence semantic relatedness task .
+We explore the use of two types of sentential encoders : Bag - of - Words ( BoW ) and BiLSTM - Max ( Conneau et al . , 2017a For SICK , we follow previous work and report average results across 5 runs ( Tai et al . , 2015 ) .
+Due to the small size of the dataset , we only experiment with BoW on SICK .
+The full details of hyperparameters are discussed in Appendix B.
+Table 4 displays our results .
+For BoW models , adding Picturebook embeddings to Glove results in significant gains across all three tasks .
+For BiLSTM - Max , our contextual gating sets a new state - of - the - art on SNLI sentence encoding methods ( methods without interaction layers ) , outperforming the recently proposed methods of I m and Cho ( 2017 ) ; Shen et al .
+( 2018 ) .
+It is worth noting the effect that different encoders have when using our embeddings .
+While non - contextual gating is sufficient to improve bag - of - words methods , with BiLSTM - Max it slightly hurts performance over the Glove baseline .
+Adding contextual gating was necessary to improve over the Glove baseline on SNLI .
+Finally we note the strength of our own Glove baseline over the reported results of Conneau et al .
+( 2017a ) , from which we improve on their accuracy from 85.0 to 86.8 on the development set .
+3 .
+Sentiment and Topic Classification .
+Our next set of experiments aims to determine how well Picturebook embeddings do on tasks that are primarily non - visual , such as topic and sentiment classification .
+We experiment with 7 datasets provided by Zhang et al .
+( 2015 ) and compare bag - ofwords models against n - gram baselines provided by the authors as well as fastText ( Joulin et al . , 2017 ) .
+Hyperparameter details are reported in Appendix B.
+Our experimental results are provided in Table 5 .
+Perhaps unsurprisingly , adding Picturebook to Glove matches or only slightly improves on 5 out of 7 tasks and obtains a lower result on AG News and Yahoo .
+Our results show that Picturebook embeddings , while minimally aiding in performance , can perform reasonably well on their own -outperforming the n - gram baselines of ( Zhang et al . , 2015 ) on 5 out of 7 tasks and the unigram fastText baseline on all 7 tasks .
+This result shows that our embeddings are able to work as a general text embedding , though they typically lag behind Glove .
+We note that the best performing methods on these tasks are based on convolutional neural networks ( Conneau et al . , 2017b ) .
+Image - Sentence Ranking .
+We next consider experiments that map images and sentences into a common vector space for retrieval .
+Here , we utilize VSE++ ( Faghri et al . , 2017 ) as our base model and evaluate on the COCO dataset ( Lin et al . , 2014 ) .
+VSE++ improves over the original CNN - LSTM embedding method of Kiros et al .
+( 2015a ) by using hard negatives instead of summing over contrastive examples .
+We re - implement their model with 2 modifications : 1 ) we replace the unidirectional LSTM encoder with a BiLSTM - Max sentence encoder and 2 ) we use Inception - V3 ( Szegedy et al . , 2016 ) as our CNN instead of ResNet 152 ( He et al . , 2016 ) .
+As in previous work , we report the mean Recall@K ( R@K ) and the median rank over 1000 images and 5000 sentences .
+Full details of the hyperparameters are in Appendix B.
+Table 6 displays our results on this task .
+Model AG DBP Yelp P.
+Yelp F.
+Yah .
+A.
+Amz .
+F.
+Amz .
+P.
+BoW ( Zhang et al . , 2015 ) 88.8 96.6 92.2 58.0 68.9 54.6 90.4 ngrams ( Zhang et al . , 2015 ) 92.0 98.6 95.6 56.3 68.5 54.3 92.0 ngrams TFIDF ( Zhang et al . , 2015 ) 92.4 98.7 95.4 54.8 68.5 52.4 91.5 fastText ( Joulin et al . , 2017 ) 91 Image Annotation Image Search Model R@1 R@5 R@10 Med r R@1 R@5 R@10 Med r VSE++ ( Faghri et Table 6 : COCO test - set results for image - sentence retrieval experiments .
+Our models use VSE++ .
+R@K is Recall@K ( high is good ) .
+Med r is the median rank ( low is good ) .
+Our Glove baseline was able to match or outperform the reported results in Faghri et al .
+( 2017 ) with the exception of Recall@10 for image annotation , where it performs slightly worse .
+Glove+Picturebook improves over the Glove baseline for image search but falls short on image annotation .
+However , using contextual gating results in improvements over the baseline on all metrics except R@1 for image annotation .
+Our reported results have been recently outperformed by Gu et al .
+( 2018 ) ; Huang et al .
+( 2018b ) ; Lee et al .
+( 2018 ) , which are more sophisticated methods that incorporate generative modelling , reinforcement learning and attention .
+Machine Translation .
+We experiment with the Multi30k ( Elliott et al . , 2016(Elliott et al . , , 2017 ) ) dataset for MT .
+We compare our Picturebook models with other text - only nonensembled models on the Flickr Test2016 , Flickr Test2017 and MSCOCO test sets from Caglayan et al .
+( 2017 ) , the winner of the WMT 17 Multimodal Machine Translation competition ( Elliott et al . , 2017 ) .
+We use the standard seq2seq ( Sutskever et al . , 2015 ) with content - based attention ( Bahdanau et al . , 2015 ) model and we describe our hyperparmeters in Appendix B.
+Table 7 summarizes our English ! German results and Table 8 summarizes our English ! French results .
+We find our models to perform better in BLEU than METEOR relatively com - pared to ( Caglayan et al . , 2017 ) .
+We believe this is due to the fact we did not use Byte Pair Encoding ( BPE ) ( Sennrich et al . , 2016 ) , and ME - TEOR captures word stemming ( Denkowski and Lavie , 2014 ) .
+This is also highlighted where our French models perform better than our German models relatively , due to the compounding nature of German words .
+Since seq2seq MT models are typically trained without Glove embeddings , we also did not use Glove embeddings for this task , but rather we combine randomly initialized learnable embeddings with the fixed Picturebook embeddings .
+We find the gating mechanism not to help much with the MT task since the trainable embeddings are free to change their norm magnitudes .
+We did not experiment with regularizing the norm of the embeddings .
+On the English ! German tasks , we find our Picturebook model to perform on average 0.8 BLEU or 0.7 METEOR over our baseline .
+On the German task , compared to the previously best published results ( Caglayan et al . , 2017 ) we do better in BLEU but slightly worse in METEOR .
+We suspect this is due to the fact that we did not use BPE .
+On the English ! French task , the Picturebook models do on average 1.2 BLEU better or 1.0 METEOR over our baseline .
+We also report results for the IWSLT 2014 German - English task ( Cettolo et al . , 2014 ) in Table 9 .
+Compared to our baseline , we report a gain of 0.3 and 1.1 BLEU for German ! English and English ! German respectively .
+We ( Huang et al . , 2018a ) .
+We note that the NPMT is not a seq2seq model and can be augmented with our Picturebook embeddings .
+We also note that our models may not be directly comparable to previously published seq2seq models from ( Wiseman and Rush , 2016;Bahdanau et al . , 2017 ) since we used a deeper encoder and decoder .
+Limitations .
+We explored the use of Picturebook for larger machine translation tasks , including the popular WMT14 benchmarks .
+For these tasks , we found that models that incorporate Picturebook led to faster convergence .
+However , we were not able to improve upon BLEU scores from equivalent models that do not use Picturebook .
+This indicates that while our embeddings are useful for smaller MT experiments , further research is needed on how to best incorporate grounded representations in larger translation tasks .
+Gate Analysis .
+In this section we perform an extensive analysis of the gating mechanism for models trained across datasets used in our experiments .
+In our first experiment , we aim to determine how well gate activations correlate to a ) human judgments of concreteness and b ) image dispersion ( Kiela et al . , 2014 ) .
+For concreteness ratings , we use the dataset of Brysbaert et al .
+( 2013 ) which provides ratings for 40,000 English lemmas .
+Image dispersion is the average distance between all pairs of images returned from a search query .
+It was shown in Kiela et al .
+( 2014 ) that abstract words tend to have higher dispersion ratings , due to having much higher variety in the types of images returned from a query .
+On the other hand , low dispersion ratings were more associated with concrete words .
+For each word , we compute the mean gate activation value for Picturebook embeddings .
+4 For concreteness ratings , we take the intersection of words that have ratings with the dataset vocabulary .
+We then compute the Spearman correlation of mean gate activations with a ) concreteness ratings and b ) image dispersion scores .
+Table 10 illustrates the result of this analysis .
+We observe that gates have high correlations with concreteness ratings and strong negative correlations with image dispersion scores .
+Moreover , this result holds true across all datasets , even those that are not inherently visual .
+These results provide evidence that our gating mechanism actively prefers Glove embeddings for abstract words and Picturebook embeddings for concrete words .
+Appendix A contains examples of words that most strongly activate Glove and Picturebook gates .
+MIXER ( Ranzato et al . , 2016 ) 21.8 Beam Search Optimization ( Wiseman and Rush , 2016 ) 25.5 Actor - Critic + Log Likelihood ( Bahdanau et al . , 2017 ) 28.5 Neural Phrase - based Machine Translation ( Huang et al . , 2018a ) 29.9 Finally we analyze the parts - of - speech ( POS ) of the highest activated words .
+These results are shown in Figure 1 .
+The highest scoring Picturebook words are almost all singular and plural nouns ( NN / NNS ) .
+We also observe tags which are exclusively Glove oriented , namely adverbs ( RB ) , prepositions ( IN ) and determiners ( DT ) .
+Conclusion .
+Traditionally , word representations have been built on co - occurrences of neighbouring words ; and such representations only make use of the statistics of the text distribution .
+Picturebook embeddings offer an alternative approach to constructing word representations grounded in image search engines .
+In this work we demonstrated that Picturebook complements traditional embeddings on a wide variety of tasks .
+Through the use of multimodal gating , our models lead to interpretable weightings of abstract vs concrete words .
+In future work , we would like to explore other aspects of search engines for language grounding as well as the effect these embeddings may have on learning generic sentence representations ( Kiros et al . , 2015b;Hill et al . , 2016;Conneau et al . , 2017a;Logeswaran and Lee , 2018 ) .
+Recently , contextualized word representations have shown promising improvements when combined with existing embeddings ( Melamud et al . , 2016;Peters et al . , 2017;McCann et al . , 2017;Peters et al . , 2018 ) .
+We expect that integrating Picturebook with these embeddings to lead to further performance improvements as well .
+Acknowledgments .
+The authors would like to thank Chuck Rosenberg , Tom Duerig , Neil Alldrin , Zhen Li , Filipe Gonc ¸alves , Mia Chen , Zhifeng Chen , Samy Bengio , Yu Zhang , Kevin Swersky , Felix Hill and the ACL anonymous reviewers for their valuable advice and feedback .

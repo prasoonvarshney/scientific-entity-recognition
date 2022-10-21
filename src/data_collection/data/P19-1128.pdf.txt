@@ -1,0 +1,220 @@
+Graph Neural Networks with Generated Parameters for Relation Extraction .
+In this paper , we propose a novel graph neural network with generated parameters ( GP - GNNs ) .
+The parameters in the propagation module , i.e. the transition matrices used in message passing procedure , are produced by a generator taking natural language sentences as inputs .
+We verify GP - GNNs in relation extraction from text , both on bag - and instancesettings .
+Experimental results on a humanannotated dataset and two distantly supervised datasets show that multi - hop reasoning mechanism yields significant improvements .
+We also perform a qualitative analysis to demonstrate that our model could discover more accurate relations by multi - hop relational reasoning .
+Codes and data are released at https : //github.com / thunlp / gp - gnn .
+Introduction .
+In recent years , graph neural networks ( GNNs ) have been applied to various fields of machine learning , including node classification ( Kipf and Welling , 2016 ) , relation classification ( Schlichtkrull et al . , 2017 ) , molecular property prediction ( Gilmer et al . , 2017 ) , few - shot learning ( Garcia and Bruna , 2018 ) , and achieved promising results on these tasks .
+These works have demonstrated GNNs ' strong power to process relational reasoning on graphs .
+Relational reasoning aims to abstractly reason about entities / objects and their relations , which is an important part of human intelligence .
+Besides graphs , relational reasoning is also of great importance in many natural language processing tasks such as question answering , relation extraction , summarization , etc .
+Consider the example shown in Fig .
+1 , existing relation extraction models could easily extract the facts that Luc Besson directed a film Léon : The Professional and that the film is in English , but fail to infer the relationship between Luc Besson and English without multi - hop relational reasoning .
+By considering the reasoning patterns , one can discover that Luc Besson could speak English following a reasoning logic that Luc Besson directed Léon : The Professional and this film is in English indicates Luc Besson could speak English .
+However , most existing GNNs can only process multi - hop relational reasoning on pre - defined graphs and can not be directly applied in natural language relational reasoning .
+Enabling multi - hop relational reasoning in natural languages remains an open problem .
+To address this issue , in this paper , we propose graph neural networks with generated parameters ( GP - GNNs ) , to adapt graph neural networks to solve the natural language relational reasoning task .
+GP - GNNs first constructs a fullyconnected graph with the entities in the sequence of text .
+After that , it employs three modules to process relational reasoning : ( 1 ) an encoding module which enables edges to encode rich information from natural languages , ( 2 ) a propagation module which propagates relational information among various nodes , and ( 3 ) a classification module which makes predictions with node representations .
+As compared to traditional GNNs , GP - GNNs could learn edge parameters from natural languages , extending it from performing inference on only non - relational graphs or graphs with a limited number of edge types to unstructured inputs such as texts .
+In the experiments , we apply GP - GNNs to a classic natural language relational reasoning task : Léon : The Professional is a 1996 English - language French thriller film directed by Luc Besson .
+Léon .
+English Luc Besson .
+Language Spoken Language Cast member Figure 1 : An example of relation extraction from plain text .
+Given a sentence with several entities marked , we model the interaction between these entities by generating the weights of graph neural networks .
+Modeling the relationship between " Léon " and " English " as well as " Luc Besson " helps discover the relationship between " Luc Besson " and " English " .
+relation extraction from text .
+We carry out experiments on Wikipedia corpus aligned with Wikidata knowledge base ( Vrandečić and Krötzsch , 2014 ) and build a human annotated test set as well as two distantly labeled test sets with different levels of denseness . Experiment results show that our model outperforms other models on relation extraction task by considering multi - hop relational reasoning .
+We also perform a qualitative analysis which shows that our model could discover more relations by reasoning more robustly as compared to baseline models .
+Our main contributions are in two - fold : ( 1 ) We extend a novel graph neural network model with generated parameters , to enable relational message - passing with rich text information , which could be applied to process relational reasoning on unstructured inputs such as natural language .
+( 2 ) We verify our GP - GNNs on the task of relation extraction from text , which demonstrates its ability on multi - hop relational reasoning as compared to those models which extract relationships separately .
+Moreover , we also present three datasets , which could help future researchers compare their models in different settings .
+Related Work .
+Graph Neural Networks ( GNNs ) .
+GNNs were first proposed in ( Scarselli et al . , 2009 ) and are trained via the Almeida - Pineda algorithm ( Almeida , 1987 ) .
+Later the authors in Li et al .
+( 2016 ) replace the Almeida - Pineda algorithm with the more generic backpropagation and demonstrate its effectiveness empirically .
+Gilmer et al .
+( 2017 ) propose to apply GNNs to molecular property prediction tasks .
+Garcia and Bruna ( 2018 ) shows how to use GNNs to learn classifiers on image datasets in a few - shot manner .
+Gilmer et al .
+( 2017 ) study the effectiveness of message - passing in quantum chemistry .
+Dhingra et al .
+( 2017 ) apply message - passing on a graph constructed by coreference links to answer relational questions .
+There are relatively fewer papers discussing how to adapt GNNs to natural language tasks .
+For example , Marcheggiani and Titov ( 2017 ) propose to apply GNNs to semantic role labeling and Schlichtkrull et al .
+( 2017 ) apply GNNs to knowledge base completion tasks .
+Zhang et al .
+( 2018 ) apply GNNs to relation extraction by encoding dependency trees , and De Cao et al .
+( 2018 ) apply GNNs to multi - hop question answering by encoding co - occurence and coreference relationships .
+Although they also consider applying GNNs to natural language processing tasks , they still perform message - passing on predefined graphs .
+Johnson ( 2017 ) introduces a novel neural architecture to generate a graph based on the textual input and dynamically update the relationship during the learning process .
+In sharp contrast , this paper focuses on extracting relations from real - world relation datasets .
+Relational Reasoning .
+Relational reasoning has been explored in various fields .
+For example , Santoro et al .
+( 2017 ) propose a simple neural network to reason the relationship of objects in a picture , Xu et al .
+( 2017 ) build up a scene graph according to an image , and Kipf et al .
+( 2018 ) model the interaction of physical objects .
+In this paper , we focus on the relational reasoning in the natural language domain .
+Existing works ( Zeng et al . , 2014(Zeng et al . , , 2015;;Lin et al . , 2016 ) have demonstrated that neural networks are capa - ble of capturing the pair - wise relationship between entities in certain situations .
+For example , Zeng et al .
+( 2014 ) is one of the earliest works that applies a simple CNN to this task , and Zeng et al .
+( 2015 ) further extends it with piece - wise maxpooling .
+Nguyen and Grishman ( 2015 ) propose a multi - window version of CNN for relation extraction .
+Lin et al .
+( 2016 ) study an attention mechanism for relation extraction tasks .
+Peng et al .
+( 2017 ) predict n - ary relations of entities in different sentences with Graph LSTMs . Le and Titov ( 2018 ) treat relations as latent variables which are capable of inducing the relations without any supervision signals .
+Zeng et al .
+( 2017 ) show that the relation path has an important role in relation extraction .
+Miwa and Bansal ( 2016 ) show the effectiveness of LSTMs ( Hochreiter and Schmidhuber , 1997 ) in relation extraction .
+Christopoulou et al .
+( 2018 ) proposed a walk - based model to do relation extraction .
+The most related work is Sorokin and Gurevych ( 2017 ) , where the proposed model incorporates contextual relations with an attention mechanism when predicting the relation of a target entity pair .
+The drawback of existing approaches is that they could not make full use of the multihop inference patterns among multiple entity pairs and their relations within the sentence .
+Graph Neural Network with .
+Generated Parameters ( GP - GNNs ) We first define the task of natural language relational reasoning .
+Given a sequence of text with m entities , it aims to reason on both the text and entities and make a prediction of the labels of the entities or entity pairs .
+In this section , we will introduce the general framework of GP - GNNs . GP - GNNs first build a fully - connected graph G = ( V , E ) , where V is the set of entities , and each edge ( v i , v j ) ∈ E , v i , v j ∈ V corresponds to a sequence s = x i , j 0 , x i , j 1 , .
+, x i , j l−1 extracted from the text .
+After that , GP - GNNs employ three modules including ( 1 ) encoding module , ( 2 ) propagation module and ( 3 ) classification module to process relational reasoning , as shown in Fig .
+2 .
+Encoding Module .
+The encoding module converts sequences into transition matrices corresponding to edges , i.e. the parameters of the propagation module , by A ( n ) i , j = f ( E(x i , j 0 ) , E(x i , j 1 ) , • • • , E(x i , j l−1 ) ; θ n e ) , ( 1 ) where f ( • ) could be any model that could encode sequential data , such as LSTMs , GRUs , CNNs , E(• ) indicates an embedding function , and θ n e denotes the parameters of the encoding module of n - th layer .
+Propagation Module .
+The propagation module learns representations for nodes layer by layer .
+The initial embeddings of nodes , i.e. the representations of layer 0 , are task - related , which could be embeddings that encode features of nodes or just one - hot embeddings .
+Given representations of layer n , the representations of layer n + 1 are calculated by h ( n+1 ) i = v j ∈N ( v i ) σ(A ( n ) i , j h ( n ) j ) , ( 2 ) where N ( v i ) denotes the neighbours of node v i in graph G and σ(• ) denotes a non - linear activation function .
+Classification Module .
+Generally , the classification module takes node representations as inputs and outputs predictions .
+Therefore , the loss of GP - GNNs could be calculated as L = g(h 0 0:|V|−1 , h 1 0:|V|−1 , .
+, h K 0:|V|−1 , Y ; θ c ) , ( 3 ) where θ c denotes the parameters of the classification module , K is the number of layers in propagation module and Y denotes the ground truth label .
+The parameters in GP - GNNs are trained by gradient descent methods .
+Relation Extraction with GP - GNNs . Relation extraction from text is a classic natural language relational reasoning task .
+Given a sentence s = ( x 0 , x 1 , .
+, x l−1 ) , a set of relations R and a set of entities in this sentence V s = { v 1 , v 2 , .
+, v |Vs| } , where each v i consists of one or a sequence of tokens , relation extraction from text is to identify the pairwise relationship r v i , v j ∈ R between each entity pair ( v i , v j ) .
+In this section , we will introduce how to apply GP - GNNs to relation extraction .
+Encoding Module .
+Propagation .
+Module Classification Module h ( n ) 1 h ( n ) 2 h ( n ) 3 A ( n ) 1,2 A ( n ) 2,3 A ( n ) 3,1 x 1,2 3 x 1,2 4 x 1,2 2 x 1,2 1 x 1,2 0 Figure 2 : Overall architecture : an encoding module takes a sequence of vector representations as inputs , and output a transition matrix as output ; a propagation module propagates the hidden states from nodes to its neighbours with the generated transition matrix ; a classification module provides task - related predictions according to nodes representations .
+Encoding Module .
+To encode the context of entity pairs ( or edges in the graph ) , we first concatenate the position embeddings with word embeddings in the sentence : E(x i , j t ) = [ x t ; p i , j t ] , ( 4 ) where x t denotes the word embedding of word x t and p i , j t denotes the position embedding of word position t relative to the entity pair 's position i , j ( Details of these two embeddings are introduced in the next two paragraphs . ) After that , we feed the representations of entity pairs into encoder f ( • ) which contains a bi - directional LSTM and a multilayer perceptron : A ( n ) i , j = [ MLPn(BiLSTMn((E(x i , j 0 ) , E(x i , j 1 ) , • • • , E(x i , j l−1 ) ) ] , ( 5 ) where n denotes the index of layer 1 , [ • ] means reshaping a vector as a matrix , BiLSTM encodes a sequence by concatenating tail hidden states of the forward LSTM and head hidden states of the backward LSTM together and MLP denotes a multilayer perceptron with non - linear activation σ .
+Word Representations .
+We first map each token x t of sentence { x 0 , x 1 , .
+, x l−1 } to a kdimensional embedding vector x t using a word embedding matrix W e ∈ R |V |×dw , where |V | is the size of the vocabulary .
+Throughout this paper , we stick to 50 - dimensional GloVe embeddings pre - trained on a 6 - billion - word corpus ( Pennington et al . , 2014 ) .
+Position Embedding .
+In this work , we consider a simple entity marking scheme 2 : we mark each token in the sentence as either belonging to the first entity v i , the second entity v j or to neither of those .
+Each position marker is also mapped to a d p -dimensional vector by a position embedding matrix P ∈ R 3×dp .
+We use notation p i , j t to represent the position embedding for x t corresponding to entity pair ( v i , v j ) .
+Propagation Module .
+Next , we use Eq . ( 2 ) to propagate information among nodes where the initial embeddings of nodes and number of layers are further specified as follows .
+The Initial Embeddings of Nodes Suppose we are focusing on extracting the relationship between entity v i and entity v j , the initial embeddings of them are annotated as h ( 0 ) v i = a subject , and h ( 0 ) v j = a object , while the initial embeddings of other entities are set to all zeros .
+We set special values for the head and tail entity 's initial embeddings as a kind of " flag " messages which we expect to be passed through propagation .
+Annotators a subject and a object could also carry the prior knowledge about subject entity and object entity .
+In our experiments , we generalize the idea of Gated Graph Neural Networks ( Li et al . , 2016 ) by setting a subject = [ 1 ; 0 ] and a object = [ 0 ; 1 ] 3 .
+Number of Layers .
+In general graphs , the number of layers K is chosen to be of the order of the graph diameter so that all nodes obtain information from the entire graph .
+In our context , however , since the graph is densely connected , the depth is interpreted simply as giving the model more expressive power .
+We treat K as a hyperparameter , the effectiveness of which will be discussed in detail ( Sect .
+5.4 ) .
+Classification Module .
+The output module takes the embeddings of the target entity pair ( v i , v j ) as input , which are first converted by : rv i , v j = [ [ h ( 1 ) v i h ( 1 ) v j ] ; [ h ( 2 ) v i h ( 2 ) v j ] ; .
+; [ h ( K ) v i h ( K ) v j ] ] , ( 6 ) where represents element - wise multiplication .
+This could be used for classification : P(rv i , v j |h , t , s ) = softmax(MLP(rv i , v j ) ) , ( 7 ) where r v i , v j ∈ R , and MLP denotes a multi - layer perceptron module .
+We use cross entropy here as the classification loss L = s∈S i = j log P(rv i , v j |i , j , s),(8 ) where r v i , v j denotes the relation label for entity pair ( v i , v j ) and S denotes the whole corpus .
+In practice , we stack the embeddings for every target entity pairs together to infer the underlying relationship between each pair of entities .
+We use PyTorch ( Paszke et al . , 2017 ) to implement our models .
+To make it more efficient , we avoid using loop - based , scalar - oriented code by matrix and vector operations .
+Experiments .
+Our experiments mainly aim at : ( 1 ) showing that our best models could improve the performance of relation extraction under a variety of settings ; ( 2 ) illustrating that how the number of layers affect the performance of our model ; and ( 3 ) performing a qualitative investigation to highlight the difference between our models and baseline models .
+In both part ( 1 ) and part ( 2 ) , we do three subparts of experiments : ( i ) we will first show that our models could improve instance - level relation extraction on a human annotated test set , and ( ii ) then we will show that our models could also help enhance the performance of bag - level relation extraction on a distantly labeled test set 4 , and ( iii ) we also split a subset of distantly labeled test set , where the number of entities and edges is large .
+Experiment Settings .
+Datasets .
+Distantly labeled set Sorokin and Gurevych ( 2017 ) have proposed a dataset with Wikipedia corpora .
+There is a small difference between our task and theirs : our task is to extract the relationship between every pair of entities in the sentence , whereas their task is to extract the relationship between the given entity pair and the context entity pairs .
+Therefore , we need to modify their dataset : ( 1 ) We added reversed edges if they are missing from a given triple , e.g. if triple ( Earth , part of , Solar System ) exists in the sentence , we add a reversed label , ( Solar System , has a member , Earth ) , to it ; ( 2 ) For all of the entity pairs with no relations , we added " NA " labels to them .
+5 We use the same training set for all of the experiments .
+Human annotated test set Based on the test set provided by ( Sorokin and Gurevych , 2017 ) , 5 annotators 6 are asked to label the dataset .
+They are asked to decide whether or not the distant supervision is right for every pair of entities .
+Only the instances accepted by all 5 annotators are incorporated into the human annotated test set .
+There are 350 sentences and 1,230 triples in this test set .
+Dense distantly labeled test set .
+We further split a dense test set from the distantly labeled test set .
+Our criteria are : ( 1 ) the number of entities should be strictly larger than 2 ; and ( 2 ) there must be at least one circle ( with at least three entities ) in the ground - truth label of the sentence 7 .
+This test set could be used to test our methods ' performance on sentences with the complex interaction between entities .
+There are 1,350 sentences and more than 17,915 triples and 7,906 relational facts in this test set .
+Models for Comparison .
+We select the following models for comparison , the first four of which are our baseline models .
+Context - Aware RE , proposed by Sorokin and Gurevych ( 2017 ) .
+This model utilizes attention mechanism to encode the context relations for predicting target relations .
+It was the state - of - the - art models on Wikipedia dataset .
+This baseline is implemented by ourselves based on authors ' public repo 8 .
+Multi - Window CNN .
+Zeng et al .
+( 2014 ) utilize convolutional neural networks to classify relations .
+Different from the original version of CNN proposed in Zeng et al .
+( 2014 ) , our implementation , follows Nguyen and Grishman ( 2015 ) , concatenates features extracted by three different window sizes : 3 , 5 , 7 .
+PCNN , proposed by Zeng et al .
+( 2015 ) .
+This model divides the whole sentence into three pieces and applies max - pooling after convolution layer piece - wisely .
+For CNN and following PCNN , the entity markers are the same as originally proposed in Zeng et al .
+( 2014Zeng et al .
+( , 2015 ) ) .
+LSTM or GP - GNN with K = 1 layer .
+Bidirectional LSTM ( Schuster and Paliwal , 1997 ) could be seen as an 1 - layer variant of our model .
+GP - GNN with K = 2 or K = 3 layers .
+These models are capable of performing 2 - hop reasoning and 3 - hop reasoning , respectively .
+Hyper - parameters .
+We select the best parameters for the validation set .
+We select non - linear activation functions between relu and tanh , and select d n among { 2 , 4 , 8 , 12 , 16 } 9 .
+We have also tried two forms of adjacent matrices : tied - weights ( set A ( n ) = A ( n+1 ) ) and untied - weights .
+Table 1 shows our best hyper - parameter settings , which are used in all of our experiments .
+Evaluation Details .
+So far , we have only talked about the way to implement sentence - level relation extraction .
+To evaluate our models and baseline models in bag - level , we utilize a bag of sentences with a given entity pair to score the relations between them .
+Zeng et al .
+( 2015 ) formalize the bag - level relation extraction as multi - instance learning .
+Here , we fol- P@5 % P@10 % P@15 % P@20 % P@5 % P@10 % P@15 % P@20 % .
+The Effectiveness of the Number of Layers .
+The number of layers represents the reasoning ability of our models .
+A K - layer version has the ability to infer K - hop relations .
+To demonstrate the effects of the number of layers , we also compare our models with different numbers of lay - ers .
+From Table 2 and Table 3 , we could see that on all three datasets , 3 - layer version achieves the best .
+We could also see from Fig .
+3 that as the number of layers grows , the curves get higher and higher precision , indicating considering more hops in reasoning leads to better performance .
+However , the improvement of the third layer is much smaller on the overall distantly supervised test set than the one on the dense subset .
+This observation reveals that the reasoning mechanism could help us identify relations especially on sentences where there are more entities .
+We could also see that on the human annotated test set 3layer version to have a greater improvement over 2 - layer version as compared with 2 - layer version over 1 - layer version .
+It is probably due to the reason that bag - level relation extraction is much easier .
+In real applications , different variants could be selected for different kind of sentences or we can also ensemble the prediction from different models .
+We leave these explorations for future work .
+Qualitative Results : Case Study .
+Tab .
+4 shows qualitative results that compare our GP - GNN model and the baseline models .
+The results show that GP - GNN has the ability to infer the relationship between two entities with reasoning .
+In the first case , GP - GNN implicitly learns a logic rule ∃y , x ( BankUnited Center , located in , English ) .
+Note that ( BankUnited Center , located in , English ) is even not in Wikidata , but our model could identify this fact through reasoning .
+We also find that Context - Aware RE tends to predict relations with similar topics .
+For example , in the third case , share border with and located in are both relations about ter- .
+Acknowledgement .
+The authors thank the members of Tsinghua NLP lab 10 for their thoughtful suggestions .
+This work 10 http://thunlp.org is jointly supported by the NSFC project under the grant No . 61661146007 and the NExT++ project , the National Research Foundation , Prime Ministers Office , Singapore under its IRC@Singapore Funding Initiative .
+Hao Zhu is supported by Tsinghua Initiative Research Program .
+Table 4 : Sample predictions from the baseline models and our GP - GNN model .
+Ground truth graphs are the subgraph in Wikidata knowledge graph induced by the sets of entities in the sentences .
+The models take sentences and entity markers as input and produce a graph containing entities ( colored and bold ) and relations between them .
+Although " No Relation " is also be seen as a type of relation , we only show other relation types in the graphs .
+ritory issues .
+Consequently , Context - Aware RE makes a mistake by predicting ( Kentucky , share boarder with , Ohio ) .
+As we have discussed before , this is due to its mechanism to model cooccurrence of multiple relations .
+However , in our model , since Ohio and Johnson County have no relationship , this wrong relation is not predicted .
+Conclusion and Future Work .
+We addressed the problem of utilizing GNNs to perform relational reasoning with natural languages .
+Our proposed model , GP - GNN , solves the relational message - passing task by encoding natural language as parameters and performing propagation from layer to layer .
+Our model can also be considered as a more generic framework for graph generation problem with unstructured input other than text , e.g. image , video , audio .
+In this work , we demonstrate its effectiveness in predicting the relationship between entities in natural language and bag - level and show that by considering more hops in reasoning the performance of relation extraction could be significantly improved .

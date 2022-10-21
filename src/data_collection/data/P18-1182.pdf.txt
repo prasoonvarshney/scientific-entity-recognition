@@ -1,0 +1,204 @@
+NeuralREG : An end - to - end approach to referring expression generation .
+Traditionally , Referring Expression Generation ( REG ) models first decide on the form and then on the content of references to discourse entities in text , typically relying on features such as salience and grammatical function .
+In this paper , we present a new approach ( NeuralREG ) , relying on deep neural networks , which makes decisions about form and content in one go without explicit feature extraction .
+Using a delexicalized version of the WebNLG corpus , we show that the neural model substantially improves over two strong baselines .
+Data and models are publicly available 1 .
+Introduction .
+Natural Language Generation ( NLG ) is the task of automatically converting non - linguistic data into coherent natural language text ( Reiter and Dale , 2000;Gatt and Krahmer , 2018 ) .
+Since the input data will often consist of entities and the relations between them , generating references for these entities is a core task in many NLG systems ( Dale and Reiter , 1995;Krahmer and van Deemter , 2012 ) .
+Referring Expression Generation ( REG ) , the task responsible for generating these references , is typically presented as a twostep procedure .
+First , the referential form needs to be decided , asking whether a reference at a given point in the text should assume the form of , for example , a proper name ( " Frida Kahlo " ) , a pronoun ( " she " ) or description ( " the Mexican painter " ) .
+In addition , the REG model must account for the different ways in which a particular referential form can be realized .
+For example , both " Frida " and 1 https://github.com/ThiagoCF05/ NeuralREG " Kahlo " are name - variants that may occur in a text , and she can alternatively also be described as , say , " the famous female painter " .
+Most of the earlier REG approaches focus either on selecting referential form ( Orita et al . , 2015;Castro Ferreira et al . , 2016 ) , or on selecting referential content , typically zooming in on one specific kind of reference such as a pronoun ( e.g. , Henschel et al . , 2000;Callaway and Lester , 2002 ) , definite description ( e.g. , Dale and Haddock , 1991;Dale and Reiter , 1995 ) or proper name generation ( e.g. , Siddharthan et al . , 2011;van Deemter , 2016;Castro Ferreira et al . , 2017b ) .
+Instead , in this paper , we propose NeuralREG : an end - to - end approach addressing the full REG task , which given a number of entities in a text , produces corresponding referring expressions , simultaneously selecting both form and content .
+Our approach is based on neural networks which generate referring expressions to discourse entities relying on the surrounding linguistic context , without the use of any feature extraction technique .
+Besides its use in traditional pipeline NLG systems ( Reiter and Dale , 2000 ) , REG has also become relevant in modern " end - to - end " NLG approaches , which perform the task in a more integrated manner ( see e.g. Konstas et al . , 2017;Gardent et al . , 2017b ) .
+Some of these approaches have recently focused on inputs which references to entities are delexicalized to general tags ( e.g. , ENTITY-1 , ENTITY-2 ) in order to decrease data sparsity .
+Based on the delexicalized input , the model generates outputs which may be likened to templates in which references to the discourse entities are not realized ( as in " The ground of ENTITY-1 is located in ENTITY-2 . " ) .
+While our approach , dubbed as NeuralREG , is compatible with different applications of REG models , in this paper , we concentrate on the last one , relying on a specifically constructed set of 78,901 referring expressions to 1,501 entities in the context of the semantic web , derived from a ( delexicalized ) version of the WebNLG corpus ( Gardent et al . , 2017a , b ) .
+Both this data set and the model will be made publicly available .
+We compare NeuralREG against two baselines in an automatic and human evaluation , showing that the integrated neural model is a marked improvement .
+Related work .
+In recent years , we have seen a surge of interest in using ( deep ) neural networks for a wide range of NLG - related tasks , as the generation of ( first sentences of ) Wikipedia entries ( Lebret et al . , 2016 ) , poetry ( Zhang and Lapata , 2014 ) , and texts from abstract meaning representations ( e.g. , Konstas et al . , 2017;Castro Ferreira et al . , 2017a ) .
+However , the usage of deep neural networks for REG has remained limited and we are not aware of any other integrated , end - to - end model for generating referring expressions in discourse .
+There is , however , a lot of earlier work on selecting the form and content of referring expressions , both in psycholinguistics and in computational linguistics .
+In psycholinguistic models of reference , various linguistic factors have been proposed as influencing the form of referential expressions , including cognitive status ( Gundel et al . , 1993 ) , centering ( Grosz et al . , 1995 ) and information density ( Jaeger , 2010 ) .
+In models such as these , notions like salience play a central role , where it is assumed that entities which are salient in the discourse are more likely to be referred to using shorter referring expressions ( like a pronoun ) than less salient entities , which are typically referred to using longer expressions ( like full proper names ) .
+Building on these ideas , many REG models for generating references in texts also strongly rely on the concept of salience and factors contributing to it .
+Reiter and Dale ( 2000 ) for instance , discussed a straightforward rule - based method based on this notion , stating that full proper names can be used for initial references , typically less salient than subsequent references , which , according to the study , can be realized by a pronoun in case there is no mention to any other entity of same person , gender and number between the reference and its antecedents .
+More recently , Castro Ferreira et al .
+( 2016 ) proposed a data - driven , non - deterministic model for generating referential forms , taking into account salience features extracted from the discourse such as grammatical position , givenness and recency of the reference .
+Importantly , these models do not specify which contents a particular reference , be it a proper name or description , should have .
+To this end , separate models are typically used , including , for example , Dale and Reiter ( 1995 ) for generating descriptions , and Siddharthan et al .
+( 2011);van Deemter ( 2016 ) for proper names .
+Of course , when texts are generated in practical settings , both form and content need to be chosen .
+This was the case , for instance , in the GREC shared task ( Belz et al . , 2010 ) , which aimed to evaluate models for automatically generated referring expressions grounded in discourse .
+The input for the models were texts in which the referring expressions to the topic of the relevant Wikipedia entry were removed and appropriate references throughout the text needed to be generated ( by selecting , for each gap , from a list of candidate referring expressions of different forms and with different contents ) .
+Some participating systems approached this with traditional pipelines for selecting referential form , followed by referential content , while others proposed more integrated methods .
+More details about the models can be seen on Belz et al .
+( 2010 ) .
+In sum , existing REG models for text generation strongly rely on abstract features such as the salience of a referent for deciding on the form or content of a referent .
+Typically , these features are extracted automatically from the context , and engineering relevant ones can be complex .
+Moreover , many of these models only address part of the problem , either concentrating on the choice of referential form or on deciding on the contents of , for example , proper names or definite descriptions .
+In contrast , we introduce NeuralREG , an end - to - end approach based on neural networks which generates referring expressions to discourse entities directly from a delexicalized / wikified text fragment , without the use of any feature extraction technique .
+Below we describe our model in more detail , as well as the data on which we develop and evaluate it .
+3 Data and processing .
+WebNLG corpus .
+Our data is based on the WebNLG corpus ( Gardent et al . , 2017a ) , which is a parallel resource ini- tially released for the eponymous NLG challenge .
+In this challenge , participants had to automatically convert non - linguistic data from the Semantic Web into a textual format ( Gardent et al . , 2017b ) .
+The source side of the corpus are sets of Resource Description Framework ( RDF ) triples .
+Each RDF triple is formed by a Subject , Predicate and Object , where the Subject and Object are constants or Wikipedia entities , and predicates represent a relation between these two elements in the triple .
+The target side contains English texts , obtained by crowdsourcing , which describe the source triples .
+Figure 1 depicts an example of a set of 5 RDF triples and the corresponding text .
+The corpus consists of 25,298 texts describing 9,674 sets of up to 7 RDF triples ( an average of 2.62 texts per set ) in 15 domains ( Gardent et al . , 2017b ) .
+In order to be able to train and evaluate our models for referring expression generation ( the topic of this study ) , we produced a delexicalized version of the original corpus .
+Delexicalized WebNLG .
+We delexicalized the training and development parts of the WebNLG corpus by first automatically mapping each entity in the source representation to a general tag .
+All entities that appear on the left and right side of the triples were mapped to AGENTs and PATIENTs , respectively .
+Entities which appear on both sides in the relations of a set were represented as BRIDGEs . To distinguish different AGENTs , PATIENTs and BRIDGEs in a set , an ID was given to each entity of each kind ( PATIENT-1 , PATIENT-2 , etc . ) .
+Once all entities in the text were mapped to different roles , the first two authors of this study manually replaced the referring expressions in the original target texts by their respective tags .
+Figure 2 shows the entity mapping and the delexicalized template for the example in Figure 1 in its versions representing the references with general tags and Wikipedia IDs . We delexicalized 20,198 distinct texts describing 7,812 distinct sets of RDF triples , resulting in 16,628 distinct templates .
+While this dataset ( which we make available ) has various uses , we used it to extract a collection of referring expressions to Wikipedia entities in order to evaluate how well our REG model can produce references to entities throughout a ( small ) text .
+Referring expression collection .
+Using the delexicalized version of the WebNLG corpus , we automatically extracted all referring expressions by tokenizing the original and delexicalized versions of the texts and then finding the non overlapping items .
+For instance , by processing the text in Figure 1 and its delexicalized template in Figure 2 , we would extract referring expressions like " 108 St Georges Terrace " and " It " to AGENT-1 , 108 St Georges Terrace , " Perth " to BRIDGE-1 , Perth , " Australia " to PATIENT-1 , Australia and so on .
+Once all texts were processed and the referring expressions extracted , we filtered only the ones referring to Wikipedia entities , removing references to constants like dates and numbers , for which no references are generated by the model .
+In total , the final version of our dataset contains 78,901 referring expressions to 1,501 Wikipedia entities , in which 71.4 % ( 56,321 ) are proper names , 5.6 % ( 4,467 ) pronouns , 22.6 % ( 17,795 ) descriptions and 0.4 % ( 318 ) demonstrative referring expressions .
+We split this collection in training , developing and test sets , totaling 63,061 , 7,097 and 8,743 referring expressions in each one of them .
+Each instance of the final dataset consists of a truecased tokenized referring expression , the target entity ( distinguished by its Wikipedia ID ) , and the discourse context preceding and following the relevant reference ( we refer to these as the pre - and pos - context ) .
+Pre - and pos - contexts are the lowercased , tokenized and delexicalized Tag Entity AGENT-1 108 St Georges Terrace BRIDGE-1 Perth PATIENT-1 Australia PATIENT-2 1988@year PATIENT-3 " 120 million ( Australian dollars)"@USD PATIENT-4 50@Integer AGENT-1 was completed in PATIENT-2 in BRIDGE-1 , PATIENT-1 .
+AGENT-1 has a total of PATIENT-4 floors and cost PATIENT-3 .
+pieces of text before and after the target reference .
+References to other discourse entities in the pre - and pos - contexts are represented by their Wikipedia ID , whereas constants ( numbers , dates ) are represented by a one - word ID removing quotes and replacing white spaces with underscores ( e.g. , 120 million ( Australian dollars ) for " 120 million ( Australian dollars ) " in Figure 2 ) .
+Although the references to discourse entities are represented by general tags in a delexicalized template produced in the generation process ( AGENT-1 , BRIDGE-1 , etc . ) , for the purpose of disambiguation , NeuralREG 's inputs have the references represented by the Wikipedia ID of their entities .
+In this context , it is important to observe that the conversion of the general tags to the Wikipedia IDs can be done in constant time during the generation process , since their mapping , like the first representation in Figure 2 , is the first step of the process .
+In the next section , we show in detail how NeuralREG models the problem of generating a referring expression to a discourse entity .
+NeuralREG .
+NeuralREG aims to generate a referring expression y = { y 1 , y 2 , ... , y T } with T tokens to refer to a target entity token x ( wiki ) given a discourse precontext X ( pre ) = { x } with m and l tokens , respectively .
+The model is implemented as a multi - encoder , attentiondecoder network with bidirectional ( Schuster and Paliwal , 1997 ) Long - Short Term Memory Layers ( LSTM ) ( Hochreiter and Schmidhuber , 1997 ) sharing the same input word - embedding matrix V , as explained further .
+Context encoders .
+Our model starts by encoding the pre - and poscontexts with two separate bidirectional LSTM encoders ( Schuster and Paliwal , 1997;Hochreiter and Schmidhuber , 1997 ) .
+These modules learn feature representations of the text surrounding the target entity x ( wiki ) , which are used for the referring expression generation .
+The pre - context X ( pre ) = { x ( pre ) 1 , x ( pre ) 2 , ... , x(pre ) m } is represented by forward and backward hidden - state vectors ( − → h ( pre ) 1 , • • • , − → h ( pre ) m ) and ( ← − h ( pre ) 1 , • • • , ← − h ( pre ) m ) .
+The final annotation vector for each encoding timestep t is obtained by the concatenation of the forward and backward representations h ( pre ) t = [ − → h ( pre ) t , ← − h ( pre ) t ] .
+The same process is repeated for the pos - context resulting in representations ( − → h ( pos ) 1 , • • • , − → h ( pos ) l ) and ( ← − h ( pos ) 1 , • • • , ← − h ( pos ) l ) and annotation vectors h ( pos ) t = [ − → h ( pos ) t , ← − h ( pos ) t ] .
+Finally , the encoding of target entity x ( wiki ) is simply its entry in the shared input word - embedding matrix V wiki .
+Decoder .
+The referring expression generation module is an LSTM decoder implemented in 3 different versions : Seq2Seq , CAtt and HierAtt .
+All decoders at each timestep i of the generation process take as input features their previous state s i−1 , the target entity - embedding V wiki , the embedding of the previous word of the referring expression V y i−1 and finally the summary vector of the pre - and poscontexts c i .
+The difference between the decoder variations is the method to compute c i .
+Seq2Seq models the context vector c i at each timestep i concatenating the pre - and pos - context annotation vectors averaged over time : ĥ(pre ) = 1 N N i h ( pre ) i ( 1 ) ĥ(pos ) = 1 N N i h ( pos ) i ( 2 ) ci = [ ĥ(pre ) , ĥ(pos ) ] ( 3 ) CAtt is an LSTM decoder augmented with an attention mechanism ( Bahdanau et al . , 2015 ) over the pre - and pos - context encodings , which is used to compute c i at each timestep .
+We compute energies e ( k ) ij = v ( k)T a tanh(W ( k ) a si−1 + U ( k ) a h ( k ) j ) ( 4 ) α ( k ) ij = exp(e ( k ) ij ) N n=1 exp(e ( k ) in ) ( 5 ) In general , the attention probability α ( k ) ij determines the amount of contribution of the jth token of k - context in the generation of the ith token of the referring expression .
+In each decoding step i , a final summary - vector for each context c ( k ) i is computed by summing the encoder states h ( k ) j weighted by the attention probabilities α ( k ) i : c ( k ) i = N j=1 α ( k ) ij h ( k ) j ( 6 ) To combine c HierAtt implements a second attention mechanism inspired by Libovický and Helcl ( 2017 ) in order to generate attention weights for the pre - and pos - context summary - vectors c ( k ) i = v ( k)T b tanh(W ( k ) b si−1 + U ( k ) b c ( k ) i ) ( 7 ) β ( k ) i = exp(e ( k ) i ) n exp(e ( n ) i ) ( 8) ci = k β ( k ) i U ( k ) b c ( k ) i ( 9 ) Decoding Given the summary - vector c i , the embedding of the previous referring expression token V y i−1 , the previous decoder state s i−1 and the entity - embedding V wiki , the decoders predict their next state which later is used to compute a probability distribution over the tokens in the output vocabulary for the next timestep as Equations 10 and 11 show .
+si = Φ dec ( si−1 , [ ci , Vy i−1 , V wiki ] ) ( 10 ) p(y i |y < i , X ( pre ) , x ( wiki ) , X ( pos ) ) = softmax(W c s i + b)(11 ) In Equation 10 , s 0 and c 0 are zero - initialized vectors .
+In order to find the referring expression y that maximizes the likelihood in Equation 11 , we apply a beam search with length normalization with α = 0.6 ( Wu et al . , 2016 ): lp(y ) = ( 5 + |y| ) α ( 5 + 1 ) α ( 12 ) The decoder is trained to minimize the negative log likelihood of the next token in the target referring expression : J(θ ) = − i log p(yi|y < i , X ( pre ) , x ( wiki ) , X ( pos ) ) ( 13 ) .
+Models for Comparison .
+We compared the performance of NeuralREG against two baselines : OnlyNames and a model based on the choice of referential form method of Castro Ferreira et al .
+( 2016 ) , dubbed Ferreira .
+OnlyNames is motivated by the similarity among the Wikipedia ID of an element and a proper name reference to it .
+This method refers to each entity by their Wikipedia ID , replacing each underscore in the ID for whitespaces ( e.g. , Appleton International Airport to " Appleton International Airport " ) .
+Ferreira works by first choosing whether a reference should be a proper name , pronoun , description or demonstrative .
+The choice is made by a Naive Bayes method as Equation 14 depicts .
+P ( f | X ) ∝ P ( f ) x∈X P ( x | f ) f ∈F P ( f ) x∈X P ( x | f ) ( 14 ) The method calculates the likelihood of each referential form f given a set of features X , consisting of grammatical position and information status ( new or given in the text and sentence ) .
+Once the choice of referential form is made , the most frequent variant is chosen in the training corpus given the referent , syntactic position and information status .
+In case a referring expression for a wiki target is not found in this way , a backoff method is applied by removing one factor at a time in the following order : sentence information status , text information status and grammatical position .
+Finally , if a referring expression is not found in the training set for a given entity , the same method as OnlyNames is used .
+Regarding the features , syntactic position distinguishes whether a reference is the subject , object or subject determiner ( genitive ) in a sentence .
+Text and sentence information statuses mark whether a reference is a initial or a subsequent mention to an entity in the text and the sentence , respectively .
+All features were extracted automatically from the texts using the sentence tokenizer and dependency parser of Stanford CoreNLP ( Manning et al . , 2014 ) .
+Automatic evaluation .
+Data We evaluated our models on the training , development and test referring expression sets described in Section 3.3 . Metrics .
+We compared the referring expressions produced by the evaluated models with the goldstandards ones using accuracy and String Edit Distance ( Levenshtein , 1966 ) .
+Since pronouns are highlighted as the most likely referential form to be used when a referent is salient in the discourse , as argued in the introduction , we also computed pronoun accuracy , precision , recall and F1 - score in order to evaluate the performance of the models for capturing discourse salience .
+Finally , we lexicalized the original templates with the referring expressions produced by the models and compared them with the original texts in the corpus using accuracy and BLEU score ( Papineni et al . , 2002 ) as a measure of fluency .
+Since our model does not handle referring expressions for constants ( dates and numbers ) , we just copied their source version into the template .
+Post - hoc McNemar 's and Wilcoxon signed ranked tests adjusted by the Bonferroni method were used to test the statistical significance of the models in terms of accuracy and string edit distance , respectively .
+To test the statistical significance of the BLEU scores of the models , we used a bootstrap resampling together with an approximate randomization method ( Clark et al . , 2011 ) 2 .
+Settings NeuralREG was implemented using Dynet ( Neubig et al . , 2017 ) .
+Source and target word embeddings were 300D each and trained jointly with the model , whereas hidden units were 512D for each direction , totaling 1024D in the bidirection layers .
+All non - recurrent matrices were initialized following the method of Glorot and Bengio ( 2010 ) .
+Models were trained using stochastic gradient descent with Adadelta ( Zeiler , 2012 ) and mini - batches of size 40 .
+We ran each model for 60 epochs , applying early stopping for model selection based on accuracy on the development set with patience of 20 epochs .
+For each decoding version ( Seq2Seq , CAtt and HierAtt ) , we searched for the best combination of drop - out probability of 0.2 or 0.3 in both the encoding and decoding layers , using beam search with a size of 1 or 5 with predictions up to 30 tokens or until 2 ending tokens were predicted ( EOS ) .
+The results described in the next section were obtained on the test set by the NeuralREG version with the highest accuracy on the development set over the epochs .
+Results Table 1 summarizes the results for all models on all metrics on the test set and Table 2 depicts a text example lexicalized by each model .
+The first thing to note in the results of the first table is that the baselines in the top two rows performed quite strong on this task , generating more than half of the referring expressions exactly as in the goldstandard .
+The method based on Castro Ferreira et al .
+( 2016 ) performed statistically better than On - lyNames on all metrics due to its capability , albeit to a limited extent , to predict pronominal references ( which OnlyNames obviously can not ) .
+We reported results on the test set for Neu - ralREG+Seq2Seq and NeuralREG+CAtt using ( 2 ) Accuracy ( Acc . ) , Precision ( Prec . ) , Recall ( Rec . ) and F - Score results in the prediction of pronominal forms ; and ( 3 ) Accuracy ( Acc . ) and BLEU score results of the texts with the generated referring expressions .
+Rankings were determined by statistical significance .
+dropout probability 0.3 and beam size 5 , and Neu - ralREG+HierAtt with dropout probability of 0.3 and beam size of 1 selected based on the highest accuracy on the development set .
+Importantly , the three NeuralREG variant models statistically outperformed the two baseline systems .
+They achieved BLEU scores , text and referential accuracies as well as string edit distances in the range of 79.01 - 79.39 , 28%-30 % , 73%-74 % and 2.25 - 2.36 , respectively .
+This means that NeuralREG predicted 3 out of 4 references completely correct , whereas the incorrect ones needed an average of 2 post - edition operations in character level to be equal to the gold - standard .
+When considering the texts lexicalized with the referring expressions produced by NeuralREG , at least 28 % of them are similar to the original texts .
+Especially noteworthy was the score on pronoun accuracy , indicating that the model was well capable of predicting when to generate a pronominal reference in our dataset .
+The results for the different decoding methods for NeuralREG were similar , with the Neu - ralREG+CAtt performing slightly better in terms of the BLEU score , text accuracy and String Edit Distance .
+The more complex Neural - REG+HierAtt yielded the lowest results , even though the differences with the other two models were small and not even statistically significant in many of the cases .
+Human Evaluation .
+Complementary to the automatic evaluation , we performed an evaluation with human judges , comparing the quality judgments of the original texts to the versions generated by our various models .
+Material We quasi - randomly selected 24 instances from the delexicalized version of the WebNLG corpus related to the test part of the re - ferring expression collection .
+For each of the selected instances , we took into account its source triple set and its 6 target texts : one original ( randomly chosen ) and its versions with the referring expressions generated by each of the 5 models introduced in this study ( two baselines , three neural models ) .
+Instances were chosen following 2 criteria : the number of triples in the source set ( ranging from 2 to 7 ) and the differences between the target texts .
+For each size group , we randomly selected 4 instances ( of varying degrees of variation between the generated texts ) giving rise to 144 trials (= 6 triple set sizes * 4 instances * 6 text versions ) , each consisting of a set of triples and a target text describing it with the lexicalized referring expressions highlighted in yellow .
+Method .
+The experiment had a latin - square design , distributing the 144 trials over 6 different lists such that each participant rated 24 trials , one for each of the 24 corpus instances , making sure that participants saw equal numbers of triple set sizes and generated versions .
+Once introduced to a trial , the participants were asked to rate the fluency ( " does the text flow in a natural , easy to read manner ? " ) , grammaticality ( " is the text grammatical ( no spelling or grammatical errors ) ? " ) and clarity ( " does the text clearly express the data ? " ) of each target text on a 7 - Likert scale , focussing on the highlighted referring expressions .
+The experiment is available on the website of the author 3 .
+Participants We recruited 60 participants , 10 per list , via Mechanical Turk .
+Their average age was 36 years and 27 of them were females .
+The majority declared themselves native speakers of .
+Model Text .
+OnlyNames alan shepard was born in new hampshire on 1923 - 11 - 18 .
+before alan shepard death in california alan shepard had been awarded distinguished service medal ( united states navy ) an award higher than department of commerce gold medal .
+Ferreira .
+alan shepard was born in new hampshire on 1923 - 11 - 18 .
+before alan shepard death in california him had been awarded distinguished service medal an award higher than department of commerce gold medal .
+Seq2Seq .
+alan shepard was born in new hampshire on 1923 - 11 - 18 .
+before his death in california him had been awarded the distinguished service medal by the united states navy an award higher than the department of commerce gold medal .
+CAtt .
+alan shepard was born in new hampshire on 1923 - 11 - 18 .
+before his death in california he had been awarded the distinguished service medal by the us navy an award higher than the department of commerce gold medal .
+HierAtt .
+alan shephard was born in new hampshire on 1923 - 11 - 18 .
+before his death in california he had been awarded the distinguished service medal an award higher than the department of commerce gold medal .
+Original alan shepard was born in new hampshire on 18 november 1923 .
+before his death in california he had been awarded the distinguished service medal by the us navy an award higher than the department of commerce gold medal .
+English ( 44 ) , while 14 and 2 self - reported as fluent or having a basic proficiency , respectively .
+Results Table 3 summarizes the results .
+Inspection of the Table reveals a clear pattern : all three neural models scored higher than the baselines on all metrics , with especially NeuralREG+CAtt approaching the ratings for the original sentences , although -again -differences between the neural models were small .
+Concerning the size of the triple sets , we did not find any clear pattern .
+To test the statistical significance of the pairwise comparisons , we used the Wilcoxon signedrank test corrected for multiple comparisons using the Bonferroni method .
+Different from the automatic evaluation , the results of both baselines were not statistically significant for the three metrics .
+In comparison with the neural models , NeuralREG+CAtt significantly outperformed the baselines in terms of fluency , whereas the other comparisons between baselines and neural models were not statistically significant .
+The results for the 3 different decoding methods of NeuralREG also did not reveal a significant difference .
+Finally , the original texts were rated significantly higher than both baselines in terms of the three metrics , also than NeuralREG+Seq2Seq and Neu - ralREG+HierAtt in terms of fluency , and than NeuralREG+Seq2Seq in terms of clarity .
+Discussion .
+This study introduced NeuralREG , an end - to - end approach based on neural networks which tackles the full Referring Expression Generation process .
+It generates referring expressions for discourse entities by simultaneously selecting form and content without any need of feature extraction techniques .
+The model was implemented using an encoder - decoder approach where a target referent and its surrounding linguistic contexts were first encoded and combined into a single vector representation which subsequently was decoded into a referring expression to the target , suitable for the specific discourse context .
+In an automatic evaluation on a collection of 78,901 referring expressions to 1,501 Wikipedia entities , the different versions of the model all yielded better results than the two ( competitive ) baselines .
+Later in a complementary human evaluation , the texts with referring expressions generated by a variant of our novel model were considered statistically more fluent than the texts lexicalized by the two baselines .
+Data The collection of referring expressions used in our experiments was extracted from a novel , delexicalized and publicly available version of the WebNLG corpus ( Gardent et al . , 2017a , b ) , where the discourse entities were replaced with general tags for decreasing the data sparsity .
+Besides the REG task , these data can be useful for many other tasks related to , for instance , the NLG process ( Reiter and Dale , 2000;Gatt and Krahmer , 2018 ) and Wikification ( Moussallem et al . , 2017 ) .
+Baselines We introduced two strong baselines which generated roughly half of the referring expressions identical to the gold standard in an automatic evaluation .
+These baselines performed relatively well because they frequently generated full names , which occur often for our wikified references .
+However , they performed poorly when it came to pronominalization , which is an important ingredient for fluent , coherent text .
+OnlyNames , as the name already reveals , does not manage to generate any pronouns .
+However , the approach of Castro Ferreira et al .
+( 2016 ) also did not perform well in the generation of pronouns , revealing a poor capacity to detect highly salient entities in a text .
+NeuralREG was implemented with 3 different decoding architectures : Seq2Seq , CAtt and HierAtt .
+Although all the versions performed relatively similar , the concatenativeattention ( CAtt ) version generated the closest referring expressions from the gold - standard ones and presented the highest textual accuracy in the automatic evaluation .
+The texts lexicalized by this variant were also considered statistically more fluent than the ones generated by the two proposed baselines in the human evaluation .
+Surprisingly , the most complex variant ( HierAtt ) with a hierarchical - attention mechanism gave lower results than CAtt , producing lexicalized texts which were rated as less fluent than the original ones and not significantly more fluent from the ones generated by the baselines .
+This result appears to be not consistent with the findings of Libovický and Helcl ( 2017 ) , who reported better results on multi - modal machine translation with hierarchical - attention as opposed to the flat variants ( Specia et al . , 2016 ) .
+Finally , our NeuralREG variant with the lowest results were our ' vanilla ' sequence - to - sequence ( Seq2Seq ) , whose the lexicalized texts were significantly less fluent and clear than the original ones .
+This shows the importance of the attention mechanism in the decoding step of NeuralREG in order to generate fine - grained referring expressions in discourse .
+Conclusion .
+We introduced a deep learning model for the generation of referring expressions in discourse texts .
+NeuralREG decides both on referential form and on referential content in an integrated , end - to - end approach , without using explicit features .
+Using a new delexicalized version of the WebNLG corpus ( made publicly available ) , we showed that the neural model substantially improves over two strong baselines in terms of accuracy of the referring expressions and fluency of the lexicalized texts .
+Acknowledgments .
+This work has been supported by the National Council of Scientific and Technological Development from Brazil ( CNPq ) under the grants 203065/2014 - 0 and 206971/2014 - 1 .

@@ -1,0 +1,144 @@
+Pre - trained Language Model Based Active Learning for Sentence Matching .
+Active learning is able to significantly reduce the annotation cost for data - driven techniques .
+However , previous active learning approaches for natural language processing mainly depend on the entropy - based uncertainty criterion , and ignore the characteristics of natural language .
+In this paper , we propose a pre - trained language model based active learning approach for sentence matching .
+Differing from previous active learning , it can provide linguistic criteria from the pre - trained language model to measure instances and help select more effective instances for annotation .
+Experiments demonstrate our approach can achieve greater accuracy with fewer labeled training instances .
+Introduction .
+Sentence matching is a fundamental technology in natural language processing .
+Over the past few years , deep learning as a data - driven technique has yielded state - of - the - art results on sentence matching ( Wang et al . , 2017;Chen et al . , 2016;Gong et al . , 2017;Yang et al . , 2016;Parikh et al . , 2016;Gong et al . , 2017;Kim et al . , 2019 ) .
+However , this data - driven technique typically requires large amounts of manual annotation and brings much cost .
+If large labeled data ca n't be obtained , the advantages of deep learning will significantly diminish .
+To alleviate this problem , active learning is proposed to achieve better performance with fewer labeled training instances ( Settles , 2009 ) .
+Instead of randomly selecting instances , active learning can measure the whole candidate instances according to some criteria , and then select more efficient instances for annotation ( Zhang et al . , 2017;Shen et al . , 2017;Erdmann et al . , ; Kasai et al . , 2019;Xu et al . , 2018 ) .
+However , previous active learning approaches in natural language processing mainly depend on the entropy - based uncertainty criterion ( Settles , 2009 ) , and ignore the characteristics of natural language .
+To be more specific , if we ignore the linguistic similarity , we may select redundant instances and waste many annotation resources .
+Thus , how to devise linguistic criteria to measure candidate instances is an important challenge .
+Recently , pre - trained language models ( Peters et al . , 2018;Radford et al . , 2018;Devlin et al . , 2018;Yang et al . , 2019 ) have been shown to be powerful for learning language representation .
+Accordingly , pre - trained language models may provide a reliable way to help capture language characteristics .
+In this paper , we devise linguistic criteria from a pre - trained language model to capture language characteristics , and then utilize these extra linguistic criteria ( noise , coverage and diversity ) to enhance active learning .
+It is shown in Figure 1 .
+Experiments on both English and Chinese sentence matching datasets demonstrate the pre - trained language model can enhance active learning .
+Methodology .
+In a general active learning scenario , there is a small set of labeled training data P and a large pool of available unlabeled data Q.
+Active learning is to select instances in Q according to some criteria , and then label them and add them into P , so as to maximize classifier M performance and minimize annotation cost .
+More details of preliminaries about sentence matching and active learning are in the Appendix .
+Pre - trained Language Model .
+We choose the widely used language model BERT ( Devlin et al . , 2018 ) as the pre - trained language model .
+From BERT , we can obtain two kinds of information to provide linguistic criteria .
+One is the cross entropy loss s a i of reconstructing of the i - th word a i in sentence A ( the same with another B ) by masking only a i and predicting a i again .
+The other is word embeddings ( contextual representations of the last layer ) a=[e(a 1 ) , e(a 2 ) , .
+, e(a l A ) ] in the sentence , where l A is the length of sentence A.
+Criteria for Instance Selection .
+( 1 ) Uncertainty : The uncertainty criterion indicates classification uncertainty of an instance and is the standard criterion in active learning .
+Instances with high uncertainty are more helpful to optimize the classifier and thus are worthier to be selected .
+The uncertainty is computed as the entropy , and we can obtain uncertainty rank rank uncer ( x i ) for the i - th instance in Q based on the entropy .
+Formally , rank uncer ( x i ) ∝ −Ent(x i ) ( 1 ) where Ent(x i ) = − k P ( y i = k|x i ) log P ( y i = k|x i ) .
+( 2 ) Noise : The noise criterion indicates how much potential noise there is in an instance .
+Intuitively , instances with noise may degrade the labeled data P , and we want to select noiseless instances .
+Noisy instances usually have rare expression with low generating probability .
+Thus , tokens in noisy instances may be hard to be reconstructed with context by the pre - trained language model .
+Based on this assumption , noise criterion is formulated about losses of reconstructing masked tokens : rank noise ( x i ) ∝ −P ( A ) − P ( B)(2 ) where P ( A ) = P ( a 1 a 2 .
+a l A ) ∝ l A i∈l A sa i .
+P ( B ) is similar .
+rank noise ( x i ) denotes noise rank of the i - th instance in Q , s a i /s b i is the reconstruction loss of the i - th word a i /b i in sentence A / B from the pre - trained language model .
+( 3 ) Coverage : The coverage criterion indicates whether the language expression of the current instance can enrich representation learning .
+On the one hand , some tokens like stop words are meaningless and easy to model ( high coverage ) .
+On the other hand , the classifier needs fresh instances ( low coverage ) to enrich representation learning .
+These fresh instances like relatively low - frequency professional expressions usually have lower generating probabilities than common ones .
+Thus , we can employ reconstruction losses to capture the low coverage ones as follows : rank cover ( x i ) ∝ − j∈l A c a j s a j j∈l A c a j − j∈l B c b j s b j j∈l B c b j ( 3 ) c a j = 0 if s a j > β 1 others , c b j = 0 if s b j > β 1 others ( 4 ) where β denotes a hyperparameter to distinguish noise and is set as 10.0 . ( 4 ) Diversity : The diversity criterion indicates the diversity of instances .
+Redundant instances are inefficient and waste annotation resources .
+In contrast , diverse ones can help learn more various language expressions and matching patterns .
+First , we use a vector v i for instance representation of a sentence pair instance x i .
+To model the difference between two sentences , we employ the subtraction of word embeddings between " Delete Sequence " L D and " Insert Sequence " L I from Levenshtein Distance ( when we transform sentence A to sentence B by deleting and inserting tokens , these tokens are added into L D and L I respectively ) .
+It is illustrated in the Appendix .
+Besides , the word embeddings in the subtraction are weighted by reconstruction losses .
+Intuitively , meaningless tokens such as preposition should have less weight , and they are usually easier to predict with lower reconstruction losses .
+Formally , v i = j∈L I w b j e(b j ) − j∈L D w a j e(a j ) ( 5 ) w a j = s a j k∈l A s a k , w b j = s b j k∈l B s b k ( 6 ) where s a i /s b j is the reconstruction loss of the i / j - th word of sentence A / B.
+e(a j ) /e(b j ) denotes word embdeddings .
+w a i /w b j denotes the weight for tokens .
+With instance representation , we want to select diverse ones that are representative and different from each other .
+Specifically , we employ k - means clustering algorithm for diversity rank as follows : rank diver ( x i ) = 0 if v i • v i ∈ O diver n others(7 ) where O diver are the centers of n clusters of { v i • v i } .
+• denotes multiplication on element .
+Instance Selection .
+In practice , according to different effectiveness of criteria , we combine ranks of criteria and select the top n candidate instances in unlabeled data Q.
+Specifically , we sequentially use rank uncer , rank diver , rank cover , rank noise to select top 8n , 4n , 2n , n candidate instances , and add the final n instances into labeled data P for training at every round .
+3 Experiments .
+Settings and Comparisons .
+We conduct experiments on Both English and Chinese datasets , including SNLI ( Bowman et al . , 2015 ) , MultiNLI ( Williams et al . , 2017 ) , Quora ( Iyer et al . , 2017 ) , LCQMC ( Liu et al . , 2018 ) , BQ ( Chen et al . , 2018 ) .
+The number of instances to select at every round is n = 100 .
+We choose ( Devlin et al . , 2018 ) as classifier M and perform 25 rounds of active learning .
+There is a held - out test set for evaluation after all rounds .
+We compare the following active learning approaches : ( 1)Random sampling ( Random ) randomly selects instances for annotation and training at each round .
+( 2)Uncertainty sampling ( Entropy ) is the standard entropy criterion ( Tong and Koller , 2001;Zhu et al . , 2008 ) .
+( 3)Expected Gradient Length ( EGL ) aims to select instances expected to result in the greatest change to the gradients of tokens ( Settles and Craven , 2008;Zhang et al . , 2017 ) .
+( 4)Pre - trained language model ( LM ) is our proposed active learning approach .
+Results .
+Table 1 and Figure 2 ( 1 - 5 ) report accuracy and learning curves of each approach on the five datasets .
+Overall , our approach obtains better performance on both English and Chinese datasets .
+We can know that extra linguistic criteria are effective , demonstrating that a pre - trained language model can substantially capture language characteristics and provide more efficient instances for training .
+Besides , active learning approaches always obtain better performance than random sampling .
+It demonstrates that the amount of labeled data for sentence matching can be substantially reduced by active learning .
+And EGL performs worse than the standard approach active learning , maybe gradient based active learning is not suitable for sentence matching .
+In fact , sentence matching needs to capture the difference between sentences and gradients of a single token ca n't reflect the relation .
+Moreover , we show the relation between the size of unlabeled data and accuracy in Figure 2 ( 6 ) , we can see the superiority of the pre - trained model based approach is more significant for larger data size .
+Ablation Study .
+To validate the effectiveness of extra linguistic criteria , we separately combining them with standard uncertainty criterion .
+" Ent " denotes the standard uncertainty criterion , " E+Noi / E+Cov / E+Div / E+All " denotes combining uncertainty with noise / coverage / diversity / all criteria .
+Table 1 reports the accuracy .
+Curves are also illustrated in the Appendix .
+We can see each combined criterion performs better than a single uncertainty criterion .
+It demonstrates that each linguistic criterion from a pre - trained language model helps capture language characteristics and enhances selection of instances .
+More ablation discussions are shown in the Appendix .
+Conclusion .
+In this paper , we combine active learning with a pre - trained language model .
+We devise extra linguistic criteria from a pre - trained language model , which can capture language characteristics and enhance active learning .
+Experiments show that our proposed active learning approach obtains better performance .
+Appendix A : More Details and Discussions Sentence Matching Task : Given a pair of sentences as input , the goal of the task is to judge the relation between them , such as whether they express the same meaning .
+In formal , we have two sentences A=[a 1 , a 2 , .
+, a l A ] and B=[b 1 , b 2 , .
+, b l B ] , where a i and b j denote the i - th and j - th word respectively in corresponding sentences , and l A and l B denote the length of corresponding sentences .
+Through a shared word embedding matrix W e ∈ R ne×d , we can obtain word embeddings of input sentences a=[e(a 1 ) , e(a 2 ) , .
+, e(a l A ) ] and b=[e(b 1 ) , e(b 2 ) , .
+, e(b l B ) ] , where n e denotes the vocabulary size , d denotes the embedding size and e(a i ) and e(b j ) denote the word embedding of the i - th and j - th word respectively in corresponding sentences .
+And there is a sentence matching model M to predict a label ŷ based on a and b.
+When testing , we choose the label with the highest probability in prediction distribution P ( y i |a , b ; θ M ) as output , where θ M denotes parameters of the model M and y i denotes a possible label .
+When training , the model M is optimized by minimizing cross entropy : Loss = −P ( y|a , b ; θ M ) log P ( y|a , b ; θ M ) ( 8) where y denotes the golden label .
+Standard Active Learning : In a general active learning scenario , there exists a small set of labeled data P and a large pool of available unlabeled data Q.
+P is for training a classifier and can absorb new instances from Q.
+The task for the active learning is to select instances in Q based on some criteria , and then label them and add them into P , so as to maximize classifier performance and minimize annotation cost .
+In the selection criteria , a measure is used to score all candidate instances in Q , and instances maximizing this measure are selected into P .
+The process is illustrated in Algorithm 1 .
+The instance selection process is iterative , and the process will repeat until a fixed annotation budget is reached .
+At every round , there are n instances to be selected and labeled .
+Train and update classifier M based on P 6 : until The annotation budget is exhausted With the same amount of labeled data P , criteria for instance selection in active learning determine the classifier performance .
+Commonly , the criteria is mainly based on uncertainty criterion ( uncertainty sampling ) , in which ones near decision boundaries have priority to be selected .
+A general uncertainty criterion uses entropy , which is defined as follows : Ent(x i ) = − k P ( y i = k|x i ) log P ( y i = k|x i ) ( 9 ) where k indexes all possible labels , x i denotes a candidate instance that is made up of a pair of sentences A and B in available unlabeled data Q.
+Visualization of Delete Sequence and Insert Sequence : To model the difference between two sentences , we employ the subtraction of word embeddings between " Delete Sequence " and " Insert Sequence " from Levenshtein Distance ( when we transform sentence A to sentence B by deleting and inserting tokens , these tokens are added into " Delete Sequence " and " Insert Sequence " espectively ) .
+We illustrate it in 2 provides statistics of these datasets .
+( 1)SNLI : an English natural language inference corpus based on image captioning .
+( 2)MultiNLI : an English natural language inference corpus with greater linguistic difficulty and diversity .
+( 3)Quora : an English question matching corpus from the online question answering forum Quora .
+( 4)LCQMC : an open - domain Chinese question matching corpus from the community question answering website Baidu Knows .
+( Configuration : The number of instances to select n is 100 at every round and we perform 25 rounds of active learning , that is there are total of 2500 labeled instances for training in the end .
+Batch size is 16 for English and 32 for Chinese , Adam is used for optimization .
+We evaluated performance by calculating accuracy and learning curves on a held - out test set ( classes are fairly balanced in datasets ) after all rounds .
+Table 3 and Figure 5 report accuracy and learning curves respectively .
+We can see contextual representations are better than context - dependent representations .
+In intuition , contextual representations are more exact especially when dealing with polysemy .
+Next , we find our proposed method outperforms sentence vector based methods ( Topic , AE , and Skip ) .
+It is possibly because BERT used more data to learn language representations .
+( 2)Effectiveness of subtraction operation on Levenshtein Distance : Here we validate the effectiveness of the operation that uses the subtraction of word embeddings between " Delete Sequence " and " Insert Sequence " in diversity criterion on SNLI dataset .
+We compare it with 4 baselines : ( a ) using the sum of word embeddings of the two sentences ( Sum ) ; ( b ) directly using the subtraction of word embeddings of .
+Acknowledgements .
+The work is supported by the National Natural Science Foundation of China under Grant Nos.61533018 , U1936207 , 61976211 , and 61702512 .
+This research work was also supported by the independent research project of National Laboratory of Pattern Recognition and the Youth Innovation Promotion Association CAS .
+the two sentences without " Delete Sequence " and " Insert Sequence " ( Sub ) ; ( c ) without weight for word embeddings ( Nowei ) ; ( d ) without absolute value operation for symmetry ( Noabs ) .
+Table 4 : Accuracy of subtraction operation on Levenshtein Distance .
+Table 4 and Figure 6 report accuracy and learning curves respectively .
+We can see subtraction operation is better than sum operation .
+It demonstrates that subtraction has better ability to capture the difference between two sentences , and provides better instance representation for diversity rank .
+We can see the results without " Delete Sequence " and " Insert Sequence " performs a little worse , proving its necessity .
+And the results without weight operation for word embeddings perform worse .
+We can know weight for meaningless tokens is effective .
+Besides , we can see the results without absolute value operation for symmetry is worse , demonstrating absolute value operation is necessary .

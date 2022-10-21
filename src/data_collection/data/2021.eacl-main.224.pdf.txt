@@ -1,0 +1,135 @@
+Unsupervised Abstractive Summarization of Bengali Text Documents .
+Abstractive summarization systems generally rely on large collections of documentsummary pairs .
+However , the performance of abstractive systems remains a challenge due to the unavailability of the parallel data for low - resource languages like Bengali .
+To overcome this problem , we propose a graph - based unsupervised abstractive summarization system in the single - document setting for Bengali text documents , which requires only a Part - Of - Speech ( POS ) tagger and a pre - trained language model trained on Bengali texts .
+We also provide a human - annotated dataset with document - summary pairs to evaluate our abstractive model and to support the comparison of future abstractive summarization systems of the Bengali Language .
+We conduct experiments on this dataset and compare our system with several well - established unsupervised extractive summarization systems .
+Our unsupervised abstractive summarization model outperforms the baselines without being exposed to any human - annotated reference summaries .
+1 * Equal contribution .
+Listed by alphabetical order .
+1 We make our code & dataset publicly available at https://github.com/tafseer-nayeem/ BengaliSummarization for reproduciblity .
+Introduction .
+The process of shortening a large text document with the most relevant information of the source is known as automatic text summarization .
+A good summary should be coherent , non - redundant , and grammatically readable while retaining the original document 's most important contents ( Nenkova and McKeown , 2012;Nayeem et al . , 2018 ) .
+There are two types of summarizations : extractive and abstractive .
+Extractive summarization is about ranking important sentences from the original text .
+The abstractive method generates human - like sentences using natural language generation techniques .
+Traditionally used abstractive techniques are sentence compression , syntactic reorganization , sentence fusion , and lexical paraphrasing ( Lin and Ng , 2019 ) .
+Compared to extractive , abstractive summary generation is indeed a challenging task .
+A cluster of sentences uses multi - sentence compression ( MSC ) to summarize into one single sentence originally called sentence fusion ( Barzilay and McKeown , 2005;Nayeem and Chali , 2017b ) .
+The success of neural sequence - tosequence ( seq2seq ) models with attention ( Bahdanau et al . , 2015;Luong et al . , 2015 ) provides an effective way for text generation which has been extensively applied in the case of abstractive summarization of English language documents ( Rush et al . , 2015;Chopra et al . , 2016;Nallapati et al . , 2016;Miao and Blunsom , 2016;Paulus et al . , 2018;Nayeem et al . , 2019 ) .
+These models are usually trained with lots of gold summaries , but there is no large - scale human - annotated abstractive summaries available for low - resource language like Bengali .
+In contrast , the unsupervised approach reduces the human effort and cost for collecting and annotating large amount of paired training data .
+Therefore , we choose to create an effective Bengali Text Summarizer with an unsupervised approach .
+The summary of our contributions : • To the best of our knowledge , our Bengali Text Summarization model ( BenSumm ) is the very first unsupervised model to generate abstractive summary from Bengali text documents while being simple yet robust .
+• We also introduce a highly abstractive dataset with document - summary pairs to evaluate our model , which is written by professional summary writers of National Curriculum and Textbook Board ( NCTB ) .
+2 • We design an unsupervised abstractive sentence generation model that performs sentence fusion on Bengali texts .
+Our model requires only POS tagger and a pre - trained language model , which is easily reproducible .
+Related works .
+Many researchers have worked on text summarization and introduced different extractive and abstractive methods .
+Nevertheless , very few attempts have been made for Bengali Text summarization despite Bangla being the 7 th most spoken language .
+3 Das and Bandyopadhyay ( 2010 ) developed Bengali opinion based text summarizer using given topic which can determine the information on sentiments of the original texts .
+Haque et al .
+( 2017Haque et al .
+( , 2015 ) ) worked on extractive Bengali text summarization using pronoun replacement , sentence ranking with term frequency , numerical figures , and overlapping of title words with the document sentences .
+Unfortunately , the methods are limited to extractive summarization , which ranks some important sentences from the document instead of generating new sentences which is challenging for an extremely low resource language like Bengali .
+Moreover , there is no human - annotated dataset to compare abstractive summarization methods of this language .
+Jing and McKeown ( 2000 ) worked on Sentence Compression ( SC ) which has received considerable attention in the NLP community .
+Potential utility for extractive text summarization made SC very popular for single or multi - document summarization ( Nenkova and McKeown , 2012 ) .
+Tex - tRank ( Mihalcea and Tarau , 2004 ) and LexRank ( Erkan and Radev , 2004 ) are graph - based methods for extracting important sentences from a document .
+Clarke and Lapata ( 2008 ) ; Filippova ( 2010 ) showed a first intermediate step towards abstractive summarization , which compresses original sentences for a summary generation .
+The Word - Graph based approaches were first proposed by ( Filippova , 2010 ) , which require only a POS tagger and a list of stopwords .
+Boudin and Morin ( 2013 ) improved Filippova 's approach by re - ranking the compression paths according to keyphrases , which resulted in more informative sentences .
+Nayeem et al .
+( 2018 ) developed an unsupervised abstractive summarization system that jointly performs sentence fusion and paraphrasing .
+BenSumm Model .
+We here describe each of the steps involved in our Bengali Unsupervised Abstractive Text Summarization model ( BenSumm ) for single document setting .
+Our preprocessing step includes tokenization , removal of stopwords , Part - Of - Speech ( POS ) tagging , and filtering of punctuation marks .
+We use the NLTK 4 and BNLP 5 to preprocess each sentence and obtain a more accurate representation of the information .
+Sentence Clustering .
+The clustering step allows us to group similar sentences from a given document .
+This step is critical to ensure good coverage of the whole document and avoid redundancy by selecting at most one sentence from each cluster ( Nayeem and Chali , 2017a ) .
+The Term Frequency - Inverse Document Frequency ( TF - IDF ) measure does not work well ( Aggarwal and Zhai , 2012 ) .
+Therefore , we calculate the cosine similarity between the sentence vectors obtained from ULMfit pre - trained language model ( Howard and Ruder , 2018 ) .
+We use hierarchical agglomerative clustering with the ward 's method ( Murtagh and Legendre , 2014 ) .
+There will be a minimum of 2 and a maximum of n − 1 clusters .
+Here , n denotes the number of sentences in the document .
+We measure the number of clusters for a given document using the silhouette value .
+The clusters are highly coherent as it has to contain sentences similar to every other sentence in the same cluster even if the clusters are small .
+The following formula can measure silhouette Score : Silhouette Score = ( x − y ) max(x , y)(1 ) where y denotes mean distance to the other instances of intra - cluster and x is the mean distance to the instances of the next closest cluster .
+Word Graph ( WG ) Construction .
+Textual graphs to generate abstractive summaries provide effective results ( Ganesan et al . , 2010 ) .
+We chose to build an abstractive summarizer with a sentence fusion technique by generating word graphs ( Filippova , 2010;Boudin and Morin , 2013 ) for the Bengali Language .
+This method is entirely unsupervised and needs only a POS tagger , which is highly suitable for the low - resource setting .
+Given a cluster of related sentences , we construct a word - graph following ( Filippova , 2010;Boudin and Morin , 2013 ) .
+Let , a set of related sentences S = { s 1 , s 2 , ... , s n } , we construct a graph G = ( V , E ) by iteratively adding sentences to it .
+The words are represented as vertices along with the parts - of - speech ( POS ) tags .
+Directed edges are formed by connecting the adjacent words from the sentences .
+After the first sentence is added to the graph as word nodes ( punctuation included ) , words from the other related sentences are mapped onto a node in the graph with the same POS tag .
+Each sentence of the cluster is connected to a dummy start and end node to mark the beginning and ending sentences .
+After constructing the word - graph , we can generate M -shortest paths from the dummy start node to the end node in the word graph ( see Figure 1 ) .
+Figure 2 presents two sentences , which is one of the source document clusters , and the possible paths with their weighted values are generated using the word - graph approach .
+Figure 1 illustrates an example WG for these two sentences .
+Start .
+After constructing clusters given a document , a word - graph is created for each cluster to get abstractive fusions from these related sentences .
+We get multiple weighted sentences ( see Figure 2 ) form the clusters using the ranking strategy ( Boudin and Morin , 2013 ) .
+We take the top - ranked sentence from each cluster to present the summary .
+We generate the final summary by merging all the topranked sentences .
+The overall process is presented in Figure 3 .
+We also present a detailed illustration of our framework with an example source document in the Appendix .
+Single Document .
+Preprocessing .
+Clustering .
+Cluster n Cluster 1 .
+Word Graph Generation Sentence Fusion .
+Ranking .
+Word Graph Generation Sentence Fusion .
+Ranking .
+System Summary .
+দ ুঃস্বভাবের মান ষ মান বষর রূপ দদবে ম গ্ধ হয় এেং তার ফল দভাগ কবর । যার স্বভাে , তার স্পর্ শ , তার রীততনীততবক মান ষ ঘৃ ণা কবর । স্বভাে গঠবন কঠঠন পতরশ্রম ও সাধনা চাই , নইবল র্য়তানবক পরাজিত করা সম্ভে নয় । তার স ন্দর ম ে দদবে আনজন্দত হবয়া না । .
+[ Evil people are fascinated by human form and enjoy its fruits .
+People hate his nature , his touch , his customs .
+We need hard work and pursuit to form the nature , otherwise it is not possible to defeat the devil .
+Do n't be happy to see the beautiful faces . ] Human Reference .
+Experiments .
+This section presents our experimental details for assessing the performance of the proposed Ben - Summ model .
+Dataset .
+We conduct experiments on our dataset which consists of 139 samples of human - written abstractive document - summary pairs written professional summary writers of the National Curriculum and Textbook Board ( NCTB ) .
+The NCTB is responsible for the development of the curriculum and distribution of textbooks .
+The majority of Bangladeshi schools follow these books .
+6 We collected the human written document - summary pairs from the several printed copy of NCTB books .
+The overall statistics of the datasets are presented in Table 1 .
+From the dataset , we measure the copy rate between the source document and the human summaries .
+It 's clearly visible from the table that our dataset is highly abstractive and will serve as a robust benchmark for this task 's future works .
+Moreover , to provide our proposed framework 's effectiveness , we also experiment with an extractive dataset BNLPC 7 ( Haque et al . , 2015 ) .
+We remove the abstractive sentence fusion part to compare with the baselines for the extractive evaluation .
+Automatic Evaluation We evaluate our system ( BenSumm ) using an automatic evaluation metric ROUGE F1 ( Lin , 2004 ) without any limit of words .
+8 We extract 3 - best sentences from our system and the systems we compare as baselines .
+We report unigram and bigram overlap ( ROUGE-1 and ROUGE-2 ) to measure informativeness and the longest common subsequence ( ROUGE - L ) to measure the summaries ' fluency .
+Since ROUGE computes scores based on the lexical overlap at the surface level , there is no difference in implementation for summary evaluation of the Bengali language .
+Baseline Systems We compare our system with various well established baseline systems like LexRank ( Erkan and Radev , 2004 ) , TextRank ( Mihalcea and Tarau , 2004 ) , GreedyKL ( Haghighi and Vanderwende , 2009 ) , and SumBasic ( Nenkova and Vanderwende , 2005 ) .
+We use an open source implementation 9 of these summarizers and adapted it for Bengali language .
+It is important to note that these summarizers are completely extractive and designed for English language .
+On the other hand , our model is unsupervised and abstractive .
+Results We report our model 's performance compared with the baselines in terms of F1 scores of R-1 , R-2 , and R - L in Table 2 .
+According to Table 2 , our abstractive summarization model outperforms all the extractive baselines in terms of all the ROUGE metrics even though the dataset itself is highly abstractive ( reference summary contains almost 73 % new words ) .
+Moreover , we compare our extractive version of our model BenSumm without the sentence fusion component .
+We get better scores in terms of R1 and RL compared to the baselines .
+Finally , we present an example of our model output in Figure 4 .
+Moreover , We design a Bengali Document Summarization tool ( see Figure 5 ) capable of providing both extractive and abtractive summary for an input document .
+10 Human Evaluation Though ROUGE ( Lin , 2004 ) has been shown to correlate well with human judgments , it is biased towards surface level lexical similarities , and this makes it inappropriate for the evaluation of abstractive summaries .
+Therefore , we assign three different evaluators to each summary generated from our abstractive system ( BenSumm [ Abs ] ) considering three different aspects , i.e. , Content , Readability , and Overall Quality .
+They have evaluated each system generated summary with scores ranges from 1 to 5 , where 1 represents very poor performance , and 5 represents very good performance .
+Here , content means how well the summary can convey the original input document 's meaning , and readability represents the grammatical correction and the overall summary sentence coherence .
+We get an average score of 4.41 , 3.95 , and 4.2 in content , readability , and overall quality respectively .
+Conclusion and Future Work .
+In this paper , we have developed an unsupervised abstractive text summarization system for Bengali text documents .
+We have implemented a graphbased model to fuse multiple related sentences , requiring only a POS tagger and a pre - trained language model .
+Experimental results on our proposed dataset demonstrate the superiority of our approach against strong extractive baselines .
+We design a Bengali Document Summarization tool to provide both extractive and abstractive summary of a given document .
+One of the limitations of our model is that it can not generate new words .
+In the future , we would like to jointly model multi - sentence compression and paraphrasing in our system .
+Acknowledgments .
+We want to thank all the anonymous reviewers for their thoughtful comments and constructive suggestions for future improvements to this work .
+A Appendix .
+A detailed illustration of our BenSumm model with outputs from each step for a sample input document is presented in Figure 6 .

@@ -1,0 +1,127 @@
+Effective Adversarial Regularization for Neural Machine Translation .
+A regularization technique based on adversarial perturbation , which was initially developed in the field of image processing , has been successfully applied to text classification tasks and has yielded attractive improvements .
+We aim to further leverage this promising methodology into more sophisticated and critical neural models in the natural language processing field , i.e. , neural machine translation ( NMT ) models .
+However , it is not trivial to apply this methodology to such models .
+Thus , this paper investigates the effectiveness of several possible configurations of applying the adversarial perturbation and reveals that the adversarial regularization technique can significantly and consistently improve the performance of widely used NMT models , such as LSTMbased and Transformer - based models .
+1 .
+Introduction .
+The existence of ( small ) perturbations that induce a critical prediction error in machine learning models was first discovered and discussed in the field of image processing ( Szegedy et al . , 2014 ) .
+Such perturbed inputs are often referred to as adversarial examples in the literature .
+Subsequently , Goodfellow et al .
+( 2015 ) proposed a learning framework that simultaneously leverages adversarial examples as additional training data for reducing the prediction errors .
+This learning framework is referred to as adversarial training .
+In the field of natural language processing ( NLP ) , the input is a sequence of discrete symbols , such as words or sentences .
+Since it is unreasonable to add a small perturbation to the symbols , applying the idea of adversarial training to NLP tasks has been recognized as a challenging problem .
+Recently , Miyato et al .
+( 2017 ) overcame this problem 1 Our code for replicating the experiments in this paper is available at the following URL : https://github.com/ pfnet - research / vat_nmt Encoder Decoder ! " # $ " ! % # $ % ! & # $ & ' ( # $ ( ) ' " # $ " ) ' * # $ + ) , " , % , + - " Figure 1 : An intuitive sketch that explains how we add adversarial perturbations to a typical NMT model structure for adversarial regularization .
+The definitions of e i and f j can be found in Eq . 2 .
+Moreover , those of ri and r0 j are in Eq . 8 and 13 , respectively .
+and reported excellent performance improvements on multiple benchmark datasets of text classification task .
+The key idea of their success is to apply adversarial perturbations into the input embedding layer instead of the inputs themselves as used in image processing tasks .
+An important implication of their study is that their method can be interpreted as a regularization method , and thus , they do not focus on generating adversarial examples .
+We refer to this regularization technique as adversarial regularization .
+We aim to further leverage this promising methodology into more sophisticated and critical neural models , i.e. , neural machine translation ( NMT ) models , since NMT models recently play one of the central roles in the NLP research community ; NMT models have been widely utilized for not only NMT but also many other NLP tasks , such as text summarization ( Rush et al . , 2015;Chopra et al . , 2016 ) , grammatical error correction ( Ji et al . , 2017 ) , dialog generation ( Shang et al . , 2015 ) , and parsing ( Vinyals et al . , 2015;Suzuki et al . , 2018 ) .
+Unfortunately , this application is not fully trivial since we potentially have several configurations for applying adversarial perturbations into NMT models ( see details in Section 5 ) .
+Figure 1 illustrates the model architecture of NMT models with adversarial perturbation .
+Therefore , the goal of this paper is to re - veal the effectiveness of the adversarial regularization in NMT models and encourage researchers / developers to apply the adversarial regularization as a common technique for further improving the performance of their NMT models .
+We investigate the effectiveness of several possible configurations that can significantly and consistently improve the performance of typical baseline NMT models , such as LSTM - based and Transformer - based models , .
+Related Work .
+Several studies have recently applied adversarial training to NLP tasks , e.g. , ( Jia and Liang , 2017;Belinkov and Bisk , 2018;Hosseini et al . , 2017;Samanta and Mehta , 2017;Miyato et al . , 2017;Sato et al . , 2018 ) .
+For example , Belinkov and Bisk ( 2018 ) ; Hosseini et al .
+( 2017 ) proposed methods that generate input sentences with random character swaps .
+They utilized the generated ( input ) sentences as additional training data .
+However , the main focus of these methods is the incorporation of adversarial examples in the training phase , which is orthogonal to our attention , adversarial regularization , as described in Section 1 .
+Clark et al .
+( 2018 ) used virtual adversarial training ( VAT ) , which is a semi - supervised extension of the adversarial regularization technique originally proposed in Miyato et al .
+( 2016 ) , in their experiments to compare the results with those of their proposed method .
+Therefore , the focus of the neural models differs from this paper .
+Namely , they focused on sequential labeling , whereas we discuss NMT models .
+In parallel to our work , Wang et al .
+( 2019 ) also investigated the effectiveness of the adversarial regularization technique in neural language modeling and NMT .
+They also demonstrated the impacts of the adversarial regularization technique in NMT models .
+We investigate the effectiveness of the several practical configurations that have not been examined in their paper , such as the combinations with VAT and back - translation .
+Neural Machine Translation Model .
+Model Definition In general , an NMT model receives a sentence as input and returns a corresponding ( translated ) sentence as output .
+Let V s and V t represent the vocabularies of the input and output sentences , respectively .
+x i and y j denote the one - hot vectors of the i - th and j - th to - kens in input and output sentences , respectively , i.e. x i 2 { 0 , 1 } |Vs| and y j 2 { 0 , 1 } |Vt| .
+Here , we introduce a short notation x i : j for representing a sequence of vectors ( x i , .
+, x j ) .
+To explain the NMT model concisely , we assume that its input and output are both sequences of one - hot vectors x 1 : I and y 1 : J that correspond to input and output sentences whose lengths are I and J , respectively .
+Thus , the NMT model approximates the following conditional probability : p(Y |X ) = Y J+1 j=1 p(y j |y 0 : j 1 , X),(1 ) where y 0 and y J+1 represent one - hot vectors of special beginning - of - sentence ( BOS ) and end - ofsentence ( EOS ) tokens , respectively , and X = x 1 : I and Y = y 1 : J+1 .
+Let E 2 R D ⇥ |Vs| and F 2 R D ⇥ |Vt| be the encoder and decoder embedding matrices , respectively , where D is the dimension of the embedding vectors .
+Thus , p(y j |y 0 : j 1 , X ) in Eq . 1 is calculated as follows : p(y j |y 0 : j 1 , X ) = AttDec f j , h 1 : I , h 1 : I = Enc(e 1 : I ) , f j = F y j 1 , e i = Ex i , ( 2 ) where Enc(• ) and AttDec(• ) represent functions that abstract the entire encoder and decoder ( with an attention mechanism ) procedures , respectively .
+Training Phase Let D be the training data consisting of a set of pairs of X n and Y n , namely , D = { ( X n , Y n ) } N n=1 , where N represents the amount of training data .
+For training , we generally seek the optimal parameters ⇥ that can minimize the following optimization problem : ⇥ = argmin ⇥ J ( D , ⇥ ) , ( 3 ) J ( D , ⇥ ) = 1 |D| X ( X , Y ) 2D ` ( X , Y , ⇥ ) , ( 4 ) ` ( X , Y , ⇥ ) = log p(Y |X , ⇥ ) , ( 5 ) where ⇥ represents a set of trainable parameters in the NMT model .
+Generation Phase .
+We generally use a K - best beam search to generate an output sentence with the ( approximated ) K - highest probability given input sentence X in the generation ( test ) phase .
+We omit to explain this part in detail as our focus is a regularization technique that is independent of the generation phase .
+Adversarial Regularization .
+This section briefly describes the adversarial regularization technique applied to the text classification tasks proposed in Miyato et al .
+( 2017 ) .
+Let ri 2 R D be an adversarial perturbation vector for the i - th word in input X.
+The perturbed input embedding e 0 i 2 R D is computed for each encoder time - step i as follows : e 0 i = Ex i + ri .
+( 6 ) .
+Adversarial Training ( AdvT ) .
+To obtain the worst case perturbations as an adversarial perturbation in terms of minimizing the log - likelihood of given X , we seek the optimal solution r by maximizing the following equation : r = argmax r,||r|| ✏ n ` ( X , r , Y , ⇥ ) o , ( 7 ) where ✏ is a scalar hyper - parameter that controls the norm of the perturbation , and r represents a concatenated vector of r i for all i.
+Here , ` ( X , r , Y , ⇥ ) represents an extension of Eq . 5 , where the perturbation r i in r is applied to the position of ri as described in Eq . 6 .
+However , it is generally infeasible to exactly estimate r in Eq . 7 for deep neural models .
+As a solution , an approximation method was proposed by Goodfellow et al .
+( 2015 ) , where ` ( X , Y , r , ⇥ ) is linearized around X.
+This approximation method induces the following non - iterative solution for calculating ri for all encoder time - step i : ri = ✏ a i ||a|| 2 , a i = r e i ` ( X , Y , ⇥ ) .
+( 8) Thus , based on adversarial perturbation r , the loss function can be defined as : A(D , ⇥ ) = 1 |D| X ( X , Y ) 2D ` ( X , r , Y , ⇥ ) .
+( 9 ) Finally , we jointly minimize the objective functions J ( D , ⇥ ) and A(D , ⇥ ): ⇥ = argmin ⇥ n J ( D , ⇥ ) + A(D , ⇥ ) o , ( 10 ) where is a scalar hyper - parameter that controls the balance of the two loss functions .
+` KL ( X , r , • , ⇥ ) = KL p(• |X , ⇥ ) ||p(• |X , r , ⇥ ) , ( 11 ) where KL(•||• ) denotes the KL divergence .
+It is worth noting here that , in our experiments , we never applied the semi - supervised learning , but used the above equation for calculating perturbation as the replacement of standard adversarial regularization .
+This means that the training data is identical in both settings .
+Adversarial Regularization in NMT .
+As strictly following the original definition of the conventional adversarial training , the straightforward approach to applying the adversarial perturbation is to add the perturbation into the encoderside embeddings e i as described in Eq . 6 .
+However , NMT models generally have another embedding layer in the decoder - side , as we explained in Eq . 2 .
+This fact immediately offers us also to consider applying the adversarial perturbation into the decoder - side embeddings f j .
+For example , let r0 j 2 R D be an adversarial perturbation vector for the j - th word in output Y .
+The perturbed embedding f 0 j 2 R D is computed for each decoder time - step j as follows : f 0 j = F y j 1 + r0 j .(12 ) Then similar to Eq . 8 , we can calculate r0 as : r0 j = ✏ b j ||b|| 2 , b j = r f j ` ( X , Y , ⇥ ) , ( 13 ) where b is a concatenated vector of b j for all j.
+In addition , we need to slightly modify the definition of r , which is originally the concatenation vector of all r i for all i , to the concatenation vector of all r i and r 0 j for all i and j.
+Finally , we have three options for applying the perturbation into typical NMT models , namely , applying the perturbation into embeddings in the ( 1 ) encoder - side only , ( 2 ) decoder - side only , and ( 3 ) both encoder and decoder sides .
+6 Experiments .
+Datasets .
+We conducted experiments on the IWSLT evaluation campaign dataset ( Cettolo et al . , 2012 ) .
+We used the IWSLT 2016 training set for training models , 2012 test set ( test2012 ) as the development set , and 2013 and 2014 test sets ( test2013 and test2014 ) as our test sets .
+Table 1 shows the statistics of datasets used in our experiments .
+For preprocessing of our experimental datasets , we used the Moses tokenizer 2 and the truecaser 3 .
+We removed sentences over 50 words from the training set .
+We also applied the byte - pair encoding ( BPE ) based subword splitting script 4 with 16,000 merge operations ( Sennrich et al . , 2016b ) .
+Model Configurations .
+We selected two widely used model architectures , namely , LSTM - based encoder - decoder 2 https://github.com/moses-smt/ mosesdecoder / blob / master / scripts/ tokenizer / tokenizer.perl 3 https://github.com/moses-smt/ mosesdecoder / blob / master / scripts/ recaser / truecase.perl 4 https://github.com/rsennrich/ subword - nmt used in Luong et al .
+( 2015 ) and self - attentionbased encoder - decoder , the so - called Transformer ( Vaswani et al . , 2017 ) .
+We adapted the hyper - parameters based on the several recent previous papers 5 .
+Hereafter , we refer to the model trained with the adversarial regularization ( ` in Eq . 7 ) as AdvT , and similarly , with the virtual adversarial training ( ` K L in Eq . 11 ) as VAT .
+We set = 1 and ✏ = 1 for all AdvT and VAT experiments .
+Results .
+Investigation of effective configuration Table 2 shows the experimental results with configurations of perturbation positions ( enc - emb , decemb , or enc - dec - emb ) and adversarial regularization techniques ( AdvT or VAT ) .
+As evaluation metrics , we used BLEU scores ( Papineni et al . , 2002 ) 6 .
+Note that all reported BLEU scores are averaged over five models .
+Firstly , in terms of the effective perturbation position , enc - dec - emb configurations , which add perturbations to both encoder and decoder embeddings , consistently outperformed other configurations , which used either encoder or decoder only .
+Moreover , we achieved better performance when we added perturbation to the encoder - side ( encemb ) rather than the decoder - side ( dec - emb ) .
+Furthermore , the results of VAT was consistently better than those of AdvT.
+This tendency was also observed in the results reported by Miyato et al .
+( 2016 ) .
+As discussed in Kurakin et al .
+( 2017 ) , AdvT generates the adversarial examples from correct examples , and thus , the models trained by AdvT tend to overfit to training data rather than those trained by VAT .
+They referred to this phenomenon of AdvT as label leaking .
+Results on four language pairs Table 3 shows the BLEU scores of averaged over five models on four different language pairs ( directions ) , namely German!English , French!English , English!German , and English!French .
+Furthermore , the row ( b ) shows the results obtained when we incorporated pseudo - parallel corpora generated using the back - translation method ( Sennrich et al . , 2016a ) generating the pseudo - parallel corpora , we used the WMT14 news translation corpus .
+We observe that Transformer+VAT consistently outperformed the baseline Transformer results in both standard ( a ) and back - translation ( b ) settings .
+We report that VAT did not require us to perform additional heavy hyper - parameter search ( excluding the hyper - parameter search in base models ) .
+Therefore , we can expect that VAT can improve the translation performance on other datasets and settings with relatively highconfidence .
+In addition , the rows + VAT+AdvT show the performance obtained by applying both AdvT and VAT simultaneously .
+We can further improve the performance in some cases , but the improvement is not consistent among the datasets .
+4 shows actual translation examples generated by the models compared in our German!English translation setting .
+We observe that Transformer+VAT with using training data increased by the backtranslation method seems to generate higher qual - ity translations compared with those of the baseline Transformer .
+Actual Translation Examples Table .
+Conclusion .
+This paper discussed the practical usage and benefit of adversarial regularization based on adversarial perturbation in the current NMT models .
+Our experimental results demonstrated that applying VAT to both encoder and decoder embeddings consistently outperformed other configurations .
+Additionally , we confirmed that adversarial regularization techniques effectively worked even if we performed them with the training data increased by a back - translation method .
+We believe that adversarial regularization can be one of the common and fundamental technologies to further improve the translation quality , such as model ensemble , byte - pair encoding , and back - translation .
+Acknowledgments .
+We thank three anonymous reviewers for their helpful comments .
+We also thank Takeru Miyato , who gave us valuable comments about AdvT / VAT .
