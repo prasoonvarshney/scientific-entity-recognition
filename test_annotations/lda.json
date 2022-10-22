@@ -1,0 +1,2912 @@
+[
+    {
+        "id": 740,
+        "annotations": [
+            {
+                "id": 200,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 0,
+                            "end": 20,
+                            "text": "Extended Topic Model",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "ED0R9sq3R8",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:26:08.385062Z",
+                "updated_at": "2022-10-22T20:26:08.385097Z",
+                "lead_time": 6.535,
+                "prediction": {},
+                "result_count": 0,
+                "task": 740,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Extended Topic Model for Word Dependency ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.762381Z",
+        "updated_at": "2022-10-22T20:26:08.442612Z",
+        "inner_id": 1,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 843,
+        "annotations": [
+            {
+                "id": 199,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 29,
+                            "end": 30,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "a7lGoUdxgx",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 20,
+                            "end": 28,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "R9XnShh07Y",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:25:49.234577Z",
+                "updated_at": "2022-10-22T20:25:58.659056Z",
+                "lead_time": 9.411,
+                "prediction": {},
+                "result_count": 0,
+                "task": 843,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We believe modeling distance-2 word vertices can exploit more semantically or syntactically word dependencies from document , and word similarity information obtained from large corpus can make up the lack of sufficient information from the original corpus ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773161Z",
+        "updated_at": "2022-10-22T20:25:58.715147Z",
+        "inner_id": 104,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 849,
+        "annotations": [
+            {
+                "id": 198,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 33,
+                            "end": 38,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "bpeTrSkq9W",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 72,
+                            "end": 76,
+                            "text": "GTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "qHs_o7MUJl",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 81,
+                            "end": 84,
+                            "text": "LDA",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "KlTcSWZa8D",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 159,
+                            "end": 160,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "Dp96EgdO7v",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 150,
+                            "end": 158,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "BGd9LYUJFx",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:25:43.945986Z",
+                "updated_at": "2022-10-22T20:25:43.946023Z",
+                "lead_time": 22.045,
+                "prediction": {},
+                "result_count": 0,
+                "task": 849,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Experiments on two datasets show EGTRF achieves better performance than GTRF and LDA , which confirm our assumption that adding topical dependency of distance-2 words and incorporating word similarity information can improve model performance ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773591Z",
+        "updated_at": "2022-10-22T20:25:44.006940Z",
+        "inner_id": 110,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 847,
+        "annotations": [
+            {
+                "id": 197,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 26,
+                            "end": 61,
+                            "text": "Extended Global Random Field(EGRF )",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "AJWzTFg-4Y",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:25:12.058998Z",
+                "updated_at": "2022-10-22T20:25:12.059032Z",
+                "lead_time": 7.627,
+                "prediction": {},
+                "result_count": 0,
+                "task": 847,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Word topics are drawed by Extended Global Random Field(EGRF ) instead of Multinomial , the conditional independence of word topic assignment is thus relaxed ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773462Z",
+        "updated_at": "2022-10-22T20:25:12.116172Z",
+        "inner_id": 108,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 846,
+        "annotations": [
+            {
+                "id": 196,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 28,
+                            "end": 60,
+                            "text": "Global Topic Random Field(GTRF )",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "y25bHzZ-dW",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 94,
+                            "end": 136,
+                            "text": "Extended Global Topic Random Field(EGTRF )",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "Q81nOGeoYN",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 209,
+                            "end": 210,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "h-wd-J3biS",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 200,
+                            "end": 208,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "i_AdggScLd",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:25:03.321580Z",
+                "updated_at": "2022-10-22T20:25:03.321617Z",
+                "lead_time": 49.987,
+                "prediction": {},
+                "result_count": 0,
+                "task": 846,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "In this paper , we extended Global Topic Random Field(GTRF ) and proposed a novel topic model Extended Global Topic Random Field(EGTRF ) which can model dependency relation between adjacent words and distance-2 words ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773396Z",
+        "updated_at": "2022-10-22T20:25:03.390284Z",
+        "inner_id": 107,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 844,
+        "annotations": [
+            {
+                "id": 195,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 36,
+                            "end": 44,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "e2wywikuiJ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 45,
+                            "end": 46,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "HzB1LrtDen",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 120,
+                            "end": 134,
+                            "text": "topic modeling",
+                            "labels": [
+                                "TaskName"
+                            ]
+                        },
+                        "id": "MQNX675jIE",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:23:57.178254Z",
+                "updated_at": "2022-10-22T20:24:09.092158Z",
+                "lead_time": 17.88,
+                "prediction": {},
+                "result_count": 0,
+                "task": 844,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Therefore , adding the influence of distance-2 word vertices and word similarity information can improve performance of topic modeling ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773238Z",
+        "updated_at": "2022-10-22T20:24:09.145367Z",
+        "inner_id": 105,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 841,
+        "annotations": [
+            {
+                "id": 193,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 57,
+                            "end": 60,
+                            "text": "lda",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "TQhxLnVxRI",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 63,
+                            "end": 67,
+                            "text": "gtrf",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "ZLF0zY9AkH",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 70,
+                            "end": 75,
+                            "text": "egtrf",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "jNIbN3aLXn",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 126,
+                            "end": 133,
+                            "text": "egtrf+s",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "UoM_vCDtst",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 134,
+                            "end": 172,
+                            "text": "EGTRF with word similarity information",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "5r69Gnam55",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 76,
+                            "end": 117,
+                            "text": "EGTRF without word similarity information",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "z0jLc5Z-Gc",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:22:57.780042Z",
+                "updated_at": "2022-10-22T20:23:32.896486Z",
+                "lead_time": 41.391999999999996,
+                "prediction": {},
+                "result_count": 0,
+                "task": 841,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Figure 2 shows the experimental results of four models : lda , gtrf , egtrf(EGTRF without word similarity information ) , and egtrf+s(EGTRF with word similarity information ) on two datasets ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773038Z",
+        "updated_at": "2022-10-22T20:23:32.962924Z",
+        "inner_id": 102,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 842,
+        "annotations": [
+            {
+                "id": 194,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 17,
+                            "end": 22,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "nChi3dgcYp",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 35,
+                            "end": 38,
+                            "text": "LDA",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "cy4_mU1u4z",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 43,
+                            "end": 47,
+                            "text": "GTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "cq9EFro-4K",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 65,
+                            "end": 103,
+                            "text": "EGTRF with word similarity information",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "iRs4jd67YM",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:23:09.659592Z",
+                "updated_at": "2022-10-22T20:23:09.659628Z",
+                "lead_time": 9.854,
+                "prediction": {},
+                "result_count": 0,
+                "task": 842,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "The results show EGTRF outperforms LDA and GTRF in general , and EGTRF with word similarity information achieves best performance ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.773099Z",
+        "updated_at": "2022-10-22T20:23:09.711593Z",
+        "inner_id": 103,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 840,
+        "annotations": [
+            {
+                "id": 192,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 10,
+                            "end": 12,
+                            "text": "10",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "eoDHdHY6Cg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 15,
+                            "end": 17,
+                            "text": "20",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "DoIQnxqtya",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 20,
+                            "end": 22,
+                            "text": "30",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "V1z_rlxOud",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 25,
+                            "end": 27,
+                            "text": "50",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "tp6RGr3txp",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 39,
+                            "end": 41,
+                            "text": "20",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "Xl5yb8fmdg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 42,
+                            "end": 54,
+                            "text": "news dataset",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "srQWvCxQa1",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 28,
+                            "end": 34,
+                            "text": "topics",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "OQrGIz-iEd",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 57,
+                            "end": 59,
+                            "text": "10",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "qRjuKzv6DJ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 62,
+                            "end": 64,
+                            "text": "15",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "Ry6ENKiW50",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 67,
+                            "end": 69,
+                            "text": "20",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "hApLVGwIOz",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 72,
+                            "end": 74,
+                            "text": "25",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "0bTX2VUOP6",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 86,
+                            "end": 90,
+                            "text": "NIPS",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "y1OfvId0Hg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:22:31.381248Z",
+                "updated_at": "2022-10-22T20:22:31.381277Z",
+                "lead_time": 71.734,
+                "prediction": {},
+                "result_count": 0,
+                "task": 840,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We choose 10 , 20 , 30 , 50 topics for 20 news dataset , 10 , 15 , 20 , 25 topics for NIPS dataset ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772975Z",
+        "updated_at": "2022-10-22T20:22:31.455170Z",
+        "inner_id": 101,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 839,
+        "annotations": [
+            {
+                "id": 191,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 46,
+                            "end": 57,
+                            "text": "Google News",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "pCqIj_UCTF",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 166,
+                            "end": 177,
+                            "text": "Google News",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "n6F27sUUrv",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:21:18.502390Z",
+                "updated_at": "2022-10-22T20:21:18.502425Z",
+                "lead_time": 9.951,
+                "prediction": {},
+                "result_count": 0,
+                "task": 839,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Word is represented as vector from pretrained Google News dataset , we use the word vector learned from original corpus when the word does not exist in pre - trained Google News dataset ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772902Z",
+        "updated_at": "2022-10-22T20:21:18.551198Z",
+        "inner_id": 100,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 838,
+        "annotations": [
+            {
+                "id": 190,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 13,
+                            "end": 16,
+                            "text": "1.2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "M0IzwRXROg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 7,
+                            "end": 10,
+                            "text": "λ 4",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "z1tylKb_9P",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 118,
+                            "end": 123,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "gC4UEB9tOG",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 145,
+                            "end": 146,
+                            "text": "1",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "m3XGn1w-YU",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 212,
+                            "end": 213,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "f3WKFHwaCr",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 136,
+                            "end": 144,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "8I_5K6KHwQ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 203,
+                            "end": 211,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "3Dwvkmk9CR",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:20:17.218630Z",
+                "updated_at": "2022-10-22T20:21:06.150619Z",
+                "lead_time": 80.042,
+                "prediction": {},
+                "result_count": 0,
+                "task": 838,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We set λ 4 = 1.2 to give lower(even negative ) reward to edges from E 2 that the two word vertices have same topic in EGTRF , since the distance-1 words are expected to have greater topical affects than distance-2 words ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772844Z",
+        "updated_at": "2022-10-22T20:21:06.208104Z",
+        "inner_id": 99,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 837,
+        "annotations": [
+            {
+                "id": 189,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 13,
+                            "end": 17,
+                            "text": "GTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "d4tamRDAiG",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 92,
+                            "end": 95,
+                            "text": "0.2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "1PpQ4IPqX7",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 86,
+                            "end": 89,
+                            "text": "λ 2",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "0gLwXU-hbW",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:19:42.414261Z",
+                "updated_at": "2022-10-22T20:19:42.414296Z",
+                "lead_time": 13.384,
+                "prediction": {},
+                "result_count": 0,
+                "task": 837,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We implement GTRF without adding self defined edges from the original paper , and set λ 2 = 0.2 to give higher reward to edges from E 1 that the two word vertices have same topic ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772755Z",
+        "updated_at": "2022-10-22T20:19:42.469341Z",
+        "inner_id": 98,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 836,
+        "annotations": [
+            {
+                "id": 188,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 6,
+                            "end": 16,
+                            "text": "perplexity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "B74Q_t9gIl",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 26,
+                            "end": 52,
+                            "text": "log predictive probability",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "XbfSm_LALF",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:19:26.788411Z",
+                "updated_at": "2022-10-22T20:19:26.788447Z",
+                "lead_time": 6.134,
+                "prediction": {},
+                "result_count": 0,
+                "task": 836,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Lower perplexity , higher log predictive probability indicate better generalization performance ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772691Z",
+        "updated_at": "2022-10-22T20:19:26.841056Z",
+        "inner_id": 97,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 835,
+        "annotations": [
+            {
+                "id": 187,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 48,
+                            "end": 69,
+                            "text": "held - out perplexity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "KxrmXAWv_A",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 96,
+                            "end": 119,
+                            "text": "predictive distribution",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "NZxlHLr_Fr",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:19:19.254393Z",
+                "updated_at": "2022-10-22T20:19:19.254428Z",
+                "lead_time": 15.732,
+                "prediction": {},
+                "result_count": 0,
+                "task": 835,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We evaluate how well a model fits the data with held - out perplexity ( Blei et al , 2003 ) and predictive distribution ( Hoffman et al , 2013 ) ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772627Z",
+        "updated_at": "2022-10-22T20:19:19.306163Z",
+        "inner_id": 96,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 833,
+        "annotations": [
+            {
+                "id": 186,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 2,
+                            "end": 11,
+                            "text": "NIPS data",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "vHRKWab1pP",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:18:42.670163Z",
+                "updated_at": "2022-10-22T20:18:42.670198Z",
+                "lead_time": 3.106,
+                "prediction": {},
+                "result_count": 0,
+                "task": 833,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "• NIPS data ( Globerson et al , 2004 ): Spanning from 2000 to 2005 ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772500Z",
+        "updated_at": "2022-10-22T20:18:42.730107Z",
+        "inner_id": 94,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 832,
+        "annotations": [
+            {
+                "id": 185,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 2,
+                            "end": 16,
+                            "text": "20 News Groups",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "RKmaC-0LJI",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:18:38.044957Z",
+                "updated_at": "2022-10-22T20:18:38.044991Z",
+                "lead_time": 7.598,
+                "prediction": {},
+                "result_count": 0,
+                "task": 832,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "• 20 News Groups : After processing , it contains 13706 documents with a vocabulary of 5164 terms ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772437Z",
+        "updated_at": "2022-10-22T20:18:38.097188Z",
+        "inner_id": 93,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 829,
+        "annotations": [
+            {
+                "id": 184,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 54,
+                            "end": 59,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "TNsaDyDe8y",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:18:18.636423Z",
+                "updated_at": "2022-10-22T20:18:18.636459Z",
+                "lead_time": 3.186,
+                "prediction": {},
+                "result_count": 0,
+                "task": 829,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "In this section we study the empirical performance of EGTRF on two datasets ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.772246Z",
+        "updated_at": "2022-10-22T20:18:18.687169Z",
+        "inner_id": 90,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 823,
+        "annotations": [
+            {
+                "id": 183,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 41,
+                            "end": 44,
+                            "text": "LDA",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "FBzYR5-3cN",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:18:07.558799Z",
+                "updated_at": "2022-10-22T20:18:07.558833Z",
+                "lead_time": 3.079,
+                "prediction": {},
+                "result_count": 0,
+                "task": 823,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "The updating rule of α and β are same to LDA , γ is updated using Newton method since we can not obtain the direct updating rule for γ ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771849Z",
+        "updated_at": "2022-10-22T20:18:07.609389Z",
+        "inner_id": 84,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 821,
+        "annotations": [
+            {
+                "id": 182,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 67,
+                            "end": 70,
+                            "text": "LDA",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "7GlyFI7sH6",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:59.694056Z",
+                "updated_at": "2022-10-22T20:17:59.694090Z",
+                "lead_time": 4.142,
+                "prediction": {},
+                "result_count": 0,
+                "task": 821,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "All terms except P ( z|θ ) in likelihood function are also same to LDA , Based on Equation ( 9 ) , we obtain : Eq[log P egrf ( z | θ ) ] ≈Eq[log ( n M ulti(zw n | θ))]+ 1 − λ2 ζ1 Eq(| E C 1 | ) + 1 − λ4 ζ1 Eq(| E C 2 |)+ ( | E1 | λ2 + | E2 | λ4 ζ1 − | E1 | + | E2 | ζ2 ) Eq(θ T θ)+ log ζ1 − log ζ2(11 ) We get the approximation in Equation ( 11 ) from Taylor series , where ζ 1 and ζ 2 are Taylor approximation ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771710Z",
+        "updated_at": "2022-10-22T20:17:59.744731Z",
+        "inner_id": 82,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 820,
+        "annotations": [
+            {
+                "id": 181,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 51,
+                            "end": 54,
+                            "text": "LDA",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "TVHgjMQinl",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:54.402691Z",
+                "updated_at": "2022-10-22T20:17:54.402734Z",
+                "lead_time": 3.503,
+                "prediction": {},
+                "result_count": 0,
+                "task": 820,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "The variational function q is same to the original LDA paper ( Blei et al , 2003 ) ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771607Z",
+        "updated_at": "2022-10-22T20:17:54.453146Z",
+        "inner_id": 81,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 812,
+        "annotations": [
+            {
+                "id": 180,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 36,
+                            "end": 46,
+                            "text": "similarity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "GC_MAyRCq6",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:42.788606Z",
+                "updated_at": "2022-10-22T20:17:42.788647Z",
+                "lead_time": 2.038,
+                "prediction": {},
+                "result_count": 0,
+                "task": 812,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "As we discussed in section 1 , word similarity information S w 1 , w 2 works as a confidence score to model how likely two words on an edge have same topic ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771086Z",
+        "updated_at": "2022-10-22T20:17:42.839521Z",
+        "inner_id": 73,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 813,
+        "annotations": [
+            {
+                "id": 179,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 95,
+                            "end": 105,
+                            "text": "similarity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "JiJnRFT1TM",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:38.662448Z",
+                "updated_at": "2022-10-22T20:17:38.662484Z",
+                "lead_time": 3.432,
+                "prediction": {},
+                "result_count": 0,
+                "task": 813,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "And we make assumption that two words are more likely to have same topic if they have a higher similarity score ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771162Z",
+        "updated_at": "2022-10-22T20:17:38.718936Z",
+        "inner_id": 74,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 814,
+        "annotations": [
+            {
+                "id": 178,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 11,
+                            "end": 21,
+                            "text": "similarity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "2Ev3IwB4pO",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:34.096417Z",
+                "updated_at": "2022-10-22T20:17:34.096448Z",
+                "lead_time": 3.539,
+                "prediction": {},
+                "result_count": 0,
+                "task": 814,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "To get the similarity score between words , we use word2vec tool to learn the word representation of each word from pre - trained model ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771227Z",
+        "updated_at": "2022-10-22T20:17:34.146507Z",
+        "inner_id": 75,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 816,
+        "annotations": [
+            {
+                "id": 177,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 66,
+                            "end": 76,
+                            "text": "confidence",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "HLR9ls5zHA",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 0,
+                            "end": 21,
+                            "text": "Normalized similarity",
+                            "labels": [
+                                "MetricName"
+                            ]
+                        },
+                        "id": "3nYnghksbg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:17:27.354001Z",
+                "updated_at": "2022-10-22T20:17:27.354034Z",
+                "lead_time": 8.266,
+                "prediction": {},
+                "result_count": 0,
+                "task": 816,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Normalized similarity between word vectors can be regarded as the confidence score of how possible two words have same topic ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.771355Z",
+        "updated_at": "2022-10-22T20:17:27.404325Z",
+        "inner_id": 77,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 810,
+        "annotations": [
+            {
+                "id": 176,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 261,
+                            "end": 277,
+                            "text": "topic assignment",
+                            "labels": [
+                                "TaskName"
+                            ]
+                        },
+                        "id": "UFH-rVLKTQ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:54.004748Z",
+                "updated_at": "2022-10-22T20:16:54.004780Z",
+                "lead_time": 4.277,
+                "prediction": {},
+                "result_count": 0,
+                "task": 810,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "The expectation of the number of edges in E c i can be computed as : E(| E C i | ) = ( w 1 , w 2 ) ∈E i φ T w 1 φw 2 Sw 1 , w 2 ( 10 ) φ is the K dimensional variational multinomial parameters and can be thought as the posterior probability of a word given the topic assignment ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.770962Z",
+        "updated_at": "2022-10-22T20:16:54.057996Z",
+        "inner_id": 71,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 803,
+        "annotations": [
+            {
+                "id": 175,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 29,
+                            "end": 34,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "4i5cFw-Pu6",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 52,
+                            "end": 56,
+                            "text": "GTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "if3kdoPyo5",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:33.826373Z",
+                "updated_at": "2022-10-22T20:16:33.826408Z",
+                "lead_time": 2.687,
+                "prediction": {},
+                "result_count": 0,
+                "task": 803,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "If |E 2 | = 0 , |E 1 | = 0 , EGTRF is equivalent to GTRF ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.770476Z",
+        "updated_at": "2022-10-22T20:16:33.878847Z",
+        "inner_id": 64,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 801,
+        "annotations": [
+            {
+                "id": 174,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 51,
+                            "end": 55,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "AJWXw3ehQq",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:28.048784Z",
+                "updated_at": "2022-10-22T20:16:28.048821Z",
+                "lead_time": 1.649,
+                "prediction": {},
+                "result_count": 0,
+                "task": 801,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "If ( 7 ) and ( 8) hold true , Equation ( 3 ) is an EGRF ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.770347Z",
+        "updated_at": "2022-10-22T20:16:28.103511Z",
+        "inner_id": 62,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 799,
+        "annotations": [
+            {
+                "id": 173,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 39,
+                            "end": 43,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "blYCwgm2z9",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:21.648195Z",
+                "updated_at": "2022-10-22T20:16:21.648226Z",
+                "lead_time": 2.902,
+                "prediction": {},
+                "result_count": 0,
+                "task": 799,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "In order to model Equation ( 3 ) as an EGRF , it must satisfy all the four constraints in Equation ( 1 ) ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.770211Z",
+        "updated_at": "2022-10-22T20:16:21.700930Z",
+        "inner_id": 60,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 798,
+        "annotations": [
+            {
+                "id": 172,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 13,
+                            "end": 17,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "4YH9qV89JG",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:17.703703Z",
+                "updated_at": "2022-10-22T20:16:17.703735Z",
+                "lead_time": 8.48,
+                "prediction": {},
+                "result_count": 0,
+                "task": 798,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "According to EGRF described in section 2.1 , we define the probability of topic sequence z as below : P egrf ( z | θ ) = 1 | E1 | + | E2 | w∈V f ( zw)× ( ( w 1 , w 1 ) ∈E 1 f ( 1 ) ( z w 1 , z w 1 ) + ( w 2 , w 2 ) ∈E 2 f ( 2 ) ( z w 2 , z w 2 ) ) ( 3 ) where f ( zw ) = M ulti(zw|θ ) ( 4 ) f ( 1 ) ( z w 1 , z w 1 ) = σz w 1 = z w 1 λ1 + σ z w 1 = z w 1 λ2 ( 5 ) f ( 2 ) ( z w 2 , z w 2 ) = σz w 2 = z w 2 λ3 + σ z w 2 = z w 2 λ4 ( 6 ) σ is an indicator function and equals 1 if the topic assignments of two words on an edge are same ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.770120Z",
+        "updated_at": "2022-10-22T20:16:17.757040Z",
+        "inner_id": 59,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 797,
+        "annotations": [
+            {
+                "id": 171,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 7,
+                            "end": 28,
+                            "text": "word topic assignment",
+                            "labels": [
+                                "TaskName"
+                            ]
+                        },
+                        "id": "coLuIFL_vQ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:16:06.971614Z",
+                "updated_at": "2022-10-22T20:16:06.971658Z",
+                "lead_time": 6.982,
+                "prediction": {},
+                "result_count": 0,
+                "task": 797,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "So the word topic assignment is no longer conditionally independent ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.766162Z",
+        "updated_at": "2022-10-22T20:16:07.030746Z",
+        "inner_id": 58,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 790,
+        "annotations": [
+            {
+                "id": 170,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 10,
+                            "end": 44,
+                            "text": "Extended Global Topic Random Field",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "aw3QDYIvAQ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 54,
+                            "end": 58,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "TgEEg6ByMJ",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:15:43.715720Z",
+                "updated_at": "2022-10-22T20:15:43.715756Z",
+                "lead_time": 6.367,
+                "prediction": {},
+                "result_count": 0,
+                "task": 790,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We define Extended Global Topic Random Field based on EGRF ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.765717Z",
+        "updated_at": "2022-10-22T20:15:43.776034Z",
+        "inner_id": 51,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 789,
+        "annotations": [
+            {
+                "id": 169,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 18,
+                            "end": 22,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "ql4xDbJFgi",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 0,
+                            "end": 11,
+                            "text": "Topic Model",
+                            "labels": [
+                                "TaskName"
+                            ]
+                        },
+                        "id": "s4v-GtRG4Z",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:15:36.047465Z",
+                "updated_at": "2022-10-22T20:15:36.047508Z",
+                "lead_time": 6.515,
+                "prediction": {},
+                "result_count": 0,
+                "task": 789,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Topic Model Using EGRF ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.765655Z",
+        "updated_at": "2022-10-22T20:15:36.121893Z",
+        "inner_id": 50,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 788,
+        "annotations": [
+            {
+                "id": 168,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 4,
+                            "end": 8,
+                            "text": "EGRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "TlgGnBfXWD",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 23,
+                            "end": 43,
+                            "text": "normalization factor",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "znySJXJ_WU",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 98,
+                            "end": 116,
+                            "text": "normalizing factor",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "VePdkzkdSK",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:15:28.345609Z",
+                "updated_at": "2022-10-22T20:15:28.345644Z",
+                "lead_time": 8.763,
+                "prediction": {},
+                "result_count": 0,
+                "task": 788,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "And EGRF does not have normalization factor , which is much simplier than models with intractable normalizing factor ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.765592Z",
+        "updated_at": "2022-10-22T20:15:28.399510Z",
+        "inner_id": 49,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 787,
+        "annotations": [
+            {
+                "id": 166,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 50,
+                            "end": 87,
+                            "text": "Extended Global Random Field ( EGRF )",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "4TIj6SUPi2",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:14:58.267415Z",
+                "updated_at": "2022-10-22T20:14:58.267446Z",
+                "lead_time": 5.892,
+                "prediction": {},
+                "result_count": 0,
+                "task": 787,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We define the random field as in Equation ( 1 ) a Extended Global Random Field ( EGRF ) ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.765529Z",
+        "updated_at": "2022-10-22T20:14:58.320895Z",
+        "inner_id": 48,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 777,
+        "annotations": [
+            {
+                "id": 165,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 10,
+                            "end": 26,
+                            "text": "topic assignment",
+                            "labels": [
+                                "TaskName"
+                            ]
+                        },
+                        "id": "KKrclhX_fY",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:14:30.494201Z",
+                "updated_at": "2022-10-22T20:14:30.494238Z",
+                "lead_time": 13.703,
+                "prediction": {},
+                "result_count": 0,
+                "task": 777,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "The state(topic assignment ) of a word vertex w is generated from Z = { z i |i = 1 , 2 , ... , k } , k is the number of topics ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.764886Z",
+        "updated_at": "2022-10-22T20:14:30.560117Z",
+        "inner_id": 38,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 776,
+        "annotations": [
+            {
+                "id": 164,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 7,
+                            "end": 15,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "eA-sy--PEN",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 16,
+                            "end": 17,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "mIWWLzsP6O",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:14:15.803759Z",
+                "updated_at": "2022-10-22T20:14:15.803793Z",
+                "lead_time": 17.378,
+                "prediction": {},
+                "result_count": 0,
+                "task": 776,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "E 2 is distance-2 edge set , E 2 = { ( w i , w j ) |∃path between w i , w j that length is 2 } ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.764824Z",
+        "updated_at": "2022-10-22T20:14:15.862517Z",
+        "inner_id": 37,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 769,
+        "annotations": [
+            {
+                "id": 163,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 33,
+                            "end": 52,
+                            "text": "Google News dataset",
+                            "labels": [
+                                "DatasetName"
+                            ]
+                        },
+                        "id": "Q-YSbr-7vc",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:13:30.743946Z",
+                "updated_at": "2022-10-22T20:13:30.743982Z",
+                "lead_time": 6.284,
+                "prediction": {},
+                "result_count": 0,
+                "task": 769,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "We use the pretrained model from Google News dataset(about 100 billion words ) using word2vec 1 tool to represent each word as a 300 - dimensional word vector , and apply normalized word similarity as a confidence score to indicate how possible two word vertices share same topic ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.764378Z",
+        "updated_at": "2022-10-22T20:13:30.808020Z",
+        "inner_id": 30,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 767,
+        "annotations": [
+            {
+                "id": 162,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 21,
+                            "end": 26,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "VwB0PIVUFK",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:13:18.979158Z",
+                "updated_at": "2022-10-22T20:13:18.979187Z",
+                "lead_time": 0.992,
+                "prediction": {},
+                "result_count": 0,
+                "task": 767,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "Another advantage of EGTRF is it incorporates word features ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.764248Z",
+        "updated_at": "2022-10-22T20:13:19.037505Z",
+        "inner_id": 28,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    },
+    {
+        "id": 760,
+        "annotations": [
+            {
+                "id": 161,
+                "completed_by": 4,
+                "result": [
+                    {
+                        "value": {
+                            "start": 3,
+                            "end": 8,
+                            "text": "EGTRF",
+                            "labels": [
+                                "MethodName"
+                            ]
+                        },
+                        "id": "b9r2Ms68Eg",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 80,
+                            "end": 81,
+                            "text": "1",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "xsMCrPqalD",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 95,
+                            "end": 96,
+                            "text": "2",
+                            "labels": [
+                                "HyperparameterValue"
+                            ]
+                        },
+                        "id": "_lyKObEEDb",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 71,
+                            "end": 79,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "2GqhnCEri0",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    },
+                    {
+                        "value": {
+                            "start": 86,
+                            "end": 94,
+                            "text": "distance",
+                            "labels": [
+                                "HyperparameterName"
+                            ]
+                        },
+                        "id": "sx_QnI9BMR",
+                        "from_name": "label",
+                        "to_name": "text",
+                        "type": "labels",
+                        "origin": "manual"
+                    }
+                ],
+                "was_cancelled": false,
+                "ground_truth": false,
+                "created_at": "2022-10-22T20:12:49.805063Z",
+                "updated_at": "2022-10-22T20:12:49.805092Z",
+                "lead_time": 11.994,
+                "prediction": {},
+                "result_count": 0,
+                "task": 760,
+                "parent_prediction": null,
+                "parent_annotation": null
+            }
+        ],
+        "file_upload": "35de282e-P15-2083.pdf.txt",
+        "drafts": [],
+        "predictions": [],
+        "data": {
+            "text": "In EGTRF , the topic assignment of a word is assumed to depend on both distance-1 and distance-2 word vertices ."
+        },
+        "meta": {},
+        "created_at": "2022-10-22T19:52:06.763794Z",
+        "updated_at": "2022-10-22T20:12:49.861235Z",
+        "inner_id": 21,
+        "total_annotations": 1,
+        "cancelled_annotations": 0,
+        "total_predictions": 0,
+        "comment_count": 0,
+        "unresolved_comment_count": 0,
+        "last_comment_updated_at": null,
+        "project": 9,
+        "updated_by": 4,
+        "comment_authors": []
+    }
+]

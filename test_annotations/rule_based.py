@@ -93,11 +93,12 @@ for item in data:
 
                     item['annotations'][0]['result'].append(new_object)
             
+            # commented out because we just one one annotation per word block
             # missing annotation, or wrong annotation
-            if cased_word in annotated_words_and_labels and reverse_mapping[word] not in annotated_words_and_labels[cased_word]:
-                for i, result in enumerate(item['annotations'][0]['result']):
-                    if result['value']['text'] == cased_word:
-                         item['annotations'][0]['result'][i]['value']['labels'].append(reverse_mapping[word])
+            # if cased_word in annotated_words_and_labels and reverse_mapping[word] not in annotated_words_and_labels[cased_word]:
+            #     for i, result in enumerate(item['annotations'][0]['result']):
+            #         if result['value']['text'] == cased_word:
+            #              item['annotations'][0]['result'][i]['value']['labels'].append(reverse_mapping[word])
 
             break  # no need to check for shorter words, e.g. BERT BASE preferred over BERT
 
