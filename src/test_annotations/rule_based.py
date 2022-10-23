@@ -37,7 +37,10 @@ for item in data:
     text = item['data']['text']
     lowercase_text = text.lower()
     annotations = item['annotations']
-    results = annotations[0]['result']
+    if len(annotations) > 0:
+        results = annotations[0]['result']
+    else: 
+        results = []
 
     annotated_words_and_labels = {}
 
@@ -87,9 +90,11 @@ for item in data:
                 "origin": "manual"
             }
 
+            if len(item['annotations']) == 0:
+                item['annotations'] = [{'result': []}]
             item['annotations'][0]['result'].append(new_object)
-            print(f"Start: {start}, end: {end}, cased_word: {cased_word}")
-            print(f"New object: {new_object}")
+            # print(f"Start: {start}, end: {end}, cased_word: {cased_word}")
+            # print(f"New object: {new_object}")
         # commented out because we just one one annotation per word block
         # missing annotation, or wrong annotation
         # if cased_word in annotated_words_and_labels and reverse_mapping[word] not in annotated_words_and_labels[cased_word]:

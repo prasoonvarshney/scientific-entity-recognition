@@ -18,10 +18,11 @@ with open(source, 'r') as file:
 with open(source, 'w') as file:
     json.dump(data, file, indent=4)  # redump the just loaded data with indent 4 for readability and ease of comparison with edited.json file which is also exported with indent 4
 
-print(len(data))
-
 for item in data:
     annotations = item['annotations']
+    if len(annotations) == 0:
+        continue  # don't look at the sentences yet to be annotated
+
     assert len(annotations) == 1
 
     results = annotations[0]['result']
