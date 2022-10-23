@@ -81,7 +81,7 @@ for item in data:
                     "start": start,
                     "end": end,
                     "text": cased_word,
-                    "labels": [reverse_mapping[word]]
+                    "labels": [reverse_mapping[cased_word.lower()]]
                 },
                 "id": random_id,
                 "from_name": "label",
