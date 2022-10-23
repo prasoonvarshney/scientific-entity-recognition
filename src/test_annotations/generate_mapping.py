@@ -1,5 +1,4 @@
 import json
-import pickle
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -16,6 +15,11 @@ for label in labels:
 with open(source, 'r') as file:
     data = json.load(file)
 
+with open(source, 'w') as file:
+    json.dump(data, file, indent=4)  # redump the just loaded data with indent 4 for readability and ease of comparison with edited.json file which is also exported with indent 4
+
+print(len(data))
+
 for item in data:
     annotations = item['annotations']
     assert len(annotations) == 1
@@ -27,6 +31,9 @@ for item in data:
         if len(text) > 1:
             label = result['value']['labels'][0]
             mapping[label].add(text)  # label to text
+
+for label in mapping: 
+    mapping[label] = list(mapping[label])
 
 # OUTPUT
 # {'MethodName': {'BERT',
@@ -48,10 +55,9 @@ for label in mapping:
 #  'denoising auto - encoders': 'MethodName',
 #  'accuracy': 'MetricName',
 # ...
-
 # Save outputs to pickle
-f = open('mapping.pkl', 'wb')
-pickle.dump(mapping, f)
+with open('mapping.json', 'w') as f:
+    json.dump(mapping, f, indent=4)
 
-f = open('reverse_mapping.pkl', 'wb')
-pickle.dump(reverse_mapping, f)
+with open('reverse_mapping.json', 'w') as f:
+    json.dump(reverse_mapping, f, indent=4)

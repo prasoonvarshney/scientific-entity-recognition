@@ -1,0 +1,52 @@
+{
+    "MethodName": [
+        "vanilla pt",
+        "lm adaption",
+        "pre - trained prompt tuning",
+        "hybrid pt",
+        "cpm-2",
+        "pretrained prompt tuning",
+        "mt5 - xxl",
+        "pt",
+        "hybrid ppt",
+        "roberta base",
+        "unified ppt",
+        "t5 - xxl",
+        "ft",
+        "t5",
+        "prompt tuning",
+        "ppt",
+        "full - model tuning"
+    ],
+    "HyperparameterName": [
+        "soft tokens",
+        "epochs",
+        "batch size"
+    ],
+    "HyperparameterValue": [
+        "100"
+    ],
+    "DatasetName": [
+        "race - m",
+        "clue",
+        "ocnli",
+        "c 3",
+        "boolq",
+        "sst-2",
+        "chnsent 4",
+        "cmnli 3",
+        "lcqmc",
+        "amazon reviews 4",
+        "tnews 3"
+    ],
+    "MetricValue": [],
+    "MetricName": [],
+    "TaskName": [
+        "sentiment analysis",
+        "multiple - choice classification",
+        "mc",
+        "natural language inference",
+        "sentence - pair classification",
+        "few - shot learning"
+    ]
+}
