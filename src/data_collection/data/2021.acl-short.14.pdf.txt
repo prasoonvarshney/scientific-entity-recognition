@@ -1,0 +1,104 @@
+N - Best ASR Transformer : Enhancing SLU Performance using Multiple ASR Hypotheses .
+Spoken Language Understanding ( SLU ) systems parse speech into semantic structures like dialog acts and slots .
+This involves the use of an Automatic Speech Recognizer ( ASR ) to transcribe speech into multiple text alternatives ( hypotheses ) .
+Transcription errors , common in ASRs , impact downstream SLU performance negatively .
+Approaches to mitigate such errors involve using richer information from the ASR , either in form of N - best hypotheses or word - lattices .
+We hypothesize that transformer models learn better with a simpler utterance representation using the concatenation of the N - best ASR alternatives , where each alternative is separated by a special delimiter [ SEP ] .
+In our work , we test our hypothesis by using concatenated N - best ASR alternatives as the input to transformer encoder models , namely BERT and XLM - RoBERTa , and achieve performance equivalent to the prior state - of - the - art model on DSTC2 dataset .
+We also show that our approach significantly outperforms the prior state - of - the - art when subjected to the low data regime .
+Additionally , this methodology is accessible to users of third - party ASR APIs which do not provide word - lattice information .
+Introduction .
+Spoken Language Understanding ( SLU ) systems are an integral part of Spoken Dialog Systems .
+They parse spoken utterances into corresponding semantic structures e.g. dialog acts .
+For this , a spoken utterance is usually first transcribed into text via an Automated Speech Recognition ( ASR ) module .
+Often these ASR transcriptions are noisy and erroneous .
+This can heavily impact the performance of downstream tasks performed by the SLU systems .
+* The first three authors have equal contribution .
+To counter the effects of ASR errors , SLU systems can utilise additional feature inputs from ASR .
+A common approach is to use N - best hypotheses where multiple ranked ASR hypotheses are used , instead of only 1 ASR hypothesis .
+A few ASR systems also provide additional information like wordlattices and word confusion networks .
+Word - lattice information represents alternative word - sequences that are likely for a particular utterance , while word confusion networks are an alternative topology for representing a lattice where the lattice has been transformed into a linear graph .
+Additionally , dialog context can help in resolving ambiguities in parses and reducing impact of ASR noise .
+N - best hypotheses : Li et al .
+( 2019 ) work with 1 - best ASR hypothesis and exploits unsupervised ASR error adaption method to map ASR hypotheses and transcripts to a similar feature space .
+On the other hand , Khan et al .
+( 2015 ) uses multiple ASR hypotheses to predict multiple semantic frames per ASR choice and determine the true spoken dialog system 's output using additional context .
+Wordlattices : Ladhak et al .
+( 2016 ) propose using recurrent neural networks ( RNNs ) to process weighted lattices as input to SLU .
+Švec et al .
+( 2015 ) presents a method for converting word - based ASR lattices into word - semantic ( W - SE ) which reduces the sparsity of the training data .
+Huang and Chen ( 2019 ) provides an approach for adapting lattices with pretrained transformers .
+Word confusion networks ( WCN ): Jagfeld and Vu ( 2017 ) proposes a technique to exploit word confusion networks ( WCNs ) as training or testing units for slot filling .
+Masumura et al .
+( 2018 ) models WCN as sequence of bag - of - weighted - arcs and introduce a mechanism that converts the bag - of - weighted - arcs into a continuous representation to build a neural network based spoken utterance classification .
+Liu et al .
+( 2020 ) proposes a BERT based SLU model to encode WCNs and the dialog context jointly to reduce ambiguity from ASR errors and improve SLU performance with pre - trained models .
+The motivation of this paper is to improve performance on downstream SLU tasks by exploiting transfer learning capabilities of the pre - trained transformer models .
+Richer information representations like word - lattices ( Huang and Chen ( 2019 ) ) and word confusion networks ( Liu et al .
+( 2020 ) ) have been used with GPT and BERT respectively .
+These representations are non - native to Transformer models , that are pre - trained on plain text sequences .
+We hypothesize that transformer models will learn better with a simpler utterance representation using concatenation of the N - best ASR hypotheses , where each hypothesis is separated by a special delimiter [ SEP ] .
+We test the effectiveness of our approach on a dialog state tracking dataset -DSTC2 ( Henderson et al . , 2014 ) , which is a standard benchmark for SLU .
+Contributions : ( i ) Our proposed approach , trained with a simple input representation , exceeds the competitive baselines in terms of accuracy and shows equivalent performance on the F1 - score to the prior state - of - the - art model .
+( ii ) We significantly outperform the prior state - of - the - art model in the low data regime .
+We attribute this to the effective transfer learning from the pre - trained Transformer model .
+( iii ) This approach is accessible to users of third party ASR APIs unlike the methods that use word - lattices and word confusion networks which need deeper access to the ASR system .
+N - Best ASR Transformer .
+N - Best ASR Transformer 1 works with a simple input representation achieved by concatenating the N - Best ASR hypotheses together with the dialog context ( system utterance ) .
+Pre - trained transformer models , specifically BERT and XLMRoBERTa , are used to encode the input representation .
+For output layer , we use a semantic tuple classifier ( STC ) to predict act - slot - value triplets .
+The following sub - sections describe our approach in detail .
+Input Representation .
+For representing the input we concatenate the last system utterance S ( dialog context ) , and the user utterance U .
+U is represented as concatenation of the N - best 2 ASR hypotheses , separated by a special delimiter , [ SEP ] .
+The final representation is shown in equation 1 below : x i = [ CLS ] ⊕ TOK(S i ) ⊕ N j=1 ( TOK(U j i ) ⊕ [ SEP ] ) ( 1 ) Here , U j i refers to the j th ASR hypothesis for the i th sample , ⊕ denotes the concatenation operator , TOK ( . ) is the tokenizer , [ CLS ] and [ SEP ] are the special tokens .
+I know no [ SEP ] [ SEP ] no [ SEP ] [ CLS ] Do you know your booking ID ?
+[ SEP ] now [ SEP ] .
+Figure 1 : Input representation : The green boxes represents the last system utterances followed by ASR hypotheses of user utterances concatenated together with a [ SEP ] token .
+As represented in figure 2 , we also pass segment IDs along with the input to differentiate between segment a ( last system utterance ) and segment b ( user utterance ) .
+Transformer Encoder .
+The above mentioned input representation can be easily used with any pre - trained transformer model .
+For our experiments , we select BERT ( Devlin et al . , 2019 ) and XLM - RoBERTa 3 ( Conneau et al . , 2020 ) for their recent popularity in NLP research community .
+Output Representation .
+The final hidden state of the transformer encoder corresponding to the special classification token [ CLS ] is used as an aggregated input representation for the downstream classification task by a semantic tuple classifier ( STC ) ( Mairesse et al . , 2009 ) .
+STC uses two classifiers to predict the actslot - value for a user utterance .
+A binary classifier is used to predict the presence of each act - slot pair , and a multi - class classifier is used to predict the value corresponding to the predicted act - slot pairs .
+We omit the latter classifier for the act - slot pairs with no value ( like goodbye , thankyou , request food etc . ) .
+To utilise this dataset we first transform it into the input format as discussed in section 2.1 . Baselines .
+We compare our approach with the following baselines : • SLU2 ( Williams , 2014 ): Two binary classifiers ( decision trees ) are used with word ngrams from the ASR N - best list and the word confusion network .
+One predicts the presence of that slot - value pair in the utterance and the other estimate for each user dialog act .
+• CNN ( Zhao and Feng , 2018 ): Proposes CNN based models for dialog act and slot - type prediction using 1 - best ASR hypothesis .
+• Hierarchical Decoding ( Zhao et al . , 2019 ): A neural - network based binary classifier is used to predict the act and slot type .
+A hybrid of sequence - to - sequence model with attention and pointer network is used to predict the value corresponding to the detected actslot pair.1 - Best ASR hypothesis was used for both training and evaluation tasks .
+• WCN - BERT + STC ( Liu et al . , 2020 ): Input utterance is encoded using the Word Confusion Network ( WCN ) using BERT by having the same position ids for all words in the bin of a lattice and modifying self - attention to work with word probabilities .
+A semantic tuple classifier uses a binary classifier to predict the act - slot value , followed by a multi - class classifier that predicts the value corresponding to the act - slot tuple .
+Experimental Settings .
+We perform hyper - parameter tuning on the validation set to get optimal values for dropout rate δ , learning rate lr , and the batch size b.
+Based on the best F1 - score , the final selected parameters were δ = 0.3 , lr = 3e-5 and b = 16 .
+We set the warm - up rate wr = 0.1 , and L2 weight decay L2 = 0.01 .
+We make use of Huggingface 's Transformers library ( Wolf et al . , 2020 ) to fine - tune the bert - base - uncased and xlm - roberta - base , which is optimized over Huggingface 's BertAdam optimizer .
+We trained the model on Nvidia T4 single GPU on AWS EC2 g4dn.2xlarge instance for 50 epochs .
+We apply early stopping and save the best - performing model based on its performance on the validation set .
+Results .
+In this section , we compare the performance of our approach with the baselines on the DSTC2 dataset .
+To compare the transfer learning effectiveness of pre - trained transformers with N - Best ASR BERT ( our approach ) and the previous state - of - the - art model WCN - BERT STC , we perform comparative analysis in the low data regime .
+Additionally , we perform an ablation study on N - Best ASR BERT to see the impact of modeling dialog context ( last system utterance ) with the user utterances .
+Through this ablation study , we try to understand the impact of dialog context on model 's performance .
+For this , we train N - Best ASR BERT in the following two settings : .
+Performance Evaluation .
+• When input representation consists of only the user utterance .
+• When input representation consists of both the last system utterance ( dialog context ) and the user utterance as shown in figure 3 .
+As presented in Table 3 , we observe that modeling the last system utterance helps in achieving better F1 and utterance - level accuracy by the difference of 1.3 % and 1.6 % respectively .
+Input Sequence Prediction .
+Hello It proves that dialog context helps in improving the performance of downstream SLU tasks .
+Figure 3 represents one such example where having dialog context in form of the last system utterance helps disambiguate between the two similar user utterances .
+Conclusion .
+In this work , building on a simple input representation , we propose N - Best ASR Transformer , which outperforms all the competitive baselines on utterance - level accuracy for the DSTC2 dataset .
+However , the highlight of our work is in achieving significantly higher performance in an extremely low data regime .
+This approach is accessible to users of third - party ASR APIs , unlike the methods that use word - lattices and word confusion networks .
+As future extensions to this work , we plan to : • Enable our proposed model to generalize to out - of - vocabulary ( OOV ) slot values .
+• Evaluate our approach in a multi - lingual setting .
+• Evaluate on different values N in N - best ASR .
+• Compare the performance of our approach on ASRs with different Word Error Rates ( WERs ) .
+Acknowledgement .
+We are highly grateful to our organization Vernacular.ai and our Machine Learning Team for ( i ) exposing us to practical problems related to multilingual voice - bots , ( ii ) giving us access to resources to solve this problem , ( iii ) helping us deploy this work in production for real - world users , and ( iv ) for their excellent feedback on this work .

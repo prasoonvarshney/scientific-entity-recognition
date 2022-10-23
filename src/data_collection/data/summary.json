@@ -25,6 +25,10 @@
             "file_name": "./src/data_collection/data/2022.acl-long.1.pdf.txt"
         },
         {
+            "url": "https://aclanthology.org/2022.acl-short.36.pdf",
+            "file_name": "./src/data_collection/data/2022.acl-short.36.pdf.txt"
+        },
+        {
             "url": "https://aclanthology.org/2021.findings-acl.212.pdf",
             "file_name": "./src/data_collection/data/2021.findings-acl.212.pdf.txt"
         },
@@ -47,6 +51,10 @@
         {
             "url": "https://aclanthology.org/2021.findings-acl.175.pdf",
             "file_name": "./src/data_collection/data/2021.findings-acl.175.pdf.txt"
+        },
+        {
+            "url": "https://aclanthology.org/2021.acl-short.14.pdf",
+            "file_name": "./src/data_collection/data/2021.acl-short.14.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.emnlp-main.563.pdf",
@@ -79,6 +87,10 @@
         {
             "url": "https://aclanthology.org/2020.loresmt-1.5.pdf",
             "file_name": "./src/data_collection/data/2020.loresmt-1.5.pdf.txt"
+        },
+        {
+            "url": "https://aclanthology.org/2020.ecnlp-1.8.pdf",
+            "file_name": "./src/data_collection/data/2020.ecnlp-1.8.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1051.pdf",
@@ -143,6 +155,10 @@
         {
             "url": "https://aclanthology.org/P17-4007.pdf",
             "file_name": "./src/data_collection/data/P17-4007.pdf.txt"
+        },
+        {
+            "url": "https://aclanthology.org/W17-5519.pdf",
+            "file_name": "./src/data_collection/data/W17-5519.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-2007.pdf",

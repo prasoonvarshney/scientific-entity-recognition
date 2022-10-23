@@ -1,0 +1,112 @@
+A surprisingly effective out - of - the - box char2char model on the E2E NLG Challenge dataset .
+We train a char2char model on the E2E NLG Challenge data , by exploiting " out - of - the - box " the recently released tf - seq2seq framework , using some of the standard options of this tool .
+With minimal effort , and in particular without delexicalization , tokenization or lowercasing , the obtained raw predictions , according to a small scale human evaluation , are excellent on the linguistic side and quite reasonable on the adequacy side , the primary downside being the possible omissions of semantic material .
+However , in a significant number of cases ( more than 70 % ) , a perfect solution can be found in the top-20 predictions , indicating promising directions for solving the remaining issues .
+Introduction .
+Very recently , researchers ( Novikova et al . , 2017 ) at Heriot - Watt University proposed the E2E NLG Challenge 1 and released a dataset consisting of 50 K ( MR , RF ) pairs , MR being a slot - value Meaning Representation of a restaurant , RF ( human ReFerence ) being a natural language utterance rendering of that representation .
+The utterances were crowd - sourced based on pictorial representations of the MRs , with the intention of producing more natural and diverse utterances compared to the ones directly based on the original MRs ( Novikova et al . , 2016 ) .
+Most of the RNN - based approaches to Natural Language Generation ( NLG ) that we are aware of , starting with ( Wen et al . , 2015 ) , generate the output word - by - word , and resort to special delexicalization or copy mechanisms ( Gu et al . , 2016 ) to handle rare or unknown words , for instance restaurant names or telephone numbers .
+One exception is ( Goyal et al . , 2016 ) , who employed a char - based seq2seq model where the input MR is simply represented as a character sequence , and the output is also generated char - by - char ; this approach avoids the rare word problem , as the character vocabulary is very small .
+While ( Goyal et al . , 2016 ) used an additional finite - state mechanism to guide the production of well - formed ( and input - motivated ) character sequences , the performance of their basic char2char model was already quite good .
+We further explore how a recent out - of - the box seq2seq model would perform on E2E NLG Challenge , when used in a char - based mode .
+We choose attention - based tf - seq2seq framework provided by authors of ( Britz et al . , 2017 ) ( which we detail in next section ) .
+Using some standard options provided by this framework , and without any pre - or postprocessing ( not even tokenization or lowercasing ) , we obtained results on which we conducted a small - scale human evaluation on one hundred MRs , involving two evaluators .
+This evaluation , on the one hand , concentrated on the linguistic quality , and on the other hand , on the semantic adequacy of the produced utterances .
+On the linguistic side , vast majority of the predictions were surprisingly grammatically perfect , while still being rather diverse and natural .
+In particular , and contrary to the findings of ( Goyal et al . , 2016 ) ( on a different dataset ) , our char - based model never produced non - words .
+On the adequacy side , we found that the only serious problem was the tendency ( in about half of the evaluated cases ) of the model to omit to render one ( rarely two ) slot(s ) ; on the other end , it never hallucinated , and very rarely duplicated , material .
+To try and assess the potential value of a simple re - ranking technique ( which we did not implement at this stage , but the approach of ( Wen et al . , 2015 ) and more recently the " inverted generation " technique of ( Chisholm et al . , 2017 ) could be used ) , we generated ( using the beam - search option of the framework ) 20best utterances for each MR , which the evaluators scanned towards finding an " oracle " , i.e. a generated utterance considered as perfect not only from the grammatical but also from the adequacy viewpoint .
+An oracle was found in the first position in around 50 % of the case , otherwise among the 20 positions in around 20 % of the cases , and not at all inside this list in the remaining 30 % cases .
+On the basis of these experiments and evaluations we believe that there remains only a modest gap towards a very reasonable NLG seq2seq model for the E2E NLG dataset .
+Model .
+Our model is a direct use of the seq2seq opensource software framework 2 , built over Tensor - Flow ( Abadi et al . , 2016 ) , and provided along with ( Britz et al . , 2017 ) , with some standard configuration options that will be detailed in section 3 .
+While in their large - scale NMT experiments ( Britz et al . , 2017 ) use word - based sequences , in our case we use character - based ones .
+This simply involves changing " delimiter " option in configuration files .
+Figure 1 : The seq2seq architecture of ( Britz et al . , 2017 ) ( drawing borrowed from that paper ) .
+Contrary to word - based sequences , we use character - based sequences for generating grammatically correct and natural utterances .
+Figure 1 , borrowed from ( Britz et al . , 2017 ) , provides an overview of the framework .
+While many options are configurable ( number of layers , unidirectional vs bidirectional encoder , additive vs multiplicative attention mechanism , GRU ( Cho et al . , 2014 ) vs LSTM cells ( Hochreiter and Schmidhuber , 1997 ) , etc . ) , the core architecture is common to all models .
+This is by now a pretty standard attention - based encoder - decoder archi - tecture based on ( Bahdanau et al . , 2015;Luong et al . , 2015 ) .
+The encoder RNN embeds each of the source words ( in our case , characters ) into vectors exploiting the hidden states computed by the RNN .
+The decoder RNN predicts the next word ( resp .
+character ) based on its current hidden state , previous character , and also based on the " context " vector c i , which is an attention - based weighted average of the embeddings of the source words ( resp .
+characters ) .
+Experiments .
+3.1 Dataset ( Novikova et al . , 2016 ) explain the protocol followed for crowdsourcing the E2E NLG Challenge dataset .
+Slightly different from the description in the article , there are two additional slots in the dataset : ' kidsFriendly ' and ' children - friendly ' which seem to be alternates for ' familyFriendly ' .
+Thus , there are in total 10 slots ( in decreasing order of frequency of being mentioned in the dataset MRs ): name ( 100 % ) , food ( 83 % ) , customer rating ( 68 % ) , priceRange ( 68 % ) , area ( 60 % ) , eatType ( 51 % ) , near ( 50 % ) , familyFriendly ( 25 % ) , kids - Friendly ( 19 % ) , children - friendly ( 19 % ) .
+Also , the number of active slots in the MRs varies as : 3 ( 5 % ) , 4 ( 17 % ) , 5 ( 19 % ) , 6 ( 19 % ) , 7 ( 16 % ) , 8 ( 4 % ) .
+Implementation .
+The tf - seq2seq toolkit ( Britz et al . , 2017 ) trains on pairs of sequences presented in parallel text format ( separate source and target sequence files ) .
+3 4 Taking cue from recommended configurations in Table 7 of ( Britz et al . , 2017 ) and the provided example configs in tf - seq2seq , we experimented with different numbers of layers in the encoder and decoder as well as different beam widths , while using the bi - directional encoder along with " additive " attention mechanism .
+As also observed by Britz et al .
+( 2017 ) , using a non - null " lengthpenalty " ( alias length normalization ( Wu et al . , 2016 ) ) , significantly improved decoding results .
+Results .
+We report the BLEU scores 5 for different configurations of the seq2seq model in Table 1 .
+In our initial experiments , using a beam - width 5 ( with no length penalty ) , with 4 layers in both the encoder and decoder and GRU cells , showed the best results in terms of BLEU ( score of 24.94 ) .
+We observed significant improvements using length penalty 1 , and decided to use this architecture as a basis for human evaluations , with a beam - width 20 to facilitate the observation of oracles .
+These evaluations were thus conducted on model [ encoder 4 layers , decoder 4 layers , GRU cell , beam - width 20 , length penalty 1 ] ( starred in Table 1 ) , though we found slightly better performing models in terms of BLEU at a later stage .
+Evaluation .
+The human evaluations were performed by two annotators on the top 20 predictions of the previously discussed model , for the first 100 MRs of the devset , using the following metrics : 1 .
+Semantic Adequacy a ) Omission [ 1/0 ] : information present in the MR that is omitted in the predicted utterance ( 1 = No omission , 0 = Omission ) .
+b ) Addition [ 1/0 ] : information in the predicted utterance that is absent in the MR ( 1 = No addition , 0 = Addition ) .
+c ) Repetition [ 1/0 ] : repeated information in the predicted utterance 5 Calculated using multi - bleu perl script bundled with tf - seq2seq .
+Note that these results were computed on the original version of Challenge devset ( updated recently ) which did not group the references associated with the same MR , possibly resulting in lower scores than when exploiting multi - refs .
+( 1 = No repetition , 0 = Repetition ) .
+2 .
+Linguistic Quality a ) Grammar [ 1/0 ] : ( 1 = Grammatically correct , 0 = incorrect ) .
+Note : one annotator punished the model even for ( rare ) mistakes of punctuation .
+b ) Naturalness [ 2/1/0 ] : subjective score to measure the naturalness of the utterance ( 2 being best ) .
+c ) Comparison to reference [ 1/0/-1 ] : subjective score comparing the prediction with the crowdsourced RF .
+( ' vsRef ' in the Table 2 , 1 = Prediction better than RF , 0 = Prediction at par with RF , -1 = RF better than prediction ) .
+3 .
+Oracle [ 1/0/-1 ] : 1 if the first prediction is an " oracle " ( i.e. considered as perfect , see section 1 ) , 0 when the oracle is found in the top 20 , and -1 when no oracle is found there .
+Analysis .
+We show a few examples of utterances ( predictions in first position , i.e. most probable ) produced by our model , for discussion .
+6 .
+[ MR ] : name[The Punter ] , customer rating[high ] , area[riverside ] , kidsFriendly[yes ] .
+[ RF ] : In riverside area , there is The Punter , which is high rated by customers and kids are friendly .
+[ Pred ] : The Punter is a kid friendly restaurant in the riverside area with a high customer rating .
+[ MR ] : name[The Golden Palace ] , eatType[coffeee shop ] , food[Japanese ] , priceRange[£20 - 25 ] , customer rating[high ] , area[riverside ] .
+[ RF ] : For highly - rated Japanese food pop along to The Golden Palace coffee shop .
+Its located on the riverside .
+Expect to pay between 20 - 25 pounds per person .
+[ Pred ] : The Golden Palace is a coffee shop providing Japanese food in the £ 20 - 25 price range .
+It is located in the riverside area .
+6 Some more examples can be found in Among the utterances produced by the model in first position ( Pred ) , the most prominent issue was that of omissions ( underlined in example 2 ) .
+There were no additions or non - words ( which was one of the primary concerns for ( Goyal et al . , 2016 ) ) .
+We observed only a couple of repetitions which were actually accompanied by omission of some slot(s ) in the same utterance ( repetition highlighted in bold in example 3 ) .
+Surprisingly enough , we observed a similar issue of omissions in human references ( target for our model ) .
+We then decided to perform comparisons against the human reference ( ' vsRef ' in Table 2 ) .
+Often , the predictions were found to be semantically or grammatically better than the human reference ; for example observe the underlined portion of the reference in the first example .
+The two annotators independently found the predictions to be mostly grammatically correct as well as natural ( to a slighty lesser extent ) .
+7 A general feeling of the annotators was that the predictions , while showing a significant amount of linguistic diversity and naturalness , had a tendency to respect grammatical constraints better than the references ; the crowdsourcers tended to strive for creativity , sometimes not supported by evidence in the MR , and often with little concern for linguistic quality ; it may be conjectured that the seq2seq model , by " averaging " over many linguistically diverse and sometimes incorrect training examples , was still able to learn what amounts to a reasonable linguistic model for its predictions .
+We also investigate whether we could find an ' oracle ' ( perfect solution as defined in section 1 ) in the top-20 predictions and observed that in around 70 % of our examples the oracle could be found in the top results ( see Table 3 ) , very often ( 51 % ) at the first position .
+In the rest 30 % of the cases , even the top-20 predictions did not contain an oracle .
+We found that the presence of an oracle was dependent on the number of slots in the MR .
+When the number of slots was 7 or 8 , the presence of an oracle in the top predictions decreased significantly to approximately 40 % .
+In contrast , with 4 slots , our model predicted an oracle right at the first place for 83 % of the cases .
+Conclusion .
+We employed the open source tf - seq2seq framework for training a char2char model on the E2E NLG Challenge data .
+This could be done with minimal effort , without requiring delexicalization , lowercasing or even tokenization , by exploiting standard options provided with the framework .
+Human annotators found the predictions to have great linguistic quality , somewhat to our surprise , but also confirming the observations in ( Karpathy , 2015 ) .
+On the adequacy side , omissions were the major drawback ; no hallucinations were observed and only very few instances of repetition .
+We hope our results and annotations can help understand the dataset and issues better , while also being useful for researchers working on the challenge .
+RF .
+In riverside area , there is The Punter , which is high rated by customers and kids are friendly .
+Pred .
+The Punter is a kid friendly restaurant in the riverside area with a high customer rating .
+RF .
+For highly - rated Japanese food pop along to The Golden Palace coffee shop .
+Its located on the riverside .
+Expect to pay between 20 - 25 pounds per person .
+Pred .
+The Golden Palace is a coffee shop providing Japanese food in the £ 20 - 25 price range .
+It is located in the riverside area .
+Pred .
+The Eagle is a kid friendly Japanese coffee shop in the riverside area near Burger King .
+It has a moderate price range and a customer rating of 1 out of 5 .
+Table 4 : Sample predictions .
+For the first MR of each arity ( 3 to 8) in the devset , we show the best prediction of the model ( the starred one in Table 1 ) , along with the RF .
+Omissions of semantic material are highlighted in bold .
+Acknowledgments We thank Éric Gaussier , Chunyang Xiao , and Matthias Gallé for useful suggestions .
