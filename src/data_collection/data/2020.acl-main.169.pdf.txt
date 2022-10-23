@@ -1,0 +1,287 @@
+Politeness Transfer : A Tag and Generate Approach .
+This paper introduces a new task of politeness transfer which involves converting non - polite sentences to polite sentences while preserving the meaning .
+We also provide a dataset of more than 1.39 million instances automatically labeled for politeness to encourage benchmark evaluations on this new task .
+We design a tag and generate pipeline that identifies stylistic attributes and subsequently generates a sentence in the target style while preserving most of the source content .
+For politeness as well as five other transfer tasks , our model outperforms the state - of - the - art methods on automatic metrics for content preservation , with a comparable or better performance on style transfer accuracy .
+Additionally , our model surpasses existing methods on human evaluations for grammaticality , meaning preservation and transfer accuracy across all the six style transfer tasks .
+The data and code is located at https:// github.com/tag-and-generate/Politeness plays a crucial role in social interaction , and is closely tied with power dynamics , social distance between the participants of a conversation , and gender ( Brown et al . , 1987;Danescu - Niculescu - Mizil et al . , 2013 ) .
+It is also imperative to use the appropriate level of politeness for smooth communication in conversations ( Coppock , 2005 ) , organizational settings like emails ( Peterson et al . , 2011 ) , memos , official documents , and many other settings .
+Notably , politeness has also been identified as an interpersonal style which can be decoupled from content ( Kang and Hovy , 2019 ) .
+Motivated by its central importance , in this paper we study the task of converting non - polite sentences to polite sentences while preserving the meaning .
+Rao and Tetreault , 2018 ; Xu et al . , 2012 ; Jhamtani et al . , 2017 ) has not focused on politeness as a style transfer task , and we argue that defining it is cumbersome .
+While native speakers of a language and cohabitants of a region have a good working understanding of the phenomenon of politeness for everyday conversation , pinning it down as a definition is non - trivial ( Meier , 1995 ) .
+There are primarily two reasons for this complexity .
+First , as noted by ( Brown et al . , 1987 ) , the phenomenon of politeness is rich and multifaceted .
+Second , politeness of a sentence depends on the culture , language , and social structure of both the speaker and the addressed person .
+For instance , while using " please " in requests made to the closest friends is common amongst the native speakers of North American English , such an act would be considered awkward , if not rude , in the Arab culture ( Kádár and Mills , 2011 ) .
+We circumscribe the scope of politeness for the purpose of this study as follows : First , we adopt the data driven definition of politeness proposed by ( Danescu - Niculescu - Mizil et al . , 2013 ) .
+Second , we base our experiments on a dataset derived from the Enron corpus ( Klimt and Yang , 2004 ) which consists of email exchanges in an American corporation .
+Thus , we restrict our attention to the notion of politeness as widely accepted by the speakers of North American English in a formal setting .
+Even after framing politeness transfer as a task , there are additional challenges involved that differentiate politeness from other styles .
+Consider a common directive in formal communication , " send me the data " .
+While the sentence is not impolite , a rephrasing " could you please send me the data " would largely be accepted as a more polite way of phrasing the same statement ( Danescu - Niculescu - Mizil et al . , 2013 ) .
+This example brings out a distinct characteristic of politeness .
+It is easy to pinpoint the signals for politeness .
+However , cues that signal the absence of politeness , like direct questions , statements and factuality ( Danescu - Niculescu - Mizil et al . , 2013 ) , do not explicitly appear in a sentence , and are thus hard to objectify .
+Further , the other extreme of politeness , impolite sentences , are typically riddled with curse words and insulting phrases .
+While interesting , such cases can typically be neutralized using lexicons .
+For our study , we focus on the task of transferring the non - polite sentences to polite sentences , where we simply define non - politeness to be the absence of both politeness and impoliteness .
+Note that this is in stark contrast with the standard style transfer tasks , which involve transferring a sentence from a well - defined style polarity to the other ( like positive to negative sentiment ) .
+We propose a tag and generate pipeline to overcome these challenges .
+The tagger identifies the words or phrases which belong to the original style and replaces them with a tag token .
+If the sentence has no style attributes , as in the case for politeness transfer , the tagger adds the tag token in positions where phrases in the target style can be inserted .
+The generator takes as input the output of the tagger and generates a sentence in the target style .
+Additionally , unlike previous systems , the outputs of the intermediate steps in our system are fully realized , making the whole pipeline interpretable .
+Finally , if the input sentence is already in the target style , our model wo n't add any stylistic markers and thus would allow the input to flow as is .
+We evaluate our model on politeness transfer as well as 5 additional tasks described in prior work ( Shen et al . , 2017;Prabhumoye et al . , 2018;Li et al . , 2018 ) on content preservation , fluency and style transfer accuracy .
+Both automatic and human evaluations show that our model beats the stateof - the - art methods in content preservation , while either matching or improving the transfer accuracy across six different style transfer tasks ( § 5 ) .
+The results show that our technique is effective across a broad spectrum of style transfer tasks .
+Our methodology is inspired by Li et al .
+( 2018 ) and improves upon several of its limitations as described in ( § 2 ) .
+Our main contribution is the design of politeness transfer task .
+To this end , we provide a large dataset of nearly 1.39 million sentences labeled for politeness ( https://github.com/tag-and-generate/ politeness - dataset ) .
+Additionally , we hand curate a test set of 800 samples ( from Enron emails ) which are annotated as requests .
+To the best of our knowledge , we are the first to undertake politeness as a style transfer task .
+In the process , we highlight an important class of problems wherein the transfer involves going from a neutral style to the target style .
+Finally , we design a " tag and generate " pipeline that is particularly well suited for tasks like politeness , while being general enough to match or beat the performance of the existing systems on popular style transfer tasks .
+Related Work .
+Politeness and its close relation with power dynamics and social interactions has been well documented ( Brown et al . , 1987 ) .
+Recent work ( Danescu - Niculescu - Mizil et al . , 2013 ) in computational linguistics has provided a corpus of requests annotated for politeness curated from Wikipedia and StackExchange .
+Niu and Bansal ( 2018 ) uses this corpus to generate polite dialogues .
+Their work focuses on contextual dialogue response generation as opposed to content preserving style transfer , while the latter is the central theme of our work .
+Prior work on Enron corpus ( Yeh and Harnly , 2006 ) has been mostly from a socio - linguistic perspective to observe social power dynamics ( Bramsen et al . , 2011;McCallum et al . , 2007 ) , formality ( Peterson et al . , 2011 ) and politeness ( Prabhakaran et al . , 2014 ) .
+We build upon this body of work by using this corpus as a source for the style transfer task .
+Prior work on style transfer has largely focused on tasks of sentiment modification ( Hu et al . , 2017;Shen et al . , 2017;Li et al . , 2018 ) , caption transfer ( Li et al . , 2018 ) , persona transfer ( Chandu et al . , 2019;Zhang et al . , 2018 ) , gender and political slant transfer ( Reddy and Knight , 2016;Prabhumoye et al . , 2018 ) , and formality transfer ( Rao and Tetreault , 2018;Xu et al . , 2019 ) .
+Note that formality and politeness are loosely connected but independent styles ( Kang and Hovy , 2019 ) .
+We focus our efforts on carving out a task for politeness transfer and creating a dataset for such a task .
+Current style transfer techniques ( Shen et al . , 2017;Hu et al . , 2017;Fu et al . , 2018;Yang et al . , 2018;John et al . , 2019 ) try to disentangle source style from content and then combine the content with the target style to generate the sentence in the target style .
+Compared to prior work , " Delete , Retrieve and Generate " ( Li et al . , 2018 ) ( referred to as DRG henceforth ) and its extension ( Sudhakar et al . , 2019 ) are effective methods to generate out - puts in the target style while having a relatively high rate of source content preservation .
+However , DRG has several limitations : ( 1 ) the delete module often marks content words as stylistic markers and deletes them , ( 2 ) the retrieve step relies on the presence of similar content in both the source and target styles , ( 3 ) the retrieve step is time consuming for large datasets , ( 4 ) the pipeline makes the assumption that style can be transferred by deleting stylistic markers and replacing them with target style phrases , ( 5 ) the method relies on a fixed corpus of style attribute markers , and is thus limited in its ability to generalize to unseen data during test time .
+Our methodology differs from these works as it does not require the retrieve stage and makes no assumptions on the existence of similar content phrases in both the styles .
+This also makes our pipeline faster in addition to being robust to noise .
+Wu et al .
+( 2019 ) treats style transfer as a conditional language modelling task .
+It focuses only on sentiment modification , treating it as a cloze form task of filling in the appropriate words in the target sentiment .
+In contrast , we are capable of generating the entire sentence in the target style .
+Further , our work is more generalizable and we show results on five other style transfer tasks .
+3 Tasks and Datasets .
+Politeness Transfer Task .
+For the politeness transfer task , we focus on sentences in which the speaker communicates a requirement that the listener needs to fulfill .
+Common examples include imperatives " Let 's stay in touch " and questions that express a proposal " Can you call me when you get back ? " .
+Following Jurafsky et al .
+( 1997 ) , we use the umbrella term " action - directives " for such sentences .
+The goal of this task is to convert action - directives to polite requests .
+While there can be more than one way of making a sentence polite , for the above examples , adding gratitude ( " Thanks and let 's stay in touch " ) or counterfactuals ( " Could you please call me when you get back ? " ) would make them polite ( Danescu - Niculescu - Mizil et al . , 2013 ) .
+Data Preparation .
+The Enron corpus ( Klimt and Yang , 2004 ) consists of a large set of email conversations exchanged by the employees of the Enron corporation .
+Emails serve as a medium for exchange of requests , serving as an ideal application for politeness transfer .
+We begin by pre - processing the raw Enron corpus following Shetty and Adibi ( 2004 ) .
+The first set of pre - processing 1 steps and de - duplication yielded a corpus of roughly 2.5 million sentences .
+Further pruning 2 led to a cleaned corpus of over 1.39 million sentences .
+Finally , we use a politeness classifier ( Niu and Bansal , 2018 ) to assign politeness scores to these sentences and filter them into ten buckets based on the score ( P 0 -P 9 ; Fig .
+1 ) .
+All the buckets are further divided into train , test , and dev splits ( in a 80:10:10 ratio ) .
+For our experiments , we assumed all the sentences with a politeness score of over 90 % by the classifier to be polite , also referred as the P 9 bucket ( marked in green in Fig .
+1 ) .
+We use the train - split of the P 9 bucket of over 270 K polite sentences as the training data for the politeness transfer task .
+Since the goal of the task is making action directives more polite , we manually curate a test set comprising of such sentences from test splits across the buckets .
+We first train a classifier on the switchboard corpus ( Jurafsky et al . , 1997 ) to get dialog state tags and filter sentences that have been labeled as either action - directive or quotation .
+3 Further , we use human annotators to manually select the test sentences .
+The annotators had a Fleiss 's Kappa score ( κ ) of 0.77 4 and curated a final test set of 800 sentences .
+In Fig .
+2 , we examine the two extreme buckets with politeness scores of < 10 % ( P 0 bucket ) and > 90 % ( P 9 bucket ) from our corpus by plotting 1 Pre - processing also involved steps for tokenization ( done using spacy ( Honnibal and Montani , 2017 ) ) and conversion to lower case .
+2 We prune the corpus by removing the sentences that 1 ) were less than 3 words long , 2 ) had more than 80 % numerical tokens , 3 ) contained email addresses , or 4 ) had repeated occurrences of spurious characters .
+3 We used AWD - LSTM based classifier for classification of action - directive .
+4 The score was calculated for 3 annotators on a sample set of 50 sentences .
+10 of the top 30 words occurring in each bucket .
+We clearly notice that words in the P 9 bucket are closely linked to polite style , while words in the P 0 bucket are mostly content words .
+This substantiates our claim that the task of politeness transfer is fundamentally different from other attribute transfer tasks like sentiment where both the polarities are clearly defined .
+Other Tasks .
+The Captions dataset ( Gan et al . , 2017 ) has image captions labeled as being factual , romantic or humorous .
+We use this dataset to perform transfer between these styles .
+This task parallels the task of politeness transfer because much like in the case of politeness transfer , the captions task also involves going from a style neutral ( factual ) to a style rich ( humorous or romantic ) parlance .
+For sentiment transfer , we use the Yelp restaurant review dataset ( Shen et al . , 2017 ) to train , and evaluate on a test set of 1000 sentences released by Li et al .
+( 2018 ) .
+We also use the Amazon dataset of product reviews ( He and McAuley , 2016 ) .
+Methodology .
+We are given non - parallel samples of sentences X 1 = { x ( 1 ) 1 .
+x ( 1 ) n } and X 2 = { x ( 2 ) 1 .
+x ( 2 ) m } from styles S 1 and S 2 respectively .
+The objective of the task is to efficiently generate samples X1 = { x ( 2 ) 1 .
+x(2 ) n } in the target style S 2 , conditioned on samples in X 1 .
+For a style S v where v ∈ { 1 , 2 } , we begin by learning a set of phrases ( Γ v ) which characterize the style S v .
+The presence of phrases from Γ v in a sentence x i would asso - ciate the sentence with the style S v .
+For example , phrases like " pretty good " and " worth every penny " are characteristic of the " positive " style in the case of sentiment transfer task .
+We propose a two staged approach where we first infer a sentence z(x i ) from x ( 1 ) i using a model , the tagger .
+The goal of the tagger is to ensure that the sentence z(x i ) is agnostic to the original style ( S 1 ) of the input sentence .
+Conditioned on z(x i ) , we then generate the transferred sentence x(2 ) i in the target style S 2 using another model , the generator .
+The intermediate variable z(x i ) is also seen in other style - transfer methods .
+Shen et al .
+( 2017 i while being agnostic to style S v .
+In these cases z(x i ) encodes the input sentence in a continuous latent space whereas for us z(x i ) manifests in the surface form .
+The ability of our pipeline to generate observable intermediate outputs z(x i ) makes it somewhat more interpretable than those other methods .
+We train two independent systems for the tagger & generator which have complimentary objectives .
+The former identifies the style attribute markers a(x ( 1 ) i ) from source style S 1 and either replaces them with a positional token called [ TAG ] or merely adds these positional tokens without removing any phrase from the input x ( 1 ) i .
+This particular capability of the model enables us to generate these tags in an input that is devoid of any attribute marker ( i.e. a(x ( 1 ) i ) = { } ) .
+This is one of the major differences from prior works which mainly focus on removing source style attributes and then replacing them with the target style attributes .
+It is especially critical for tasks like politeness transfer where the transfer takes place from a non - polite sentence .
+This is because in such cases we may need to add new phrases to the sentence rather than simply replace existing ones .
+The generator is trained to generate sentences x(2 ) i in the target style by replacing these [ TAG ] tokens with stylistically relevant words inferred from target style S 2 .
+Even though we have non - parallel corpora , both systems are trained in a supervised fashion as sequence - to - sequence models with their own distinct pairs of inputs & outputs .
+To create parallel training data , we first estimate the style markers Γ v for a given style S v & then use these to curate style free sentences with [ TAG ] for an input x ( 1 ) i in source style S 1 .
+The generator transforms x ( 1 ) i into x(2 ) i which is in target style S 2 .
+tokens .
+Training data creation details are given in sections § 4.2 , § 4.3 . Fig .
+3 shows the overall pipeline of the proposed approach .
+In the first example x ( 1 ) 1 , where there is no clear style attribute present , our model adds the [ TAG ] token in z(x 1 ) , indicating that a target style marker should be generated in this position .
+On the contrary , in the second example , the terms " ok " and " bland " are markers of negative sentiment and hence the tagger has replaced them with [ TAG ] tokens in z(x 2 ) .
+We can also see that the inferred sentence in both the cases is free of the original and target styles .
+The structural bias induced by this two staged approach is helpful in realizing an interpretable style free tagged sentence that explicitly encodes the content .
+In the following sections we discuss in detail the methodologies involved in ( 1 ) estimating the relevant attribute markers for a given style , ( 2 ) tagger , and ( 3 ) generator modules of our approach .
+Estimating Style Phrases .
+Drawing from Li et al .
+( 2018 ) , we propose a simple approach based on n - gram tf - idfs to estimate the set Γ v , which represents the style markers for style v.
+For a given corpus pair X 1 , X 2 in styles S 1 , S 2 respectively we first compute a probability distribution p 2 1 ( w ) over the n - grams w present in both the corpora ( Eq . 2 ) .
+Intuitively , p 2 1 ( w ) is proportional to the probability of sampling an n - gram present in both X 1 , X 2 but having a much higher tf - idf value in X 2 relative to X 1 .
+This is how we define the impactful style markers for style S 2 .
+η 2 1 ( w ) = 1 m m i=1 tf - idf(w , x(2 ) i ) 1 n n j=1 tf - idf(w , x(1 ) j ) ( 1 ) p 2 1 ( w ) = η 2 1 ( w ) γ w η 2 1 ( w ) γ ( 2 ) where , η 2 1 ( w ) is the ratio of the mean tf - idfs for a given n - gram w present in both X 1 , X 2 with |X 1 | = n and |X 2 | = m.
+Words with higher values for η 2 1 ( w ) have a higher mean tf - idf in X 2 vs X 1 , and thus are more characteristic of S 2 .
+We further smooth and normalize η 2 1 ( w ) to get p 2 1 ( w ) .
+Finally , we estimate Γ 2 by Γ 2 = { w : p 2 1 ( w ) ≥ k } In other words , Γ 2 consists of the set of phrases in X 2 above a given style impact k.
+Γ 1 is computed similarly where we use p 1 2 ( w ) , η 1 2 ( w ) .
+Style Invariant Tagged Sentence .
+The tagger model ( with parameters θ t ) takes as input the sentences in X 1 and outputs { z(x i ) : x i ∈ X 1 } .
+Depending on the style transfer task , the tagger is trained to either ( 1 ) identify and replace style attributes a ( x(1 ) i ) with the token tag [ TAG ] ( replace - tagger ) or ( 2 ) add the [ TAG ] token at specific locations in x ( 1 ) i ( add - tagger ) .
+In both the cases , the [ TAG ] tokens indicate positions where the generator can insert phrases from the target style S 2 .
+Finally , we use the distribution p 2 1 ( w)/p 1 2 ( w ) over Γ 2 /Γ 1 ( § 4.1 ) to draw samples of attribute - markers that would be replaced with the [ TAG ] token during the creation of training data .
+The first variant , replace - tagger , is suited for a task like sentiment transfer where almost every sentence has some attribute markers a(x ( 1 ) i ) present in it .
+In this case the training data comprises of pairs where the input is X 1 and the output is { z(x i ) : x ( 1 ) i ∈ X 1 } .
+The loss objective for replace - tagger is given by L r ( θ t ) in Eq . 3 .
+L r ( θ t ) = − |X 1 | i=1 log P θt ( z(x i ) |x ( 1 ) i ; θ t ) ( 3 ) The second variant , add - tagger , is designed for cases where the transfer needs to happen from style neutral sentences to the target style .
+That is , X 1 consists of style neutral sentences whereas X 2 consists of sentences in the target style .
+Examples of such a task include the tasks of politeness transfer ( introduced in this paper ) and caption style transfer ( used by Li et al .
+( 2018 ) ) .
+In such cases , since the source sentences have no attribute markers to remove , the tagger learns to add [ TAG ] tokens at specific locations suitable for emanating style words in the target style .
+The training data ( Fig .
+4 ) for the add - tagger is given by pairs where the input is { x ( 2 ) i \a(x ( 2 ) i ) : x ( 2 ) i ∈ X 2 } and the output is { z(x i ) : x ( 2 ) i ∈ X 2 } .
+Essentially , for the input we take samples x ( 2 ) i in the target style S 2 and explicitly remove style phrases a ( x(2 ) i ) from it .
+For the output we replace the same phrases a ( x(2 ) i ) with [ TAG ] tokens .
+As indicated in Fig .
+4 , we remove the style phrases " you would like to " and " please " and replace them with [ TAG ] in the output .
+Note that we only use samples from X 2 for training the add - tagger ; samples from the style neutral X 1 are not involved in the training process at all .
+For example , in the case of politeness transfer , we only use the sentences labeled as " polite " for training .
+In effect , by training in this fashion , the tagger learns to add [ TAG ] tokens at appropriate locations in a style neutral sentence .
+The loss objective ( L a ) given by Eq . 4 is crucial for tasks like politeness transfer where one of the styles is poorly defined .
+L a ( θ t ) = − |X 1 | i=1 log P θt ( z(x i ) |x ( 2 ) i \a(x ( 2 ) i ) ; θ t ) ( 4 ) .
+Style Targeted Generation .
+The training for the generator model is complimentary to that of the tagger , in the sense that the generator takes as input the tagged output z(x i ) inferred from the source style and modifies the [ TAG ] tokens to generate the desired sentence x(v ) i in the target style S v .
+L(θ g ) = − |Xv| i=1 log P θg ( x ( v ) i |z(x i ) ; θ g ) ( 5 ) The training data for transfer into style S v comprises of pairs where the input is given by { z(x i ) : Finally , we note that the location at which the tags are generated has a significant impact on the distribution over style attributes ( in Γ 2 ) that are used to fill the [ TAG ] token at a particular position .
+Hence , instead of using a single [ TAG ] token , we use a set of positional tokens [ TAG ] t where t ∈ { 0 , 1 , .
+T } for a sentence of length T .
+By training both tagger and generator with these positional [ TAG ] t tokens we enable them to easily realize different distributions of style attributes for different positions in a sentence .
+For example , in the case of politeness transfer , the tags added at the beginning ( t = 0 ) will almost always be used to generate a token like " Would it be possible ... " whereas for a higher t , [ TAG ] t may be replaced with a token like " thanks " or " sorry . " x ( v ) i ∈ X v , v ∈ { 1 , .
+Experiments and Results .
+Baselines We compare our systems against three previous methods .
+DRG ( Li et al . , 2018 ) , Style Transfer Through Back - translation ( BST ) ( Prabhumoye et al . , 2018 ) , and Style transfer from nonparallel text by cross alignment ( Shen et al . , 2017 ) ( CAE ) .
+For DRG , we only compare against the best reported method , delete - retrieve - generate .
+For all the models , we follow the experimental setups described in their respective papers .
+Implementation Details We use 4 - layered transformers ( Vaswani et al . , 2017 ) to train both tagger and generator modules .
+Each transformer has 4 attention heads with a 512 dimensional embedding layer and hidden state size .
+Dropout ( Srivastava et al . , 2014 ) with p - value 0.3 is added for each layer in the transformer .
+For the politeness dataset the generator module is trained with data augmentation techniques like random word shuffle , word drops / replacements as proposed by ( I m et al . , 2017 ) .
+We empirically observed that these techniques provide an improvement in the fluency and diversity of the generations .
+Both modules were also trained with the BPE tokenization ( Sennrich et al . , 2015 ) using a vocabulary of size 16000 for all the datasets except for Captions , which was trained using 4000 BPE tokens .
+The value of the smoothing parameter γ in Eq . 2 is set to 0.75 .
+For all datasets except Yelp we use phrases with p 2 1 ( w ) ≥ k = 0.9 to construct Γ 2 , Γ 1 ( § 4.1 ) .
+For Yelp k is set to 0.97 .
+During inference we use beam search ( beam size=5 ) to decode tagged sentences and targeted generations for tagger & generator respectively .
+For the tagger , we re - rank the final beam search outputs based on the number of [ TAG ] tokens in the output sequence ( favoring more [ TAG ] tokens ) .
+Automated Evaluation Following prior work ( Li et al . , 2018;Shen et al . , 2017 ) , we use automatic metrics for evaluation of the models along two major dimensions : ( 1 ) style transfer accuracy and ( 2 ) content preservation .
+To capture accuracy , we use a classifier trained on the nonparallel style corpora for the respective datasets ( barring politeness ) .
+The architecture of the classifier is based on AWD - LSTM ( Merity et al . , 2017 ) and a softmax layer trained via cross - entropy loss .
+We use the implementation provided by fastai .
+5 For politeness , we use the classifier trained by ( Niu and Bansal , 2018 ) .
+6 The metric of transfer accuracy ( Acc ) is defined as the percentage of generated sentences classified to be in the target domain by the classifier .
+The standard metric for measuring content preservation is BLEU - self ( BL - s ) ( Papineni et al . , 2002 ) which is computed with respect to the original sentences .
+Additionally , we report the BLEU - reference ( BL - r ) scores using the human reference sentences on the Yelp , Amazon and Captions datasets ( Li et al . , 2018 ) .
+We also report ROUGE ( ROU ) ( Lin , 2004 ) and METEOR ( MET ) ( Denkowski and Lavie , 2011 ) scores .
+In particular , METEOR also uses synonyms and stemmed forms of the words in candidate and reference sentences , and thus may be better at quantifying semantic similarities .
+Table 1 shows that our model achieves significantly higher scores on BLEU , ROUGE and METEOR as compared to the baselines DRG , CAE and BST on the Politeness , Gender and Political datasets .
+The BLEU score on the Politeness task is greater by 58.61 points with respect to DRG .
+In general , CAE and BST achieve high classifier accuracies but they fail to retain the original content .
+The classifier accuracy on the generations of our model are comparable ( within 1 % ) with that of DRG for the Politeness dataset .
+In Table 2 , we compare our model against CAE and DRG on the Yelp , Amazon , and Captions datasets .
+For each of the datasets our test set comprises 500 samples ( with human references ) curated by Li et al .
+( 2018 ) .
+We observe an increase in the BLEU - reference scores by 5.25 , 4.95 and 3.64 on the Yelp , Amazon , and Captions test sets respectively .
+Additionally , we improve the transfer accuracy for Amazon by 14.2 % while achieving accuracies similar to DRG on Yelp and Captions .
+As noted by Li et al .
+( 2018 ) , one of the unique aspects of the Amazon dataset is the absence of similar content in both the sentiment polarities .
+Hence , the performance of their model is worse in this case .
+Since we do n't make any such assumptions , we perform significantly better on this dataset .
+While popular , the metrics of transfer accuracy and BLEU have significant shortcomings making them susceptible to simple adversaries .
+BLEU relies heavily on n - gram overlap and classifiers can be fooled by certain polarizing keywords .
+We test this hypothesis on the sentiment transfer task by a Naive Baseline .
+This baseline adds " but overall it sucked " at the end of the sentence to transfer it to negative sentiment .
+Similarly , it appends " but overall it was perfect " for transfer into a positive sentiment .
+This baseline achieves an average accuracy score of 91.3 % and a BLEU score of 61.44 on the Yelp dataset .
+Despite high evaluation scores , it does not reflect a high rate of success on the task .
+In summary , evaluation via automatic metrics might not truly correlate with task success .
+Changing Content Words Given that our model is explicitly trained to generate new content only in place of the TAG token , it is expected that a welltrained system will retain most of the non - tagged ( content ) words .
+Clearly , replacing content words is not desired since it may drastically change the meaning .
+In order to quantify this , we calculate the fraction of non - tagged words being changed across the datasets .
+We found that the non - tagged words were changed for only 6.9 % of the sentences .
+In some of these cases , we noticed that changing non - tagged words helped in producing outputs that were more natural and fluent .
+Human Evaluation Following Li et al .
+( 2018 ) , we select 10 unbiased human judges to rate the output of our model and DRG on three aspects : ( 1 ) content preservation ( Con ) ( 2 ) grammaticality of the generated content ( Gra ) ( 3 ) target attribute match of the generations ( Att ) .
+For each of these metrics , the reviewers give a score between 1 - 5 to each of the outputs , where 1 reflects a poor performance on the task and 5 means a perfect output .
+Since the judgement of signals that indicate gender and political inclination are prone to personal biases , we do n't annotate these tasks for target attribute match metric .
+Instead we rely on the classifier scores for the transfer .
+We 've used the same instructions from Li et al .
+( 2018 ) for our human study .
+Overall , we evaluate both systems on a total of 200 samples for Politeness and 100 samples each for Yelp , Gender and Political .
+Table 3 shows the results of human evaluations .
+We observe a significant improvement in content preservation scores across various datasets ( specifically in Politeness domain ) highlighting the ability of our model to retain content better than DRG .
+Alongside , we also observe consistent improvements of our model on target attribute matching and grammatical correctness .
+Qualitative Analysis We compare the results of our model with the DRG model qualitatively as shown in Table 4 .
+Our analysis is based on the linguistic strategies for politeness as described in ( Danescu - Niculescu - Mizil et al . , 2013 ) .
+The first sentence presents a simple example of the counterfactual modal strategy inducing " Could you please " to make the sentence polite .
+The second sentence highlights another subtle concept of politeness of 1st Person Plural where adding " we " helps being indirect and creates the sense that the burden of the request is shared between speaker and addressee .
+The third sentence highlights the ability of the model to add Apologizing words like " Sorry " which helps in deflecting the social threat of the request by attuning to the imposition .
+According to the Please Start strategy , it is more direct and insincere to start a sentence with " Please " .
+The fourth sentence projects the case where our model uses " thanks " at the end to express gratitude and in turn , makes the sentence more polite .
+Our model follows the strategies prescribed in ( Danescu - Niculescu - Mizil et al . , 2013 ) while generating polite sentences .
+7 Ablations We provide a comparison of the two variants of the tagger , namely the replace - tagger and add - tagger on two datasets .
+We also train and compare them with a combined variant .
+8 We train these tagger variants on the Yelp and Captions datasets and present the results in tagger provides the best accuracy with a relatively negligible drop in BLEU scores .
+On the contrary , for Yelp , where both polarities are clearly defined , the replace - tagger gives the best performance .
+Interestingly , the accuracy of the add - tagger is ≈ 50 % in the case of Yelp , since adding negative words to a positive sentence or vice - versa neutralizes the classifier scores .
+Thus , we can use the add - tagger variant for transfer from a polarized class to a neutral class as well .
+To check if the combined tagger is learning to perform the operation that is more suitable for a dataset , we calculate the fraction of times the combined tagger performs add / replace operations on the Yelp and Captions datasets .
+We find that for Yelp ( a polar dataset ) the combined tagger performs 20 % more replace operations ( as compared to add operations ) .
+In contrast , on the CAPTIONS dataset , it performs 50 % more add operations .
+While the combined tagger learns to use the optimal tagging operation to some extent , a deeper understanding of this phenomenon is an interesting future topic for research .
+We conclude that the choice of the tagger variant is dependent on the characterstics of the underlying transfer task .
+Conclusion .
+We introduce the task of politeness transfer for which we provide a dataset comprised of sentences curated from email exchanges present in the Enron corpus .
+We extend prior works ( Li et al . , 2018;Sudhakar et al . , 2019 ) on attribute transfer by introducing a simple pipeline -tag & generate which is an interpretable two - staged approach for content preserving style transfer .
+We believe our approach is the first to be robust in cases when the source is style neutral , like the " non - polite " class in the case of politeness transfer .
+Automatic and human evaluation shows that our approach outperforms other state - of - the - art models on content preservation metrics while retaining ( or in some cases improving ) the transfer accuracies .
+Acknowledgments .
+This material is based on research sponsored in part by the Air Force Research Laboratory under agreement number FA8750 - 19 - 2 - 0200 .
+The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright notation thereon .
+The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements , either expressed or implied , of the Air Force Research Laboratory or the U.S. Government .
+This work was also supported in part by ONR Grant N000141812861 , NSF IIS1763562 , and Apple .
+We would also like to acknowledge NVIDIA 's GPU support .
+We would like to thank Antonis Anastasopoulos , Ritam Dutt , Sopan Khosla , and , Xinyi Wang for the helpful discussions .
+Non - polite Input DRG Our Model jon --please use this resignation letter in lieu of the one sent on friday .
+-i think this would be a good idea if you could not be a statement that harry 's signed in one of the schedule .
+Fact → Rom two dogs play with a tennis ball in the snow .
+two dogs play with a tennis ball in the snow .
+two dogs play with a tennis ball in the snow celebrating their friendship .
+Fact → Hum three kids play on a wall with a green ball .
+three kids on a bar on a field of a date .
+three kids play on a wall with a green ball fighting for supremacy .
+Fact → Hum a black dog plays around in water .
+a black dog plays in the water .
+a black dog plays around in water looking for fish .

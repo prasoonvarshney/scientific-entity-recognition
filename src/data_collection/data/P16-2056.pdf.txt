@@ -1,0 +1,109 @@
+Bootstrapped Text - level Named Entity Recognition for Literature .
+We present a named entity recognition ( NER ) system for tagging fiction : LitNER .
+Relative to more traditional approaches , LitNER has two important properties : ( 1 ) it makes no use of handtagged data or gazetteers , instead it bootstraps a model from term clusters ; and ( 2 ) it leverages multiple instances of the same name in a text .
+Our experiments show it to substantially outperform off - the - shelf supervised NER systems .
+Introduction .
+Much of the work on applying NLP to the analysis of literature has focused on literary figures / characters in the text , e.g. in the context of social network analysis ( Elson et al . , 2010;Agarwal et al . , 2013;Ardanuy and Sporleder , 2015 ) or analysis of characterization ( Bamman et al . , 2014 ) .
+Named entity recognition ( NER ) of person names is generally the first step in identifying characters ; locations are also a prevalent NE type , and can be useful when tracking different plot threads ( Wallace , 2012 ) , or trends in the settings of fiction .
+There are not , to our knowledge , any NER systems that are specifically targeted at literature , and most related work has used Stanford CoreNLP as an off - the - shelf solution ( Bamman et al . , 2014;Vala et al . , 2015 ) .
+In this paper , we show that it is possible to take advantage of the properties of fiction texts , in particular the repetition of names , to build a high - performing 3 - class NER system which distinguishes people and locations from other capitalized words and phrases .
+Notably , we do this without any hand - labelled data whatsoever , bootstrapping a text - level context classifier from a low - dimensional Brown clustering of the Project Gutenberg corpus .
+Related work .
+The standard approach to NER is to treat it as a supervised sequential classification problem , typically using conditional random fields or similar models , based on local context features as well as properties of the token itself .
+Relevant to the present work is the fact that , despite there being some work on enforcing tag consistency across multiple instances of the same token ( Finkel et al . , 2005 ) and the use of non - local features ( Ratinov and Roth , 2009 ) to improve supervised sequential models , the consensus seems to be that this nonlocal information has a relatively modest effect on performance in standard datasets , and as a result off - the - shelf NER systems in practice treat each sentence as a separate document , with multiple instances of the same token in different sentences viewed as entirely independent classification problems .
+We also note that although supervised NER is the norm , there is a smaller body of work in semi - supervised and unsupervised approaches to NER and semantic lexicon induction , for instance pattern bootstrapping ( Nadeau et al . , 2006;Thelen and Riloff , 2002;McIntosh et al . , 2011 ) as well as generative approaches ( Elsner et al . , 2009 ) .
+In the context of literature , the most closely related task is character identification ( Vala et al . , 2015 ) , which is itself an intermediate task for character speech identification ( He et al . , 2013 ) , analysis of characterization ( Bamman et al . , 2014 ) , and analysis of social networks ( Elson et al . , 2010;Agarwal et al . , 2013;Ardanuy and Sporleder , 2015 ) .
+In addition to NER , character identifica - tion also involves clustering multiple aliases of the same character , and discarding person names that do n't correspond to characters .
+Vala et al .
+( 2015 ) identify some of the failures of off - the - shelf NER with regards to character identification , and attempt to fix them ; their efforts are focused , however , on characters that are referred to by description rather than names or aliases .
+Method .
+Corpus preparation and segmentation .
+The corpus we use for building and testing our NER system is the 2010 image of the ( US ) Project Gutenberg corpus , 1 a reasonably comprehensive collection of out - of - copyright English literary texts , to our knowledge the largest that is publicly available in a machine - readable , full - text format .
+We access the texts via the GutenTag tool ( Brooke et al . , 2015 ) , which allows both filtering of texts by genre as well as within - text filtering to remove Project Gutenberg copyright information , front and back matter ( e.g. table of contents ) , and headers .
+We focus here only on fiction texts ( i.e. novels and short stories ) ; other kinds of literature ( e.g. plays ) are rare in the corpus and have very different properties in terms of the distribution of names .
+The final corpus size is 10844 texts .
+GutenTag also provides an initial segmentation of tokens into potential names , using a simple rule - based system which segments contiguous capitalized words , potentially with common intervening function words like of as well as leading the ( e.g. the King of Westeros ) .
+It largely ( but not entirely ) overcomes the problem of sentenceinitial capitalization in English by generalizing over an entire text ; as long as a capitalized word or phrase appears in a non - sentence initial position at least once in a text , it will be tagged in the sentence - initial position as well .
+To improve precision , the name tagger in the version of GutenTag used for this paper ( 0.1.3 ) has lower bounds on token count ( at least 10 ) and an upper bound on the length of names ( no longer than 3 words ) .
+For this work , however , we remove those restrictions to maximize recall .
+Though not our primary concern , we return to evaluate the quality of the initial segmentation in Section 5 .
+Brown clustering .
+The next step is to induce Brown clusters ( Brown et al . , 1992 ) over the pre - segmented corpus ( including potential names ) , using the tool of Liang ( 2005 ) .
+Briefly , Brown clusters are formed using an agglomerative hierarchical cluster of terms based on their immediate context , placing terms into categories to maximize the probability of consecutive terms over the entire corpus .
+Note that using information from Brown clusters is a well established technique in NER , but more typically as features within a supervised framework ( Miller et al . , 2004;Liang , 2005;Ritter et al . , 2011 ) ; we are unaware of any work using them directly as a source of bootstrapped training examples .
+We used default settings except for the number of clusters ( c ): 50 .
+The rationale for such a small cluster size - the default is 1000 , and NER systems which use Brown clusters as features do better with even more ( Derczynski et al . , 2015)-is that we want to have clusters that correspond to major noun categories ( e.g. PERSON and LOCATION ) , which we consider the next most fundamental division beyond part - of - speech ; 50 was selected because it is roughly comparable to the size of the Penn Treebank tagset ( Marcus et al . , 1993 ) .
+We did not tune this number , except to observe that larger numbers ( e.g. 100 or 200 ) resulted in increasingly fragmented clusters for our entities of interest .
+To automatically extract a seed list of people and locations , we ranked the clusters by the total ( token ) count of names ( as identified by GutenTag ) , and took the first cluster to be PER - SON , and the second to be LOCATION ; all other clusters are considered OTHER , our third , catchall category .
+Alternatively , we could have set c higher and manually grouped the clusters based on the common words in the clusters , adding a thin layer of supervision to the process ; with a low c , however , this was unnecessary since the composition and ranking of the clusters conformed exactly to our expectations .
+The top-5 clusters by token count of names are given in Table 1 .
+2 Note the presence of the multiword name New York in the second cluster , as a result of the segmentation .
+The most common words in the first two clusters are mostly what we would expect , though there is a bit of noise , e.g. Him included as a place .
+The other clusters are messier , but still in- ( Vala et al . , 2015 ) .
+In any case , Brown clustering works fairly well for common names , but for rarer ones , the clustering is haphazard .
+Fiction , though , has many rare names and locations , since authors will often invent them .
+Another problem with Brown clustering is that ignores possible sense distinctions : for instance , Florence is both a city and a person name .
+To avoid confusion , authors will generally preserve one - sense - per - document , but this is not true at the corpus level .
+Text - level context classifier .
+The central element of our NER system is a textlevel classifier of names based on context .
+By text - level , we mean that it assumes one - sense - perdocument , classifying a name for an entire document , based on all instances of the name in the document ( Gale et al . , 1992 ) .
+It is trained on the ( text - level ) " instances " of relatively common names ( appearing more than 100 times in the corpus ) from the 3 NE label types derived based on the Brown clustering .
+That is , to build a training set , we pass through the corpus and each time we come across a common name in a particular document , we build a feature vector corresponding to all the contexts in that document , with the label taken from the clustering .
+Our rationale here is that the challenging part of NER in literature is names that appear only in one text ; by limiting our context for common words to a single text , we simulate the task for rarer words .
+Mary is a common name , and may be a major character in one text , but a minor one in another ; hence , we build a classifier that deals with both context - rich and context - poor situations .
+The noisy training set thus constructed has about 1 million examples .
+Our feature set consists of filtered word features in a 2 - word window ( w −2 w −1 w 0 w +1 w +2 ) around the token occurrences w 0 of a target type in a given text , made up of position - indexed unigrams ( w −2 , w −1 , w +1 and w +2 ) and bigrams ( w −2 w −1 , w +1 w +2 and w −1 w +1 ) , excluding unigrams when a subsuming bigram feature matched ( e.g. if we match trust in , we do not add trust and in ) .
+For this we used the name - segmented corpus , and when one of the words in the context was also a name , we take the category from the Brown clustering as the word ( so w 2 for London in from London to New York is LOCATION , not New ) .
+Across multiple tokens of the same type , we count the same context only once , creating a binary feature vector which was normalized by dividing by the count of all non - zero entries once all contexts were collected .
+To be included as features , the n - grams had to occur with ≥ 10 different w 0 target word types .
+Note that given our bootstrapping setup , the word type itself can not be used directly as a feature .
+For classification , we use logistic regression from scikit - learn ( Pedregosa et al . , 2011 ) trained with SGD using L2 regularization ( C = 1 ) .
+3 The only non - standard setting that we use is the " balanced " option , which weights classes by the inverse of their count in the training set , countering the preference for the majority class ; we do this because our bootstrapped distribution is an unreliable reflection of the true distribution , and also because it makes it a fairer comparison to off - theshelf models with no access to this distribution .
+Improved phrase classification .
+Relative to ( true ) supervised models , our bootstrapped model suffers from being able to use only context , and not the identity of the name itself .
+In the case of names which are phrases , this is troubling because there are many generalizations to be made ; for instance names ending with City are locations .
+Our final model addresses this failing somewhat by using more information from our Brown clustering : from each of the initial and final words across all names , we extract a set of words W s that appear at least ten times in position s ∈ S , S = { initial , f inal } across all phrases .
+Let c(w , t , s ) be the the number of times a word w ∈ W s appears in the corpus at position s in phrases which were Brown clustered into the entity type t ∈ T , and p(t|r ) be the original probability of phrase r being type t as determined by the logistic regression classifier .
+For our two homogenous entity types ( PERSON and LOCATION ) , we calculate a new score p : p ( t|r ) = p(t|r ) + s∈S c(r s , t , s ) t ∈T c(r s , t , s ) − w ∈Ws c(w , t , s ) t ∈T c(w , t , s ) |W s | ( 1 ) The first term in the outermost summation in Equation 1 is the proportion of occurrences of the given expression in position s which correspond to type t.
+To avoid applying too much weight to the homogeneous classes , the second term in the summation subtracts the average number of occurrences in the given position for all words in W s .
+As such , the total effect on the score can be negative .
+Note that if r s / ∈ W s , no modification is made , and for the OTHER type p ( t|r ) = p(t|r ) .
+Once we have calculated p ( t|r ) for each class , we choose the t with the highest p ( t|r ) .
+Evaluation .
+Our interest is in a general NER system for literature .
+Though there are a few novels which have been tagged for characters ( Vala et al . , 2015 ) , we wanted to test our system relative to a much wider range of fiction .
+To this end , we randomly sampled texts , sentences , and then names within those sentences from our name - segmented Project Gutenberg corpus to produce a set of 1000 examples .
+These were tagged by a single annotator , an English native speaker with a PhD in English Literature .
+The annotator was presented with the sentence and the pre - segmented name of interest , and asked ( via written instructions ) to categorize the indicated name into PERSON , LOCATION , OTHER , UNCERTAIN due to ambiguity , or segmentation error .
+We ran a separate two - annotator agreement study over 200 examples which yielded a Cohen 's Kappa of 0.84 , suggesting high enough reliability that a single annotator was sufficient .
+We compare our system to a selection of publicly available , off - the - shelf NER systems : OpenNLP , 4 LingPipe , 5 and Stanford CoreNLP ( Finkel et al . , 2005 ) , as well as the initial Brown clustering .
+OpenNLP allowed us to classify only PERSON and LOCATION , but for Stanford CoreNLP and LingPipe we used the existing 3 - entity systems , with the ORGANI - ZATION tag collapsed into OTHER ( as it was in our guidelines ; instances of ORGANIZATION are rare in literature ) .
+Since the exact segmentation guidelines likely varied across these systems - in particular , we found that Stanford CoreNLP often left off the title in names such as Mr. Smithand we did n't want to focus on these issues , we did not require exact matches of our name segmentation ; instead , we consider the entire name as PERSON or LOCATION if any of the tokens were tagged as such ( names with both tags were considered OTHER ) .
+For our system ( LitNER ) , we test a version where only the immediate sentence context is used ( " sentence " ) , and versions based on text context ( " text " ) with or without our phrase improvement ( " ±phrase " ) .
+We evaluate using two standard metrics : accuracy ( " Acc " ) , and macroaveraged F - score ( " F M " ) .
+Results .
+The results in Table 2 show that our system easily bests the off - the - shelf systems when it is given the contextual information from the entire text ; the difference is more stark for accuracy ( +0.085 absolute ) , though consistent for F M ( +0.041 absolute ) .
+Stanford CoreNLP is the only competitive off - the - shelf system - the other two are far too conservative when encountering names they have n't seen before .
+LitNER is also clearly better than the Brown clusters it was trained on , particularly for F M ( +0.120 absolute ) .
+With regards to different options for LitNER , we see a major benefit from considering all occurrences of the name in the texts rather than just the one we are testing on ( Section 3.3 ) , and a more modest benefit from using the information on parts of phrases taken from the Brown clustering ( Section 3.4 ) .
+For the segmentation errors , we compared our corrected segmentations with the segmentation provided by the CRF - based Stanford CoreNLP system , our best competitor .
+Only 2 of the 15 were segmented correctly by Stanford CoreNLP .
+This potential 0.002 improvement is tiny compared to the 0.085 difference in accuracy between the two systems .
+Discussion .
+Aspects of the method presented here could theoretically be applied to NER in other genres and other languages , but one important point we wish to make is that our approach clearly takes advantage of specific properties of ( English ) literature .
+The initial rule - based segmentation , for instance , depends on reliable capitalization of names , which is often not present in social media , or in most non - European languages .
+We have found more subtle genre effects as well : for comparison , we applied the preliminary steps of our approach to another corpus of published texts which is of comparable ( token ) size to the Project Gutenberg corpus , namely the Gigaword newswire corpus ( Graff and Cieri , 2003 ) , and noted degraded performance for both segmentation and Brown clustering .
+With respect to the former , the obvious issue is considerably more complex proper nouns phrases such as governmental organizations and related titles .
+For the latter , there were several clusters in the top 10 ( including the first one ) which corresponded to LOCATION , while the first ( fairly ) clean PERSON cluster was the 15th largest ; in general , individual people , organizations , and other groupings of people ( e.g. by country of origin ) were not well distinguished by Brown clustering in the Gigaword corpus , at least not with the same low number of clusters that worked well in the Project Gutenberg corpus .
+Also less than promising is the potential for using text - level classification in other genres : whereas the average number of token occurrences of distinct name types within a single text in the Project Gutenberg corpus is 5.9 , this number is just 1.6 for the much - shorter texts of the Gigaword corpus .
+Except in cases where it is possible to collapse texts into appropriately - sized groups where the use of a particular name is likely to be both common and consistent - an example might be a collection of texts written by a single author , which in social media such as Twitter seems to obey the classic one - sense - per - discourse rule ( Gella et al . , 2014)-it 's not clear that this approach can be applied successfully in cases where texts are relatively short , which is a far more common situation .
+We also note that relying primarily on contextual classification while eschewing resources such as gazetteers makes much less sense outside the context of fiction ; we would expect relatively few fictitious entities in most genres .
+LitNER tags names into only two main classes , PERSON and LOCATION , plus a catch - all OTHER .
+This coarse - grained tag set reflects not only the practical limitations of the method , but also where we believe automatic methods have potential to provide useful information for literary analysis .
+The other clusters in Table 1 reflect word categories which are relatively closed - class and much less central to the fictional narratives as character and setting ; we do n't see a compelling case for tagging them .
+When these and non - entities are excluded from OTHER , what remains is eclectic , including names referring to small groups of people ( e.g. families ) , animals , gods , ships , and titles of other works of literature .
+Conclusion .
+In this paper , we have presented LitNER , an NER system targeted specifically at fiction .
+Our results show that a simple classifier , trained only with noisy examples derived in an unsupervised fashion , can easily beat a general - purpose supervised system , provided it has access to the full context of the text .
+Finally , we note that the NER tagging provided by LitNER has been integrated into the GutenTag tool ( as of version 0.1.4 ) .
+6 .
