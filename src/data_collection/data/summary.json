@@ -73,6 +73,14 @@
             "file_name": "./src/data_collection/data/2020.acl-main.169.pdf.txt"
         },
         {
+            "url": "https://aclanthology.org/2020.aacl-main.32.pdf",
+            "file_name": "./src/data_collection/data/2020.aacl-main.32.pdf.txt"
+        },
+        {
+            "url": "https://aclanthology.org/2020.loresmt-1.5.pdf",
+            "file_name": "./src/data_collection/data/2020.loresmt-1.5.pdf.txt"
+        },
+        {
             "url": "https://aclanthology.org/P19-1051.pdf",
             "file_name": "./src/data_collection/data/P19-1051.pdf.txt"
         },

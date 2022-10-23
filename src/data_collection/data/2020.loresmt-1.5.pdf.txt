@@ -1,0 +1,72 @@
+Zero - Shot Neural Machine Translation : Russian - Hindi @LoResMT 2020 .
+Neural machine translation ( NMT ) is a widely accepted approach in the machine translation ( MT ) community , translating from one natural language to another natural language .
+Although , NMT shows remarkable performance in both high and low resource languages , it needs sufficient training corpus .
+The availability of a parallel corpus in low resource language pairs is one of the challenging tasks in MT .
+To mitigate this issue , NMT attempts to utilize a monolingual corpus to get better at translation for low resource language pairs .
+Workshop on Technologies for MT of Low Resource Languages ( LoResMT 2020 ) organized shared tasks of low resource language pair translation using zero - shot NMT .
+Here , the parallel corpus is not used and only monolingual corpora is allowed .
+We have participated in the same shared task with our team name CNLP - NITS for the Russian - Hindi language pair .
+We have used masked sequence to sequence pre - training for language generation ( MASS ) with only monolingual corpus following the unsupervised NMT architecture .
+The evaluated results are declared at the LoResMT 2020 shared task , which reports that our system achieves the bilingual evaluation understudy ( BLEU ) score of 0.59 , precision score of 3.43 , recall score of 5.48 , F - measure score of 4.22 , and rank - based intuitive bilingual evaluation score ( RIBES ) of 0.180147 in Russian to Hindi translation .
+And for Hindi to Russian translation , we have achieved BLEU , precision , recall , F - measure , and RIBES score of 1.11 , 4.72 , 4.41 , 4.56 , and 0.026842 respectively .
+Introduction .
+The end - to - end recurrent neural network ( RNN ) based NMT ( Cho et al . , 2014b , a ) approach attracts attention in MT because it deals with many challenges like variable - length phrases using sequence to sequence learning concept , long - term dependency problem adopting long short term memory ( LSTM ) ( Sutskever et al . , 2014 ) , attention mechanism ( Bahdanau et al . , 2015;Luong et al . , 2015 ) which pays attention globally and locally to all source words .
+The RNN based NMT approach is not able to process all the input words parallelly , to solve parallelization transformer - based NMT ( Vaswani et al . , 2017 ) is proposed by using a self - attention mechanism .
+Despite modifying NMT architecture , it needs reasonable parallel training data which is a challenge for low resource language pair translation .
+Generally , language pairs can be considered as low - resource when training data is less than a million ( Kocmi , 2020 ) .
+For low resource language pair translation , pivot - based NMT ( Kim et al . , 2019 ) is an effective approach where an intermediate language is considered as a pivot language ( source to pivot and pivot to target ) .
+( Johnson et al . , 2017 ) introduced a zero - shot approach to language pair translation without considering the parallel data using multilingual - based NMT .
+In this paper , we have participated in the LoResMT 2020 shared task of zero - shot NMT approach on Russian - Hindi pair using the only monolingual corpus and the same has been implemented using MASS - based unsupervised NMT ( Song et al . , 2019 ) .
+The reason behind choosing MASS - based unsupervised NMT is that it achieves state - of - the - art performance on the unsupervised English - French pair translation .
+Related Work .
+There is a lack of background work on Russian - Hindi translation .
+However , the literature survey finds work on unsupervised NMT using MASS ( Song et al . , 2019 ) which outperform previous unsupervised approaches ( Lample and Conneau , 2019;Lample et al . , 2018 ) .
+( Song et al . , 2019 ) without us- X 8 X 4 X 7 X 1 X 2 X 3 _ X 6 _ _ _ _ _ Encoder Decoder _ _ X 5 .
+Attention .
+Figure 1 : The encoder - decoder framework of the MASS model used ( as adopted from ( Song et al . , 2019 ) ) .
+Dataset Description .
+The LoResMT 2020 shared task organizer ( Ojha et al . , 2020 ) provided the Russian - Hindi monolingual dataset of train , valid , and test sets , which is summarized in Table 1 .
+Additionally , we have used external monolingual data set of Hindi ( 9 GB ) from IITB 1 ( Kunchukuttan et al . , 2018;Bojar et al . , 2014 ) and Russian ( 9 GB ) from WMT16 2 .
+System Description .
+We have adopted MASS based unsupervised NMT ( Song et al . , 2019 ) to build our system on a single GPU .
+Our system consists of two major steps namely the pre - training and then the fine - tuning step which are discussed in the sub - sections 4.1 and 4.2 . For BPE ( Sennrich et al . , 2016 ) and vocabulary creation , we have used the cross - language model ( XLM ) ( Lample and Conneau , 2019 ) codebase as given in their repository 3 .
+Moses is used for tokenization ( Koehn and Hoang , 2010 ) .
+The MASS ( Song et al . , 2019 ) based model leverages encode - decoder framework to develop complete sentences from given fractured pieces of sentences as shown in Figure 1 .
+The model details are further described in Section 4.1 and 4.2 , where we have shown the pre - training and fine tuning step respectively .
+Pre - training .
+For the pre - training step , following ( Song et al . , 2019 ) we have undertaken the log likelihood objective function ( LF ) as shown in Equation 1 .
+Here , s belongs to the source sentence corpus S.
+And in a particular sentence s , the region from u to v is masked , such that the sentence length remains constant .
+LF ( θ ; S ) = 1 |S| Σ s∈S log P ( s u : v |s \u : v ; θ ) = 1 |S| Σ s∈S log v t = u P ( s u : v t |s u : v < t , s \u : v ; θ ) .
+( 1 ) Here , the seq2seq model learns the parameter θ to compute the conditional probability .
+t denotes the word position .
+Fine Tuning .
+Since , the parallel data is not made available by the LoResMT 2020 organizers for this specific task , we have undertaken the unsupervised approach as followed by ( Song et al . , 2019 ) .
+Only the monolingual data is used here .
+Here simply backtranslation is employed to generate pseudo bilin- .
+Experiment .
+Task BLEU Precision Recall F - measure RIBES .
+Experimental Setup .
+During pre - processing of the data , following ( Song et al . , 2019 ) and using the code provided by ( Lample and Conneau , 2019 ) , we used fastBPE 4 to learn byte pair encoding ( BPE ) vocabulary with 50,000 codes .
+Also , for leveraging the model features , we have followed the settings of ( Song et al . , 2019 ) .
+In the pre - training step , we have followed the default settings of Transformer model - based Mass ( Song et al . , 2019 ) , where 6 layers with 8 attention heads are used .
+Due to limited computational resources , we have used 256 embedding layers with batch size 32 , tokens per batch 500 and dropout 0.1 . The obtained pre - trained model from 4.1 are fine - tuned with pseudo bilingual corpus through self - generated back - translation data following default settings of ( Song et al . , 2019 ) .
+Result and Analysis .
+The LoResMT 2020 shared task organizer declared the evaluation result 5 of zero - shot NMT on the language pairs namely , Hindi - Bhojpuri , Hindi - Magahi , and Russian - Hindi , and participated by two teams only .
+For the Russian - Hindi language pair , only our team participated and our team name is CNLP - NITS .
+The results are evaluated using automatic evaluation metrics , BLEU ( Papineni et al . , 2002 ) , precision , recall , F - measure and RIBES ( Isozaki et al . , 2010 ) .
+We have submitted two systems result , one only using provided monolingual data ( extension -a ) and another with external monolingual data addition of provided monolingual data ( extension -c ) and the same have been reported in Table 2 .
+From Table 2 , it is observed that our scores are very low .
+However , it is to be noted that with increasing monolingual data , the performance of our systems improves .
+Moreover , from the predicted translation as shown in Figure 2 , it is quite clear that the translation accuracy is very poor in terms of adequacy but better in the fluency factor of translation .
+To achieve better translation accuracy , we need to improve both adequacy as well as fluency of predicted translations .
+In this work , we have used the default tokenizer i.e. Moses .
+In future , we will use IndicNLP tokenizer ( Kunchukuttan , 2020 ) .
+This tokenizer is specifically designed for Indic languages , in order to improve the overall performance of predictive models in Hindi languages .
+Conclusion and Future Work .
+This paper presents a zero - shot NMT task on the Russian ⇔ Hindi translation , this system was used to participate in the LoResMT 2020 shared task .
+We have used unsupervised NMT approach of MASS ( Song et al . , 2019 ) to build a single model that can translate in both the directions i.e. Russian to Hindi and vice - versa .
+The obtained scores and closely observed predicted output remarks that our future works require significant improvement to achieve better translation accuracies in both directions .
+Acknowledgement .
+We would like to thank Center for Natural Language Processing ( CNLP ) and Department of Computer Science and Engineering at National Institute of Technology , Silchar , India for providing the requisite support and infrastructure to execute this work .
+Also , thank to LoResMT 2020 shared task organizers .

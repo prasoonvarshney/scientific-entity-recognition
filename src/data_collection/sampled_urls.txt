@@ -16,6 +16,8 @@ https://aclanthology.org/2020.lrec-1.130.pdf
 https://aclanthology.org/2020.findings-emnlp.20.pdf
 https://aclanthology.org/2020.isa-1.2.pdf
 https://aclanthology.org/2020.acl-main.169.pdf
+https://aclanthology.org/2020.aacl-main.32.pdf
+https://aclanthology.org/2020.loresmt-1.5.pdf
 https://aclanthology.org/P19-1051.pdf
 https://aclanthology.org/P19-1291.pdf
 https://aclanthology.org/N19-1423.pdf

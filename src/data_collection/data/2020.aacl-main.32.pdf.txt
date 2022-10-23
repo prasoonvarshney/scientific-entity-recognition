@@ -1,0 +1,274 @@
+Identifying Implicit Quotes for Unsupervised Extractive Summarization of Conversations .
+We propose Implicit Quote Extractor , an endto - end unsupervised extractive neural summarization model for conversational texts .
+When we reply to posts , quotes are used to highlight important part of texts .
+We aim to extract quoted sentences as summaries .
+Most replies do not explicitly include quotes , so it is difficult to use quotes as supervision .
+However , even if it is not explicitly shown , replies always refer to certain parts of texts ; we call them implicit quotes .
+Implicit Quote Extractor aims to extract implicit quotes as summaries .
+The training task of the model is to predict whether a reply candidate is a true reply to a post .
+For prediction , the model has to choose a few sentences from the post .
+To predict accurately , the model learns to extract sentences that replies frequently refer to .
+We evaluate our model on two email datasets and one social media dataset , and confirm that our model is useful for extractive summarization .
+We further discuss two topics ; one is whether quote extraction is an important factor for summarization , and the other is whether our model can capture salient sentences that conventional methods can not .
+Introduction .
+As the amount of information exchanged via online conversations is growing rapidly , automated summarization of conversations is in demand .
+Neuralnetwork - based models have achieved great performance on supervised summarization , but its application to unsupervised summarization is not sufficiently explored .
+Supervised summarization requires tens of thousands of human - annotated summaries .
+Because it is not realistic to prepare such large datasets for every domain , there is a growing requirement for unsupervised methods .
+Previous research proposed diverse methods of unsupervised summarization .
+Graph - centrality based on the similarity of sentences ( Mihalcea and Tarau , 2004;Erkan and Radev , 2004;Zheng and Lapata , 2019 ) has long been a strong feature for unsupervised summarization , and is also used to summarize conversations ( Mehdad et al . , 2014;Shang et al . , 2018 ) .
+Apart from centrality , centroid of vectors ( Gholipour Ghalandari , 2017 ) , Kullback - Leibler divergence ( Haghighi and Vanderwende , 2009 ) , reconstruction loss ( He et al . , 2012;Liu et al . , 2015;Ma et al . , 2016 ) , and path scores of word graphs ( Mehdad et al . , 2014;Shang et al . , 2018 ) , are leveraged for summarization .
+The premise of these methods is that important topics appear frequently in a document .
+Therefore , if important topics appear only a few times , these methods fail to capture salient sentences .
+For more accurate summarization , relying solely on the frequency is not sufficient and we need to focus on other aspects of texts .
+As an alternative aspect , we propose " the probability of being quoted " .
+When one replies to an email or a post , a quote is used to highlight the important parts of the text ; an example is shown in Figure 1 .
+The reply on the bottom includes a quote , which generally starts with a symbol " > " .
+If we can predict quoted parts , we can extract important sentences irrespective of how frequently the same topic appears in the text .
+Thus , we aim to extract quotes as summaries .
+Previous research assigned weights to words that appear in quotes , and improved the centroidbased summarization ( Carenini et al . , 2007;Oya and Carenini , 2014 ) .
+However , most replies do not include quotes , so it is difficult to use quotes as the training labels of neural models .
+We propose a model that can be trained without explicit labels of quotes .
+The model is Implicit Quote Extractor ( IQE ) .
+As shown in Figure 1 , implicit quotes are sentences of posts that are not explicitly quoted in replies , but are those the replies most likely refer to .
+The aim of our model is to extract these implicit quotes for extractive summarization .
+We use pairs of a post and reply candidate to train the model .
+The training task of the model is to predict if a reply candidate is an actual reply to the post .
+IQE extracts a few sentences of the post as a feature for prediction .
+To predict accurately , IQE has to extract sentences that replies frequently refer to .
+Summaries should not depend on replies , so IQE does not use reply features to extract sentences .
+The model requires replies only during the training and not during the evaluation .
+We evaluate our model with two datasets of Enron mail ( Loza et al . , 2014 ) , corporate and private mails , and verify that our model outperforms baseline models .
+We also evaluated our model with Reddit TIFU dataset ( Kim et al . , 2019 ) and achieved results competitive with those of the baseline models .
+Our model is based on a hypothesis that the ability of extracting quotes leads to a good result .
+Using the Reddit dataset where quotes are abundant , we obtain results that supports the hypothesis .
+Furthermore , we both quantitatively and qualitatively analyzed that our model can capture salient sentences that conventional frequency - based methods can not .
+The contributions of our research are as follows : • We verified that " the possibility of being quoted " is useful for summarization , and demonstrated that it reflects an important aspect of saliency that conventional methods do not .
+• We proposed an unsupervised extractive neural summarization model , Implicit Quote Extractor ( IQE ) , and demonstrated that the model outperformed or achieved results competitive to baseline models on two mail datasets and a Reddit dataset .
+• Using the Reddit dataset , we verified that quote extraction leads to a high performance of summarization .
+Related Works .
+Summarization methods can be roughly grouped into two methods : extractive summarization and abstractive summarization .
+Most unsupervised summarization methods proposed are extractive methods .
+Despite the rise of neural networks , conventional non - neural methods are still powerful in the field of unsupervised extractive summarization .
+The graph - centrality - based method ( Mihalcea and Tarau , 2004;Erkan and Radev , 2004;Zheng and Lapata , 2019 ) and centroid - based method ( Gholipour Ghalandari , 2017 ) have been major methods in this field .
+Other models use reconstruction loss ( He et al . , 2012;Liu et al . , 2015;Ma et al . , 2016 ) , Kullback - Leibler divergence ( Haghighi and Vanderwende , 2009 ) or path score calculation ( Mehdad et al . , 2014;Shang et al . , 2018 ) based on multi - sentence compression algorithm ( Filippova , 2010 ) .
+These methods assume that important topics appear frequently in a document , but our model focuses on a different aspect of texts : the probability of being quoted .
+That is , our model can extract salient sentences that conventional methods fail to .
+A few neural - network - based unsupervised extractive summarization methods were proposed ( Kågebäck et al . , 2014;Yin and Pei , 2015;Ma et al . , 2016 ) .
+However , these methods use pretrained neural network models as a feature extractor , whereas we propose an end - to - end neural extractive summarization model .
+As for end - to - end unsupervised neural models , a few abstractive models have been proposed .
+For sentence compression , Fevry and Phang ( 2018 ) employed the task to reorder the shuffled word order of sentences .
+Baziotis et al .
+( 2019 ) employed the reconstruction task of the original sentence from a compressed one .
+For review abstractive summarization , Isonuma et al .
+( 2019 ) ( 2019 ) generated summaries from mean vectors of review vectors , and Amplayo and Lapata ( 2020 ) employed the prior distribution of Variational Auto - Encoder to induce summaries .
+Another research employed a task to reconstruct masked sentences for summarization ( Laban et al . , 2020 ) .
+! " ! ! # ! ! $ ! ! " % & ' ! # % & ' ! ( % & ' … ! " ) ! # ) ! * ) … … … " " ! Split to sentences Attention & Gumbel Softmax # " % & ' ≓ ! + ! # , % & ' # ( % & ' ≓ ! - ! " # ! " $ ! " " ) " # ) " * ) BiLSTM BiLSTM BiLSTM … Research on the summarization of online conversations such as mail , chat , social media , and online discussion fora has been conducted for a long time .
+Despite the rise of neural summarization models , most research on conversation summarization is based on non - neural models .
+A few used path scores of word graphs ( Mehdad et al . , 2014;Shang et al . , 2018 ) .
+Dialogue act classification is a classification task that classifies sentences depending on what their functions are ( e.g. : questions , answers , greetings ) , and has also been applied for summarization ( Bhatia et al . , 2014;Oya and Carenini , 2014 ) .
+Quotes are also important factors of summarization .
+When we reply to a post or an email and when we want to emphasize a certain part of it , we quote the original text .
+A few studies used these quotes as features for summarization .
+Some previous work ( Carenini et al . , 2007;Oya and Carenini , 2014 ) assigned weights to words that appeared in quotes , and improved the conventional centroidbased methods .
+The previous research used quotes as auxiliary features .
+In our research , we solely focus on quotes , and do not directly use quotes as supervision ; rather , we aim to extract implicit quotes .
+Model .
+We propose Implicit Quote Extractor ( IQE ) , an unsupervised extractive summarization model .
+Figure 2 shows the structure of the model .
+The inputs to the model during training are a post and reply candidate .
+A reply candidate can be either a true or a false reply to the post .
+The training task of the model is to predict whether a reply candidate is true or not .
+The model comprises an Encoder , an Extractor , and a Predictor .
+The Encoder computes features of posts , the Extractor extracts sentences of a post to use for prediction , and the Predictor predicts whether a reply candidate is an actual reply or not .
+We describe each component below .
+Encoder The Encoder computes features of posts .
+First , the post is split into N sentences { s p 1 , s p 2 , ... , s p N } .
+Each sentence s p i comprises K i words W p i = { w p i1 , w p i2 , ... , w p iK i } .
+Words are embedded to continuous vectors X p i = { x p i1 , x p i2 , .
+.. , x p iK i } through word embedding layers .
+We compute the features of each sentence h p i by inputting embedded vectors to Bidirectional Long Short - Term Memory ( BiLSTM ) and concatenating the last two hidden layers : h p i = BiLSTM(X p i ) ( 1 ) Extractor The Extractor extracts a few sentences of a post for prediction .
+For accurate prediction , the Extractor learns to extract sentences that replies frequently refer to .
+Note that the Extractor does not use reply features for extraction .
+This is because summaries should not depend on replies .
+IQE requires replies only during the training and can induce summaries without replies during the evaluation .
+We employ LSTM to sequentially compute features on the Extractor .
+We set the mean vector of the sentence features of the Encoder h p i as the initial hidden state of the Extractor h ext 0 .
+h ext 0 = 1 N N i=1 h p i ( 2 ) The Extractor computes attention weights using the hidden states of the Extractor h ext t and the sentence features h p i computed on the Encoder .
+The sentence with the highest attention weight is extracted .
+During the training , we use Gumbel Softmax ( Jang et al . , 2017 ) to make this discrete process differentiable .
+By adding Gumbel noise g using noise u from a uniform distribution , the attention weights a become a one - hot vector .
+The discretized attention weights α are computed as follows : u i ∼ Uniform(0 , 1 ) ( 3 ) g i = − log ( − log u i ) ( 4 ) a ti = c T tanh(h ext t + h p i ) ( 5 ) π ti = exp a ti N k=1 exp a tk ( 6 ) α ti = exp ( log π ti + g i ) /τ N k=1 exp ( log π tk + g k ) /τ ( 7 ) c is a parameter vector , and the temperature τ is set to 0.1 . We input the linear sum of the attention weights α and the sentence vectors h p i to LSTM and update the hidden state of the Extractor .
+We repeat this step L times .
+x ext t = N i=1 α ti h p i ( 1 ≤ t ≤ L ) ( 8) h ext t+1 = LSTM(x ext t ) ( 0 ≤ t ≤ L − 1 ) ( 9 ) The initial input vector x ext 0 of the Extractor is a parameter , and L is defined by a user depending on the number of sentences required for a summary .
+Predictor Then , using only the extracted sentences and a reply candidate , the Predictor predicts whether the candidate is an actual reply or not .
+We labeled actual replies as positive , and randomly sampled posts as negative .
+Suppose a reply candidate R = { s r 1 , s r 2 , ... , s r M } has M sentences .
+Sentence vectors { h r j } of each sentence { s r j } on the reply are computed similarly to the equation 1 .
+To compute the relation between the post and the reply candidate , we employ Decomposable Attention ( Parikh et al . , 2016 ) .
+From this architecture , we obtain the probability of binary - classification y through the sigmoid function .
+y = sigmoid(DA(x ext 1 , ... , x ext L−1 , h r 1 , ... , h r M ) ) ( 10 ) where DA denotes Decomposable Attention .
+The detail of the computation is described in Appendix A.1 . Decomposable Attention .
+The loss of this classification L rep is obtained by cross entropy as follows where t rep is 1 when a reply candidate is an actual reply , and otherwise 0 .
+L rep = −t rep log y − ( 1 − t rep ) log ( 1 − y ) ( 11 ) Reranking As we mentioned in the Introduction , we are seeking for a criterion that is different from conventional methods .
+To take advantage of our method and conventional methods , we employ reranking ; we simply reorder summaries ( 3 sentences ) extracted by our model based on the ranking of TextRank ( Mihalcea and Tarau , 2004 ) .
+Experiment .
+We train and evaluate the model on two domains of datasets .
+One is a mail dataset , and the other is a dataset from the social media platform , Reddit .
+Mail Dataset .
+We use Avocado collection 1 for the training .
+The Avocado collection is a public dataset that comprises emails obtained from 279 custodians of a defunct information technology company .
+From this dataset , we use post - and - reply pairs to train our model .
+We exclude pairs where the number of words in a post or a reply is smaller than 50 or 25 .
+After the preprocessing , we have 56,174 pairs .
+We labeled a pair with an actual reply as positive and a pair with a wrong reply that is randomly sampled from the whole dataset as negative .
+The number of positive labels and negative labels are equal .
+Therefore , we have 112,348 pairs in total .
+For evaluation , we employ the Enron Summarization dataset ( Loza et al . , 2014 ) .
+Reddit TIFU Dataset .
+The Reddit TIFU dataset ( Kim et al . , 2019 ) is a dataset that leverages tldr tags for the summarization task , which is the abbreviation of " too long did n't read " .
+On the discussion forum Reddit TIFU , users post a tldr along with the post .
+tldr briefly explains what is written in the original post and thus can be regarded as a summary .
+We preprocess the TIFU dataset similarly as the mail datasets .
+Because the TIFU dataset does not include replies , we collected replies of the posts included in the TIFU dataset using praw 2 .
+As a consequence , we obtained 183,500 correct pairs of posts and replies and the same number of wrong pairs .
+We use that 367,000 pairs of posts and replies as the training dataset .
+We use 3,000 posts and tldrs that are not included in the training dataset as the validation dataset , and the same number of posts and tldrs as the evaluation dataset .
+An overview of the TIFU evaluation dataset is also summarized in Table 1 .
+Training .
+The dimensions of the embedding layers and hidden layers of the LSTM are 100 .
+The size of the vocabulary is set to 30,000 .
+We tokenize each email or post into sentences and each sentence into words using the nltk tokenizer 3 .
+The upper limit of the number of sentences is set to 30 , and that of words in each sentence is set to 200 .
+The epoch size is 10 , and we use Adam ( Kingma and Ba , 2015 ) as an optimizer .
+In the first few epochs , we do not use the Extractor ; all the post sentences are used for the prediction of post - reply relations .
+This is to train the Extractor and the Predictor efficiently .
+The Extractor learns to extract proper sentences and the Predictor learns to predict the relation between a post and a reply candidate .
+Models with several components generally achieve better results if each component is pretrained separately ( Hashimoto et al . , 2017 ) .
+Thus , we train the Predictor in the first few epochs before training the Extractor .
+We set this threshold as 4 .
+During training , L , the number of sentences the Extractor extracts is randomly set from 1 to 4 , so that the model can extract an arbitrary number of sentences .
+We replace the named entities on the text data with tags ( person , location , and organization ) using the Stanford Named Entity Recognizer ( NER ) 4 , to prevent the model from simply using named entities as a hint for the prediction .
+We pretrain word embeddings of the model with Skipgram , using the same data as the training .
+We conduct the same experiment five times and use the average of the results to mitigate the effect of randomness rooting in initialization and optimization .
+Evaluation .
+In the evaluation phase , we only use the Encoder and Extractor and do not use the Predictor .
+Each model extracts 3 sentences as a summary .
+Following previous work , we report the average F1 of ROUGE-1 , ROUGE-2 , and ROUGE - L for the evaluation ( Lin , 2004 ) .
+We use the first 20 , 40 , and 60 words of the extracted sentences .
+For ROUGE computation , we use ROUGE 2.0 ( Ganesan , 2015 ) .
+As a validation metric , we use an average of ROUGE-1 - F , ROUGE-2 - F , and ROUGE - L - F.
+Baseline .
+As baseline models , we employ TextRank ( Mihalcea and Tarau , 2004 ) , LexRank ( Erkan and Radev , 2004 ) , KLSum ( Haghighi and Vanderwende , 2009 ) , PacSum ( Zheng and Lapata , 2019 ) , Lead , and Random .
+TextRank and LexRank are graph - centrality based methods that have long been considered as strong methods for unsupervised summarization .
+296 Model ROUGE-1 - F ROUGE-2 - F ROUGE - L - F # of PacSum is an improved model of TextRank , which harnesses the position of sentences as a feature .
+KLSum employs the Kullbuck - Leibler divergence to constrain extracted sentences and the source text to have the similar word distribution .
+Lead is a simple method that extracts the first few sentences from the source text but is considered as a strong baseline for the summarization of news articles .
+PacSum and LexRank leverage idf .
+We compute idf using the validation data .
+As another baseline , we employ IQETextRank ; the TextRank model that leverages cosine similarities of sentence vectors of IQE 's Encoder as similarities between sentences .
+This is added to verify that the success of our model is not only because our model uses neural networks .
+Results and Discussion .
+Experimental results for each evaluation dataset are listed in Table 2 , 3 and 4 .
+Our model outperforms baseline models on the mail datasets ( ECS and EPS ) in most metrics .
+On Reddit TIFU dataset , IQE with reranking outperforms most baseline models except TextRank .
+Reranking improves the accuracy on ECS and TIFU but not on EPS .
+PacSum significantly outperformed TextRank on the news article dataset ( Zheng and Lapata , 2019 ) but does not work well on our datasets where the sentence position is not an important factor .
+IQE - TextRank performed worse than IQE with the mail datasets .
+This indicates that the performance of our model does not result from the use of neural networks .
+Our model outperforms the baseline models more with the EPS dataset than the ECS dataset .
+The overview of the datasets in Table 1 explains the reason .
+The average number of words each sentence has is smaller in EPS .
+Baseline models such as LexRank and TextRank compute similarity of sentences using the co - occurrence of words .
+Thus , if the lengths of sentences are short , it fails to build decent co - occurrence networks and to capture the saliency of the sentences .
+IQE did not outperform TextRank on TIFU dataset .
+It is conceivable that Reddit users are less likely to refer to important topics on the post , given that anyone can reply .
+The Performance of Summarization and Quote Extraction .
+Our model performed well on the Mail datasets but two questions remain unclear .
+First , because we did not use quotes as supervision , it is not clear how well our model extracts quotes .
+Second , following Carenini 's work ( Carenini et al . , 2007;Oya and Carenini , 2014 ) , we assumed quotes were useful for summarization but it is not clear whether the quote extraction leads to better results of summarization .
+To answer these questions , we conduct two experiments .
+297 Model ROUGE-1 - F ROUGE-2 - F ROUGE - L - F # of For the experiments , we use the Reddit TIFU dataset and replies extracted via praw as described in 4.2 . From the dataset , we extract replies that contain quotes , which start with the symbol " > " .
+In total , 1,969 posts have replies that include quotes .
+We label sentences of the posts that are quoted by the replies and verify how accurately our model can extract the quoted sentences .
+How well our model extracts quotes ? .
+To assess the ability of quote extraction , we regard the extraction of quotes as an information retrieval task and evaluate with Mean Reciprocal Rank ( MRR ) .
+We compute MRR as follows .
+MRR = 1 R(q ) ( R(q ) ≤ 4 ) 0 ( R(q ) > 4)(12 ) The function R denotes the rank of the saliency scores a model computes ; our model does not compute the scores but sequentially extracts sentences , and the order is regarded as the rank here .
+If a model extracts quotes as salient sentences , the rank becomes higher .
+Therefore , the MRR in our study indicates the capability of a model to extract quotes .
+As explained in the section 4.3 , we trained our model to extract up to four sentences .
+Thus we set the threshold at four ; if R(q ) is larger than 4 we set MRR 0 .
+For each data , we compute MRR and use the mean value as a result .
+Table 5 shows the results .
+IQE is more likely to extract quotes than TextRank , LexRank and Random .
+Does extracting quotes lead to good summarization ?
+Next , we validate whether the ROUGE scores become better when our model succeeded in extracting quotes .
+We compute ROUGE scores when our model succeeds or fails in quote extraction ( which means when MRR equals 1 or otherwise ) .
+IQEquote indicates the data where the extracted sentence coincides with a quote , and IQEnonquote vice versa .
+The result in the Table 6 shows ROUGE scores are higher when the extracted sentence coincides with a quote .
+The results of the two analyses support the claim that our model is more likely to extract quotes and that the ability of extracting quotes leads to better summarization .
+Ablation Tests .
+Effect of replacing named entities As explained in the section 4.3 , our models shown in Tables 2 , 3 and 4 all use the Stanford NER .
+To validate the effect of NER , we experiment without replacing named entities .
+However , on the Reddit TIFU dataset , NER did not affect the accuracy .
+Reddit is an anonymized social media platform , and the posts are less likely to refer to people 's names .
+Thus , named entities will not be hints to predict reply - relation .
+Effect of pretraining Predictor .
+As explained in the section 4.3 , we pretrained the Predictor in the first few epochs so that the model can learn the extraction and the prediction separately .
+Table 7 shows the effect of pretraining .
+Without pretraining , the accuracy decreased .
+This shows the importance of the separate training of each component .
+Difference from Conventional Methods .
+As explained in the Introduction , most conventional unsupervised summarization methods are based on the assumption that important topics appear frequently in a document .
+TextRank is a typical example ; TextRank is a centrality - based method that extracts sentences with high PageRank as the summary .
+A sentence having high PageRank indicates that the sentence has high similarity with many other sentences , meaning that many sentences refer to the same topic .
+We suspected that important topics are not always referred to frequently , and suggested another criterion : the frequency of being referred to in replies .
+Comparing with TextRank , we verify that our method can capture salient sentences that the centrality - based method fails to .
+Figure 3 shows the correlation between the maximum PageRank in each post of ECS / EPS and ROUGE-1 - F scores Table 8 shows a demonstrative example of extracted summaries of IQE and TextRank .
+The sample is from the EPS dataset .
+The summary includes descriptions regarding a promotion and that the sender is having a baby .
+However , those words Source Text Just got your email address from Rachel .
+Congrats on your promotion .
+I 'm sure it 's going to be alot different for you but it sounds like a great deal .
+My hubby and ' I moved out to Katy a few months ago .
+I love it there -my parents live about 10 minutes away .
+New news from me -I'm having a baby -due in June .
+I ca n't even believe it myself .
+The thought of me being a mother is downright scary but I figure since I 'm almost 30 , I probably need to start growing up .
+I 'm really excited though .
+Rachel is coming to visit me in a couple of weeks .
+You planning on coming in for any of the rodeo stuff ?
+You 'll never guess who I got in touch with about a month ago .
+It was the weirdest thing -heather evans .
+I had n't talked to her in about 10 years .
+Seems like she 's doing well but I can never really tell with her .
+Anyway , I 'll let you go .
+Got ta get back to work .
+Looking forward to hearing back from ya .
+Summary ( Gold ) .
+The sender wants to congratulate the recipient for his / her new promotion , as well as , updating him / her about her life .
+The sender just move out to Katy few months ago .
+She is having a baby due in June .
+She is scared of being a mother but also pretty exited about it .
+Rachel is coming to visit her in couple of weeks and she is asking if he / she will join for any of the rodeo stuff .
+She run into heather evans which she had n't talked in 10 years .
+appear only once in the source text ; thus TextRank fails to capture the salient sentences .
+Our model , by contrast , can capture them because they are topics that replies often refer to .
+Conclusion .
+This paper proposes Implicit Quote Extractor , a model that extracts implicit quotes as summaries .
+We evaluated our model with two mail datasets , ECS and EPS , and one social media dataset TIFU , using ROUGE as an evaluation metric , and validated that our model is useful for summarization .
+We hypothesized that our model is more likely to extract quotes and that ability improved the performance of our model .
+We verified these hypotheses with the Reddit TIFU dataset , but not with the email datasets , because few emails included annotated summaries , and those emails did not have replies with quotes .
+For future work , we will examine whether our hypotheses are valid for emails and other datasets .
+A Appendices .
+A.1 Decomposable Attention .
+As explained in section 3 , the Predictor uses Decomposable Attention for prediction .
+Decomposable Attention computes a two - dimensional attention matrix , computed by two sets of vectors , and thus , captures detailed information useful for prediction .
+The computation uses the following equations : The computation of x ext t and h r j are explained in section 3 .
+First , we compute a co - attention matrix E as in ( 13 ) .
+The weights of the co - attention matrix are normalized row - wise and column - wise in the equations ( 14 ) and ( 15 ) .
+β i is a linear sum of reply features h r j that is aligned to x ext t and vice versa for α j .
+Next , we separately compare the aligned phrases β t and x ext t , α j and h r j , using a function G.
+G denotes a feed - forward neural network , and [ ; ] denotes concatenation .
+Finally , we concatenate v 1 and v 2 and obtain binary - classification result y through a linear layer H and the sigmoid function .
