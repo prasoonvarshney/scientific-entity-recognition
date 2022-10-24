@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 nlp = spacy.load("en_core_web_sm")
 
-FILE_PATH = "./src/data_collection/data/"
+FILE_PATH = "./src/data_collection/parsed_pdfs/"
 
 def preprocess(line):
     # print(f"Line: {line}")
