@@ -1,0 +1,1 @@
+python sentence_to_paragraph.py --infile test_predictions.conll --dummyfile anlp-sciner-test-empty.conll --outfile test_predictions_para.conll

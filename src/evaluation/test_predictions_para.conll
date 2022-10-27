@@ -64,7 +64,6 @@ al	O
 2018	O
 )	O
 .	O
-
 We	O
 investigate	O
 whether	O
@@ -93,7 +92,6 @@ Shivade	O
 2018	O
 )	O
 .	O
-
 We	O
 find	O
 that	O
@@ -122,7 +120,6 @@ duration	O
 and	O
 probability	O
 .	O
-
 Neutral	O
 hypotheses	O
 feature	O
@@ -145,7 +142,6 @@ in	O
 the	O
 premise	O
 .	O
-
 Contradiction	O
 hypotheses	O
 feature	O
@@ -163,7 +159,6 @@ of	O
 good	O
 health	O
 .	O
-
 Adversarial	B-MethodName
 filtering	I-MethodName
 demonstrates	O
@@ -177,7 +172,6 @@ the	O
 difficult	O
 subset	O
 .	O
-
 We	O
 provide	O
 partition	O
@@ -308,7 +302,6 @@ al	O
 2017	O
 )	O
 .	O
-
 MedNLI	B-DatasetName
 is	O
 a	O
@@ -347,7 +340,6 @@ Shivade	O
 2018	O
 )	O
 .	O
-
 Poliak	O
 et	O
 al	O
@@ -412,7 +404,6 @@ class	O
 baseline	O
 model	O
 .	O
-
 The	O
 presence	O
 of	O
@@ -440,7 +431,6 @@ annotation	O
 -	O
 time	O
 .	O
-
 Romanov	O
 and	O
 Shivade	O
@@ -493,7 +483,6 @@ and	O
 semantic	O
 characteristics	O
 .	O
-
 We	O
 then	O
 conduct	O
@@ -516,7 +505,6 @@ al	O
 2020	O
 )	O
 .	O
-
 We	O
 find	O
 that	O
@@ -562,7 +550,6 @@ al	O
 2016	O
 )	O
 .	O
-
 We	O
 provide	O
 partition	O
@@ -585,7 +572,6 @@ knowledge	O
 intensive	O
 domains	O
 .	O
-
 1	O
 
 The	O
@@ -629,7 +615,6 @@ al	O
 2017	O
 )	O
 .	O
-
 Much	O
 like	O
 its	O
@@ -687,7 +672,6 @@ June	O
 13	O
 )	O
 .	O
-
 MIMIC	B-DatasetName
 -	I-DatasetName
 III	I-DatasetName
@@ -708,7 +692,6 @@ ICU	O
 )	O
 patients	O
 .	O
-
 As	O
 such	O
 ,	O
@@ -768,7 +751,6 @@ labels	O
 ,	O
 respectively	O
 .	O
-
 The	O
 resulting	O
 dataset	O
@@ -884,7 +866,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Note	O
 that	O
 since	O
@@ -911,7 +892,6 @@ class	O
 -	O
 balanced	O
 .	O
-
 Thus	O
 ,	O
 in	O
@@ -1036,7 +1016,6 @@ dataset	O
 to	O
 lowercase	O
 .	O
-
 We	O
 then	O
 use	O
@@ -1069,7 +1048,6 @@ al	O
 2019a	O
 )	O
 .	O
-
 One	O
 challenge	O
 associated	O
@@ -1097,7 +1075,6 @@ than	O
 single	O
 tokens	O
 .	O
-
 To	O
 mitigate	O
 this	O
@@ -1223,7 +1200,6 @@ specific	O
 annotator	O
 heuristics	O
 .	O
-
 If	O
 annotators	O
 do	O
@@ -1328,7 +1304,6 @@ heuristic	O
 satisfying	O
 example	O
 .	O
-
 These	O
 heuristics	O
 are	O
@@ -1505,7 +1480,6 @@ unremarkable	O
 finding(s	O
 )	O
 .	O
-
 This	O
 can	O
 take	O
@@ -1562,7 +1536,6 @@ distributed	O
 over	O
 classes	O
 .	O
-
 The	O
 results	O
 support	O
@@ -1575,7 +1548,6 @@ the	O
 three	O
 heuristics	O
 .	O
-
 Notably	O
 ,	O
 the	O
@@ -1657,7 +1629,6 @@ an	O
 iterative	O
 fashion	O
 .	O
-
 At	O
 each	O
 iteration	O
@@ -1680,7 +1651,6 @@ of	O
 the	O
 data	O
 .	O
-
 A	O
 score	O
 is	O
@@ -1723,7 +1693,6 @@ classifier	O
 evaluation	O
 set	O
 .	O
-
 The	O
 top	O
 -	O
@@ -1753,7 +1722,6 @@ instances	O
 are	O
 retained	O
 .	O
-
 This	O
 process	O
 continues	O
@@ -1825,7 +1793,6 @@ al	O
 2016	O
 )	O
 .	O
-
 We	O
 represent	O
 each	O
@@ -1839,7 +1806,6 @@ component	O
 token	O
 vectors	O
 .	O
-
 We	O
 proportionally	O
 adjust	O
@@ -1899,7 +1865,6 @@ MedNLI	B-DatasetName
 combined	O
 dataset	O
 .	O
-
 The	O
 remaining	O
 hyperparameters	O
@@ -1982,7 +1947,6 @@ token	O
 entities	O
 merged	O
 .	O
-
 AFLIte	B-DatasetName
 maps	O
 each	O
@@ -2009,7 +1973,6 @@ and	O
 test	O
 subsets	O
 .	O
-
 We	O
 report	O
 results	O
@@ -2149,7 +2112,6 @@ of	O
 sample	O
 generalization	O
 .	O
-
 Interestingly	O
 ,	O
 many	O
@@ -2181,7 +2143,6 @@ identified	O
 in	O
 SNLI	B-DatasetName
 .	O
-
 This	O
 observation	O
 suggests	O
@@ -2211,7 +2172,6 @@ provided	O
 to	O
 annotators	O
 .	O
-
 Creative	O
 or	O
 randomized	O
@@ -2306,7 +2266,6 @@ with	O
 language	O
 models	O
 .	O
-
 This	O
 may	O
 be	O
@@ -2330,7 +2289,6 @@ is	O
 typically	O
 required	O
 .	O
-
 Additionally	O
 ,	O
 in	O
@@ -2433,7 +2391,6 @@ Chen	O
 2017	O
 )	O
 .	O
-
 An	O
 additional	O
 option	O
@@ -2458,7 +2415,6 @@ a	O
 specific	O
 task	O
 .	O
-
 Annotators	O
 can	O
 then	O
@@ -2547,7 +2503,6 @@ causing	O
 undue	O
 harm	O
 .	O
-
 With	O
 respect	O
 to	O
@@ -2607,7 +2562,6 @@ locations	O
 by	O
 name	O
 .	O
-
 MedNLI	B-DatasetName
 requires	O
 users	O
@@ -2671,7 +2625,6 @@ de	O
 identified	O
 corpus	O
 .	O
-
 Additionally	O
 ,	O
 while	O
@@ -2712,7 +2665,6 @@ with	O
 any	O
 example	O
 .	O
-
 Interested	O
 readers	O
 are	O
@@ -2819,7 +2771,6 @@ model	O
 performance	O
 accordingly	O
 .	O
-
 It	O
 is	O
 our	O
@@ -2882,7 +2833,6 @@ each	O
 training	O
 example	O
 .	O
-
 We	O
 cast	O
 the	O
@@ -2902,7 +2852,6 @@ any	O
 additional	O
 preprocessing	O
 .	O
-
 We	O
 use	O
 an	O
@@ -2955,7 +2904,6 @@ al	O
 2016	O
 )	O
 .	O
-
 We	O
 evaluate	O
 the	O
@@ -3008,7 +2956,6 @@ dataset	O
 to	O
 lowercase	O
 .	O
-
 We	O
 then	O
 use	O
@@ -3041,7 +2988,6 @@ al	O
 2019a	O
 )	O
 .	O
-
 Next	O
 ,	O
 we	O
@@ -3097,7 +3043,6 @@ dataset	O
 's	O
 hypotheses	O
 .	O
-
 Then	O
 ,	O
 following	O
@@ -3136,7 +3081,6 @@ to	O
 raw	O
 counts	O
 .	O
-
 Our	O
 approach	O
 is	O
@@ -3205,7 +3149,6 @@ a	O
 single	O
 corpus	O
 .	O
-
 We	O
 use	O
 a	O
@@ -3245,7 +3188,6 @@ MeSH	B-DatasetName
 knowledge	O
 base	O
 .	O
-
 We	O
 take	O
 the	O
@@ -3260,7 +3202,6 @@ each	O
 linked	O
 entity	O
 .	O
-
 Linking	O
 against	O
 MeSH	B-MethodName
@@ -3292,7 +3233,6 @@ each	O
 recovered	O
 entity	O
 .	O
-
 Tree	O
 numbers	O
 convey	O
@@ -3310,7 +3250,6 @@ MeSH	B-DatasetName
 hierarchy	O
 3	O
 .	O
-
 We	O
 operationalize	O
 each	O
@@ -3336,7 +3275,6 @@ follows	O
 
 1	O
 .	O
-
 Hypernym	O
 Heuristic	O
 :	O
@@ -3367,7 +3305,6 @@ in	O
 the	O
 hypothesis	O
 .	O
-
 Formally	O
 :	O
 {	O
@@ -3380,7 +3317,6 @@ h)|ϕ(p	O
 )	O
 }	O
 .	O
-
 MeSH	B-MethodName
 tree	O
 numbers	O
@@ -3395,7 +3331,6 @@ length	O
 with	O
 specificity	O
 .	O
-
 Thus	O
 ,	O
 when	O
@@ -3430,7 +3365,6 @@ the	O
 premise	O
 entity	O
 .	O
-
 To	O
 provide	O
 a	O
@@ -3460,7 +3394,6 @@ respectively	O
 
 2	O
 .	O
-
 Probable	O
 Cause	O
 Heuristic	O
@@ -3581,7 +3514,6 @@ obesity	O
 
 3	O
 .	O
-
 Everything	O
 Is	O
 Fine	O
@@ -3692,7 +3624,6 @@ premise	O
 heuristic	O
 pairs	O
 .	O
-
 We	O
 use	O
 this	O
@@ -3722,7 +3653,6 @@ improve	O
 this	O
 manuscript	O
 .	O
-
 The	O
 first	O
 author	O
@@ -3748,7 +3678,6 @@ Program	O
 PREP	O
 )	O
 .	O
-
 This	O
 research	O
 was	O
@@ -3760,7 +3689,6 @@ DARPA	O
 KAIROS	B-DatasetName
 program	O
 .	O
-
 The	O
 views	O
 and	O
@@ -3814,7 +3742,6 @@ al	O
 2020	O
 )	O
 .	O
-
 We	O
 use	O
 a	O
@@ -3891,7 +3818,6 @@ range	O
 of	O
 students	O
 .	O
-
 However	O
 ,	O
 existing	O
@@ -3923,7 +3849,6 @@ to	O
 individual	O
 students	O
 .	O
-
 We	O
 explore	O
 targeted	O
@@ -3936,7 +3861,6 @@ sequence	I-TaskName
 generation	I-TaskName
 task	O
 .	O
-
 We	O
 first	O
 show	O
@@ -3960,7 +3884,6 @@ LM	O
 KT	O
 )	O
 .	O
-
 This	O
 model	O
 accurately	O
@@ -3984,7 +3907,6 @@ seen	O
 in	O
 training	O
 .	O
-
 We	O
 then	O
 use	O
@@ -4012,7 +3934,6 @@ and	O
 target	O
 difficulty	O
 .	O
-
 Our	O
 results	O
 show	O
@@ -4054,7 +3975,6 @@ around	O
 the	O
 world	O
 .	O
-
 However	O
 ,	O
 achieving	O
@@ -4083,7 +4003,6 @@ Brunskill	O
 2019	O
 )	O
 .	O
-
 Traditionally	O
 ,	O
 adaptive	O
@@ -4110,7 +4029,6 @@ al	O
 2018	O
 )	O
 .	O
-
 These	O
 are	O
 naturally	O
@@ -4135,7 +4053,6 @@ curriculum	O
 planning	O
 algorithms	O
 .	O
-
 Recent	O
 approaches	O
 ,	O
@@ -4167,7 +4084,6 @@ specified	O
 small	O
 domains	O
 .	O
-
 We	O
 address	O
 these	O
@@ -4245,7 +4161,6 @@ task	O
 top	O
 )	O
 .	O
-
 A	O
 question	O
 in	O
@@ -4272,7 +4187,6 @@ translate	O
 (	O
 e.g.	O
 "	O
-
 the	O
 woman	O
 "	O
@@ -4287,7 +4201,6 @@ and	O
 deductive	O
 logic	O
 .	O
-
 Meanwhile	O
 ,	O
 pre	O
@@ -4317,7 +4230,6 @@ Sutskever	O
 2020	O
 )	O
 .	O
-
 In	O
 this	O
 work	O
@@ -4358,7 +4270,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -4435,7 +4346,6 @@ to	O
 translate	O
 )	O
 .	O
-
 We	O
 show	O
 that	O
@@ -4480,7 +4390,6 @@ LM	B-MethodName
 -	I-MethodName
 KT	I-MethodName
 .	O
-
 We	O
 evaluate	O
 both	O
@@ -4532,7 +4441,6 @@ ability	O
 and	O
 learning	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -4575,7 +4483,6 @@ Jodoin	O
 2003	O
 )	O
 .	O
-
 Meanwhile	O
 ,	O
 Computer	B-MethodName
@@ -4622,7 +4529,6 @@ al	O
 2020	O
 )	O
 .	O
-
 However	O
 ,	O
 these	O
@@ -4656,7 +4562,6 @@ al	O
 2018	O
 )	O
 .	O
-
 We	O
 instead	O
 focus	O
@@ -4707,7 +4612,6 @@ Anderson	O
 1995	O
 )	O
 .	O
-
 This	O
 draws	O
 inspiration	O
@@ -4741,7 +4645,6 @@ Rohrer	O
 2009	O
 )	O
 .	O
-
 To	O
 address	O
 simplifying	O
@@ -4784,7 +4687,6 @@ representations	O
 for	O
 students	O
 .	O
-
 Recently	O
 ,	O
 SAINT+	B-MethodName
@@ -4842,7 +4744,6 @@ towards	O
 desired	O
 attributes	O
 .	O
-
 Examples	O
 include	O
 using	O
@@ -4903,7 +4804,6 @@ al	O
 2018	O
 )	O
 .	O
-
 To	O
 the	O
 best	O
@@ -4961,7 +4861,6 @@ the	O
 next	O
 question	O
 .	O
-
 If	O
 this	O
 model	O
@@ -4994,7 +4893,6 @@ to	O
 a	O
 student	O
 .	O
-
 We	O
 then	O
 train	O
@@ -5047,7 +4945,6 @@ text	O
 (	O
 e.g.	O
 "	O
-
 she	O
 eats	O
 "	O
@@ -5056,7 +4953,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 This	O
 is	O
 a	O
@@ -5088,7 +4984,6 @@ across	O
 linguistic	O
 features	O
 .	O
-
 We	O
 thus	O
 represent	O
@@ -5149,7 +5044,6 @@ and	O
 their	O
 responses	O
 .	O
-
 As	O
 in	O
 much	O
@@ -5179,7 +5073,6 @@ and	O
 N	O
 >	O
 .	O
-
 A	O
 student	O
 's	O
@@ -5259,7 +5152,6 @@ language	I-TaskName
 modeling	I-TaskName
 task	O
 .	O
-
 Given	O
 a	O
 dataset	O
@@ -5367,7 +5259,6 @@ questions	O
 and	O
 answers	O
 .	O
-
 Using	O
 the	O
 softmax	O
@@ -5412,7 +5303,6 @@ Y>|s	O
 q	O
 )	O
 .	O
-
 We	O
 find	O
 that	O
@@ -5452,7 +5342,6 @@ new	O
 autoregressive	B-MethodName
 LM	O
 .	O
-
 Given	O
 random	O
 samples	O
@@ -5529,7 +5418,6 @@ LM	B-MethodName
 -	I-MethodName
 KT	I-MethodName
 .	O
-
 We	O
 learn	O
 a	O
@@ -5565,7 +5453,6 @@ the	O
 token	O
 embeddings	O
 .	O
-
 Unlike	O
 LM	B-MethodName
 -	I-MethodName
@@ -5600,7 +5487,6 @@ G	O
 >	O
 token	O
 .	O
-
 If	O
 t	O
 g	O
@@ -5675,7 +5561,6 @@ q	O
 j	O
 sequence	O
 .	O
-
 At	O
 test	O
 time	O
@@ -5718,7 +5603,6 @@ with	O
 text	O
 sequences	O
 .	O
-
 Due	O
 to	O
 the	O
@@ -5818,7 +5702,6 @@ a	O
 second	O
 language	O
 .	O
-
 While	O
 the	O
 original	O
@@ -5849,7 +5732,6 @@ per	O
 question	O
 labels	O
 .	O
-
 We	O
 use	O
 the	O
@@ -5867,7 +5749,6 @@ Spanish	O
 and	O
 French	O
 .	O
-
 We	O
 create	O
 separate	O
@@ -5890,7 +5771,6 @@ question	B-TaskName
 generation	I-TaskName
 models	O
 .	O
-
 For	O
 both	O
 models	O
@@ -5950,7 +5830,6 @@ Duolingo	O
 student	O
 responses	O
 .	O
-
 Second	O
 ,	O
 how	O
@@ -5974,7 +5853,6 @@ for	O
 question	O
 generation	O
 .	O
-
 Table	O
 1	O
 compares	O
@@ -6022,7 +5900,6 @@ question	O
 text	O
 representation	O
 .	O
-
 This	O
 question	O
 only	O
@@ -6052,7 +5929,6 @@ of	O
 individual	O
 student	O
 .	O
-
 Our	O
 results	O
 show	O
@@ -6081,7 +5957,6 @@ a	O
 significant	O
 improvement	O
 .	O
-
 LM	B-MethodName
 -	I-MethodName
 KT	I-MethodName
@@ -6137,7 +6012,6 @@ downstream	O
 generation	O
 task	O
 .	O
-
 We	O
 bin	O
 our	O
@@ -6160,7 +6034,6 @@ in	O
 each	O
 bin	O
 .	O
-
 Figure	O
 2	O
 shows	O
@@ -6276,7 +6149,6 @@ to	O
 permutation	O
 baselines	O
 .	O
-
 Table	O
 2	O
 (	O
@@ -6304,7 +6176,6 @@ these	O
 are	O
 permuted	O
 .	O
-
 The	O
 target	O
 difficulty	O
@@ -6321,7 +6192,6 @@ LM	B-MethodName
 DKT	I-MethodName
 model	O
 .	O
-
 We	O
 can	O
 remove	O
@@ -6352,7 +6222,6 @@ and	O
 0	O
 otherwise	O
 .	O
-
 Table	O
 2	O
 (	O
@@ -6410,7 +6279,6 @@ difficulties	O
 0.9	I-HyperparameterValue
 )	O
 .	O
-
 We	O
 then	O
 use	O
@@ -6437,7 +6305,6 @@ for	O
 each	O
 student	O
 .	O
-
 Figure	O
 3	O
 shows	O
@@ -6481,7 +6348,6 @@ and	O
 target	O
 difficulties	O
 .	O
-
 Adding	O
 a	O
 sampling	O
@@ -6551,7 +6417,6 @@ Table	O
 3	O
 )	O
 .	O
-
 Across	O
 4,050	O
 questions	O
@@ -6611,7 +6476,6 @@ Figure	O
 4	O
 )	O
 .	O
-
 On	O
 one	O
 NVIDIA	O
@@ -6646,7 +6510,6 @@ as	O
 pool	O
 selection	O
 .	O
-
 The	O
 gap	O
 increases	O
@@ -6685,7 +6548,6 @@ Duolingo	B-DatasetName
 question	O
 set	O
 .	O
-
 Additional	O
 controls	O
 ,	O
@@ -6714,7 +6576,6 @@ exponentially	O
 more	O
 complex	O
 .	O
-
 Pool	O
 Sampling	O
 (	O
@@ -6805,7 +6666,6 @@ adaptive	O
 learning	O
 tasks	O
 .	O
-
 We	O
 show	O
 how	O
@@ -6835,7 +6695,6 @@ limited	O
 question	O
 pools	O
 .	O
-
 Limitations	O
 of	O
 our	O
@@ -6852,7 +6711,6 @@ training	O
 data	O
 availability	O
 .	O
-
 More	O
 detailed	O
 student	O
@@ -6865,7 +6723,6 @@ future	O
 model	O
 development	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -6905,7 +6762,6 @@ LM	I-MethodName
 KT	I-MethodName
 model	O
 .	O
-
 Other	O
 future	O
 directions	O
@@ -6963,7 +6819,6 @@ world	O
 education	O
 setting	O
 .	O
-
 Our	O
 techniques	O
 allows	O
@@ -7012,7 +6867,6 @@ around	O
 the	O
 world	O
 .	O
-
 Adaptive	O
 techniques	O
 that	O
@@ -7050,7 +6904,6 @@ Brunskill	O
 2012	O
 )	O
 .	O
-
 However	O
 ,	O
 our	O
@@ -7081,7 +6934,6 @@ an	O
 education	O
 context	O
 .	O
-
 Moreover	O
 ,	O
 our	O
@@ -7170,7 +7022,6 @@ a	O
 second	O
 language	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -7221,7 +7072,6 @@ a	O
 vocal	O
 utterance	O
 .	O
-
 We	O
 focus	O
 on	O
@@ -7240,7 +7090,6 @@ French	O
 and	O
 Spanish	O
 .	O
-
 The	O
 dataset	O
 size	O
@@ -7312,7 +7161,6 @@ and	O
 morphology	O
 labels	O
 .	O
-
 We	O
 use	O
 the	O
@@ -7356,7 +7204,6 @@ is	O
 marked	O
 incorrect	O
 .	O
-
 We	O
 do	O
 not	O
@@ -7389,7 +7236,6 @@ ordered	O
 in	O
 sequence	O
 .	O
-
 We	O
 therefore	O
 construct	O
@@ -7415,7 +7261,6 @@ current	O
 student	O
 state	O
 .	O
-
 When	O
 evaluating	O
 our	O
@@ -7446,7 +7291,6 @@ a	O
 given	O
 question	O
 .	O
-
 Overall	O
 ,	O
 we	O
@@ -7510,7 +7354,6 @@ question	B-TaskName
 generation	I-TaskName
 model	O
 .	O
-
 From	O
 a	O
 set	O
@@ -7539,7 +7382,6 @@ the	O
 difficulty	O
 score	O
 .	O
-
 In	O
 practice	O
 ,	O
@@ -7604,7 +7446,6 @@ al	O
 2020	O
 )	O
 .	O
-
 For	O
 question	B-TaskName
 generation	I-TaskName
@@ -7644,7 +7485,6 @@ of	O
 memory	O
 available	O
 .	O
-
 Because	O
 the	O
 maximum	O
@@ -7673,7 +7513,6 @@ tokens	O
 before	O
 training	O
 .	O
-
 We	O
 report	O
 results	O
@@ -7718,7 +7557,6 @@ and	O
 learning	B-HyperparameterName
 rate	I-HyperparameterName
 .	O
-
 The	O
 total	O
 compute	O
@@ -7795,7 +7633,6 @@ of	O
 20	O
 tokens	O
 .	O
-
 We	O
 also	O
 vary	O
@@ -7824,7 +7661,6 @@ student	O
 state	O
 )	O
 .	O
-
 Lastly	O
 ,	O
 we	O
@@ -7856,7 +7692,6 @@ as	O
 in	O
 training	O
 .	O
-
 This	O
 is	O
 a	O
@@ -7929,7 +7764,6 @@ more	O
 diverse	O
 outputs	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -7940,7 +7774,6 @@ cost	O
 to	O
 fluency	O
 .	O
-
 Below	O
 we	O
 include	O
@@ -7983,7 +7816,6 @@ a	O
 repetition	O
 penalty	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -8062,7 +7894,6 @@ on	O
 languagespecific	O
 models	O
 .	O
-
 The	O
 obvious	O
 disadvantages	O
@@ -8092,7 +7923,6 @@ language	O
 specific	O
 models	O
 .	O
-
 To	O
 overcome	O
 these	O
@@ -8110,7 +7940,6 @@ word	O
 level	O
 QE	B-TaskName
 .	O
-
 We	O
 show	O
 that	O
@@ -8128,7 +7957,6 @@ language	O
 specific	O
 models	O
 .	O
-
 In	O
 the	O
 cases	O
@@ -8167,7 +7995,6 @@ other	O
 language	O
 pairs	O
 .	O
-
 Our	O
 findings	O
 suggest	O
@@ -8238,7 +8065,6 @@ al	O
 2009	O
 )	O
 .	O
-
 Translation	O
 quality	O
 can	O
@@ -8266,7 +8092,6 @@ al	O
 2018	O
 )	O
 .	O
-
 So	O
 far	O
 the	O
@@ -8296,7 +8121,6 @@ and	O
 target	O
 sentences	O
 .	O
-
 A	O
 more	O
 challenging	O
@@ -8322,7 +8146,6 @@ level	O
 quality	O
 estimation	O
 .	O
-
 This	O
 task	O
 provides	O
@@ -8369,7 +8192,6 @@ bad	O
 gaps	O
 )	O
 .	O
-
 This	O
 information	O
 can	O
@@ -8472,7 +8294,6 @@ for	O
 many	O
 languages	O
 .	O
-
 From	O
 an	O
 application	O
@@ -8551,7 +8372,6 @@ and	O
 language	O
 pairs	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -8598,7 +8418,6 @@ languages	O
 and	O
 domains	O
 .	O
-
 The	O
 main	O
 contributions	O
@@ -8660,7 +8479,6 @@ the	O
 proposed	O
 architecture	O
 .	O
-
 We	O
 show	O
 that	O
@@ -8695,7 +8513,6 @@ and	O
 multilingual	O
 models	O
 .	O
-
 We	O
 report	O
 how	O
@@ -8738,7 +8555,6 @@ source	O
 framework	O
 1	O
 .	O
-
 (	O
 Kepler	O
 et	O
@@ -8748,7 +8564,6 @@ al	O
 2019	O
 )	O
 .	O
-
 However	O
 ,	O
 the	O
@@ -8811,7 +8626,6 @@ Lee	O
 2020	O
 )	O
 .	O
-
 All	O
 of	O
 these	O
@@ -8835,7 +8649,6 @@ each	O
 language	O
 pair	O
 .	O
-
 This	O
 approach	O
 has	O
@@ -8874,7 +8687,6 @@ to	O
 multiple	O
 languages	O
 .	O
-
 Even	O
 though	O
 this	O
@@ -8914,7 +8726,6 @@ used	O
 in	O
 QE	B-TaskName
 .	O
-
 Shah	O
 and	O
 Specia	O
@@ -8942,7 +8753,6 @@ as	O
 multiple	O
 tasks	O
 .	O
-
 They	O
 show	O
 that	O
@@ -8967,7 +8777,6 @@ feature	O
 based	O
 approach	O
 .	O
-
 In	O
 a	O
 recent	O
@@ -9043,7 +8852,6 @@ and	O
 lowresource	O
 settings	O
 .	O
-
 However	O
 ,	O
 these	O
@@ -9102,7 +8910,6 @@ were	O
 trained	O
 on	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -9134,7 +8941,6 @@ unseen	O
 language	O
 pair	O
 .	O
-
 Furthermore	O
 ,	O
 multilingual	O
@@ -9179,7 +8985,6 @@ of	O
 training	O
 instances	O
 .	O
-
 While	O
 we	O
 centered	O
@@ -9219,7 +9024,6 @@ source	O
 words	O
 too	O
 .	O
-
 This	O
 suggests	O
 that	O
@@ -9247,7 +9051,6 @@ pairs	O
 as	O
 well	O
 .	O
-
 These	O
 findings	O
 can	O
@@ -9297,7 +9100,6 @@ QE	B-TaskName
 with	O
 transformers	O
 .	O
-
 We	O
 introduced	O
 a	O
@@ -9311,7 +9113,6 @@ perform	O
 wordlevel	B-TaskName
 QE	B-TaskName
 .	O
-
 The	O
 implementation	O
 of	O
@@ -9387,7 +9188,6 @@ of	O
 training	O
 instances	O
 .	O
-
 For	O
 each	O
 language	O
@@ -9424,7 +9224,6 @@ to	O
 training	O
 instances	O
 .	O
-
 We	O
 compared	O
 the	O
@@ -9444,7 +9243,6 @@ that	O
 language	O
 pair	O
 .	O
-
 The	O
 results	O
 in	O
@@ -9476,7 +9274,6 @@ language	O
 direction	O
 changes	O
 .	O
-
 In	O
 the	O
 scenario	O
@@ -9504,7 +9301,6 @@ the	O
 bilingual	O
 result	O
 .	O
-
 Similarly	O
 ,	O
 the	O
@@ -9540,7 +9336,6 @@ training	O
 is	O
 different	O
 .	O
-
 This	O
 is	O
 in	O
@@ -9574,7 +9369,6 @@ multilingual	O
 QE	B-TaskName
 models	O
 .	O
-
 We	O
 trained	O
 the	O
@@ -9602,7 +9396,6 @@ pair	O
 left	O
 out	O
 .	O
-
 In	O
 section	O
 II	O
@@ -9622,7 +9415,6 @@ multilingual	B-MethodName
 QE	B-TaskName
 model	O
 .	O
-
 This	O
 also	O
 provides	O
@@ -9657,7 +9449,6 @@ languages	O
 and	O
 domains	O
 .	O
-
 This	O
 approach	O
 provides	O
@@ -9707,7 +9498,6 @@ shot	O
 quality	O
 estimation	O
 .	O
-
 We	O
 used	O
 the	O
@@ -9732,7 +9522,6 @@ other	O
 language	O
 pairs	O
 .	O
-
 Non	O
 -	O
 diagonal	O
@@ -9754,7 +9543,6 @@ other	O
 language	O
 pairs	O
 .	O
-
 For	O
 better	O
 visualisation	O
@@ -9791,7 +9579,6 @@ bilingual	O
 QE	B-TaskName
 model	O
 .	O
-
 As	O
 can	O
 be	O
@@ -9812,7 +9599,6 @@ to	O
 be	O
 expected	O
 .	O
-
 For	O
 most	O
 pairs	O
@@ -9845,7 +9631,6 @@ particular	O
 language	O
 pair	O
 .	O
-
 Further	O
 analysing	O
 the	O
@@ -9878,7 +9663,6 @@ or	O
 language	O
 direction	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -9950,7 +9734,6 @@ level	O
 QE	B-TaskName
 model	O
 .	O
-
 Our	O
 results	O
 ,	O
@@ -9985,7 +9768,6 @@ some	O
 language	O
 pairs	O
 .	O
-
 We	O
 also	O
 investigate	O
@@ -10024,7 +9806,6 @@ share	O
 certain	O
 characteristics	O
 .	O
-
 However	O
 as	O
 shown	O
@@ -10068,7 +9849,6 @@ all	O
 the	O
 data	O
 .	O
-
 Section	O
 IV	O
 shows	O
@@ -10097,7 +9877,6 @@ in	O
 that	O
 competition	O
 .	O
-
 NR	O
 implies	O
 that	O
@@ -10111,7 +9890,6 @@ by	O
 the	O
 organisers	O
 .	O
-
 Zero	O
 -	O
 shot	O
@@ -10193,7 +9971,6 @@ same	O
 language	O
 pair	O
 .	O
-
 As	O
 can	O
 be	O
@@ -10225,7 +10002,6 @@ from	O
 previous	O
 competitions	O
 .	O
-
 In	O
 addition	O
 to	O
@@ -10265,7 +10041,6 @@ Tables	O
 and	O
 6	O
 .	O
-
 In	O
 the	O
 following	O
@@ -10389,7 +10164,6 @@ other	O
 words	O
 )	O
 .	O
-
 In	O
 recent	O
 WMT	B-TaskName
@@ -10409,7 +10183,6 @@ in	O
 the	O
 target	O
 .	O
-
 Therefore	O
 ,	O
 in	O
@@ -10428,7 +10201,6 @@ in	O
 the	O
 target	O
 .	O
-
 Other	O
 results	O
 are	O
@@ -10438,7 +10210,6 @@ the	O
 supplementary	O
 material	O
 .	O
-
 Prior	O
 to	O
 WMT	B-DatasetName
@@ -10471,7 +10242,6 @@ gaps	O
 and	O
 words	O
 .	O
-
 We	O
 follow	O
 this	O
@@ -10506,7 +10276,6 @@ the	O
 input	O
 sentences	O
 .	O
-
 XLM	B-MethodName
 -	I-MethodName
 R	I-MethodName
@@ -10534,7 +10303,6 @@ the	O
 CommonCrawl	B-DatasetName
 datasets	O
 .	O
-
 It	O
 is	O
 trained	O
@@ -10558,7 +10326,6 @@ MLM	O
 )	O
 objective	O
 .	O
-
 XML	O
 -	O
 R	O
@@ -10591,7 +10358,6 @@ al	O
 2020	O
 ;	O
 .	O
-
 This	O
 motivated	O
 us	O
@@ -10631,7 +10397,6 @@ in	O
 the	O
 target	O
 .	O
-
 We	O
 then	O
 concatenate	O
@@ -10687,7 +10452,6 @@ in	O
 Figure	O
 1	O
 .	O
-
 The	O
 training	O
 configurations	O
@@ -10702,7 +10466,6 @@ the	O
 supplementary	O
 material	O
 .	O
-
 We	O
 used	O
 several	O
@@ -10772,7 +10535,6 @@ De	O
 En	O
 )	O
 .	O
-
 The	O
 texts	O
 are	O
@@ -10795,7 +10557,6 @@ machine	B-TaskName
 translation	O
 systems	O
 .	O
-
 More	O
 details	O
 about	O
@@ -10849,7 +10610,6 @@ language	O
 to	O
 another	O
 .	O
-
 High	O
 -	O
 quality	O
@@ -10868,7 +10628,6 @@ understanding	O
 and	O
 analysis	O
 .	O
-
 Despite	O
 its	O
 importance	O
@@ -10920,7 +10679,6 @@ and	O
 context	O
 difference	O
 .	O
-
 To	O
 facilitate	O
 the	O
@@ -10965,7 +10723,6 @@ Spanish	O
 and	O
 Japanese	O
 .	O
-
 Also	O
 ,	O
 we	O
@@ -10995,7 +10752,6 @@ with	O
 schema	O
 context	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -11018,7 +10774,6 @@ types	O
 and	O
 relations	O
 .	O
-
 Then	O
 CAST	B-MethodName
 encodes	O
@@ -11043,7 +10798,6 @@ the	O
 target	O
 language	O
 .	O
-
 Experiments	O
 on	O
 our	O
@@ -11065,7 +10819,6 @@ machine	I-TaskName
 translation	I-TaskName
 models	O
 .	O
-
 Our	O
 dataset	O
 will	O
@@ -11092,7 +10845,6 @@ thousand	O
 words	O
 "	O
 .	O
-
 Nowadays	O
 ,	O
 tremendous	O
@@ -11127,7 +10879,6 @@ which	O
 are	O
 informative	O
 .	O
-
 Schema	B-TaskName
 translation	I-TaskName
 is	O
@@ -11146,7 +10897,6 @@ language	O
 to	O
 another	O
 .	O
-
 High	O
 -	O
 quality	O
@@ -11199,7 +10949,6 @@ English	O
 to	O
 Chinese	O
 .	O
-
 1	O
 -4	O
 denotes	O
@@ -11244,7 +10993,6 @@ al	O
 2020	O
 )	O
 .	O
-
 Note	O
 that	O
 in	O
@@ -11286,7 +11034,6 @@ translated	O
 or	O
 not	O
 .	O
-
 Over	O
 translation	O
 could	O
@@ -11297,7 +11044,6 @@ effects	O
 in	O
 reality	O
 .	O
-
 Despite	O
 its	O
 importance	O
@@ -11354,7 +11100,6 @@ of	O
 our	O
 knowledge	O
 .	O
-
 According	O
 to	O
 our	O
@@ -11404,7 +11149,6 @@ difference	O
 Morphological	O
 Difference	O
 .	O
-
 The	O
 morphology	O
 of	O
@@ -11422,7 +11166,6 @@ following	O
 four	O
 aspects	O
 .	O
-
 First	O
 ,	O
 headers	O
@@ -11451,7 +11194,6 @@ Figure	O
 No	O
 .	O
 "	O
-
 is	O
 the	O
 abbreviation	O
@@ -11465,7 +11207,6 @@ the	O
 Loc	O
 .	O
 "	O
-
 is	O
 short	O
 for	O
@@ -11491,7 +11232,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 Second	O
 ,	O
 verb	O
@@ -11514,7 +11254,6 @@ between	O
 two	O
 columns	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -11537,7 +11276,6 @@ the	O
 third	O
 columns	O
 .	O
-
 Third	O
 ,	O
 special	O
@@ -11552,7 +11290,6 @@ usages	O
 in	O
 headers	O
 .	O
-
 At	O
 last	O
 ,	O
@@ -11572,7 +11309,6 @@ attention	O
 for	O
 headers	O
 .	O
-
 These	O
 special	O
 word	O
@@ -11590,7 +11326,6 @@ in	O
 plain	O
 text	O
 .	O
-
 Therefore	O
 ,	O
 the	O
@@ -11617,7 +11352,6 @@ translation	O
 Context	O
 Difference	O
 .	O
-
 Compared	O
 with	O
 plain	O
@@ -11647,7 +11381,6 @@ for	O
 schema	O
 translation	O
 .	O
-
 Specifically	O
 ,	O
 a	O
@@ -11662,7 +11395,6 @@ rows	O
 and	O
 columns	O
 .	O
-
 Each	O
 column	O
 header	O
@@ -11673,7 +11405,6 @@ of	O
 that	O
 column	O
 .	O
-
 The	O
 intersection	O
 of	O
@@ -11687,7 +11418,6 @@ called	O
 a	O
 cell	O
 .	O
-
 Each	O
 cell	O
 contains	O
@@ -11700,7 +11430,6 @@ it	O
 belongs	O
 to	O
 .	O
-
 This	O
 structure	O
 plays	O
@@ -11719,7 +11448,6 @@ and	O
 abbreviation	O
 words	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -11782,7 +11510,6 @@ domain	O
 of	O
 sport	O
 .	O
-
 Thus	O
 ,	O
 translating	O
@@ -11804,7 +11531,6 @@ in	O
 the	O
 context	O
 .	O
-
 Moreover	O
 ,	O
 a	O
@@ -11825,7 +11551,6 @@ of	O
 the	O
 header	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -11839,7 +11564,6 @@ that	O
 No	O
 .	O
 "	O
-
 might	O
 be	O
 an	O
@@ -11849,7 +11573,6 @@ in	O
 Figure	O
 1	O
 .	O
-
 NMT	B-TaskName
 models	O
 trained	O
@@ -11895,7 +11618,6 @@ translation	O
 is	O
 challenging	O
 .	O
-
 On	O
 the	O
 one	O
@@ -11925,7 +11647,6 @@ and	O
 abbreviation	O
 headers	O
 .	O
-
 For	O
 another	O
 ,	O
@@ -11965,7 +11686,6 @@ six	O
 different	O
 languages	O
 .	O
-
 It	O
 consists	O
 of	O
@@ -12036,7 +11756,6 @@ with	O
 table	O
 context	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -12060,7 +11779,6 @@ and	O
 structural	O
 relations	O
 .	O
-
 Then	O
 CAST	B-MethodName
 encodes	O
@@ -12085,7 +11803,6 @@ the	O
 target	O
 language	O
 .	O
-
 The	O
 advantages	O
 of	O
@@ -12164,7 +11881,6 @@ machine	I-TaskName
 translation	I-TaskName
 models	O
 .	O
-
 Our	O
 contributions	O
 are	O
@@ -12192,7 +11908,6 @@ plain	O
 text	O
 translation	O
 .	O
-
 To	O
 facilitate	O
 the	O
@@ -12235,7 +11950,6 @@ schema	B-TaskName
 translation	I-TaskName
 task	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -12323,7 +12037,6 @@ schema	O
 translation	I-TaskName
 dataset	O
 .	O
-
 It	O
 consists	O
 of	O
@@ -12352,7 +12065,6 @@ Spanish	O
 and	O
 Japanese	O
 .	O
-
 In	O
 this	O
 section	O
@@ -12404,7 +12116,6 @@ to	O
 other	O
 languages	O
 .	O
-
 (	O
 Pasupat	O
 and	O
@@ -12435,7 +12146,6 @@ and	O
 five	O
 columns	O
 .	O
-
 Secondly	O
 ,	O
 we	O
@@ -12459,7 +12169,6 @@ education	O
 and	O
 government	O
 .	O
-
 At	O
 last	O
 ,	O
@@ -12499,7 +12208,6 @@ covering	O
 different	O
 domains	O
 .	O
-
 Finally	O
 ,	O
 we	O
@@ -12518,7 +12226,6 @@ Aware	O
 Schema	O
 Annotation	O
 .	O
-
 To	O
 reduce	O
 the	O
@@ -12546,7 +12253,6 @@ header	O
 by	O
 header	O
 .	O
-
 Then	O
 based	O
 on	O
@@ -12601,7 +12307,6 @@ in	O
 column	O
 headers	O
 .	O
-
 Table	O
 1	O
 shows	O
@@ -12618,7 +12323,6 @@ in	O
 our	O
 dataset	O
 .	O
-
 However	O
 ,	O
 domain	O
@@ -12643,7 +12347,6 @@ entire	O
 table	O
 context	O
 .	O
-
 To	O
 get	O
 more	O
@@ -12715,7 +12418,6 @@ the	O
 table	O
 2	O
 .	O
-
 Our	O
 translators	O
 are	O
@@ -12734,7 +12436,6 @@ validating	O
 the	O
 translations	O
 .	O
-
 We	O
 find	O
 that	O
@@ -12755,7 +12456,6 @@ is	O
 very	O
 useful	O
 .	O
-
 Finally	O
 ,	O
 we	O
@@ -12811,7 +12511,6 @@ of	O
 translated	O
 headers	O
 .	O
-
 On	O
 the	O
 basis	O
@@ -12838,7 +12537,6 @@ hours	O
 in	O
 total	O
 .	O
-
 This	O
 speed	O
 is	O
@@ -12867,7 +12565,6 @@ to	O
 help	O
 disambiguation	O
 .	O
-
 To	O
 this	O
 end	O
@@ -12888,7 +12585,6 @@ USD	O
 in	O
 total	O
 .	O
-
 According	O
 to	O
 our	O
@@ -12908,7 +12604,6 @@ meaning	O
 of	O
 headers	O
 .	O
-
 We	O
 will	O
 also	O
@@ -12930,7 +12625,6 @@ study	O
 Dataset	O
 Analysis	O
 .	O
-
 To	O
 have	O
 a	O
@@ -12966,7 +12660,6 @@ and	O
 capitalized	O
 character	O
 .	O
-
 As	O
 we	O
 can	O
@@ -13024,7 +12717,6 @@ our	O
 domain	O
 category	O
 .	O
-
 Then	O
 we	O
 randomly	O
@@ -13041,7 +12733,6 @@ label	O
 the	O
 domains	O
 .	O
-
 According	O
 to	O
 our	O
@@ -13054,7 +12745,6 @@ all	O
 44	O
 domains	O
 .	O
-
 In	O
 detail	O
 ,	O
@@ -13113,7 +12803,6 @@ approach	O
 in	O
 detail	O
 .	O
-
 We	O
 first	O
 introduce	O
@@ -13165,7 +12854,6 @@ the	O
 target	O
 language	O
 .	O
-
 Obviously	O
 ,	O
 this	O
@@ -13200,7 +12888,6 @@ token	O
 level	O
 alignment	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -13224,7 +12911,6 @@ lost	O
 during	O
 translation	O
 .	O
-
 To	O
 meet	O
 this	O
@@ -13269,11 +12955,8 @@ hh	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 h	O
 n	O
@@ -13333,11 +13016,8 @@ v	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 v	O
 t	O
@@ -13359,11 +13039,8 @@ H	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 H	O
 i	O
@@ -13373,11 +13050,8 @@ H	O
 i+1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 H	O
 m	O
@@ -13387,7 +13061,6 @@ in	O
 the	O
 schema	O
 .	O
-
 The	O
 translation	O
 of	O
@@ -13403,11 +13076,8 @@ hy	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 y	O
 m	O
@@ -13428,7 +13098,6 @@ the	O
 target	O
 language	O
 .	O
-
 Taking	O
 a	O
 header	O
@@ -13497,7 +13166,6 @@ header	O
 as	O
 outputs	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -13532,7 +13200,6 @@ three	O
 entity	O
 types	O
 .	O
-
 Figure	O
 2	O
 depicts	O
@@ -13555,7 +13222,6 @@ Self	I-TaskName
 -	I-TaskName
 Attention	I-TaskName
 .	O
-
 First	O
 ,	O
 we	O
@@ -13573,7 +13239,6 @@ self	O
 -	O
 attention	O
 .	O
-
 Consider	O
 a	O
 sequence	O
@@ -13596,7 +13261,6 @@ i	O
 R	O
 dx	O
 .	O
-
 Self	O
 -	O
 attention	O
@@ -13671,7 +13335,6 @@ where	O
 dz	O
 )	O
 .	O
-
 Shaw	O
 et	O
 al	O
@@ -13783,7 +13446,6 @@ the	O
 input	O
 sequence	O
 .	O
-
 In	O
 this	O
 way	O
@@ -13815,7 +13477,6 @@ the	O
 contextualized	O
 embedding	O
 .	O
-
 Specifically	O
 ,	O
 they	O
@@ -13831,7 +13492,6 @@ between	O
 sequence	O
 elements	O
 .	O
-
 More	O
 details	O
 could	O
@@ -13849,7 +13509,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Figure	O
 2	O
 :	O
@@ -13870,7 +13529,6 @@ Chinese	O
 schema	O
 translation	O
 .	O
-
 Firstly	O
 ,	O
 the	O
@@ -13889,7 +13547,6 @@ a	O
 directed	O
 graph	O
 .	O
-
 Then	O
 a	O
 stack	O
@@ -13959,7 +13616,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Here	O
 
 X	O
@@ -14017,7 +13673,6 @@ directed	O
 input	O
 graph	O
 .	O
-
 The	O
 following	O
 section	O
@@ -14044,7 +13699,6 @@ context	O
 Input	O
 Graph	O
 .	O
-
 We	O
 model	O
 a	O
@@ -14066,7 +13720,6 @@ and	O
 structural	O
 relations	O
 .	O
-
 Firstly	O
 ,	O
 we	O
@@ -14108,7 +13761,6 @@ target	O
 header	O
 .	O
 )	O
-
 ,	O
 and	O
 belonging	O
@@ -14131,9 +13783,7 @@ target	O
 header	O
 .	O
 )	O
-
 .	O
-
 In	O
 this	O
 sense	O
@@ -14172,7 +13822,6 @@ from	O
 its	O
 context	O
 .	O
-
 Specifically	O
 ,	O
 for	O
@@ -14198,7 +13847,6 @@ the	O
 entity	O
 type	O
 .	O
-
 For	O
 tokens	O
 in	O
@@ -14223,7 +13871,6 @@ and	O
 Value	O
 respectively	O
 .	O
-
 Figure	O
 2	O
 illustrates	O
@@ -14247,7 +13894,6 @@ Initial	O
 Token	O
 Embedding	O
 .	O
-
 We	O
 obtain	O
 the	O
@@ -14271,7 +13917,6 @@ ration	O
 aware	O
 transformer	O
 .	O
-
 To	O
 obtain	O
 the	O
@@ -14295,7 +13940,6 @@ bar	O
 |	O
 "	O
 .	O
-
 Then	O
 ,	O
 the	O
@@ -14328,7 +13972,6 @@ sep	O
 ]	O
 "	O
 .	O
-
 At	O
 last	O
 ,	O
@@ -14357,7 +14000,6 @@ the	O
 source	O
 language	O
 .	O
-
 The	O
 encoder	O
 then	O
@@ -14379,11 +14021,8 @@ x	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 x	O
 l	O
@@ -14417,11 +14056,8 @@ x	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 x	O
 0	O
@@ -14431,7 +14067,6 @@ l	O
 
 Decoder	O
 .	O
-
 The	O
 goal	O
 of	O
@@ -14451,16 +14086,12 @@ hy	O
 1	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 y	O
 m	O
 i.	O
-
 Specifically	O
 ,	O
 taking	O
@@ -14492,7 +14123,6 @@ hendi	O
 is	O
 generated	O
 .	O
-
 Similar	O
 to	O
 the	O
@@ -14545,7 +14175,6 @@ of	O
 our	O
 approach	O
 .	O
-
 Furthermore	O
 ,	O
 we	O
@@ -14563,7 +14192,6 @@ understand	O
 their	O
 contributions	O
 .	O
-
 At	O
 last	O
 ,	O
@@ -14587,7 +14215,6 @@ Setup	O
 
 Baseline	O
 .	O
-
 We	O
 choose	O
 two	O
@@ -14619,7 +14246,6 @@ as	O
 our	O
 baselines	O
 .	O
-
 Specifically	O
 ,	O
 both	O
@@ -14656,7 +14282,6 @@ generate	O
 the	O
 translation	O
 .	O
-
 The	O
 M2M-100	B-DatasetName
 is	O
@@ -14695,7 +14320,6 @@ machine	B-TaskName
 translation	I-TaskName
 task	O
 .	O
-
 We	O
 evaluate	O
 the	O
@@ -14721,7 +14345,6 @@ the	O
 schema	O
 dataset	O
 .	O
-
 •	O
 H2H	B-DatasetName
 :	O
@@ -14745,7 +14368,6 @@ headerto	O
 header	O
 manner	O
 .	O
-
 •	O
 H2H+CXT	O
 :	O
@@ -14772,7 +14394,6 @@ the	O
 target	O
 header	O
 .	O
-
 •	O
 H2H+CXT+ExtL	B-MethodName
 :	O
@@ -14846,7 +14467,6 @@ split	O
 Evaluation	O
 Metrics	O
 .	O
-
 We	O
 evaluate	O
 the	O
@@ -14873,7 +14493,6 @@ of	O
 the	O
 translations	O
 .	O
-
 Following	O
 the	O
 evaluation	O
@@ -14899,7 +14518,6 @@ for	O
 each	O
 language	O
 .	O
-
 We	O
 use	O
 SacreBLEU	B-MethodName
@@ -14923,7 +14541,6 @@ of	O
 the	O
 languages	O
 .	O
-
 Besides	O
 BLEU	B-MetricName
 ,	O
@@ -14942,7 +14559,6 @@ analysis	O
 
 Hyperparameters	O
 .	O
-
 We	O
 fine	O
 -	O
@@ -14968,7 +14584,6 @@ rate	I-HyperparameterName
 of	O
 0.2	B-HyperparameterValue
 .	O
-
 To	O
 avoid	O
 over	O
@@ -14988,7 +14603,6 @@ set	O
 as	O
 2	O
 .	O
-
 In	O
 the	O
 context	O
@@ -15005,7 +14619,6 @@ each	O
 target	O
 column	O
 .	O
-
 The	O
 Adam	B-HyperparameterValue
 optimizer	B-HyperparameterName
@@ -15031,7 +14644,6 @@ and	O
 is	O
 adopted	O
 .	O
-
 We	O
 set	O
 the	O
@@ -15131,7 +14743,6 @@ Japanese	O
 Ja	O
 )	O
 .	O
-
 The	O
 performances	O
 of	O
@@ -15148,7 +14759,6 @@ Table	O
 Overall	O
 Performance	O
 .	O
-
 The	O
 overall	O
 performances	O
@@ -15164,7 +14774,6 @@ show	O
 similar	O
 trends	O
 .	O
-
 Firstly	O
 ,	O
 compared	O
@@ -15184,7 +14793,6 @@ gains	O
 significant	O
 improvement	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -15225,7 +14833,6 @@ Ja	O
 ,	O
 respectively	O
 .	O
-
 It	O
 demonstrates	O
 a	O
@@ -15282,7 +14889,6 @@ from	O
 the	O
 table	O
 .	O
-
 Taking	O
 H2H+CXT	B-MethodName
 based	O
@@ -15324,7 +14930,6 @@ settings	O
 ,	O
 respectively	O
 .	O
-
 In	O
 terms	O
 of	O
@@ -15357,7 +14962,6 @@ by	O
 and	O
 1.2	B-MetricValue
 .	O
-
 The	O
 observations	O
 demonstrate	O
@@ -15422,7 +15026,6 @@ Fr	I-MethodName
 ,	O
 respectively	O
 .	O
-
 We	O
 hypothesize	O
 that	O
@@ -15486,7 +15089,6 @@ M2M100	B-DatasetName
 obtains	O
 47	O
 .	O
-
 1	O
 ,	O
 48.6	B-MetricValue
@@ -15553,7 +15155,6 @@ across	O
 all	O
 settings	O
 .	O
-
 For	O
 models	O
 based	O
@@ -15599,7 +15200,6 @@ Ja	I-MethodName
 ,	O
 respectively	O
 .	O
-
 When	O
 it	O
 comes	O
@@ -15637,7 +15237,6 @@ to	O
 target	O
 languages	O
 .	O
-
 It	O
 is	O
 also	O
@@ -15653,7 +15252,6 @@ context	O
 for	O
 H2H+CXT	B-DatasetName
 .	O
-
 For	O
 instance	O
 ,	O
@@ -15682,7 +15280,6 @@ and	O
 Fr	O
 respectively	O
 .	O
-
 This	O
 improvement	O
 shows	O
@@ -15697,7 +15294,6 @@ and	O
 its	O
 context	O
 .	O
-
 We	O
 also	O
 run	O
@@ -15730,7 +15326,6 @@ of	O
 5	O
 languages	O
 .	O
-
 For	O
 the	O
 rest	O
@@ -15746,7 +15341,6 @@ results	O
 Human	O
 Evaluation	O
 .	O
-
 Since	O
 the	O
 machine	O
@@ -15781,7 +15375,6 @@ more	O
 precise	O
 evaluation	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -15794,7 +15387,6 @@ each	O
 language	O
 pair	O
 .	O
-
 For	O
 each	O
 case	O
@@ -15809,7 +15401,6 @@ the	O
 human	O
 annotation	O
 .	O
-
 The	O
 label	O
 is	O
@@ -15830,7 +15421,6 @@ annotation	O
 otherwise	O
 0	O
 .	O
-
 We	O
 report	O
 the	O
@@ -15860,7 +15450,6 @@ in	O
 Table	O
 5	O
 .	O
-
 According	O
 to	O
 human	O
@@ -15889,7 +15478,6 @@ context	O
 is	O
 added	O
 .	O
-
 Finally	O
 ,	O
 enhanced	O
@@ -15940,7 +15528,6 @@ for	O
 context	O
 modeling	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -15953,7 +15540,6 @@ without	O
 entity	O
 types	O
 .	O
-
 Next	O
 ,	O
 we	O
@@ -15967,7 +15553,6 @@ without	O
 structural	O
 relations	O
 .	O
-
 Finally	O
 ,	O
 we	O
@@ -15984,7 +15569,6 @@ identical	O
 to	O
 H2H+CXT	B-MethodName
 .	O
-
 We	O
 report	O
 the	O
@@ -16048,7 +15632,6 @@ kinds	O
 of	O
 headers	O
 .	O
-
 For	O
 each	O
 predicting	O
@@ -16065,7 +15648,6 @@ in	O
 the	O
 brackets	O
 .	O
-
 Results	O
 with	O
 underline	O
@@ -16077,10 +15659,8 @@ for	O
 the	O
 header	O
 .	O
-
 models	O
 .	O
-
 Comparing	O
 CAST	B-MethodName
 (	O
@@ -16114,7 +15694,6 @@ En	O
 Fr	I-MetricName
 respectively	O
 .	O
-
 Secondly	O
 ,	O
 the	O
@@ -16146,7 +15725,6 @@ of	O
 context	O
 modeling	O
 .	O
-
 As	O
 seen	O
 in	O
@@ -16172,7 +15750,6 @@ score	O
 over	O
 CAST	B-MethodName
 .	O
-
 Finally	O
 ,	O
 when	O
@@ -16228,7 +15805,6 @@ and	O
 polysemy	O
 headers	O
 .	O
-
 We	O
 list	O
 some	O
@@ -16340,7 +15916,6 @@ the	O
 correct	O
 result	O
 .	O
-
 However	O
 ,	O
 being	O
@@ -16364,7 +15939,6 @@ Apr	O
 etc	O
 .	O
 )	O
-
 and	O
 "	O
 OS	O
@@ -16382,7 +15956,6 @@ Core	O
 etc	O
 .	O
 )	O
-
 ,	O
 H2H+CXT	B-MethodName
 and	O
@@ -16439,7 +16012,6 @@ zone	O
 to	O
 acreage	O
 .	O
-
 For	O
 header	O
 "	O
@@ -16471,7 +16043,6 @@ by	O
 the	O
 context	O
 .	O
-
 On	O
 the	O
 other	O
@@ -16504,7 +16075,6 @@ of	O
 the	O
 engine	O
 .	O
-
 Affected	O
 by	O
 the	O
@@ -16584,7 +16154,6 @@ machine	B-TaskName
 translation	I-TaskName
 tasks	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -16668,7 +16237,6 @@ trained	O
 language	O
 models	O
 .	O
-
 Recent	O
 works	O
 saw	O
@@ -16698,7 +16266,6 @@ various	O
 language	O
 pairs	O
 .	O
-
 While	O
 the	O
 above	O
@@ -16757,7 +16324,6 @@ their	O
 translation	O
 unit	O
 .	O
-
 Traditional	O
 phrase	B-TaskName
 -	I-TaskName
@@ -16799,7 +16365,6 @@ gram	I-MethodName
 language	O
 model	O
 .	O
-
 Recently	O
 ,	O
 some	O
@@ -16814,7 +16379,6 @@ for	O
 phrase	O
 translation	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -16890,7 +16454,6 @@ source	I-TaskName
 segment	I-TaskName
 recognition	I-TaskName
 .	O
-
 The	O
 main	O
 differences	O
@@ -16987,7 +16550,6 @@ al	O
 2019	O
 )	O
 .	O
-
 In	O
 general	O
 ,	O
@@ -17001,7 +16563,6 @@ techniques	O
 1	O
 )	O
 .	O
-
 add	O
 additional	O
 entity	O
@@ -17033,7 +16594,6 @@ IRNET	B-MethodName
 2	O
 )	O
 .	O
-
 encode	O
 the	O
 schema	O
@@ -17042,7 +16602,6 @@ a	O
 directed	O
 graph	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -17092,7 +16651,6 @@ predefined	O
 schema	O
 relationships	O
 .	O
-
 Unlike	O
 these	O
 works	O
@@ -17141,7 +16699,6 @@ for	O
 this	O
 task	O
 .	O
-
 To	O
 address	O
 the	O
@@ -17210,7 +16767,6 @@ proposed	O
 translation	O
 task	O
 .	O
-
 English	O
 tables	O
 collected	O
@@ -17219,7 +16775,6 @@ from	O
 three	O
 sources	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -17261,7 +16816,6 @@ ta	O
 -	O
 bles	O
 .	O
-
 Since	O
 all	O
 of	O
@@ -17282,7 +16836,6 @@ no	O
 privacy	O
 issue	O
 .	O
-
 Second	O
 ,	O
 we	O
@@ -17306,7 +16859,6 @@ contain	O
 personal	O
 data	O
 .	O
-
 To	O
 Further	O
 enlarge	O
@@ -17349,7 +16901,6 @@ for	O
 research	O
 use	O
 .	O
-
 Since	O
 the	O
 tables	O
@@ -17380,7 +16931,6 @@ privacy	O
 issue	O
 either	O
 .	O
-
 For	O
 the	O
 translation	O
@@ -17430,7 +16980,6 @@ Tesla	O
 V100	O
 GPU	O
 .	O
-
 On	O
 average	O
 ,	O
@@ -17449,7 +16998,6 @@ in	O
 four	O
 hours	O
 .	O
-
 We	O
 implement	O
 our	O
@@ -17504,7 +17052,6 @@ for	O
 Multimodal	O
 QE	B-TaskName
 .	O
-
 We	O
 compare	O
 various	O
@@ -17514,7 +17061,6 @@ and	O
 fusion	O
 strategies	O
 .	O
-
 For	O
 both	O
 sentence	O
@@ -17593,7 +17139,6 @@ using	O
 reference	O
 translations	O
 .	O
-
 It	O
 estimates	O
 a	O
@@ -17644,7 +17189,6 @@ al	O
 2018b	O
 )	O
 .	O
-
 QE	B-TaskName
 can	O
 operate	O
@@ -17659,7 +17203,6 @@ and	O
 document	O
 levels	O
 .	O
-
 Sentence	B-TaskName
 -	I-TaskName
 level	I-TaskName
@@ -17750,7 +17293,6 @@ the	O
 adjective	O
 short	O
 .	O
-
 Here	O
 multimodality	O
 could	O
@@ -17775,7 +17317,6 @@ al	O
 2015	O
 )	O
 .	O
-
 creasingly	O
 accompanied	O
 with	O
@@ -17801,7 +17342,6 @@ e	O
 -	O
 commerce	O
 .	O
-
 Multimodality	O
 has	O
 not	O
@@ -17811,7 +17351,6 @@ applied	O
 to	O
 QE	B-TaskName
 .	O
-
 Table	O
 1	O
 shows	O
@@ -17832,7 +17371,6 @@ to	O
 improve	O
 QE	B-TaskName
 .	O
-
 Here	O
 ,	O
 the	O
@@ -17863,7 +17401,6 @@ out	O
 of	O
 context	O
 .	O
-
 However	O
 ,	O
 as	O
@@ -17889,7 +17426,6 @@ translation	O
 is	O
 incorrect	O
 .	O
-
 External	O
 information	O
 can	O
@@ -17908,7 +17444,6 @@ within	O
 the	O
 text	O
 .	O
-
 Progress	O
 in	O
 QE	B-TaskName
@@ -17931,7 +17466,6 @@ Task	O
 on	O
 QE	B-TaskName
 .	O
-
 This	O
 paper	O
 is	O
@@ -17948,7 +17482,6 @@ Task	O
 -documentlevel	O
 QE	B-TaskName
 .	O
-
 This	O
 Task	O
 4	O
@@ -17985,7 +17518,6 @@ al	O
 2018a	O
 )	O
 .	O
-
 This	O
 data	O
 was	O
@@ -18009,7 +17541,6 @@ case	O
 is	O
 available	O
 .	O
-
 We	O
 extend	O
 this	O
@@ -18028,7 +17559,6 @@ level	I-TaskName
 prediction	I-TaskName
 task	O
 .	O
-
 We	O
 consider	O
 both	O
@@ -18046,7 +17576,6 @@ models	O
 for	O
 QE	B-TaskName
 .	O
-
 Having	O
 these	O
 as	O
@@ -18224,7 +17753,6 @@ machine	O
 learning	O
 module	O
 .	O
-
 We	O
 only	O
 use	O
@@ -18252,7 +17780,6 @@ sentence	O
 level	O
 prediction	O
 .	O
-
 We	O
 use	O
 the	O
@@ -18315,7 +17842,6 @@ multi	O
 level	O
 QE	B-TaskName
 .	O
-
 We	O
 use	O
 the	O
@@ -18378,7 +17904,6 @@ Networks	I-MethodName
 RNNs	B-MethodName
 )	O
 .	O
-
 The	O
 two	O
 resulting	O
@@ -18402,7 +17927,6 @@ an	O
 attention	O
 mechanism	O
 .	O
-
 For	O
 sentence	O
 -	O
@@ -18432,7 +17956,6 @@ the	O
 quality	O
 estimates	O
 .	O
-
 For	O
 document	O
 -	O
@@ -18472,7 +17995,6 @@ within	O
 the	O
 document	O
 .	O
-
 The	O
 resulting	O
 document	O
@@ -18514,7 +18036,6 @@ the	O
 BiRNN	B-MethodName
 model	O
 .	O
-
 Rather	O
 than	O
 training	O
@@ -18555,7 +18076,6 @@ al	O
 2019	O
 )	O
 .	O
-
 During	O
 training	O
 ,	O
@@ -18583,7 +18103,6 @@ token	O
 embedding	O
 layer	O
 .	O
-
 This	O
 performs	O
 comparably	O
@@ -18626,7 +18145,6 @@ document	O
 level	O
 track	O
 .	O
-
 It	O
 contains	O
 a	O
@@ -18655,7 +18173,6 @@ Outdoors	I-DatasetName
 category	O
 .	O
 '	O
-
 Documents	O
 '	O
 consist	O
@@ -18696,7 +18213,6 @@ al	O
 2014	O
 )	O
 .	O
-
 This	O
 score	O
 is	O
@@ -18777,7 +18293,6 @@ for	O
 the	O
 document	O
 .	O
-
 We	O
 note	O
 that	O
@@ -18832,7 +18347,6 @@ at	O
 document	O
 level	O
 .	O
-
 For	O
 the	O
 neural	O
@@ -18888,7 +18402,6 @@ and	O
 3.2	O
 )	O
 .	O
-
 We	O
 compare	O
 each	O
@@ -18935,7 +18448,6 @@ contains	O
 4,096	O
 dimensions	O
 .	O
-
 To	O
 avoid	O
 over	O
@@ -18957,7 +18469,6 @@ Analysis	O
 PCA	O
 )	O
 .	O
-
 We	O
 consider	O
 up	O
@@ -18983,7 +18494,6 @@ features	O
 from	O
 QuEst++	B-DatasetName
 .	O
-
 We	O
 choose	O
 the	O
@@ -19012,7 +18522,6 @@ as	O
 a	O
 hyperparameter	O
 .	O
-
 After	O
 analysing	O
 the	O
@@ -19060,7 +18569,6 @@ and	O
 15	B-HyperparameterValue
 )	O
 .	O
-
 As	O
 fusion	O
 strategy	O
@@ -19118,7 +18626,6 @@ textual	O
 features	O
 )	O
 .	O
-
 We	O
 propose	O
 the	O
@@ -19218,7 +18725,6 @@ Task	O
 4	O
 track	O
 .	O
-
 For	O
 feature	O
 -	O
@@ -19249,7 +18755,6 @@ cross	O
 -	O
 validation	O
 .	O
-
 For	O
 neural	O
 -	O
@@ -19333,7 +18838,6 @@ as	O
 secondary	O
 metrics	O
 .	O
-
 For	O
 statistical	O
 significance	O
@@ -19413,7 +18917,6 @@ in	O
 Section	O
 3.2	O
 .	O
-
 This	O
 leads	O
 to	O
@@ -19428,7 +18931,6 @@ BERT	B-MethodName
 -	I-MethodName
 BiRNN	I-MethodName
 .	O
-
 In	O
 Tables	O
 2	O
@@ -19452,7 +18954,6 @@ three	O
 performing	O
 models	O
 .	O
-
 We	O
 refer	O
 the	O
@@ -19491,7 +18992,6 @@ QE	B-TaskName
 with	O
 BiRNN	B-MethodName
 .	O
-
 The	O
 best	O
 model	O
@@ -19520,7 +19020,6 @@ p	B-HyperparameterName
 value<0.01	I-MetricName
 )	O
 .	O
-
 Visual	O
 features	O
 can	O
@@ -19558,7 +19057,6 @@ BiRNN	B-MethodName
 model	O
 variants	O
 .	O
-
 It	O
 is	O
 a	O
@@ -19664,7 +19162,6 @@ variants	O
 Vis	I-MethodName
 )	O
 .	O
-
 We	O
 refer	O
 the	O
@@ -19679,7 +19176,6 @@ set	O
 of	O
 results	O
 .	O
-
 Here	O
 ,	O
 BERT	B-MethodName
@@ -19725,7 +19221,6 @@ r	O
 of	O
 0.602	O
 .	O
-
 This	O
 shows	O
 that	O
@@ -19749,7 +19244,6 @@ modest	O
 )	O
 improvements	O
 .	O
-
 Table	O
 3	O
 shows	O
@@ -19785,7 +19279,6 @@ embed	I-MethodName
 mult2	I-MethodName
 )	O
 .	O
-
 The	O
 multimodal	O
 model	O
@@ -19813,7 +19306,6 @@ model	O
 -0.248	B-MetricValue
 )	O
 .	O
-
 The	O
 French	O
 translation	O
@@ -19839,7 +19331,6 @@ MQM	B-DatasetName
 score	O
 shows	O
 .	O
-
 However	O
 ,	O
 the	O
@@ -19856,7 +19347,6 @@ chronomètre	O
 in	O
 French	O
 .	O
-
 Since	O
 the	O
 associated	O
@@ -19899,7 +19389,6 @@ cumulative	O
 -	O
 split	O
 .	O
-
 gold	O
 MQM	O
 score	O
@@ -19925,7 +19414,6 @@ level	O
 multimodal	O
 QE	B-TaskName
 .	O
-
 Compared	O
 to	O
 the	O
@@ -19957,7 +19445,6 @@ gold	B-MetricName
 MQM	O
 score	O
 .	O
-
 This	O
 could	O
 be	O
@@ -19981,7 +19468,6 @@ feature	O
 confirms	O
 it	O
 .	O
-
 This	O
 could	O
 lead	O
@@ -20041,7 +19527,6 @@ neural	I-MethodName
 QE	I-MethodName
 models	O
 .	O
-
 1	O
 The	O
 first	O
@@ -20066,7 +19551,6 @@ al	O
 2018a	O
 )	O
 .	O
-
 The	O
 neural	O
 -	O
@@ -20094,7 +19578,6 @@ mtl	I-MethodName
 bRNN	I-MethodName
 )	O
 .	O
-
 For	O
 our	O
 BiRNN	B-MethodName
@@ -20116,7 +19599,6 @@ the	O
 monomodal	O
 baseline	O
 .	O
-
 For	O
 the	O
 feature	O
@@ -20162,7 +19644,6 @@ performing	O
 the	O
 best	O
 .	O
-
 The	O
 more	O
 PCA	O
@@ -20183,7 +19664,6 @@ of	O
 results	O
 )	O
 .	O
-
 Figure	O
 3	O
 shows	O
@@ -20219,7 +19699,6 @@ value	I-HyperparameterName
 =	I-HyperparameterName
 0.002	B-HyperparameterValue
 .	O
-
 Thus	O
 ,	O
 visual	O
@@ -20272,7 +19751,6 @@ and	O
 document	O
 levels	O
 .	O
-
 The	O
 use	O
 of	O
@@ -20375,7 +19853,6 @@ the	O
 explained	O
 variance	O
 .	O
-
 Therefore	O
 ,	O
 we	O
@@ -20415,7 +19892,6 @@ for	O
 quality	O
 prediction	O
 .	O
-
 Complete	O
 results	O
 Tables	O
@@ -20450,7 +19926,6 @@ WMT'18	B-DatasetName
 test	O
 set	O
 .	O
-
 These	O
 are	O
 a	O
@@ -20531,7 +20006,6 @@ QE	B-TaskName
 ,	O
 respectively	O
 .	O
-
 This	O
 was	O
 the	O
@@ -20600,7 +20074,6 @@ trained	O
 word	O
 embedding	O
 .	O
-
 multimodal	O
 variants	O
 achieve	O
@@ -20631,7 +20104,6 @@ by	O
 elementwise	O
 multiplication	O
 .	O
-
 On	O
 the	O
 other	O
@@ -20670,7 +20142,6 @@ BERT	B-MethodName
 BiRNN	I-MethodName
 )	O
 .	O
-
 Here	O
 that	O
 the	O
@@ -20684,7 +20155,6 @@ performs	O
 very	O
 well	O
 .	O
-
 According	O
 to	O
 the	O
@@ -20720,7 +20190,6 @@ data	O
 Fonseca	B-DatasetName
 
 .	O
-
 We	O
 therefore	O
 hypothesise	O
@@ -20788,7 +20257,6 @@ of	O
 materials	O
 science	O
 .	O
-
 We	O
 develop	O
 an	O
@@ -20817,7 +20285,6 @@ and	O
 measurement	O
 conditions	O
 .	O
-
 With	O
 this	O
 paper	O
@@ -20847,7 +20314,6 @@ by	O
 domain	O
 experts	O
 .	O
-
 A	O
 corpus	O
 and	O
@@ -20877,7 +20343,6 @@ high	O
 annotation	O
 quality	O
 .	O
-
 We	O
 also	O
 present	O
@@ -20905,7 +20370,6 @@ new	O
 data	O
 set	O
 .	O
-
 On	O
 all	O
 tasks	O
@@ -20935,7 +20399,6 @@ top	O
 seems	O
 beneficial	O
 .	O
-
 Our	O
 models	O
 will	O
@@ -20989,7 +20452,6 @@ and	O
 their	O
 findings	O
 .	O
-
 However	O
 ,	O
 the	O
@@ -21021,7 +20483,6 @@ particular	O
 research	O
 question	O
 .	O
-
 Since	O
 scientific	O
 experiments	O
@@ -21073,7 +20534,6 @@ al	O
 2020	O
 )	O
 .	O
-
 While	O
 such	O
 real	O
@@ -21179,7 +20639,6 @@ information	B-TaskName
 extraction	I-TaskName
 tasks	O
 .	O
-
 We	O
 target	O
 publications	O
@@ -21211,7 +20670,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 For	O
 making	O
 progress	O
@@ -21295,7 +20753,6 @@ slot	O
 fillers	O
 )	O
 .	O
-
 We	O
 identify	O
 three	O
@@ -21342,7 +20799,6 @@ to	O
 these	O
 experiments	O
 .	O
-
 We	O
 propose	O
 and	O
@@ -21375,7 +20831,6 @@ BERT	B-MethodName
 based	O
 models	O
 .	O
-
 In	O
 our	O
 results	O
@@ -21388,7 +20843,6 @@ show	O
 superior	O
 performance	O
 .	O
-
 However	O
 ,	O
 with	O
@@ -21438,7 +20892,6 @@ a	O
 starting	O
 point	O
 .	O
-
 Our	O
 findings	O
 based	O
@@ -21523,14 +20976,12 @@ Section	O
 4	O
 )	O
 .	O
-
 Our	O
 corpus	O
 is	O
 publicly	O
 available	O
 .	O
-
 1	O
 Our	O
 inter	O
@@ -21556,7 +21007,6 @@ for	O
 scientific	O
 publications	O
 .	O
-
 Recently	O
 ,	O
 several	O
@@ -21596,7 +21046,6 @@ al	O
 2019	O
 )	O
 .	O
-
 We	O
 also	O
 aim	O
@@ -21620,14 +21069,12 @@ NLP	O
 to	O
 date	O
 .	O
-
 Information	O
 extraction	O
 for	O
 materials	O
 science	O
 .	O
-
 The	O
 work	O
 closest	O
@@ -21668,7 +21115,6 @@ synthesis	O
 operation	O
 types	O
 .	O
-
 create	O
 a	O
 dataset	O
@@ -21683,7 +21129,6 @@ materials	O
 science	O
 publications	O
 .	O
-
 In	O
 contrast	O
 to	O
@@ -21712,7 +21157,6 @@ than	O
 information	O
 extraction	O
 .	O
-
 A	O
 notable	O
 difference	O
@@ -21743,7 +21187,6 @@ paragraphs	O
 see	O
 also	O
 .	O
-
 Mysore	O
 et	O
 al	O
@@ -21775,7 +21218,6 @@ materials	O
 from	O
 text	O
 .	O
-
 In	O
 Section	O
 7.1	O
@@ -21804,7 +21246,6 @@ al	O
 2019	O
 )	O
 .	O
-
 train	O
 word2vec	O
 (	O
@@ -21834,7 +21275,6 @@ for	O
 functional	O
 applications	O
 .	O
-
 Other	O
 works	O
 adapt	O
@@ -21881,7 +21321,6 @@ and	O
 slot	O
 filling	O
 .	O
-
 The	O
 neural	O
 -	O
@@ -21934,7 +21373,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Other	O
 related	O
 work	O
@@ -22023,7 +21461,6 @@ SOFC	B-DatasetName
 related	O
 experiments	O
 .	O
-
 We	O
 include	O
 (	O
@@ -22102,7 +21539,6 @@ materials	O
 science	O
 domain	O
 .	O
-
 We	O
 now	O
 define	O
@@ -22117,7 +21553,6 @@ experiments	O
 on	O
 SOFCs	B-DatasetName
 .	O
-
 During	O
 annotation	O
 ,	O
@@ -22146,7 +21581,6 @@ see	O
 Figure	O
 1	O
 .	O
-
 As	O
 a	O
 result	O
@@ -22182,7 +21616,6 @@ for	O
 SOFC	B-DatasetName
 experiments	O
 .	O
-
 Here	O
 we	O
 explain	O
@@ -22194,7 +21627,6 @@ types	O
 for	O
 illustration	O
 .	O
-
 A	O
 full	O
 list	O
@@ -22225,7 +21657,6 @@ with	O
 our	O
 corpus	O
 .	O
-
 PowerDensity	O
 ,	O
 Resistance	B-HyperparameterName
@@ -22252,7 +21683,6 @@ plus	O
 a	O
 unit	O
 .	O
-
 Our	O
 annotation	O
 guidelines	O
@@ -22266,7 +21696,6 @@ describe	O
 special	O
 cases	O
 .	O
-
 This	O
 enables	O
 any	O
@@ -22300,7 +21729,6 @@ SOFC	B-DatasetName
 Exp	I-DatasetName
 Corpus	I-DatasetName
 .	O
-
 Our	O
 corpus	O
 consists	O
@@ -22327,7 +21755,6 @@ experts	O
 Task	O
 definitions	O
 .	O
-
 Our	O
 rich	O
 graph	O
@@ -22344,7 +21771,6 @@ information	B-TaskName
 extraction	I-TaskName
 tasks	O
 .	O
-
 In	O
 the	O
 scope	O
@@ -22418,7 +21844,6 @@ performance	O
 into	O
 perspective	O
 .	O
-
 Six	O
 documents	O
 (	O
@@ -22463,7 +21888,6 @@ of	O
 materials	O
 science	O
 .	O
-
 The	O
 label	O
 distribution	O
@@ -22492,7 +21916,6 @@ of	O
 the	O
 time	O
 .	O
-
 Identification	O
 of	O
 experiment	O
@@ -22500,7 +21923,6 @@ experiment	O
 describing	O
 sentences	O
 .	O
-
 Agreement	O
 on	O
 our	O
@@ -22542,7 +21964,6 @@ Koch	O
 1977	O
 )	O
 .	O
-
 The	O
 observed	O
 agreement	O
@@ -22562,7 +21983,6 @@ to	O
 79.2	B-MetricValue
 %	I-MetricValue
 .	O
-
 Table	O
 2	O
 shows	O
@@ -22594,7 +22014,6 @@ labels	O
 as	O
 predicted	O
 .	O
-
 Our	O
 primary	O
 annotator	O
@@ -22622,7 +22041,6 @@ of	O
 90	O
 sentences	O
 .	O
-
 These	O
 statistics	O
 are	O
@@ -22685,7 +22103,6 @@ and	O
 neighboring	O
 sentences	O
 .	O
-
 Therefore	O
 ,	O
 we	O
@@ -22716,7 +22133,6 @@ containing	O
 experimental	O
 information	O
 .	O
-
 We	O
 again	O
 look	O
@@ -22762,7 +22178,6 @@ few	O
 missing	O
 cases	O
 .	O
-
 The	O
 difference	O
 in	O
@@ -22827,7 +22242,6 @@ Section	O
 B	O
 )	O
 .	O
-
 Overall	O
 ,	O
 the	O
@@ -22842,13 +22256,11 @@ high	O
 data	O
 quality	O
 .	O
-
 Identifying	O
 experiment	O
 slot	O
 fillers	O
 .	O
-
 We	O
 compute	O
 agreement	O
@@ -22884,7 +22296,6 @@ experiment	O
 -	O
 describing	O
 .	O
-
 Slot	O
 fillers	O
 are	O
@@ -22902,7 +22313,6 @@ experiment	O
 evoking	O
 element	O
 .	O
-
 Table	O
 4	O
 shows	O
@@ -22917,7 +22327,6 @@ among	O
 those	O
 categories	O
 .	O
-
 See	O
 Supplementary	O
 Material	O
@@ -22928,7 +22337,6 @@ all	O
 slot	O
 types	O
 .	O
-
 Overall	O
 ,	O
 our	O
@@ -22954,7 +22362,6 @@ dataset	O
 Experiment	O
 detection	O
 .	O
-
 The	O
 task	O
 of	O
@@ -22970,7 +22377,6 @@ sentence	I-TaskName
 classification	I-TaskName
 problem	O
 .	O
-
 It	O
 can	O
 also	O
@@ -22990,7 +22396,6 @@ experiment	O
 frame	O
 extraction	I-TaskName
 .	O
-
 We	O
 implement	O
 a	O
@@ -23014,7 +22419,6 @@ experiment	B-TaskName
 sentence	I-TaskName
 detection	I-TaskName
 .	O
-
 Each	O
 input	O
 token	O
@@ -23039,7 +22443,6 @@ tuned	O
 during	O
 training	O
 .	O
-
 We	O
 use	O
 the	O
@@ -23111,7 +22514,6 @@ al	O
 )	O
 embeddings	O
 .	O
-
 For	O
 BERT	B-MethodName
 and	O
@@ -23130,7 +22532,6 @@ as	O
 token	O
 representation	O
 .	O
-
 The	O
 embeddings	O
 are	O
@@ -23153,7 +22554,6 @@ the	O
 whole	O
 sentence	O
 .	O
-
 Finally	O
 ,	O
 a	O
@@ -23206,7 +22606,6 @@ on	O
 our	O
 dataset	O
 .	O
-
 Sci	B-MethodName
 -	I-MethodName
 BERT	I-MethodName
@@ -23220,7 +22619,6 @@ of	O
 scientific	O
 text	O
 .	O
-
 We	O
 use	O
 the	O
@@ -23252,7 +22650,6 @@ the	O
 classification	O
 layer	O
 .	O
-
 5	O
 Finally	O
 ,	O
@@ -23281,7 +22678,6 @@ logistic	O
 regression	O
 classifier	O
 .	O
-
 For	O
 both	O
 models	O
@@ -23321,13 +22717,11 @@ in	O
 the	O
 sentence	O
 .	O
-
 6	O
 Entity	B-TaskName
 mention	I-MethodName
 extraction	I-MethodName
 .	O
-
 For	O
 entity	B-TaskName
 and	I-TaskName
@@ -23362,7 +22756,6 @@ a	O
 BiLSTM	B-MethodName
 model	O
 .	O
-
 We	O
 use	O
 the	O
@@ -23383,7 +22776,6 @@ into	O
 a	O
 BiLSTM	B-MethodName
 .	O
-
 The	O
 subsequent	O
 conditional	O
@@ -23408,7 +22800,6 @@ probable	O
 label	O
 sequence	O
 .	O
-
 To	O
 cope	O
 with	O
@@ -23445,7 +22836,6 @@ on	O
 this	O
 task	O
 .	O
-
 Since	O
 we	O
 use	O
@@ -23481,7 +22871,6 @@ scores	O
 between	O
 labels	O
 .	O
-
 As	O
 a	O
 non	O
@@ -23522,13 +22911,11 @@ embedding	O
 as	O
 features	O
 .	O
-
 7	O
 
 Slot	O
 filling	O
 .	O
-
 As	O
 described	O
 in	O
@@ -23564,7 +22951,6 @@ single	O
 experiment	O
 frame	O
 .	O
-
 We	O
 use	O
 the	O
@@ -23594,7 +22980,6 @@ Table	O
 11	O
 )	O
 .	O
-
 Future	O
 work	O
 may	O
@@ -23616,7 +23001,6 @@ Hyperparameters	O
 and	O
 training	O
 .	O
-
 The	O
 BiLSTM	B-MethodName
 models	O
@@ -23640,7 +23024,6 @@ rate	I-HyperparameterName
 of	O
 1e-3	B-HyperparameterValue
 .	O
-
 For	O
 fine	O
 -	O
@@ -23690,7 +23073,6 @@ for	O
 sequence	B-TaskName
 tagging	I-TaskName
 .	O
-
 When	O
 adding	O
 BERT	O
@@ -23726,7 +23108,6 @@ for	O
 the	O
 remainder	O
 .	O
-
 For	O
 regularization	O
 ,	O
@@ -23739,7 +23120,6 @@ the	O
 development	O
 set	O
 .	O
-
 We	O
 use	O
 a	O
@@ -23777,7 +23157,6 @@ to	O
 work	O
 best	O
 .	O
-
 The	O
 attention	B-HyperparameterName
 layer	I-HyperparameterName
@@ -23798,7 +23177,6 @@ Experiment	O
 sentence	O
 detection	O
 .	O
-
 Table	O
 5	O
 shows	O
@@ -23811,7 +23189,6 @@ of	O
 experimentdescribing	O
 sentences	O
 .	O
-
 The	O
 neural	O
 models	O
@@ -23830,7 +23207,6 @@ logistic	O
 regression	O
 models	O
 .	O
-
 Within	O
 the	O
 neural	O
@@ -23863,7 +23239,6 @@ original	O
 BERT	B-MethodName
 models	O
 .	O
-
 Note	O
 that	O
 even	O
@@ -23883,7 +23258,6 @@ non	O
 standard	O
 domains	O
 .	O
-
 Nevertheless	O
 ,	O
 models	O
@@ -23906,7 +23280,6 @@ is	O
 indeed	O
 beneficial	O
 .	O
-
 For	O
 performance	O
 reasons	O
@@ -23941,7 +23314,6 @@ detecting	O
 experiment	O
 sentences	O
 .	O
-
 Because	O
 it	O
 did	O
@@ -23969,7 +23341,6 @@ BERT	B-MethodName
 -	I-MethodName
 large	I-MethodName
 .	O
-
 However	O
 ,	O
 we	O
@@ -23989,7 +23360,6 @@ our	O
 test	O
 set	O
 .	O
-
 In	O
 general	O
 ,	O
@@ -24011,7 +23381,6 @@ and	O
 test	O
 sets	O
 .	O
-
 Overall	O
 ,	O
 achieving	O
@@ -24034,7 +23403,6 @@ useful	O
 in	O
 production	O
 .	O
-
 However	O
 ,	O
 there	O
@@ -24044,12 +23412,10 @@ room	O
 for	O
 improvement	O
 .	O
-
 Entity	B-TaskName
 mention	I-TaskName
 extraction	I-TaskName
 .	O
-
 Table	O
 6	O
 provides	O
@@ -24091,7 +23457,6 @@ mentions	O
 in	O
 total	O
 .	O
-
 9	O
 The	O
 CRF	B-MethodName
@@ -24112,7 +23477,6 @@ and/or	O
 mat2vec	O
 embeddings	O
 .	O
-
 However	O
 ,	O
 adding	O
@@ -24140,7 +23504,6 @@ many	O
 rare	O
 words	O
 .	O
-
 Again	O
 ,	O
 the	O
@@ -24162,7 +23525,6 @@ original	O
 SciBERT	B-MethodName
 model	O
 .	O
-
 It	O
 is	O
 relatively	O
@@ -24191,7 +23553,6 @@ can	O
 easily	O
 memorize	O
 .	O
-
 Recognizing	O
 the	O
 types	O
@@ -24219,7 +23580,6 @@ Experiment	O
 slot	O
 filling	O
 .	O
-
 Table	O
 7	O
 shows	O
@@ -24239,7 +23599,6 @@ slot	B-TaskName
 identification	I-TaskName
 task	O
 .	O
-
 10	O
 As	O
 for	O
@@ -24269,7 +23628,6 @@ contain	O
 slot	O
 instances	O
 .	O
-
 Again	O
 ,	O
 the	O
@@ -24286,7 +23644,6 @@ and/or	O
 word2vec	O
 embeddings	O
 .	O
-
 The	O
 addition	O
 of	O
@@ -24297,7 +23654,6 @@ embeddings	O
 improves	O
 performance	O
 .	O
-
 However	O
 ,	O
 on	O
@@ -24321,7 +23677,6 @@ original	O
 Sci)BERT	O
 model	O
 .	O
-
 Compared	O
 to	O
 the	O
@@ -24345,7 +23700,6 @@ possible	O
 output	O
 classes	O
 .	O
-
 We	O
 assume	O
 that	O
@@ -24374,7 +23728,6 @@ to	O
 better	O
 results	O
 .	O
-
 For	O
 a	O
 more	O
@@ -24412,7 +23765,6 @@ with	O
 SciBERT	O
 embeddings	O
 .	O
-
 As	O
 in	O
 the	O
@@ -24438,7 +23790,6 @@ plus	O
 particular	O
 units	O
 .	O
-
 In	O
 general	O
 ,	O
@@ -24458,7 +23809,6 @@ in	O
 the	O
 dataset	O
 .	O
-
 Recognizing	O
 the	O
 role	O
@@ -24484,7 +23834,6 @@ background	O
 domain	O
 knowledge	O
 .	O
-
 This	O
 type	O
 of	O
@@ -24551,7 +23900,6 @@ entity	O
 type	O
 information	O
 .	O
-
 11	O
 We	O
 apply	O
@@ -24578,7 +23926,6 @@ similar	O
 data	O
 sets	O
 .	O
-
 To	O
 the	O
 best	O
@@ -24603,7 +23950,6 @@ this	O
 data	O
 set	O
 .	O
-
 We	O
 hence	O
 compare	O
@@ -24631,7 +23977,6 @@ similar	O
 data	O
 set	O
 .	O
-
 12	O
 Our	O
 implementation	O
@@ -24668,7 +24013,6 @@ synthesis	O
 procedures	O
 dataset	O
 .	O
-
 Detailed	O
 scores	O
 by	O
@@ -24682,7 +24026,6 @@ the	O
 Supplementary	O
 Material	O
 .	O
-
 We	O
 chose	O
 to	O
@@ -24715,7 +24058,6 @@ and	O
 test	O
 set	O
 .	O
-
 Among	O
 the	O
 non	O
@@ -24753,7 +24095,6 @@ to	O
 this	O
 task	O
 .	O
-
 The	O
 best	O
 performance	O
@@ -24819,7 +24160,6 @@ oxide	O
 fuel	O
 cells	O
 .	O
-
 Our	O
 detailed	O
 corpus	O
@@ -24840,7 +24180,6 @@ high	O
 annotation	O
 quality	O
 .	O
-
 Based	O
 on	O
 the	O
@@ -24873,7 +24212,6 @@ experiment	O
 slot	I-TaskName
 filling	I-TaskName
 .	O
-
 We	O
 have	O
 presented	O
@@ -24895,7 +24233,6 @@ other	O
 model	O
 variants	O
 .	O
-
 While	O
 some	O
 categories	O
@@ -24932,7 +24269,6 @@ in	O
 production	O
 settings	O
 .	O
-
 Along	O
 with	O
 this	O
@@ -24953,7 +24289,6 @@ available	O
 
 Outlook	O
 .	O
-
 In	O
 Section	O
 7.1	O
@@ -24978,7 +24313,6 @@ to	O
 another	O
 dataset	O
 .	O
-
 A	O
 natural	O
 next	O
@@ -25012,7 +24346,6 @@ the	O
 respective	O
 datasets	O
 .	O
-
 Further	O
 research	O
 will	O
@@ -25030,7 +24363,6 @@ experiment	O
 frame	O
 recognition	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -25050,7 +24382,6 @@ using	O
 our	O
 dataset	O
 .	O
-
 They	O
 include	O
 the	O
@@ -25182,7 +24513,6 @@ for	O
 input	O
 sequences	O
 .	O
-
 However	O
 ,	O
 in	O
@@ -25207,7 +24537,6 @@ are	O
 modeled	O
 independently	O
 .	O
-
 Due	O
 to	O
 word	O
@@ -25231,7 +24560,6 @@ tackle	O
 this	O
 problem	O
 .	O
-
 In	O
 this	O
 paper	O
@@ -25255,7 +24583,6 @@ the	O
 input	O
 sentence	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -25276,7 +24603,6 @@ bilingual	O
 diagonal	O
 alignments	O
 .	O
-
 Experimental	O
 results	O
 on	O
@@ -25305,7 +24631,6 @@ over	O
 strong	O
 baselines	O
 .	O
-
 Extensive	O
 analyses	O
 confirm	O
@@ -25393,7 +24718,6 @@ of	O
 positional	O
 information	O
 .	O
-
 Therefore	O
 ,	O
 absolute	O
@@ -25434,7 +24758,6 @@ the	O
 sequential	O
 dependencies	O
 .	O
-
 However	O
 ,	O
 either	O
@@ -25452,7 +24775,6 @@ embedding	O
 remains	O
 fixed	O
 .	O
-
 This	O
 inhibits	O
 the	O
@@ -25481,7 +24803,6 @@ Ruhlen	O
 2011	O
 )	O
 .	O
-
 Recent	O
 work	O
 have	O
@@ -25534,7 +24855,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Inspired	O
 by	O
 their	O
@@ -25559,7 +24879,6 @@ at	O
 embedding	O
 level	O
 .	O
-
 Taking	O
 English⇒Chinese	O
 translation	I-TaskName
@@ -25592,11 +24911,9 @@ Wu	O
 (	O
 Fig	O
 .	O
-
 1a	O
 )	O
 .	O
-
 Similar	O
 to	O
 absolute	O
@@ -25616,11 +24933,9 @@ position	O
 (	O
 Fig	O
 .	O
-
 1b	O
 )	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -25638,7 +24953,6 @@ encoding	O
 into	O
 SANs	O
 .	O
-
 We	O
 conducted	O
 experiments	O
@@ -25650,7 +24964,6 @@ of	O
 machine	B-TaskName
 translation	I-TaskName
 .	O
-
 Results	O
 show	O
 that	O
@@ -25664,7 +24977,6 @@ improves	O
 translation	O
 quality	O
 .	O
-
 Further	O
 analysis	O
 reveals	O
@@ -25679,7 +24991,6 @@ quality	O
 §	O
 Sec	O
 .	O
-
 4.3	O
 )	O
 and	O
@@ -25699,11 +25010,9 @@ al	O
 §	O
 Sec	O
 .	O
-
 4.4	O
 )	O
 .	O
-
 Furthermore	O
 ,	O
 contrastive	O
@@ -25727,7 +25036,6 @@ ability	O
 §	O
 Sec	O
 .	O
-
 4.5	O
 )	O
 .	O
@@ -25767,7 +25075,6 @@ elements	O
 in	O
 parallel	O
 .	O
-
 It	O
 first	O
 converts	O
@@ -25812,7 +25119,6 @@ and	O
 concatenation	O
 operations	O
 .	O
-
 Specifically	O
 ,	O
 W	O
@@ -25832,7 +25138,6 @@ V	O
 in	O
 Eq	O
 .	O
-
 (	O
 3	O
 )	O
@@ -25848,7 +25153,6 @@ yielding	O
 H	O
 heads	O
 .	O
-
 For	O
 the	O
 h	O
@@ -25898,7 +25202,6 @@ corresponding	O
 target	O
 sentence	O
 .	O
-
 Second	O
 ,	O
 we	O
@@ -25916,7 +25219,6 @@ the	O
 input	O
 sentence	O
 X.	O
-
 To	O
 output	O
 the	O
@@ -25936,12 +25238,10 @@ function	O
 in	O
 Eq	O
 .	O
-
 (	O
 1	O
 )	O
 .	O
-
 Formally	O
 ,	O
 the	O
@@ -25954,7 +25254,6 @@ shown	O
 in	O
 Fig	O
 .	O
-
 2	O
 ,	O
 we	O
@@ -26004,7 +25303,6 @@ illustrated	O
 in	O
 Fig	O
 .	O
-
 2a	O
 ,	O
 we	O
@@ -26031,7 +25329,6 @@ we	O
 use	O
 Eq	O
 .	O
-
 (	O
 3)∼	O
 (	O
@@ -26081,13 +25378,11 @@ APE	O
 namely	O
 HeadXL	O
 .	O
-
 As	O
 shown	O
 in	O
 Fig	O
 .	O
-
 2b	O
 ,	O
 we	O
@@ -26119,16 +25414,12 @@ as	O
 0	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 H	O
 }	O
 .	O
-
 To	O
 perform	O
 the	O
@@ -26234,14 +25525,12 @@ as	O
 the	O
 dev	O
 .	O
-
 and	O
 test	O
 sets	O
 ,	O
 respectively	O
 .	O
-
 BPE	O
 with	O
 32	O
@@ -26257,7 +25546,6 @@ low	O
 frequency	O
 words	O
 .	O
-
 For	O
 Japanese⇒English	O
 ,	O
@@ -26288,11 +25576,9 @@ million	O
 sentence	O
 pairs	O
 .	O
-
 The	O
 dev	O
 .	O
-
 and	O
 test	O
 sets	O
@@ -26302,7 +25588,6 @@ and	O
 1812	O
 sentences	O
 .	O
-
 For	O
 Chinese⇔English	O
 ,	O
@@ -26318,7 +25603,6 @@ al	O
 sentence	O
 pairs	O
 .	O
-
 We	O
 develop	O
 on	O
@@ -26328,7 +25612,6 @@ test	O
 on	O
 newstest2017	B-DatasetName
 .	O
-
 We	O
 use	O
 SacreBLEU	B-MetricName
@@ -26354,7 +25637,6 @@ al	O
 2005	O
 )	O
 .	O
-
 We	O
 evaluate	O
 the	O
@@ -26365,7 +25647,6 @@ strategies	O
 on	O
 Transformer	B-MethodName
 .	O
-
 The	O
 baseline	O
 systems	O
@@ -26393,7 +25674,6 @@ al	O
 2018	O
 )	O
 .	O
-
 We	O
 implement	O
 them	O
@@ -26410,7 +25690,6 @@ al	O
 2017	O
 )	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -26478,7 +25757,6 @@ level	O
 parallel	O
 corpus	O
 .	O
-
 At	O
 training	O
 phase	O
@@ -26528,7 +25806,6 @@ and	O
 parallel	O
 data	O
 .	O
-
 At	O
 decoding	O
 phase	O
@@ -26556,7 +25833,6 @@ into	O
 NMT	B-TaskName
 model	O
 .	O
-
 Thus	O
 ,	O
 bilingual	O
@@ -26598,7 +25874,6 @@ on	O
 the	O
 encoder	O
 .	O
-
 We	O
 conduct	O
 all	O
@@ -26623,7 +25898,6 @@ SANs	I-MethodName
 
 Fig	O
 .	O
-
 3	O
 reports	O
 the	O
@@ -26636,7 +25910,6 @@ Head	O
 XL	I-MethodName
 SANs	I-MethodName
 .	O
-
 With	O
 increasing	O
 of	O
@@ -26668,7 +25941,6 @@ setting	O
 for	O
 HeadXL	B-MethodName
 .	O
-
 Then	O
 ,	O
 the	O
@@ -26685,7 +25957,6 @@ BLEU	O
 #	O
 Param	O
 .	O
-
 number	B-HyperparameterName
 of	I-HyperparameterName
 APE	I-MethodName
@@ -26712,7 +25983,6 @@ SANs	O
 
 Tab	O
 .	O
-
 1	O
 shows	O
 the	O
@@ -26768,7 +26038,6 @@ BLEU	B-MetricName
 point	O
 increase	O
 .	O
-
 For	O
 Ja	O
 -	O
@@ -26785,7 +26054,6 @@ Zh	O
 (	O
 Tab	O
 .	O
-
 2	O
 )	O
 ,	O
@@ -26811,7 +26079,6 @@ several	O
 language	O
 pairs	O
 .	O
-
 It	O
 is	O
 worth	O
@@ -26855,7 +26122,6 @@ PEXL	O
 in	O
 Eq	O
 .	O
-
 (	O
 9	O
 )	O
@@ -26866,11 +26132,9 @@ XL	I-MethodName
 in	O
 Eq	O
 .	O
-
 (	O
 8)	O
 .	O
-
 potential	O
 to	O
 induce	O
@@ -26878,7 +26142,6 @@ better	O
 attention	O
 matrices	O
 .	O
-
 We	O
 explore	O
 this	O
@@ -26905,7 +26168,6 @@ perform	O
 the	O
 alignment	O
 .	O
-
 The	O
 only	O
 difference	O
@@ -26932,7 +26194,6 @@ al	O
 2019	O
 )	O
 .	O
-
 The	O
 alignment	B-MetricName
 error	I-MetricName
@@ -26962,16 +26223,13 @@ the	O
 evaluation	O
 metrics	O
 .	O
-
 Tab	O
 .	O
-
 3	O
 summarizes	O
 the	O
 results	O
 .	O
-
 We	O
 can	O
 see	O
@@ -27044,7 +26302,6 @@ words	O
 "	O
 assumption	O
 .	O
-
 The	O
 most	O
 straightforward	O
@@ -27122,7 +26379,6 @@ al	O
 ,	O
 2013	O
 .	O
-
 However	O
 ,	O
 it	O
@@ -27136,7 +26392,6 @@ neural	O
 machine	O
 translation	O
 .	O
-
 Kawara	O
 et	O
 al	O
@@ -27157,7 +26412,6 @@ neural	O
 network	O
 model	O
 .	O
-
 Chen	O
 et	O
 al	O
@@ -27187,7 +26441,6 @@ calculated	O
 sentence	O
 representation	O
 .	O
-
 showed	O
 that	O
 SANs	O
@@ -27219,7 +26472,6 @@ may	O
 be	O
 informative	O
 .	O
-
 Thus	O
 ,	O
 we	O
@@ -27269,7 +26521,6 @@ the	O
 input	O
 sentence	O
 .	O
-
 We	O
 designed	O
 two	O
@@ -27280,7 +26531,6 @@ it	O
 into	O
 SANs	O
 .	O
-
 Experiments	O
 indicated	O
 that	O
@@ -27293,7 +26543,6 @@ the	O
 translation	O
 performance	O
 .	O
-
 In	O
 the	O
 future	O
@@ -27355,7 +26604,6 @@ engaged	O
 in	O
 storytelling	O
 .	O
-
 We	O
 rely	O
 on	O
@@ -27388,7 +26636,6 @@ the	O
 story	O
 )	O
 .	O
-
 We	O
 propose	O
 as	O
@@ -27412,7 +26659,6 @@ amounts	O
 of	O
 history	O
 .	O
-
 Then	O
 ,	O
 we	O
@@ -27493,7 +26739,6 @@ remembering	O
 and	O
 imagining	O
 .	O
-
 Using	O
 a	O
 crowdsourcing	O
@@ -27513,7 +26758,6 @@ the	O
 same	O
 topic	O
 .	O
-
 By	O
 design	O
 ,	O
@@ -27548,7 +26792,6 @@ stories	O
 in	O
 HIPPOCORPUS	B-DatasetName
 .	O
-
 Imagined	O
 stories	O
 contain	O
@@ -27568,7 +26811,6 @@ in	O
 concrete	O
 events	O
 .	O
-
 Additionally	O
 ,	O
 imagined	O
@@ -27581,7 +26823,6 @@ than	O
 recalled	O
 stories	O
 .	O
-
 Our	O
 findings	O
 provide	O
@@ -27651,7 +26892,6 @@ al	O
 2011	O
 )	O
 .	O
-
 See	O
 Appendix	O
 A	O
@@ -27714,7 +26954,6 @@ in	O
 the	O
 story	O
 .	O
-
 We	O
 compare	O
 the	O
@@ -27730,7 +26969,6 @@ Figure	O
 2	O
 )	O
 .	O
-
 The	O
 bag	O
 model	O
@@ -27756,7 +26994,6 @@ by	O
 E	O
 )	O
 .	O
-
 On	O
 the	O
 other	O
@@ -27781,10 +27018,8 @@ follow	O
 each	O
 other	O
 .	O
-
 3	O
 .	O
-
 ∆	O
 l	O
 is	O
@@ -27846,7 +27081,6 @@ author	O
 's	O
 models	O
 .	O
-
 We	O
 provide	O
 further	O
@@ -27882,7 +27116,6 @@ al	O
 2019	O
 )	O
 .	O
-
 4	O
 For	O
 each	O
@@ -27927,7 +27160,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 We	O
 then	O
 search	O
@@ -27956,7 +27188,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 We	O
 describe	O
 this	O
@@ -27968,7 +27199,6 @@ in	O
 Appendix	O
 B.2	O
 .	O
-
 In	O
 our	O
 analyses	O
@@ -28013,7 +27243,6 @@ story	O
 in	O
 HIPPOCORPUS	B-DatasetName
 .	O
-
 Such	O
 approaches	O
 have	O
@@ -28107,7 +27336,6 @@ TONE	O
 summary	O
 variables	O
 .	O
-
 5	O
 Additionally	O
 ,	O
@@ -28149,7 +27377,6 @@ in	O
 Table	O
 2	O
 .	O
-
 For	O
 our	O
 narrative	O
@@ -28212,7 +27439,6 @@ get	O
 married	O
 "	O
 .	O
-
 5	O
 See	O
 liwc.wpengine.com/interpretingliwc-output/	O
@@ -28223,7 +27449,6 @@ on	O
 LIWC	B-DatasetName
 variables	O
 .	O
-
 we	O
 perform	O
 paired	O
@@ -28231,7 +27456,6 @@ t	O
 -	O
 tests	O
 .	O
-
 For	O
 realis	O
 and	O
@@ -28248,7 +27472,6 @@ for	O
 story	O
 length	O
 .	O
-
 6	O
 We	O
 Holmcorrect	O
@@ -28293,7 +27516,6 @@ the	O
 event	O
 )	O
 .	O
-
 9	O
 Then	O
 ,	O
@@ -28309,7 +27531,6 @@ in	O
 pairwise	O
 comparisons	O
 .	O
-
 Finally	O
 ,	O
 we	O
@@ -28342,7 +27563,6 @@ very	O
 frequently	O
 )	O
 .	O
-
 10	O
 As	O
 in	O
@@ -28362,7 +27582,6 @@ Frequency	O
 of	O
 recall	B-MetricName
 .	O
-
 We	O
 find	O
 that	O
@@ -28458,7 +27677,6 @@ p	O
 0.001	O
 )	O
 .	O
-
 Conversely	O
 ,	O
 stories	O
@@ -28538,7 +27756,6 @@ and	O
 recalled	O
 stories	O
 .	O
-
 We	O
 introduce	O
 measures	O
@@ -28556,7 +27773,6 @@ knowledge	O
 in	O
 stories	O
 .	O
-
 We	O
 show	O
 that	O
@@ -28586,7 +27802,6 @@ specific	O
 concrete	O
 events	O
 .	O
-
 Additionally	O
 ,	O
 we	O
@@ -28607,7 +27822,6 @@ memories	O
 over	O
 time	O
 .	O
-
 We	O
 hope	O
 these	O
@@ -28631,7 +27845,6 @@ exploring	O
 human	O
 cognition	O
 .	O
-
 Figure	O
 4	O
 :	O
@@ -28720,7 +27933,6 @@ al	O
 2019	O
 )	O
 .	O
-
 This	O
 corpus	O
 contains	O
@@ -28738,7 +27950,6 @@ from	O
 English	O
 books	O
 .	O
-
 With	O
 development	O
 and	O
@@ -28780,7 +27991,6 @@ reached	O
 F	B-MetricName
 1	I-MetricName
 .	O
-
 In	O
 our	O
 analyses	O
@@ -28820,7 +28030,6 @@ heuristic	O
 matching	O
 algorithm	O
 .	O
-
 Given	O
 a	O
 story	O
@@ -28845,7 +28054,6 @@ phrases	O
 with	O
 sentences	O
 .	O
-
 For	O
 every	O
 sentence	O
@@ -28936,7 +28144,6 @@ their	O
 surrounding	O
 context	O
 .	O
-
 We	O
 use	O
 a	O
@@ -29009,7 +28216,6 @@ context	O
 E	O
 )	O
 .	O
-
 As	O
 expected	O
 ,	O
@@ -29024,7 +28230,6 @@ of	O
 a	O
 sentence	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -29082,7 +28287,6 @@ pretrained	O
 language	O
 models	O
 .	O
-
 Using	O
 parallel	O
 data	O
@@ -29118,7 +28322,6 @@ random	O
 input	O
 shuffling	O
 .	O
-
 We	O
 also	O
 perform	O
@@ -29136,7 +28339,6 @@ on	O
 downstream	O
 tasks	O
 .	O
-
 On	O
 XNLI	B-DatasetName
 ,	O
@@ -29188,7 +28390,6 @@ fewer	O
 model	O
 parameters	O
 .	O
-
 On	O
 MLQA	B-DatasetName
 ,	O
@@ -29297,7 +28498,6 @@ Prediction	O
 NSP	O
 )	O
 .	O
-
 MLM	O
 is	O
 applied	O
@@ -29310,7 +28510,6 @@ over	O
 100	O
 languages	O
 .	O
-
 Despite	O
 the	O
 absence	O
@@ -29340,7 +28539,6 @@ to	O
 other	O
 languages	O
 .	O
-
 On	O
 the	O
 Natural	B-TaskName
@@ -29383,7 +28581,6 @@ achieve	O
 respectable	O
 performance	O
 .	O
-
 Having	O
 a	O
 single	O
@@ -29422,7 +28619,6 @@ always	O
 involve	O
 English	O
 .	O
-
 Conneau	O
 and	O
 Lample	O
@@ -29465,7 +28661,6 @@ on	O
 parallel	O
 data	O
 .	O
-
 Cao	O
 et	O
 al	O
@@ -29508,7 +28703,6 @@ on	O
 parallel	O
 sentences	O
 .	O
-
 Then	O
 ,	O
 mBERT	B-MethodName
@@ -29536,7 +28730,6 @@ in	O
 other	O
 languages	O
 .	O
-
 Such	O
 post	O
 -	O
@@ -29592,7 +28785,6 @@ contextual	O
 semantic	O
 compositions	O
 .	O
-
 As	O
 a	O
 result	O
@@ -29609,7 +28801,6 @@ cross	O
 lingual	O
 correspondence	O
 .	O
-
 Importantly	O
 ,	O
 both	O
@@ -29639,7 +28830,6 @@ PPA	B-MethodName
 )	O
 method	O
 .	O
-
 We	O
 first	O
 describe	O
@@ -29659,7 +28849,6 @@ sentence	B-TaskName
 level	I-TaskName
 alignment	I-TaskName
 .	O
-
 Next	O
 ,	O
 we	O
@@ -29675,7 +28864,6 @@ alignment	O
 with	O
 TLM	B-MethodName
 .	O
-
 Finally	O
 ,	O
 when	O
@@ -29709,7 +28897,6 @@ to	O
 complement	O
 PPA	B-MethodName
 .	O
-
 Figure	O
 1	O
 shows	O
@@ -29762,7 +28949,6 @@ a	O
 contrastive	O
 loss	O
 .	O
-
 Recent	O
 advances	O
 in	O
@@ -29820,7 +29006,6 @@ al	O
 )	O
 dataset	O
 .	O
-
 As	O
 a	O
 key	O
@@ -29848,7 +29033,6 @@ such	O
 good	O
 representations	O
 .	O
-
 SimCLR	B-MethodName
 uses	O
 in	O
@@ -29888,7 +29072,6 @@ key	I-MethodName
 )	O
 lookup	O
 .	O
-
 In	O
 what	O
 follows	O
@@ -29943,7 +29126,6 @@ k	O
 ,	O
 respectively	O
 .	O
-
 m	O
 is	O
 the	O
@@ -29994,7 +29176,6 @@ a	O
 contrastive	O
 loss	O
 .	O
-
 From	O
 a	O
 crosslingual	O
@@ -30029,7 +29210,6 @@ the	O
 same	O
 semantics	O
 .	O
-
 At	O
 the	O
 same	O
@@ -30052,7 +29232,6 @@ the	O
 representation	O
 space	O
 .	O
-
 Given	O
 parallel	O
 corpora	O
@@ -30070,11 +29249,8 @@ tr	O
 )	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 (	O
 S	O
@@ -30116,7 +29292,6 @@ and	O
 momentum	O
 encoders	O
 .	O
-
 mBERT	B-MethodName
 is	O
 made	O
@@ -30137,7 +29312,6 @@ h	I-HyperparameterName
 =	I-HyperparameterName
 768	B-HyperparameterValue
 .	O
-
 For	O
 input	O
 ,	O
@@ -30169,7 +29343,6 @@ input	O
 shuffling	O
 approach	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -30203,7 +29376,6 @@ and	O
 translation	O
 examples	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -30221,7 +29393,6 @@ using	O
 our	O
 method	O
 .	O
-
 The	O
 final	O
 hidden	O
@@ -30252,7 +29423,6 @@ sentence	O
 representation	O
 1	O
 .	O
-
 Following	O
 Chen	O
 et	O
@@ -30316,7 +29486,6 @@ set	O
 to	O
 300	B-HyperparameterValue
 .	O
-
 The	O
 model	O
 is	O
@@ -30360,7 +29529,6 @@ a	O
 temperature	O
 parameter	O
 .	O
-
 In	O
 our	O
 implementation	O
@@ -30390,7 +29558,6 @@ size	I-HyperparameterName
 were	O
 used	O
 .	O
-
 Items	O
 enqueued	O
 early	O
@@ -30441,7 +29608,6 @@ word	O
 level	O
 alignment	O
 .	O
-
 TLM	O
 is	O
 an	O
@@ -30468,7 +29634,6 @@ combined	O
 bilingual	O
 sequence	O
 .	O
-
 Different	O
 from	O
 Conneau	O
@@ -30499,7 +29664,6 @@ use	O
 language	O
 embeddings	O
 .	O
-
 In	O
 addition	O
 ,	O
@@ -30546,7 +29710,6 @@ S	O
 tr	O
 i	O
 .	O
-
 We	O
 randomly	O
 mask	O
@@ -30561,7 +29724,6 @@ each	O
 combined	O
 sequence	O
 .	O
-
 Masking	O
 is	O
 done	O
@@ -30599,7 +29761,6 @@ remaining	O
 10	O
 %	O
 .	O
-
 TLM	O
 is	O
 performed	O
@@ -30610,7 +29771,6 @@ encoder	O
 of	O
 MoCo	B-DatasetName
 .	O
-
 Our	O
 final	O
 PPA	O
@@ -30675,7 +29835,6 @@ tasks	O
 for	O
 evaluation	O
 .	O
-
 We	O
 follow	O
 the	O
@@ -30763,7 +29922,6 @@ token	O
 in	O
 between	O
 .	O
-
 We	O
 add	O
 two	O
@@ -30790,7 +29948,6 @@ positions	O
 ,	O
 respectively	O
 .	O
-
 We	O
 conduct	O
 experiments	O
@@ -30800,7 +29957,6 @@ settings	O
 :	O
 1	O
 .	O
-
 Zeroshot	O
 cross	O
 -	O
@@ -30820,10 +29976,8 @@ in	O
 target	O
 languages	O
 .	O
-
 2	O
 .	O
-
 Translate	O
 -	O
 train	O
@@ -30844,7 +29998,6 @@ the	O
 target	O
 languages	O
 .	O
-
 For	O
 the	O
 latter	O
@@ -30868,7 +30021,6 @@ other	O
 than	O
 English	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -30918,7 +30070,6 @@ training	O
 data	O
 2	O
 .	O
-
 The	O
 same	O
 goes	O
@@ -30929,7 +30080,6 @@ premises	O
 and	O
 hypotheses	O
 .	O
-
 The	O
 code	O
 -	O
@@ -30944,7 +30094,6 @@ a	O
 target	O
 language	O
 .	O
-
 During	O
 training	O
 ,	O
@@ -30986,7 +30135,6 @@ the	O
 source	O
 language	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -31049,7 +30197,6 @@ Europarl	O
 and	O
 EUbookshop	O
 .	O
-
 All	O
 datasets	O
 were	O
@@ -31065,7 +30212,6 @@ Tiedemann	O
 2012	O
 )	O
 .	O
-
 In	O
 our	O
 experiments	O
@@ -31081,7 +30227,6 @@ pairs	O
 for	O
 PPA	B-MethodName
 .	O
-
 For	O
 each	O
 language	O
@@ -31137,7 +30282,6 @@ WordPiece	O
 tokens	O
 )	O
 .	O
-
 Table	O
 1	O
 shows	O
@@ -31179,7 +30323,6 @@ covers	O
 15	O
 languages	O
 .	O
-
 The	O
 dataset	O
 is	O
@@ -31198,7 +30341,6 @@ English	B-DatasetName
 MultiNLI	I-DatasetName
 dataset	O
 .	O
-
 Given	O
 a	O
 sentence	O
@@ -31223,7 +30365,6 @@ contradiction	O
 and	O
 neutral	O
 .	O
-
 For	O
 zero	O
 -	O
@@ -31255,7 +30396,6 @@ the	O
 other	O
 languages	O
 .	O
-
 For	O
 translatetrain	O
 ,	O
@@ -31284,7 +30424,6 @@ covers	O
 seven	O
 languages	O
 .	O
-
 The	O
 dataset	O
 is	O
@@ -31295,7 +30434,6 @@ three	O
 step	O
 process	O
 .	O
-
 We	O
 focus	O
 on	O
@@ -31304,7 +30442,6 @@ in	O
 this	O
 work	O
 .	O
-
 For	O
 zero	O
 -	O
@@ -31330,7 +30467,6 @@ al	O
 training	O
 set	O
 .	O
-
 For	O
 translate	O
 -	O
@@ -31378,7 +30514,6 @@ the	O
 development	O
 set	O
 .	O
-
 All	O
 the	O
 experiments	O
@@ -31409,7 +30544,6 @@ measured	O
 by	O
 accuracy	B-MetricName
 .	O
-
 Devlin	O
 et	O
 al	O
@@ -31455,7 +30589,6 @@ translate	O
 -	O
 train	O
 .	O
-
 Our	O
 best	O
 model	O
@@ -31598,7 +30731,6 @@ Table	O
 1	O
 )	O
 .	O
-
 The	O
 XLM	B-MethodName
 model	O
@@ -31615,7 +30747,6 @@ Table	O
 3	O
 shows	O
 .	O
-
 Furthermore	O
 ,	O
 XLM	B-MethodName
@@ -31645,7 +30776,6 @@ mBERT	B-MethodName
 from	O
 Wikipedia	O
 .	O
-
 One	O
 reason	O
 could	O
@@ -31684,7 +30814,6 @@ al	O
 2020	O
 )	O
 .	O
-
 Additionally	O
 ,	O
 Wu	O
@@ -31719,7 +30848,6 @@ XNLI	O
 languages	O
 only	O
 .	O
-
 Our	O
 2	O
 M	O
@@ -31743,7 +30871,6 @@ zero	O
 shot	O
 transfer	O
 .	O
-
 Note	O
 that	O
 ,	O
@@ -31783,7 +30910,6 @@ and	O
 M	O
 settings	O
 .	O
-
 For	O
 translatetrain	O
 ,	O
@@ -31848,7 +30974,6 @@ our	O
 PPA	O
 objectives	O
 .	O
-
 Our	O
 2	O
 M	O
@@ -31887,7 +31012,6 @@ XLM	B-MethodName
 MLM+TLM	B-MethodName
 )	O
 .	O
-
 We	O
 hypothesize	O
 that	O
@@ -31929,7 +31053,6 @@ by	O
 F1	B-MetricName
 score	O
 .	O
-
 We	O
 notice	O
 the	O
@@ -31956,7 +31079,6 @@ as	O
 our	O
 baseline	O
 .	O
-
 Our	O
 2	O
 M	O
@@ -31997,7 +31119,6 @@ Table	O
 3	O
 shows	O
 .	O
-
 For	O
 translate	O
 -	I-MethodName
@@ -32028,7 +31149,6 @@ al	O
 2020	O
 )	O
 .	O
-
 L	B-HyperparameterName
 is	O
 the	O
@@ -32099,7 +31219,6 @@ resource	O
 and	O
 performance	O
 .	O
-
 Going	O
 up	O
 to	O
@@ -32122,7 +31241,6 @@ from	O
 to	O
 600k	B-HyperparameterValue
 .	O
-
 On	O
 MLQA	B-DatasetName
 ,	O
@@ -32155,7 +31273,6 @@ method	O
 on	O
 XNLI	B-DatasetName
 .	O
-
 Removing	B-MethodName
 TLM	I-MethodName
 (	O
@@ -32183,7 +31300,6 @@ word	O
 alignment	O
 objective	O
 .	O
-
 To	O
 better	O
 understand	O
@@ -32230,7 +31346,6 @@ each	O
 of	O
 them	O
 .	O
-
 The	O
 masking	O
 scheme	O
@@ -32244,7 +31359,6 @@ in	O
 Section	O
 2	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -32255,7 +31369,6 @@ bring	O
 significant	O
 improvement	O
 .	O
-
 This	O
 confirms	O
 that	O
@@ -32276,7 +31389,6 @@ data	O
 and	O
 iterations	O
 .	O
-
 Instead	O
 ,	O
 the	O
@@ -32346,7 +31458,6 @@ data	O
 is	O
 increased	O
 .	O
-
 These	O
 are	O
 relatively	O
@@ -32364,7 +31475,6 @@ alignment	O
 is	O
 used	O
 .	O
-
 This	O
 also	O
 conforms	O
@@ -32422,7 +31532,6 @@ our	O
 full	O
 system	O
 .	O
-
 In	O
 translate	O
 -	O
@@ -32456,7 +31565,6 @@ translate	O
 -	O
 train	O
 .	O
-
 On	O
 average	O
 ,	O
@@ -32469,7 +31577,6 @@ of	O
 1	B-MetricValue
 %	I-MetricValue
 .	O
-
 (	O
 Lewis	O
 et	O
@@ -32549,7 +31656,6 @@ that	O
 involve	O
 English	O
 .	O
-
 For	O
 each	O
 aligned	O
@@ -32570,7 +31676,6 @@ train	O
 the	O
 model	O
 .	O
-
 In	O
 order	O
 to	O
@@ -32601,7 +31706,6 @@ their	O
 mBERT	O
 initialization	O
 .	O
-
 Our	O
 approach	O
 post	O
@@ -32624,7 +31728,6 @@ pre	O
 alignment	O
 tools	O
 .	O
-
 Wang	O
 et	O
 al	O
@@ -32644,7 +31747,6 @@ Study	O
 on	O
 XNLI	B-DatasetName
 .	O
-
 250k	O
 ,	O
 600k	O
@@ -32666,7 +31768,6 @@ used	O
 in	O
 PPA	B-MethodName
 .	O
-
 MoCo	B-MethodName
 refers	O
 to	O
@@ -32680,7 +31781,6 @@ using	O
 contrastive	O
 learning	O
 .	O
-
 TLM	O
 refers	O
 to	O
@@ -32695,7 +31795,6 @@ translation	O
 language	O
 modeling	O
 .	O
-
 CS	B-MethodName
 stands	O
 for	O
@@ -32703,7 +31802,6 @@ code	O
 -	O
 switching	O
 .	O
-
 We	O
 conduct	O
 an	O
@@ -32735,7 +31833,6 @@ on	O
 monolingual	O
 text	O
 .	O
-
 This	O
 ablation	O
 confirms	O
@@ -32769,7 +31866,6 @@ using	O
 parallel	O
 data	O
 .	O
-
 They	O
 learn	O
 a	O
@@ -32796,7 +31892,6 @@ the	O
 source	O
 language	O
 .	O
-
 They	O
 show	O
 that	O
@@ -32839,7 +31934,6 @@ on	O
 93	O
 languages	O
 .	O
-
 Their	O
 stacked	O
 BiLSTM	O
@@ -32900,7 +31994,6 @@ cross	O
 lingual	O
 alignment	O
 .	O
-
 We	O
 focus	O
 on	O
@@ -32919,7 +32012,6 @@ data	O
 as	O
 possible	O
 .	O
-
 We	O
 also	O
 explore	O
@@ -32972,7 +32064,6 @@ is	O
 not	O
 feasible	O
 .	O
-
 We	O
 showed	O
 that	O
@@ -33088,7 +32179,6 @@ convincing	O
 in	O
 turn	O
 .	O
-
 However	O
 ,	O
 finding	O
@@ -33099,7 +32189,6 @@ can	O
 be	O
 challenging	O
 .	O
-
 In	O
 this	O
 work	O
@@ -33137,7 +32226,6 @@ stance	O
 and	O
 aspect	O
 .	O
-
 We	O
 define	O
 argument	O
@@ -33165,7 +32253,6 @@ annotated	O
 with	O
 aspects	O
 .	O
-
 Our	O
 evaluation	O
 shows	O
@@ -33193,7 +32280,6 @@ counter	O
 argument	O
 generation	O
 .	O
-
 We	O
 publish	O
 the	O
@@ -33211,7 +32297,6 @@ Arg	B-MethodName
 -	I-MethodName
 CTRL	I-MethodName
 .	O
-
 1	O
 Nuclear	O
 reactors	O
@@ -33285,7 +32370,6 @@ al	O
 2017	O
 )	O
 .	O
-
 A	O
 rather	O
 new	O
@@ -33310,7 +32394,6 @@ Ling	O
 2016	O
 )	O
 .	O
-
 We	O
 believe	O
 this	O
@@ -33328,7 +32411,6 @@ and	O
 formulating	O
 arguments	O
 .	O
-
 A	O
 politician	O
 might	O
@@ -33349,7 +32431,6 @@ a	O
 press	O
 conference	O
 .	O
-
 It	O
 may	O
 be	O
@@ -33373,7 +32454,6 @@ counter	O
 -	O
 arguments	O
 .	O
-
 In	O
 contrast	O
 to	O
@@ -33406,7 +32486,6 @@ a	O
 sentence	O
 )	O
 .	O
-
 Current	O
 argument	B-TaskName
 generation	O
@@ -33437,7 +32516,6 @@ Wang	O
 2018	O
 )	O
 .	O
-
 We	O
 show	O
 that	O
@@ -33493,7 +32571,6 @@ certain	O
 control	O
 codes	O
 .	O
-
 At	O
 inference	O
 ,	O
@@ -33514,7 +32591,6 @@ content	O
 or	O
 style	O
 .	O
-
 We	O
 build	O
 upon	O
@@ -33537,7 +32613,6 @@ and	O
 argument	O
 aspect	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -33599,7 +32674,6 @@ developing	O
 cancer	O
 .	O
 "	O
-
 .	O
 
 To	O
@@ -33658,7 +32732,6 @@ al	O
 2018a	O
 )	O
 .	O
-
 Regarding	O
 argument	O
 aspect	O
@@ -33718,7 +32791,6 @@ Reed	O
 2019	O
 )	O
 .	O
-
 Aspects	O
 as	O
 we	O
@@ -33773,7 +32845,6 @@ the	O
 argument	O
 discusses	O
 .	O
-
 For	O
 instance	O
 :	O
@@ -33814,7 +32885,6 @@ two	O
 underlined	O
 aspects	O
 .	O
-
 While	O
 these	O
 aspects	O
@@ -33876,7 +32946,6 @@ large	O
 data	O
 sources	O
 .	O
-
 All	O
 sentences	O
 are	O
@@ -33891,7 +32960,6 @@ non	O
 -	O
 arguments	O
 .	O
-
 We	O
 detect	O
 aspects	O
@@ -33922,7 +32990,6 @@ into	O
 training	O
 documents	O
 .	O
-
 (	O
 2	O
 )	O
@@ -34013,7 +33080,6 @@ counter	O
 argument	O
 generation	O
 .	O
-
 The	O
 contributions	O
 are	O
@@ -34039,7 +33105,6 @@ neural	O
 argument	O
 generation	I-TaskName
 .	O
-
 (	O
 ii	O
 )	O
@@ -34072,7 +33137,6 @@ perspective	O
 while	O
 generating	O
 .	O
-
 (	O
 iii	O
 )	O
@@ -34094,7 +33158,6 @@ argument	B-TaskName
 generation	I-TaskName
 models	O
 .	O
-
 (	O
 iv	O
 )	O
@@ -34153,7 +33216,6 @@ hand	O
 crafted	O
 rules	O
 .	O
-
 Boltužić	O
 and	O
 Šnajder	O
@@ -34176,7 +33238,6 @@ microstructure	O
 of	O
 claims	O
 .	O
-
 Misra	O
 et	O
 al	O
@@ -34199,7 +33260,6 @@ attack	O
 an	O
 argumentation	O
 .	O
-
 In	O
 that	O
 ,	O
@@ -34232,7 +33292,6 @@ spans	O
 of	O
 summaries	O
 .	O
-
 Bilu	O
 et	O
 al	O
@@ -34255,7 +33314,6 @@ actions	O
 (	O
 e.g.	O
 "	O
-
 ban	O
 "	O
 )	O
@@ -34264,12 +33322,10 @@ topics	O
 (	O
 e.g.	O
 "	O
-
 smoking	O
 "	O
 )	O
 .	O
-
 These	O
 actions	O
 are	O
@@ -34285,7 +33341,6 @@ and	O
 manually	O
 defined	O
 .	O
-
 Gemechu	O
 and	O
 Reed	O
@@ -34309,7 +33364,6 @@ on	O
 expert	O
 annotations	O
 .	O
-
 However	O
 ,	O
 in	O
@@ -34329,7 +33383,6 @@ in	O
 the	O
 argument	O
 .	O
-
 In	O
 our	O
 definition	O
@@ -34379,7 +33432,6 @@ to	O
 argument	O
 aspects	O
 .	O
-
 In	O
 the	O
 field	O
@@ -34402,7 +33454,6 @@ label	O
 argument	O
 clusters	O
 .	O
-
 Yet	O
 ,	O
 their	O
@@ -34414,7 +33465,6 @@ to	O
 detect	O
 frames	O
 .	O
-
 Other	O
 works	O
 present	O
@@ -34444,7 +33494,6 @@ Hirst	O
 2017	O
 )	O
 .	O
-
 These	O
 methods	O
 are	O
@@ -34466,7 +33515,6 @@ high	O
 level	O
 concepts	O
 .	O
-
 Contrarily	O
 ,	O
 we	O
@@ -34517,7 +33565,6 @@ al	O
 1998	O
 )	O
 .	O
-
 In	O
 a	O
 more	O
@@ -34555,7 +33602,6 @@ network	O
 based	O
 ranker	O
 .	O
-
 Baff	O
 et	O
 al	O
@@ -34586,7 +33632,6 @@ to	O
 argumentative	O
 texts	O
 .	O
-
 However	O
 ,	O
 most	O
@@ -34605,7 +33650,6 @@ not	O
 generalize	O
 well	O
 .	O
-
 Moreover	O
 ,	O
 they	O
@@ -34640,7 +33684,6 @@ gained	O
 more	O
 attention	O
 .	O
-
 use	O
 a	O
 sequence	B-MethodName
@@ -34678,7 +33721,6 @@ example	O
 ,	O
 Wikipedia	O
 .	O
-
 Other	O
 work	O
 focuses	O
@@ -34727,7 +33769,6 @@ Ling	O
 2016	O
 )	O
 .	O
-
 Contrarily	O
 ,	O
 we	O
@@ -34764,7 +33805,6 @@ the	O
 produced	O
 argument	O
 .	O
-
 Xing	O
 et	O
 al	O
@@ -34787,7 +33827,6 @@ responses	O
 for	O
 chatbots	O
 .	O
-
 Dathathri	O
 et	O
 al	O
@@ -34816,7 +33855,6 @@ models	O
 at	O
 inference	O
 .	O
-
 Gretz	O
 et	O
 al	O
@@ -34840,7 +33878,6 @@ for	O
 given	O
 topics	O
 .	O
-
 However	O
 ,	O
 the	O
@@ -34865,7 +33902,6 @@ in	O
 this	O
 work	O
 .	O
-
 We	O
 show	O
 that	O
@@ -34924,7 +33960,6 @@ the	O
 generation	O
 process	O
 .	O
-
 We	O
 create	O
 a	O
@@ -35012,7 +34047,6 @@ and	O
 stance	O
 labels	O
 .	O
-
 More	O
 precisely	O
 ,	O
@@ -35029,7 +34063,6 @@ topics	O
 in	O
 English	O
 .	O
-
 Each	O
 sample	O
 consists	O
@@ -35056,7 +34089,6 @@ the	O
 given	O
 topic	O
 .	O
-
 As	O
 we	O
 are	O
@@ -35130,7 +34162,6 @@ UKP	B-DatasetName
 -	I-DatasetName
 Corpus	I-DatasetName
 .	O
-
 The	O
 annotations	O
 are	O
@@ -35152,7 +34183,6 @@ selected	O
 as	O
 aspects	O
 .	O
-
 The	O
 resulting	O
 inter	O
@@ -35170,7 +34200,6 @@ u	I-MetricName
 =	O
 .38	O
 .	O
-
 While	O
 this	O
 shows	O
@@ -35191,7 +34220,6 @@ is	O
 rather	O
 low	O
 .	O
-
 Hence	O
 ,	O
 in	O
@@ -35231,7 +34259,6 @@ of	O
 aspect	O
 recommendations	O
 .	O
-
 To	O
 generate	O
 meaningful	O
@@ -35315,7 +34342,6 @@ N	O
 1	O
 ]	O
 .	O
-
 Our	O
 analysis	O
 reveals	O
@@ -35342,7 +34368,6 @@ to	O
 four	O
 tokens	O
 .	O
-
 We	O
 thus	O
 decide	O
@@ -35356,7 +34381,6 @@ than	O
 four	O
 tokens	O
 .	O
-
 No	O
 other	O
 limitations	O
@@ -35399,7 +34423,6 @@ train	O
 a	O
 ranker	O
 .	O
-
 For	O
 training	O
 ,	O
@@ -35587,7 +34610,6 @@ topic	O
 out	O
 strategy	O
 .	O
-
 The	O
 cross	O
 -	O
@@ -35643,7 +34665,6 @@ SEP	O
 ]	O
 token	O
 .	O
-
 This	O
 technique	O
 expands	O
@@ -35658,7 +34679,6 @@ to	O
 around	O
 80,336	O
 .	O
-
 The	O
 model	O
 is	O
@@ -35684,7 +34704,6 @@ size	I-HyperparameterName
 of	O
 8	B-HyperparameterValue
 .	O
-
 We	O
 use	O
 the	O
@@ -35702,7 +34721,6 @@ compare	O
 the	O
 models	O
 .	O
-
 The	O
 in	O
 -	O
@@ -35727,7 +34745,6 @@ in	O
 Table	O
 2	O
 .	O
-
 All	O
 results	O
 are	O
@@ -35799,7 +34816,6 @@ UKP	B-DatasetName
 -	I-DatasetName
 Corpus	I-DatasetName
 .	O
-
 For	O
 the	O
 other	O
@@ -35829,7 +34845,6 @@ amount	O
 of	O
 samples	O
 .	O
-
 To	O
 keep	O
 a	O
@@ -35868,7 +34883,6 @@ model	O
 ,	O
 respectively	O
 .	O
-
 We	O
 remove	O
 aspect	O
@@ -35926,7 +34940,6 @@ per	O
 hour	O
 )	O
 .	O
-
 Based	O
 on	O
 a	O
@@ -35952,7 +34965,6 @@ doctoral	O
 researchers	O
 )	O
 .	O
-
 Compared	O
 to	O
 the	O
@@ -35973,14 +34985,12 @@ experts	O
 by	O
 approx	O
 .	O
-
 11	O
 points	O
 (	O
 see	O
 App	O
 .	O
-
 A	O
 for	O
 further	O
@@ -35991,7 +35001,6 @@ annotation	O
 study	O
 )	O
 .	O
-
 Based	O
 on	O
 this	O
@@ -36028,7 +35037,6 @@ UKP	B-DatasetName
 -	I-DatasetName
 Corpus	I-DatasetName
 .	O
-
 We	O
 show	O
 the	O
@@ -36098,7 +35106,6 @@ models	O
 with	O
 it	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -36129,7 +35136,6 @@ Ranker	O
 "	O
 )	O
 .	O
-
 At	O
 inference	O
 ,	O
@@ -36145,7 +35151,6 @@ argument	O
 as	O
 candidates	O
 .	O
-
 We	O
 tune	O
 T	O
@@ -36164,7 +35169,6 @@ the	O
 best	O
 choice	O
 .	O
-
 Second	O
 ,	O
 we	O
@@ -36192,7 +35196,6 @@ with	O
 BIO	O
 tags	O
 .	O
-
 As	O
 previously	O
 done	O
@@ -36241,7 +35244,6 @@ of	O
 32	B-HyperparameterValue
 )	O
 .	O
-
 We	O
 flatten	O
 the	O
@@ -36263,7 +35265,6 @@ Recall	B-MetricName
 macro	I-MetricName
 scores	O
 .	O
-
 All	O
 models	O
 are	O
@@ -36329,7 +35330,6 @@ less	O
 well	O
 identified	O
 .	O
-
 A	O
 difference	O
 is	O
@@ -36352,7 +35352,6 @@ is	O
 to	O
 2,103	O
 .	O
-
 While	O
 the	O
 ranker	O
@@ -36373,7 +35372,6 @@ recall	B-MetricName
 for	O
 class	O
 I.	O
-
 We	O
 assume	O
 this	O
@@ -36411,7 +35409,6 @@ in	O
 the	O
 prediction	O
 .	O
-
 In	O
 contrast	O
 to	O
@@ -36444,7 +35441,6 @@ in	O
 the	O
 dataset	O
 .	O
-
 In	O
 total	O
 ,	O
@@ -36483,7 +35479,6 @@ a	O
 single	O
 sentence	O
 .	O
-
 We	O
 define	O
 such	O
@@ -36516,7 +35511,6 @@ al	O
 2018b	O
 )	O
 .	O
-
 Consequently	O
 ,	O
 the	O
@@ -36531,7 +35525,6 @@ classification	O
 of	O
 sentences	O
 .	O
-
 To	O
 evaluate	O
 different	O
@@ -36560,7 +35553,6 @@ document	O
 's	O
 topic	O
 .	O
-
 To	O
 enforce	O
 topicrelevance	O
@@ -36592,11 +35584,9 @@ synonyms	O
 see	O
 App	O
 .	O
-
 B	O
 )	O
 .	O
-
 We	O
 use	O
 the	O
@@ -36666,7 +35656,6 @@ all	O
 remaining	O
 arguments	O
 .	O
-
 To	O
 speed	O
 up	O
@@ -36728,7 +35717,6 @@ control	O
 code	O
 )	O
 .	O
-
 Further	O
 ,	O
 we	O
@@ -36758,7 +35746,6 @@ as	O
 aspect	O
 )	O
 .	O
-
 To	O
 cope	O
 with	O
@@ -36790,7 +35777,6 @@ eight	O
 topics	O
 )	O
 .	O
-
 Also	O
 ,	O
 as	O
@@ -36912,7 +35898,6 @@ al	O
 2003	O
 )	O
 .	O
-
 That	O
 is	O
 ,	O
@@ -36954,7 +35939,6 @@ word	O
 of	O
 sequence	O
 x.	O
-
 For	O
 this	O
 work	O
@@ -37001,7 +35985,6 @@ al	O
 2017	O
 )	O
 .	O
-
 The	O
 CTRL	O
 has	O
@@ -37043,7 +36026,6 @@ weights	O
 from	O
 scratch	O
 .	O
-
 Formally	O
 ,	O
 the	O
@@ -37073,7 +36055,6 @@ i	O
 c	O
 )	O
 .	O
-
 The	O
 control	O
 code	O
@@ -37096,7 +36077,6 @@ output	O
 at	O
 inference	O
 .	O
-
 We	O
 extend	O
 the	O
@@ -37115,7 +36095,6 @@ accept	O
 multiple	O
 tokens	O
 .	O
-
 For	O
 The	O
 respective	O
@@ -37169,7 +36148,6 @@ al	O
 2009	O
 )	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -37205,7 +36183,6 @@ of	O
 an	O
 argument	O
 .	O
-
 We	O
 prevent	O
 this	O
@@ -37234,7 +36211,6 @@ a	O
 new	O
 sentence	O
 .	O
-
 In	O
 this	O
 fashion	O
@@ -37271,7 +36247,6 @@ newly	O
 generated	O
 arguments	O
 .	O
-
 We	O
 do	O
 this	O
@@ -37294,7 +36269,6 @@ and	O
 evaluation	O
 methods	O
 .	O
-
 Examples	O
 of	O
 generated	O
@@ -37383,7 +36357,6 @@ strong	O
 upper	O
 bound	O
 .	O
-
 The	O
 retrieval	O
 approach	O
@@ -37411,7 +36384,6 @@ stance	O
 and	O
 aspect	O
 .	O
-
 Both	O
 the	O
 retrieval	O
@@ -37448,7 +36420,6 @@ Lin	O
 )	O
 metrics	O
 .	O
-
 The	O
 retrieval	O
 approach	O
@@ -37508,7 +36479,6 @@ UKP	B-DatasetName
 -	I-DatasetName
 Corpus	I-DatasetName
 .	O
-
 As	O
 the	O
 paragraphs	O
@@ -37535,7 +36505,6 @@ arguments	O
 and	O
 nonarguments	O
 .	O
-
 This	O
 leaves	O
 us	O
@@ -37555,7 +36524,6 @@ topics	O
 see	O
 App	O
 .	O
-
 D	O
 for	O
 the	O
@@ -37565,7 +36533,6 @@ wise	O
 distribution	O
 )	O
 .	O
-
 Next	O
 ,	O
 we	O
@@ -37576,7 +36543,6 @@ in	O
 these	O
 arguments	O
 .	O
-
 Arguments	O
 with	O
 the	O
@@ -37622,7 +36588,6 @@ stance	O
 and	O
 aspect	O
 .	O
-
 The	O
 results	O
 reveal	O
@@ -37666,7 +36631,6 @@ Table	O
 5	O
 )	O
 .	O
-
 It	O
 not	O
 only	O
@@ -37692,7 +36656,6 @@ with	O
 our	O
 approach	O
 .	O
-
 Overlap	O
 with	O
 Training	O
@@ -37717,7 +36680,6 @@ the	O
 training	O
 data	O
 .	O
-
 For	O
 each	O
 of	O
@@ -37776,7 +36738,6 @@ the	O
 generated	O
 arguments	O
 .	O
-
 For	O
 the	O
 original	O
@@ -37846,7 +36807,6 @@ than	O
 criminals	O
 do	O
 .	O
-
 Cosine	O
 similarity	O
 /	O
@@ -37855,7 +36815,6 @@ distance	O
 /	O
 rel	O
 .	O
-
 overlap	O
 :	O
 95.59	B-MetricValue
@@ -37894,7 +36853,6 @@ cancer	O
 in	O
 humans	O
 .	O
-
 Training	O
 sentence	O
 :	O
@@ -37934,7 +36892,6 @@ distance	O
 /	O
 rel	O
 .	O
-
 overlap	O
 :	O
 92.40	B-MetricValue
@@ -37963,7 +36920,6 @@ Arg	B-MethodName
 CTRL	I-MethodName
 CC	I-MethodName
 .	O
-
 For	O
 the	O
 model	O
@@ -37987,7 +36943,6 @@ of	O
 the	O
 cases	O
 .	O
-
 It	O
 clearly	O
 shows	O
@@ -38023,7 +36978,6 @@ related	O
 arguments	O
 otherwise	O
 .	O
-
 Moreover	O
 ,	O
 without	O
@@ -38042,7 +36996,6 @@ aggregation	O
 over	O
 aspects	O
 .	O
-
 We	O
 notice	O
 that	O
@@ -38070,7 +37023,6 @@ only	O
 one	O
 argument	O
 .	O
-
 For	O
 these	O
 aspects	O
@@ -38118,7 +37070,6 @@ extrinsic	B-MethodName
 evaluation	I-MethodName
 )	O
 .	O
-
 As	O
 a	O
 basis	O
@@ -38168,7 +37119,6 @@ in	O
 this	O
 paper	O
 .	O
-
 Two	O
 aspects	O
 are	O
@@ -38178,7 +37128,6 @@ fluency	O
 and	O
 persuasiveness	O
 .	O
-
 We	O
 consider	O
 a	O
@@ -38207,7 +37156,6 @@ a	O
 binary	O
 task	O
 .	O
-
 To	O
 reduce	O
 subjectivity	O
@@ -38248,7 +37196,6 @@ Section	O
 5.2	O
 )	O
 .	O
-
 The	O
 experts	O
 could	O
@@ -38267,7 +37214,6 @@ being	O
 equally	O
 persuasive	O
 .	O
-
 In	O
 total	O
 ,	O
@@ -38304,7 +37250,6 @@ CTRL	O
 CC	O
 )	O
 .	O
-
 A	O
 pair	O
 of	O
@@ -38317,7 +37262,6 @@ topic	O
 and	O
 stance	O
 .	O
-
 For	O
 fluency	O
 ,	O
@@ -38335,7 +37279,6 @@ taken	O
 into	O
 account	O
 .	O
-
 Averaged	O
 results	O
 of	O
@@ -38373,7 +37316,6 @@ the	O
 reference	O
 argument	O
 .	O
-
 Moreover	O
 ,	O
 83	O
@@ -38384,7 +37326,6 @@ arguments	O
 are	O
 fluent	O
 .	O
-
 The	O
 inter	O
 -	O
@@ -38449,7 +37390,6 @@ Koch	O
 1977	O
 )	O
 .	O
-
 As	O
 we	O
 compare	O
@@ -38513,7 +37453,6 @@ al	O
 2020b	O
 )	O
 .	O
-
 They	O
 create	O
 an	O
@@ -38529,7 +37468,6 @@ over	O
 71	O
 topics	O
 .	O
-
 For	O
 each	O
 argument	O
@@ -38554,7 +37492,6 @@ in	O
 a	O
 speech	O
 .	O
-
 The	O
 quality	O
 scores	O
@@ -38591,7 +37528,6 @@ highest	O
 quality	O
 )	O
 .	O
-
 We	O
 use	O
 the	O
@@ -38644,7 +37580,6 @@ different	O
 seeds	O
 )	O
 .	O
-
 The	O
 model	O
 predicts	O
@@ -38684,7 +37619,6 @@ CTRL	O
 CC	O
 arguments	O
 .	O
-
 It	O
 shows	O
 that	O
@@ -38709,7 +37643,6 @@ made	O
 by	O
 humans	O
 .	O
-
 The	O
 difference	O
 of	O
@@ -38745,7 +37678,6 @@ of	O
 generated	O
 arguments	O
 .	O
-
 Exemplary	O
 Human	O
 :	O
@@ -38765,7 +37697,6 @@ pollutes	O
 the	O
 environment	O
 .	O
-
 Arg	O
 -	O
 CTRLCC	O
@@ -38777,7 +37708,6 @@ PRO	O
 waste	O
 .	O
 )	O
-
 The	O
 only	O
 thing	O
@@ -38817,7 +37747,6 @@ PRO	O
 radioactive	O
 .	O
 )	O
-
 The	O
 radioactivity	O
 of	O
@@ -38853,7 +37782,6 @@ PRO	O
 environment	O
 .	O
 )	O
-
 The	O
 fact	O
 that	O
@@ -38902,7 +37830,6 @@ pupil	O
 's	O
 individuality	O
 .	O
-
 Arg	O
 -	O
 CTRLCC	O
@@ -38914,7 +37841,6 @@ PRO	O
 expensive	O
 .	O
 )	O
-
 The	O
 cost	O
 of	O
@@ -38945,7 +37871,6 @@ PRO	O
 individuality	O
 .	O
 )	O
-
 The	O
 uniform	O
 is	O
@@ -39002,7 +37927,6 @@ Table	O
 see	O
 App	O
 .	O
-
 E	O
 for	O
 the	O
@@ -39041,7 +37965,6 @@ foster	O
 critical	O
 thinking	O
 .	O
-
 We	O
 lean	O
 onto	O
@@ -39075,7 +37998,6 @@ a	O
 switched	O
 stance	O
 .	O
-
 Hence	O
 ,	O
 given	O
@@ -39095,7 +38017,6 @@ counter	O
 argument	O
 generation	O
 .	O
-
 Unlike	O
 current	O
 models	O
@@ -39123,7 +38044,6 @@ McKeown	O
 2019	O
 ;	O
 .	O
-
 Also	O
 ,	O
 in	O
@@ -39180,7 +38100,6 @@ counter	O
 argument	O
 generation	O
 .	O
-
 We	O
 exemplary	O
 show	O
@@ -39203,7 +38122,6 @@ tackle	O
 this	O
 task	O
 .	O
-
 For	O
 that	O
 ,	O
@@ -39221,7 +38139,6 @@ and	O
 school	O
 uniforms	O
 .	O
-
 Then	O
 ,	O
 we	O
@@ -39260,7 +38177,6 @@ Arg	O
 CTRL	O
 CC	O
 .	O
-
 For	O
 both	O
 topics	O
@@ -39303,7 +38219,6 @@ of	O
 argument	B-TaskName
 generation	I-TaskName
 .	O
-
 Our	O
 Arg	O
 -	O
@@ -39327,7 +38242,6 @@ these	O
 control	O
 codes	O
 .	O
-
 We	O
 show	O
 that	O
@@ -39348,7 +38262,6 @@ quality	O
 in	O
 general	O
 .	O
-
 Moreover	O
 ,	O
 we	O
@@ -39371,7 +38284,6 @@ and	O
 interpretable	O
 way	O
 .	O
-
 We	O
 fine	O
 -	O
@@ -39412,7 +38324,6 @@ Reddit	B-DatasetName
 -	O
 Comments	O
 .	O
-
 Further	O
 ,	O
 we	O
@@ -39444,7 +38355,6 @@ high	O
 quality	O
 dataset	O
 .	O
-
 We	O
 publish	O
 the	O
@@ -39486,7 +38396,6 @@ are	O
 widely	O
 available	O
 .	O
-
 Gretz	O
 et	O
 al	O
@@ -39532,7 +38441,6 @@ in	O
 this	O
 work	O
 .	O
-
 The	O
 dangers	O
 of	O
@@ -39559,7 +38467,6 @@ al	O
 2019	O
 )	O
 .	O
-
 The	O
 ethical	O
 impact	O
@@ -39573,7 +38480,6 @@ and	O
 deemed	O
 justifiable	O
 .	O
-
 Argument	O
 generation	O
 -	O
@@ -39591,7 +38497,6 @@ to	O
 dual	O
 use	O
 .	O
-
 The	O
 technology	O
 can	O
@@ -39611,7 +38516,6 @@ human	O
 made	O
 arguments	O
 .	O
-
 While	O
 our	O
 intentions	O
@@ -39651,7 +38555,6 @@ be	O
 used	O
 for	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -39690,7 +38593,6 @@ a	O
 certain	O
 direction	O
 .	O
-
 Also	O
 ,	O
 bots	O
@@ -39706,7 +38608,6 @@ via	O
 social	O
 media	O
 .	O
-
 The	O
 same	O
 is	O
@@ -39778,7 +38679,6 @@ more	O
 diverse	O
 overall	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -39800,7 +38700,6 @@ any	O
 democratic	O
 society	O
 .	O
-
 The	O
 skill	O
 is	O
@@ -39812,7 +38711,6 @@ and	O
 university	O
 education	O
 .	O
-
 However	O
 ,	O
 confirmation	O
@@ -39846,7 +38744,6 @@ ever	O
 present	O
 issue	O
 .	O
-
 Technologies	O
 like	O
 ours	O
@@ -39891,7 +38788,6 @@ Section	O
 7.2	O
 )	O
 .	O
-
 We	O
 believe	O
 that	O
@@ -40014,7 +38910,6 @@ al	O
 2019	O
 )	O
 .	O
-
 The	O
 former	O
 approaches	O
@@ -40062,7 +38957,6 @@ a	O
 language	O
 model	O
 .	O
-
 We	O
 encourage	O
 the	O
@@ -40073,7 +38967,6 @@ types	O
 of	O
 methods	O
 .	O
-
 Ideally	O
 ,	O
 social	O
@@ -40116,7 +39009,6 @@ risks	O
 discussed	O
 before	O
 .	O
-
 One	O
 of	O
 these	O
@@ -40166,7 +39058,6 @@ the	O
 input	O
 )	O
 .	O
-
 The	O
 analysis	O
 in	O
@@ -40202,7 +39093,6 @@ at	O
 training	O
 time	O
 .	O
-
 Even	O
 in	O
 case	O
@@ -40219,7 +39109,6 @@ the	O
 training	O
 data	O
 .	O
-
 Also	O
 ,	O
 the	O
@@ -40286,7 +39175,6 @@ than	O
 research	O
 purposes	O
 .	O
-
 Also	O
 ,	O
 all	O
@@ -40318,7 +39206,6 @@ of	O
 use	O
 )	O
 .	O
-
 Lastly	O
 ,	O
 this	O
@@ -40342,7 +39229,6 @@ a	O
 positive	O
 vote	O
 .	O
-
 page	O
 833	O
 -	O
@@ -40350,7 +39236,6 @@ page	O
 ,	O
 USA	O
 .	O
-
 American	O
 Association	O
 for	O
@@ -40376,7 +39261,6 @@ Amazon	O
 Mechanical	O
 Turk	O
 .	O
-
 Workers	O
 had	O
 to	O
@@ -40401,7 +39285,6 @@ within	O
 the	O
 US	O
 .	O
-
 We	O
 paid	O
 $	O
@@ -40418,7 +39301,6 @@ per	O
 hour	O
 )	O
 .	O
-
 Each	O
 data	O
 sample	O
@@ -40428,7 +39310,6 @@ by	O
 eight	O
 crowdworkers	O
 .	O
-
 In	O
 case	O
 the	O
@@ -40473,7 +39354,6 @@ Mechanical	O
 Turk	O
 study	O
 .	O
-
 Figure	O
 3	O
 shows	O
@@ -40487,7 +39367,6 @@ two	O
 aspects	O
 selected	O
 .	O
-
 Selected	O
 aspects	O
 are	O
@@ -40496,7 +39375,6 @@ in	O
 the	O
 sentence	O
 .	O
-
 We	O
 did	O
 not	O
@@ -40506,7 +39384,6 @@ choose	O
 overlapping	O
 aspects	O
 .	O
-
 If	O
 the	O
 aspect	O
@@ -40566,7 +39443,6 @@ the	O
 list	O
 )	O
 .	O
-
 Additional	O
 checkboxes	O
 were	O
@@ -40588,7 +39464,6 @@ not	O
 explicitly	O
 mentioned	O
 .	O
-
 Figure	O
 4	O
 shows	O
@@ -40632,7 +39507,6 @@ cross	O
 topic	O
 experiments	O
 .	O
-
 9	O
 ,	O
 we	O
@@ -40651,7 +39525,6 @@ stance	O
 classification	O
 step	O
 .	O
-
 We	O
 filtered	O
 out	O
@@ -40727,7 +39600,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Both	O
 the	O
 Arg	O
@@ -40754,7 +39626,6 @@ GB	O
 of	O
 Memory	O
 .	O
-
 We	O
 mainly	O
 keep	O
@@ -40776,7 +39647,6 @@ for	O
 1	B-HyperparameterValue
 epoch	B-HyperparameterName
 .	O
-
 Each	O
 model	O
 takes	O
@@ -40815,7 +39685,6 @@ the	O
 reference	O
 dataset	O
 .	O
-
 The	O
 dataset	O
 is	O
@@ -40874,7 +39743,6 @@ CTRL	O
 REDDIT	O
 )	O
 .	O
-
 Text	O
 in	O
 bold	O
@@ -40891,7 +39759,6 @@ the	O
 generated	O
 argument	O
 .	O
-
 Numbers	O
 in	O
 brackets	O
@@ -40948,7 +39815,6 @@ parsed	O
 as	O
 JSON	O
 .	O
-
 A	O
 sample	O
 contains	O
@@ -41032,7 +39898,6 @@ al	O
 2018b	O
 )	O
 .	O
-
 Either	O
 "	O
 Argument_for	O
@@ -41113,7 +39978,6 @@ as	O
 train	O
 set	O
 .	O
-
 We	O
 also	O
 create	O
@@ -41143,7 +40007,6 @@ and	O
 for	O
 testing	O
 .	O
-
 nuclear	O
 AND	O
 (	O
@@ -41215,7 +40078,6 @@ and	O
 sustainable	O
 development	O
 .	O
-
 (	O
 0.96	O
 )	O
@@ -41225,7 +40087,6 @@ CON	O
 leak	O
 .	O
 "	O
-
 We	O
 are	O
 concerned	O
@@ -41250,7 +40111,6 @@ at	O
 the	O
 No	O
 .	O
-
 (	O
 0.47	O
 )	O
@@ -41259,7 +40119,6 @@ penalty	O
 CON	O
 inhuman	O
 .	O
-
 Amnesty	O
 International	O
 opposes	O
@@ -41305,7 +40164,6 @@ penalty	O
 CON	O
 god	O
 .	O
-
 And	O
 yet	O
 ,	O
@@ -41316,7 +40174,6 @@ exhorts	O
 civil	O
 authorities	O
 .	O
-
 (	O
 0.41	O
 )	O
@@ -41325,7 +40182,6 @@ uniforms	O
 CON	O
 resources	O
 .	O
-
 The	O
 lack	O
 of	O
@@ -41373,7 +40229,6 @@ low	O
 income	O
 families	O
 .	O
-
 (	O
 0.92	O
 )	O
@@ -41391,7 +40246,6 @@ lot	O
 of	O
 fun	O
 .	O
-
 (	O
 0.38	O
 )	O
@@ -41400,7 +40254,6 @@ control	O
 PRO	O
 homicides	O
 .	O
-
 In	O
 addition	O
 to	O
@@ -41448,7 +40301,6 @@ assaults	O
 1	O
 ]	O
 .	O
-
 (	O
 0.96	O
 )	O
@@ -41468,7 +40320,6 @@ smell	O
 the	O
 coffee	O
 .	O
-
 (	O
 0.43	O
 )	O
@@ -41495,7 +40346,6 @@ society	O
 safer	O
 overall	O
 .	O
-
 (	O
 0.96	O
 )	O
@@ -41504,7 +40354,6 @@ legalization	O
 PRO	O
 benefits	O
 .	O
-
 Decrease	O
 amount	O
 of	O
@@ -41513,7 +40362,6 @@ officers	O
 needed	O
 6	O
 .	O
-
 (	O
 0.37	O
 )	O
@@ -41554,7 +40402,6 @@ affect	O
 the	O
 poor	O
 .	O
-
 (	O
 0.97	O
 )	O
@@ -41671,7 +40518,6 @@ the	O
 added	O
 cost	O
 .	O
-
 (	O
 0.44	O
 )	O
@@ -41686,7 +40532,6 @@ Arg	O
 CTRL	O
 REDDIT	O
 .	O
-
 Text	O
 in	O
 bold	O
@@ -41703,7 +40548,6 @@ the	O
 generated	O
 argument	O
 .	O
-
 Numbers	O
 in	O
 brackets	O
@@ -41744,7 +40588,6 @@ Section	O
 7.1	O
 )	O
 .	O
-
 This	O
 work	O
 has	O
@@ -41819,7 +40662,6 @@ base	O
 KB	O
 )	O
 .	O
-
 This	O
 work	O
 focuses	O
@@ -41842,7 +40684,6 @@ unknown	O
 during	O
 training	O
 .	O
-
 Our	O
 approach	O
 relies	O
@@ -41885,7 +40726,6 @@ zero	O
 shot	O
 linking	O
 .	O
-
 We	O
 further	O
 improve	O
@@ -41910,7 +40750,6 @@ of	O
 unseen	O
 attributes	O
 .	O
-
 Experiments	O
 on	O
 English	O
@@ -41957,7 +40796,6 @@ the	O
 target	O
 KB	O
 .	O
-
 Unlike	O
 prior	O
 work	O
@@ -41973,7 +40811,6 @@ multiple	O
 training	O
 datasets	O
 .	O
-
 We	O
 test	O
 this	O
@@ -42006,7 +40843,6 @@ KBP	I-DatasetName
 training	O
 set	O
 .	O
-
 Our	O
 models	O
 are	O
@@ -42046,7 +40882,6 @@ base	O
 KB	O
 )	O
 .	O
-
 Early	O
 work	O
 in	O
@@ -42072,7 +40907,6 @@ Paşca	O
 2006	O
 )	O
 .	O
-
 Most	O
 subsequent	O
 work	O
@@ -42131,7 +40965,6 @@ al	O
 2010	O
 )	O
 .	O
-
 As	O
 a	O
 result	O
@@ -42172,7 +41005,6 @@ in	O
 the	O
 KB	O
 .	O
-
 This	O
 allows	O
 training	O
@@ -42198,7 +41030,6 @@ priori	O
 known	O
 KB	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -42221,7 +41052,6 @@ at	O
 training	O
 time	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -42261,7 +41091,6 @@ dimensions	O
 ,	O
 etc	O
 .	O
-
 It	O
 is	O
 very	O
@@ -42300,7 +41129,6 @@ with	O
 arbitrary	O
 schemas	O
 .	O
-
 One	O
 solution	O
 is	O
@@ -42328,7 +41156,6 @@ is	O
 not	O
 scalable	O
 .	O
-
 A	O
 more	O
 generic	O
@@ -42345,7 +41172,6 @@ with	O
 arbitrary	O
 KBs	O
 .	O
-
 We	O
 follow	O
 this	O
@@ -42369,7 +41195,6 @@ observed	O
 during	O
 training	O
 .	O
-
 1	O
 Our	O
 solution	O
@@ -42397,7 +41222,6 @@ al	O
 2019	O
 )	O
 .	O
-
 However	O
 ,	O
 these	O
@@ -42414,7 +41238,6 @@ training	O
 and	O
 inference	O
 .	O
-
 We	O
 generalize	O
 these	O
@@ -42441,7 +41264,6 @@ attribute	O
 value	O
 pairs	O
 .	O
-
 This	O
 generalization	O
 relies	O
@@ -42450,7 +41272,6 @@ two	O
 key	O
 ideas	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -42471,7 +41292,6 @@ zero	O
 shot	O
 linking	O
 .	O
-
 Central	O
 to	O
 the	O
@@ -42510,7 +41330,6 @@ Section	O
 4.1	O
 )	O
 .	O
-
 Second	O
 ,	O
 we	O
@@ -42609,7 +41428,6 @@ on	O
 English	O
 datasets	O
 .	O
-
 We	O
 train	O
 models	O
@@ -42623,7 +41441,6 @@ training	O
 (	O
 viz	O
 .	O
-
 Wikidata	B-DatasetName
 )	O
 ,	O
@@ -42642,7 +41459,6 @@ KB	O
 (	O
 viz	O
 .	O
-
 the	O
 TAC	B-DatasetName
 -	I-DatasetName
@@ -42651,7 +41467,6 @@ Knowledge	O
 Base	O
 )	O
 .	O
-
 These	O
 experiments	O
 reveal	O
@@ -42680,7 +41495,6 @@ zero	O
 shot	O
 models	O
 .	O
-
 Ablation	O
 studies	O
 reveal	O
@@ -42728,7 +41542,6 @@ with	O
 different	O
 schemas	O
 .	O
-
 We	O
 investigate	O
 the	O
@@ -42779,7 +41592,6 @@ the	O
 test	O
 data	O
 .	O
-
 These	O
 experiments	O
 reveal	O
@@ -42828,7 +41640,6 @@ Paşca	O
 2006	O
 ;	O
 .	O
-
 This	O
 limited	O
 scope	O
@@ -42922,7 +41733,6 @@ Durrett	O
 2020	O
 )	O
 .	O
-
 Lin	O
 et	O
 al	O
@@ -42950,7 +41760,6 @@ any	O
 other	O
 information	O
 .	O
-
 Sil	O
 et	O
 al	O
@@ -42967,7 +41776,6 @@ against	O
 arbitrary	O
 databases	O
 .	O
-
 However	O
 ,	O
 their	O
@@ -42981,7 +41789,6 @@ the	O
 target	O
 KB	O
 .	O
-
 In	O
 contrast	O
 ,	O
@@ -43022,7 +41829,6 @@ set	O
 of	O
 KBs	O
 .	O
-
 Pan	O
 et	O
 al	O
@@ -43064,7 +41870,6 @@ to	O
 compare	O
 contexts	O
 .	O
-
 They	O
 assume	O
 a	O
@@ -43080,7 +41885,6 @@ a	O
 connected	O
 graph	O
 .	O
-
 This	O
 works	O
 for	O
@@ -43094,7 +41898,6 @@ for	O
 arbitrary	O
 KBs	O
 .	O
-
 Logeswaran	O
 et	O
 al	O
@@ -43122,7 +41925,6 @@ specialized	O
 entities	O
 "	O
 .	O
-
 Table	O
 1	O
 summarizes	O
@@ -43151,7 +41953,6 @@ based	O
 on	O
 BERT	B-MethodName
 .	O
-
 While	O
 many	O
 studies	O
@@ -43202,7 +42003,6 @@ knowledge	O
 of	O
 entities	O
 .	O
-
 This	O
 has	O
 also	O
@@ -43282,7 +42082,6 @@ containing	O
 unique	O
 entities	O
 .	O
-
 We	O
 assume	O
 that	O
@@ -43326,7 +42125,6 @@ schema	O
 of	O
 KB	O
 .	O
-
 The	O
 disambiguation	O
 of	O
@@ -43401,7 +42199,6 @@ KB	O
 
 1	O
 .	O
-
 Candidate	O
 generation	I-TaskName
 :	O
@@ -43485,7 +42282,6 @@ entity	O
 
 2	O
 .	O
-
 Candidate	O
 Reranking	I-TaskName
 :	O
@@ -43507,7 +42303,6 @@ the	O
 correct	O
 entity	O
 .	O
-
 Unlike	O
 candidate	O
 generation	O
@@ -43548,7 +42343,6 @@ for	O
 each	O
 mention	O
 .	O
-
 This	O
 stage	O
 is	O
@@ -43593,7 +42387,6 @@ the	O
 same	O
 KB	O
 .	O
-
 Even	O
 in	O
 the	O
@@ -43632,7 +42425,6 @@ constant	O
 and	O
 known	O
 .	O
-
 On	O
 the	O
 contrary	O
@@ -43659,7 +42451,6 @@ known	O
 during	O
 training	O
 .	O
-
 The	O
 objective	O
 is	O
@@ -43741,7 +42532,6 @@ al	O
 2019	O
 )	O
 .	O
-
 2	O
 Candidate	O
 Generation	O
@@ -43781,7 +42571,6 @@ two	O
 BERT	B-MethodName
 models	O
 .	O
-
 The	O
 first	O
 BERT	B-MethodName
@@ -43802,7 +42591,6 @@ representation	O
 v	O
 m	O
 .	O
-
 v	O
 m	O
 is	O
@@ -43830,7 +42618,6 @@ of	O
 a	O
 sequence	O
 .	O
-
 In	O
 this	O
 encoder	O
@@ -43850,7 +42637,6 @@ the	O
 mention	O
 span	O
 .	O
-
 The	O
 embeddings	O
 for	O
@@ -43908,7 +42694,6 @@ KB	O
 into	O
 vectors	O
 .	O
-
 The	O
 candidates	O
 E	O
@@ -43928,7 +42713,6 @@ to	O
 v	O
 m	O
 .	O
-
 Both	O
 BERT	B-MethodName
 models	O
@@ -44002,7 +42786,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Specifically	O
 ,	O
 the	O
@@ -44071,7 +42854,6 @@ from	O
 the	O
 candidate	O
 .	O
-
 This	O
 concatenated	O
 string	O
@@ -44104,7 +42886,6 @@ CLS	O
 token	O
 )	O
 .	O
-
 Given	O
 a	O
 candidate	O
@@ -44145,7 +42926,6 @@ vector	O
 w	O
 )	O
 .	O
-
 Thus	O
 ,	O
 
@@ -44197,6 +42977,7 @@ correct	O
 entity	O
 ,	O
 i.e.	O
+
 Linking	O
 to	O
 Unseen	O
@@ -44229,7 +43010,6 @@ a	O
 textual	O
 description	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -44268,7 +43048,6 @@ satirist	O
 and	O
 dramatist	O
 .	O
-
 He	O
 was	O
 the	O
@@ -44302,7 +43081,6 @@ type	O
 of	O
 attributes	O
 .	O
-
 The	O
 same	O
 entity	O
@@ -44333,7 +43111,6 @@ birth	O
 ,	O
 etc	O
 .	O
-
 (	O
 top	O
 of	O
@@ -44341,7 +43118,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 This	O
 raises	O
 the	O
@@ -44377,7 +43153,6 @@ such	O
 textual	O
 descriptions	O
 .	O
-
 This	O
 section	O
 presents	O
@@ -44450,6 +43225,7 @@ by	O
 BERT	B-MethodName
 ,	O
 i.e.	O
+
 e	O
 =	O
 f	O
@@ -44494,7 +43270,6 @@ for	O
 arbitrary	O
 schemas	O
 .	O
-
 This	O
 leads	O
 to	O
@@ -44524,7 +43299,6 @@ BERT	O
 based	O
 models	O
 ?	O
-
 Alternatively	O
 ,	O
 what	O
@@ -44598,7 +43372,6 @@ to	O
 different	O
 segments	O
 .	O
-
 As	O
 in	O
 the	O
@@ -44621,14 +43394,12 @@ SEP	O
 ]	O
 tokens	O
 .	O
-
 We	O
 call	O
 this	O
 [	O
 SEP]-separation	O
 .	O
-
 This	O
 approach	O
 is	O
@@ -44747,7 +43518,6 @@ contain	O
 meaningful	O
 information	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -44804,7 +43574,6 @@ attribute	O
 during	O
 training	O
 .	O
-
 We	O
 capture	O
 this	O
@@ -44831,7 +43600,6 @@ corresponding	O
 to	O
 attributes	O
 .	O
-
 In	O
 this	O
 case	O
@@ -44881,7 +43649,6 @@ instantiations	O
 of	O
 f	O
 .	O
-
 In	O
 all	O
 cases	O
@@ -44907,7 +43674,6 @@ the	O
 training	O
 KB	O
 .	O
-
 Finally	O
 ,	O
 since	O
@@ -44981,7 +43747,6 @@ the	O
 training	O
 KB	O
 .	O
-
 This	O
 is	O
 done	O
@@ -45042,7 +43807,6 @@ seen	O
 during	O
 training	O
 .	O
-
 Analogous	O
 to	O
 how	O
@@ -45089,7 +43853,6 @@ probability	O
 p	O
 drop	O
 .	O
-
 This	O
 encourages	O
 the	O
@@ -45148,7 +43911,6 @@ particular	O
 attributes	O
 occur	O
 .	O
-
 Under	O
 attribute	O
 -	O
@@ -45230,7 +43992,6 @@ al	O
 2010	O
 )	O
 .	O
-
 4	O
 The	O
 target	O
@@ -45261,7 +44022,6 @@ infoboxes	O
 LDC2014T16	O
 )	O
 .	O
-
 5	O
 Our	O
 primary	O
@@ -45321,7 +44081,6 @@ have	O
 different	O
 schemas	O
 .	O
-
 Wikidata	B-DatasetName
 is	O
 more	O
@@ -45348,7 +44107,6 @@ than	O
 full	O
 sentences	O
 .	O
-
 The	O
 TAC	O
 -	O
@@ -45374,7 +44132,6 @@ of	O
 the	O
 entity	O
 .	O
-
 The	O
 two	O
 KBs	O
@@ -45417,7 +44174,6 @@ the	O
 respective	O
 KBs	O
 .	O
-
 The	O
 attribute	O
 -	O
@@ -45440,7 +44196,6 @@ the	O
 training	O
 KB	O
 .	O
-
 Candidates	O
 and	O
 mentions	O
@@ -45502,7 +44257,6 @@ and	O
 the	O
 BookCorpus	B-DatasetName
 .	O
-
 The	O
 probability	O
 p	O
@@ -45516,7 +44270,6 @@ set	O
 to	O
 0.3	B-HyperparameterValue
 .	O
-
 Both	O
 candidate	O
 generation	O
@@ -45574,7 +44327,6 @@ rate	O
 approaches	O
 zero	O
 .	O
-
 9	O
 Candidate	O
 generation	O
@@ -45591,7 +44343,6 @@ size	I-HyperparameterName
 of	O
 256	B-HyperparameterValue
 .	O
-
 Re	B-MethodName
 -	I-MethodName
 ranking	I-MethodName
@@ -45621,7 +44372,6 @@ the	O
 generation	O
 model	O
 .	O
-
 Hyperparameters	O
 are	O
 chosen	O
@@ -45650,7 +44400,6 @@ not	O
 extensively	O
 tuned	O
 .	O
-
 All	O
 models	O
 have	O
@@ -45728,7 +44477,6 @@ generate	O
 candidate	O
 strings	O
 .	O
-
 This	O
 model	O
 also	O
@@ -45751,7 +44499,6 @@ CoNLL	B-DatasetName
 Wikidata	I-DatasetName
 dataset	O
 .	O
-
 It	O
 achieves	O
 a	O
@@ -45857,7 +44604,6 @@ Section	O
 4	O
 viz	O
 .	O
-
 attribute	O
 -	O
 separators	O
@@ -45880,7 +44626,6 @@ shuffle	I-MetricName
 for	O
 regularization	O
 .	O
-
 We	O
 compare	O
 this	O
@@ -45907,7 +44652,6 @@ attribute	O
 -	O
 separators	O
 .	O
-
 As	O
 a	O
 reminder	O
@@ -45969,7 +44713,6 @@ Table	O
 3	O
 )	O
 .	O
-
 Using	O
 attributeseparators	O
 instead	O
@@ -46014,7 +44757,6 @@ SEP	O
 ]	O
 baseline	O
 .	O
-
 These	O
 results	O
 show	O
@@ -46047,7 +44789,6 @@ observed	O
 during	O
 inference	O
 .	O
-
 Shuffling	O
 attribute	O
 -	O
@@ -46082,7 +44823,6 @@ separators	O
 without	O
 shuffling	O
 .	O
-
 Overall	O
 ,	O
 models	O
@@ -46196,7 +44936,6 @@ the	O
 same	O
 KB	O
 .	O
-
 On	O
 the	O
 contrary	O
@@ -46234,7 +44973,6 @@ our	O
 test	O
 KB	O
 .	O
-
 Each	O
 entry	O
 in	O
@@ -46272,7 +45010,6 @@ attribute	O
 value	O
 pairs	O
 .	O
-
 (	O
 3	O
 )	O
@@ -46298,7 +45035,6 @@ mentions	O
 from	O
 Wikipedia	O
 .	O
-
 This	O
 is	O
 beneficial	O
@@ -46372,7 +45108,6 @@ with	O
 different	O
 schemas	O
 .	O
-
 While	O
 prior	O
 work	O
@@ -46414,7 +45149,6 @@ datasets	O
 for	O
 training	O
 .	O
-
 This	O
 allows	O
 us	O
@@ -46425,7 +45159,6 @@ third	O
 research	O
 question	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -46451,7 +45184,6 @@ attribute	O
 -	O
 OOV	O
 .	O
-
 We	O
 ask	O
 whether	O
@@ -46462,7 +45194,6 @@ TAC	B-MethodName
 4	I-MetricName
 )	O
 .	O
-
 In	O
 contrast	O
 ,	O
@@ -46482,7 +45213,6 @@ to	O
 62.6	B-MetricValue
 %	I-MetricValue
 .	O
-
 While	O
 the	O
 difference	O
@@ -46499,7 +45229,6 @@ remains	O
 more	O
 accurate	O
 .	O
-
 These	O
 results	O
 also	O
@@ -46559,7 +45288,6 @@ KB	O
 KB	O
 test	O
 .	O
-
 We	O
 hypothesize	O
 that	O
@@ -46625,7 +45353,6 @@ KBP	I-DatasetName
 training	O
 set	O
 .	O
-
 A	O
 sample	O
 of	O
@@ -46643,7 +45370,6 @@ a	O
 validation	O
 set	O
 .	O
-
 The	O
 models	O
 are	O
@@ -46680,7 +45406,6 @@ amounts	O
 of	O
 data	O
 .	O
-
 Unsurprisingly	O
 ,	O
 the	O
@@ -46714,7 +45439,6 @@ across	O
 the	O
 spectrum	O
 .	O
-
 Moreover	O
 ,	O
 the	O
@@ -46775,7 +45499,6 @@ aware	O
 data	O
 )	O
 .	O
-
 These	O
 trends	O
 show	O
@@ -46883,7 +45606,6 @@ the	O
 gold	O
 entity	O
 .	O
-
 This	O
 type	O
 is	O
@@ -46925,13 +45647,11 @@ in	O
 Table	O
 3	O
 .	O
-
 category	O
 (	O
 UKN	O
 )	O
 .	O
-
 11	O
 This	O
 categorization	O
@@ -46973,7 +45693,6 @@ the	O
 PER	O
 category	O
 .	O
-
 This	O
 distributed	O
 improvement	O
@@ -47012,7 +45731,6 @@ other	O
 entity	O
 types	O
 ?	O
-
 To	O
 answer	O
 this	O
@@ -47038,7 +45756,6 @@ using	O
 attribute	O
 separators	O
 .	O
-
 This	O
 counting	O
 reveals	O
@@ -47065,7 +45782,6 @@ one	O
 such	O
 column	O
 .	O
-
 On	O
 the	O
 other	O
@@ -47080,7 +45796,6 @@ for	O
 PER	O
 mentions	O
 .	O
-
 This	O
 suggests	O
 that	O
@@ -47194,7 +45909,6 @@ the	O
 state	O
 )	O
 .	O
-
 The	O
 reverse	O
 is	O
@@ -47220,7 +45934,6 @@ frequently	O
 %	O
 )	O
 .	O
-
 Another	O
 major	O
 error	O
@@ -47272,7 +45985,6 @@ are	O
 locations	O
 )	O
 .	O
-
 21	O
 %	O
 of	O
@@ -47351,7 +46063,6 @@ or	O
 the	O
 mention	O
 .	O
-
 This	O
 likely	O
 happens	O
@@ -47393,7 +46104,6 @@ with	O
 unknown	O
 schemas	O
 .	O
-
 To	O
 this	O
 end	O
@@ -47417,7 +46127,6 @@ to	O
 unseen	O
 KBs	O
 .	O
-
 These	O
 methods	O
 rely	O
@@ -47479,7 +46188,6 @@ the	O
 inference	O
 KB	O
 .	O
-
 One	O
 way	O
 to	O
@@ -47528,7 +46236,6 @@ al	O
 2017	O
 )	O
 .	O
-
 Another	O
 promising	O
 direction	O
@@ -47599,7 +46306,6 @@ settings	O
 as	O
 well	O
 .	O
-
 Just	O
 as	O
 we	O
@@ -47629,7 +46335,6 @@ in	O
 different	O
 languages	O
 .	O
-
 In	O
 future	O
 work	O
@@ -47722,7 +46427,6 @@ of	O
 the	O
 paper	O
 .	O
-
 They	O
 also	O
 thank	O
@@ -47738,7 +46442,6 @@ feedback	O
 
 Datasets	O
 .	O
-
 We	O
 conduct	O
 experiments	O
@@ -47781,7 +46484,6 @@ be	O
 most	O
 beneficial	O
 .	O
-
 We	O
 use	O
 3	O
@@ -47802,7 +46504,6 @@ validation	O
 test	O
 sets	O
 .	O
-
 We	O
 also	O
 use	O
@@ -47813,7 +46514,6 @@ sentences	O
 from	O
 NewsCrawl	B-DatasetName
 .	O
-
 For	O
 Sq	O
 and	O
@@ -47848,7 +46548,6 @@ sentences	O
 
 Baseline	O
 .	O
-
 We	O
 use	O
 a	O
@@ -47871,7 +46570,6 @@ Conneau	O
 2019	O
 )	O
 .	O
-
 This	O
 approach	O
 trains	O
@@ -47903,7 +46601,6 @@ corresponding	O
 NMT	B-TaskName
 system	O
 .	O
-
 Each	O
 system	O
 is	O
@@ -47931,7 +46628,6 @@ the	O
 respective	O
 baseline	O
 .	O
-
 CHRF1	B-MethodName
 refers	O
 to	O
@@ -47947,7 +46643,6 @@ Popović	O
 2015	O
 )	O
 .	O
-
 The	O
 models	O
 in	O
@@ -48006,7 +46701,6 @@ compared	O
 to	O
 Sq	O
 .	O
-
 This	O
 is	O
 mainly	O
@@ -48030,7 +46724,6 @@ for	O
 Mk	O
 )	O
 .	O
-
 This	O
 is	O
 also	O
@@ -48085,7 +46778,6 @@ En	B-MethodName
 -	I-MethodName
 Mk	I-MethodName
 .	O
-
 This	O
 can	O
 be	O
@@ -48113,7 +46805,6 @@ training	O
 of	O
 MLM	O
 .	O
-
 By	O
 contrast	O
 ,	O
@@ -48139,7 +46830,6 @@ RE	B-TaskName
 -	I-MethodName
 LM	I-MethodName
 .	O
-
 In	O
 En	O
 -	O
@@ -48155,7 +46845,6 @@ smaller	O
 yet	O
 consistent	O
 .	O
-
 This	O
 can	O
 be	O
@@ -48192,7 +46881,6 @@ as	O
 shown	O
 empirically	O
 .	O
-
 This	O
 is	O
 consistent	O
@@ -48214,14 +46902,12 @@ benefit	O
 MLM	O
 representations	O
 .	O
-
 1	B-MetricValue
 -	I-MetricName
 gram	I-MetricName
 precision	I-MetricName
 scores	O
 .	O
-
 To	O
 examine	O
 whether	O
@@ -48265,7 +46951,6 @@ to	O
 lexical	O
 alignment	O
 .	O
-
 The	O
 biggest	O
 performance	O
@@ -48286,7 +46971,6 @@ applied	O
 to	O
 XLM	O
 .	O
-
 This	O
 correlates	O
 with	O
@@ -48297,7 +46981,6 @@ of	O
 Table	O
 1	O
 .	O
-
 Moreover	O
 ,	O
 the	O
@@ -48327,7 +47010,6 @@ precision	B-MetricName
 and	O
 BLEU	B-MetricName
 .	O
-
 These	O
 results	O
 show	O
@@ -48345,7 +47027,6 @@ enhanced	O
 lexical	O
 representations	O
 .	O
-
 How	O
 should	O
 static	O
@@ -48357,7 +47038,6 @@ the	O
 MLM	O
 training	O
 ?	O
-
 We	O
 explore	O
 different	O
@@ -48389,7 +47069,6 @@ approach	O
 2.2	O
 )	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -48423,7 +47102,6 @@ tuned	O
 )	O
 method	O
 .	O
-
 We	O
 point	O
 out	O
@@ -48474,7 +47152,6 @@ Wolf	O
 2017	O
 )	O
 .	O
-
 We	O
 use	O
 a	O
@@ -48493,7 +47170,6 @@ Gimpel	O
 2017	O
 )	O
 .	O
-
 We	O
 use	O
 the	O
@@ -48543,7 +47219,6 @@ cross	O
 lingual	O
 transferability	O
 .	O
-
 We	O
 propose	O
 a	O
@@ -48592,7 +47267,6 @@ Answering	I-TaskName
 QA	B-TaskName
 )	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -48635,7 +47309,6 @@ sentence	O
 level	O
 representations	O
 .	O
-
 Both	O
 tasks	O
 are	O
@@ -48654,7 +47327,6 @@ such	O
 as	O
 FastAlign	O
 .	O
-
 Our	O
 sentence	O
 -	O
@@ -48697,7 +47369,6 @@ in	O
 computer	O
 vision	O
 .	O
-
 Lastly	O
 ,	O
 when	O
@@ -48731,7 +47402,6 @@ and	O
 data	O
 augmentation	O
 .	O
-
 We	O
 conduct	O
 controlled	O
@@ -48758,7 +47428,6 @@ data	O
 during	O
 alignment	O
 .	O
-
 We	O
 then	O
 conduct	O
@@ -48773,7 +47442,6 @@ of	O
 our	O
 method	O
 .	O
-
 On	O
 XNLI	B-DatasetName
 ,	O
@@ -48816,7 +47484,6 @@ the	O
 same	O
 source	O
 .	O
-
 For	O
 translate	O
 -	O
@@ -48848,7 +47515,6 @@ far	O
 fewer	O
 resources	O
 .	O
-
 On	O
 MLQA	B-DatasetName
 ,	O
@@ -48882,7 +47548,6 @@ dual	O
 encoder	O
 architecture	O
 .	O
-
 Given	O
 two	O
 views	O
@@ -48916,7 +47581,6 @@ encoder	O
 f	O
 k	O
 .	O
-
 v	O
 1	O
 and	O
@@ -48927,7 +47591,6 @@ a	O
 positive	O
 pair	O
 .	O
-
 Negative	O
 examples	O
 are	O
@@ -48951,7 +47614,6 @@ is	O
 randomly	O
 initialized	O
 .	O
-
 K	B-HyperparameterName
 is	O
 usually	O
@@ -48970,7 +47632,6 @@ for	O
 ImageNet	O
 )	O
 .	O
-
 Negative	O
 pairs	O
 are	O
@@ -48986,7 +47647,6 @@ in	O
 the	O
 queue	O
 .	O
-
 Similarity	O
 between	O
 pairs	O
@@ -48996,7 +47656,6 @@ by	O
 dot	O
 product	O
 .	O
-
 MoCo	B-DatasetName
 uses	O
 the	O
@@ -49026,7 +47685,6 @@ negative	O
 pairs	O
 apart	O
 .	O
-
 After	O
 a	O
 batch	O
@@ -49054,7 +47712,6 @@ for	O
 future	O
 queries	O
 .	O
-
 During	O
 training	O
 ,	O
@@ -49114,7 +47771,6 @@ learning	O
 rate	O
 scheduler	O
 .	O
-
 For	O
 PPA	B-MethodName
 ,	O
@@ -49149,7 +47805,6 @@ peaking	O
 at	O
 0.00003	B-HyperparameterValue
 .	O
-
 The	O
 MoCo	B-DatasetName
 momentum	I-HyperparameterName
@@ -49165,7 +47820,6 @@ and	O
 temperature	B-HyperparameterName
 0.05	B-HyperparameterValue
 .	O
-
 Our	O
 PPA	B-MethodName
 models	O
@@ -49187,7 +47841,6 @@ epochs	B-HyperparameterName
 are	O
 trained	O
 .	O
-
 On	O
 XNLI	B-DatasetName
 ,	O
@@ -49213,7 +47866,6 @@ for	O
 2	B-HyperparameterValue
 epochs	B-HyperparameterName
 .	O
-
 Learning	B-HyperparameterName
 rate	I-HyperparameterName
 peaks	O
@@ -49229,7 +47881,6 @@ first	O
 1000	O
 iterations	O
 .	O
-
 On	O
 MLQA	B-DatasetName
 ,	O
@@ -49247,7 +47898,6 @@ learning	I-HyperparameterName
 rate	I-HyperparameterName
 0.00003	B-HyperparameterValue
 .	O
-
 The	O
 other	O
 parameters	O
@@ -49257,7 +47907,6 @@ same	O
 as	O
 XNLI	B-DatasetName
 .	O
-
 Our	O
 experiments	O
 are	O
@@ -49288,7 +47937,6 @@ GPUs	O
 are	O
 used	O
 .	O
-
 We	O
 also	O
 use	O
@@ -49353,7 +48001,6 @@ datasets	O
 at	O
 once	O
 .	O
-
 In	O
 this	O
 work	O
@@ -49385,7 +48032,6 @@ from	O
 unannotated	O
 sentences	O
 .	O
-
 We	O
 show	O
 that	O
@@ -49425,7 +48071,6 @@ been	O
 trained	O
 on	O
 .	O
-
 We	O
 further	O
 show	O
@@ -49518,7 +48163,6 @@ al	O
 2020	O
 )	O
 .	O
-
 More	O
 recently	O
 ,	O
@@ -49541,7 +48185,6 @@ datasets	O
 at	O
 once	O
 .	O
-
 Such	O
 a	O
 model	O
@@ -49588,7 +48231,6 @@ abstractive	O
 question	O
 answering	O
 .	O
-
 UnifiedQA	B-DatasetName
 is	O
 ,	O
@@ -49631,7 +48273,6 @@ al	O
 or	O
 ARC	O
 .	O
-
 However	O
 ,	O
 even	O
@@ -49668,7 +48309,6 @@ human	O
 annotated	O
 data	O
 .	O
-
 This	O
 tendency	O
 is	O
@@ -49706,7 +48346,6 @@ human	O
 annotated	O
 data	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -49718,7 +48357,6 @@ time	O
 and	O
 resources	O
 .	O
-
 Instead	O
 ,	O
 a	O
@@ -49748,7 +48386,6 @@ for	O
 question	B-TaskName
 answering	I-TaskName
 .	O
-
 One	O
 commonly	O
 used	O
@@ -49771,7 +48408,6 @@ al	O
 2016	O
 )	O
 .	O
-
 proposed	O
 a	O
 question	B-TaskName
@@ -49787,7 +48423,6 @@ based	O
 translation	I-TaskName
 method	O
 .	O
-
 Fabbri	O
 et	O
 al	O
@@ -49821,7 +48456,6 @@ mentioned	O
 neural	O
 method	O
 .	O
-
 These	O
 approches	O
 are	O
@@ -49843,7 +48477,6 @@ of	O
 selecting	O
 distractors	O
 .	O
-
 A	O
 few	O
 research	O
@@ -49932,7 +48565,6 @@ on	O
 unseen	O
 domains	O
 .	O
-
 This	O
 method	O
 ,	O
@@ -49965,7 +48597,6 @@ questions	O
 are	O
 created	O
 .	O
-
 Contrarily	O
 to	O
 most	O
@@ -50046,7 +48677,6 @@ biology	O
 and	O
 chemistry	O
 .	O
-
 An	O
 example	O
 of	O
@@ -50058,7 +48688,6 @@ in	O
 Figure	O
 1	O
 .	O
-
 We	O
 focus	O
 on	O
@@ -50082,7 +48711,6 @@ precise	O
 scientific	O
 knowledge	O
 .	O
-
 Furthermore	O
 ,	O
 our	O
@@ -50121,7 +48749,6 @@ Section	O
 4	O
 )	O
 .	O
-
 Our	O
 objective	O
 in	O
@@ -50153,7 +48780,6 @@ in	O
 Section	O
 2	O
 .	O
-
 We	O
 additionally	O
 test	O
@@ -50183,7 +48809,6 @@ al	O
 and	O
 QASC	B-DatasetName
 .	O
-
 These	O
 datasets	O
 contain	O
@@ -50202,7 +48827,6 @@ slightly	O
 less	O
 specific	O
 .	O
-
 Furthermore	O
 ,	O
 neither	O
@@ -50241,7 +48865,6 @@ and	O
 improve	O
 UnifiedQA	B-DatasetName
 .	O
-
 This	O
 process	O
 is	O
@@ -50250,7 +48873,6 @@ on	O
 3	O
 steps	O
 .	O
-
 First	O
 ,	O
 a	O
@@ -50278,7 +48900,6 @@ Section	O
 2.2	O
 )	O
 .	O
-
 Then	O
 a	O
 number	O
@@ -50316,14 +48937,12 @@ will	O
 be	O
 generated	O
 .	O
-
 We	O
 compare	O
 three	O
 selection	O
 methods	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -50355,7 +48974,6 @@ the	O
 target	O
 domain	O
 .	O
-
 In	O
 our	O
 case	O
@@ -50382,7 +49000,6 @@ main	O
 domains	O
 in	O
 SciQ.	B-DatasetName
-
 A	O
 simple	O
 information	O
@@ -50398,7 +49015,6 @@ sentences	O
 from	O
 Wikipedia	O
 .	O
-
 We	O
 first	O
 compute	O
@@ -50419,7 +49035,6 @@ target	O
 topic	O
 names	O
 .	O
-
 The	O
 maximum	O
 recursion	O
@@ -50429,7 +49044,6 @@ limited	O
 to	O
 4	O
 .	O
-
 We	O
 then	O
 extract	O
@@ -50456,7 +49070,6 @@ categories	O
 and	O
 subcategories	O
 .	O
-
 We	O
 only	O
 keep	O
@@ -50532,7 +49145,6 @@ book	O
 for	O
 example	O
 .	O
-
 The	O
 SciQ	B-DatasetName
 dataset	O
@@ -50549,7 +49161,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 Pooled	O
 together	O
 ,	O
@@ -50570,7 +49181,6 @@ domains	O
 of	O
 interest	O
 .	O
-
 We	O
 gather	O
 the	O
@@ -50610,14 +49220,12 @@ in	O
 the	O
 questions	O
 .	O
-
 We	O
 compare	O
 two	O
 different	O
 setups	O
 .	O
-
 In	O
 the	O
 first	O
@@ -50654,7 +49262,6 @@ in	O
 the	O
 questions	O
 .	O
-
 Still	O
 ,	O
 we	O
@@ -50670,7 +49277,6 @@ annotated	O
 questions	O
 themselves	O
 .	O
-
 As	O
 compared	O
 to	O
@@ -50708,7 +49314,6 @@ set	O
 of	O
 interest	O
 .	O
-
 We	O
 then	O
 compare	O
@@ -50729,7 +49334,6 @@ set	O
 are	O
 included	O
 .	O
-
 This	O
 scenario	O
 arguably	O
@@ -50751,7 +49355,6 @@ domain	O
 of	O
 interest	O
 .	O
-
 The	O
 number	O
 of	O
@@ -50797,7 +49400,6 @@ a	O
 constituent	O
 structure	O
 .	O
-
 It	O
 can	O
 also	O
@@ -50833,7 +49435,6 @@ when	O
 ,	O
 etc	O
 .	O
-
 The	O
 constituency	O
 structure	O
@@ -50854,7 +49455,6 @@ program	O
 from	O
 data	O
 .	O
-
 In	O
 this	O
 work	O
@@ -50883,7 +49483,6 @@ Lapalme	O
 2019	O
 )	O
 .	O
-
 The	O
 UD	O
 structure	O
@@ -50908,7 +49507,6 @@ al	O
 2020	O
 )	O
 .	O
-
 We	O
 thus	O
 have	O
@@ -50942,7 +49540,6 @@ both	O
 in	O
 JavaScript	O
 .	O
-
 Used	O
 without	O
 modification	O
@@ -51056,7 +49653,6 @@ the	O
 verb	O
 phrase	O
 .	O
-
 Depending	O
 on	O
 the	O
@@ -51072,7 +49668,6 @@ or	O
 a	O
 where	O
 .	O
-
 Note	O
 that	O
 the	O
@@ -51124,7 +49719,6 @@ parameterizing	O
 the	O
 realization	O
 .	O
-
 The	O
 generated	O
 questions	O
@@ -51146,7 +49740,6 @@ a	O
 single	O
 stopword	O
 .	O
-
 Table	O
 1	O
 shows	O
@@ -51159,7 +49752,6 @@ for	O
 each	O
 dataset	O
 .	O
-
 An	O
 example	O
 of	O
@@ -51201,7 +49793,6 @@ the	O
 format	O
 of	O
 SciQ.	B-DatasetName
-
 A	O
 simple	O
 solution	O
@@ -51228,7 +49819,6 @@ sentences	O
 we	O
 gathered	O
 .	O
-
 Obviously	O
 ,	O
 selecting	O
@@ -51249,7 +49839,6 @@ easy	O
 to	O
 solve	O
 .	O
-
 Therefore	O
 ,	O
 we	O
@@ -51264,7 +49853,6 @@ for	O
 each	O
 question	O
 .	O
-
 To	O
 do	O
 so	O
@@ -51301,7 +49889,6 @@ choices	O
 question	B-TaskName
 answering	I-TaskName
 .	O
-
 Each	O
 pair	O
 question	O
@@ -51342,7 +49929,6 @@ for	O
 each	O
 choice	O
 .	O
-
 The	O
 scores	O
 corresponding	O
@@ -51369,7 +49955,6 @@ cross	O
 entropy	O
 loss	O
 .	O
-
 With	O
 this	O
 method	O
@@ -51401,7 +49986,6 @@ to	O
 that	O
 question	O
 .	O
-
 For	O
 each	O
 question	O
@@ -51434,7 +50018,6 @@ of	O
 these	O
 candidates	O
 .	O
-
 The	O
 3	O
 candidates	O
@@ -51453,7 +50036,6 @@ answers	O
 are	O
 selected	O
 .	O
-
 The	O
 idea	O
 is	O
@@ -51473,7 +50055,6 @@ of	O
 simplistic	O
 logic	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -51507,7 +50088,6 @@ question	O
 semantic	O
 field	O
 .	O
-
 Furthermore	O
 ,	O
 a	O
@@ -51533,7 +50113,6 @@ a	O
 singular	O
 )	O
 .	O
-
 Therefore	O
 ,	O
 in	O
@@ -51560,7 +50139,6 @@ with	O
 correct	O
 grammar	O
 .	O
-
 The	O
 re	O
 -	O
@@ -51597,7 +50175,6 @@ and	O
 the	O
 answers	O
 .	O
-
 The	O
 process	O
 is	O
@@ -51633,7 +50210,6 @@ hyper	O
 -	O
 parameter	O
 .	O
-
 A	O
 small	O
 number	O
@@ -51687,7 +50263,6 @@ multiple	O
 valid	O
 answers	O
 .	O
-
 In	O
 our	O
 experiments	O
@@ -51743,7 +50318,6 @@ of	O
 10	I-HyperparameterValue
 −5	I-HyperparameterValue
 .	O
-
 These	O
 hyperparameters	O
 are	O
@@ -51761,7 +50335,6 @@ multiple	O
 choice	O
 datasets	O
 .	O
-
 The	O
 final	O
 UnifiedQA	B-DatasetName
@@ -51796,7 +50369,6 @@ al	O
 2020	O
 )	O
 .	O
-
 We	O
 use	O
 the	O
@@ -51827,7 +50399,6 @@ of	O
 10	I-HyperparameterValue
 −5	I-HyperparameterValue
 .	O
-
 The	O
 learning	B-HyperparameterName
 rate	I-HyperparameterName
@@ -51850,7 +50421,6 @@ training	O
 of	O
 UnifiedQA	B-DatasetName
 .	O
-
 We	O
 use	O
 the	O
@@ -51872,7 +50442,6 @@ for	O
 model	O
 implementation	O
 .	O
-
 Experiments	O
 presented	O
 in	O
@@ -51940,7 +50509,6 @@ of	O
 ±2.8	B-MetricValue
 %	I-MetricValue
 .	O
-
 The	O
 first	O
 row	O
@@ -51959,7 +50527,6 @@ large	O
 model	O
 on	O
 SciQ.	B-DatasetName
-
 The	O
 second	O
 line	O
@@ -51978,7 +50545,6 @@ full	O
 training	O
 corpus	O
 .	O
-
 Our	O
 objective	O
 is	O
@@ -52000,7 +50566,6 @@ un	O
 supervised	O
 methods	O
 .	O
-
 The	O
 results	O
 using	O
@@ -52031,7 +50596,6 @@ other	O
 unsupervised	O
 methods	O
 .	O
-
 Table	O
 2	O
 :	O
@@ -52049,7 +50613,6 @@ synthetic	O
 datasets	O
 .	O
 "	O
-
 SciQ	B-DatasetName
 data	I-DatasetName
 "	O
@@ -52079,7 +50642,6 @@ harvested	O
 from	O
 Wikipedia	O
 .	O
-
 All	O
 scores	O
 are	O
@@ -52149,7 +50711,6 @@ is	O
 the	O
 accuracy	B-MetricName
 .	O
-
 Hence	O
 ,	O
 generating	O
@@ -52184,7 +50745,6 @@ test	O
 set	O
 of	O
 SciQ.	B-DatasetName
-
 Finally	O
 ,	O
 questions	O
@@ -52206,7 +50766,6 @@ target	O
 test	O
 corpus	O
 .	O
-
 Our	O
 distractor	O
 selection	O
@@ -52220,7 +50779,6 @@ in	O
 all	O
 setups	O
 .	O
-
 This	O
 suggests	O
 that	O
@@ -52267,7 +50825,6 @@ in	O
 table	O
 3	O
 .	O
-
 Overall	O
 ,	O
 we	O
@@ -52293,7 +50850,6 @@ with	O
 refined	O
 distractors	O
 .	O
-
 However	O
 compared	O
 to	O
@@ -52311,7 +50867,6 @@ is	O
 less	O
 significant	O
 .	O
-
 This	O
 could	O
 be	O
@@ -52396,7 +50951,6 @@ of	O
 domain	O
 dataset	O
 .	O
-
 Our	O
 contributions	O
 are	O
@@ -52510,7 +51064,6 @@ of	O
 our	O
 models	O
 .	O
-
 Also	O
 ,	O
 we	O
@@ -52576,7 +51129,6 @@ al	O
 2019	O
 )	O
 .	O
-
 To	O
 capture	O
 global	O
@@ -52620,7 +51172,6 @@ at	O
 each	O
 step	O
 .	O
-
 We	O
 train	O
 the	O
@@ -52636,7 +51187,6 @@ obtained	O
 from	O
 Wikipedia	O
 .	O
-
 We	O
 achieve	O
 new	O
@@ -52669,7 +51219,6 @@ WNED	B-DatasetName
 -	I-DatasetName
 WIKI	I-DatasetName
 .	O
-
 The	O
 source	O
 code	O
@@ -52718,7 +51267,6 @@ base	O
 KB	O
 )	O
 .	O
-
 This	O
 task	O
 is	O
@@ -52755,7 +51303,6 @@ World	O
 Cup	O
 )	O
 .	O
-
 ED	B-TaskName
 models	O
 typically	O
@@ -52790,7 +51337,6 @@ the	O
 disambiguation	O
 decisions	O
 .	O
-
 A	O
 key	O
 to	O
@@ -52844,7 +51390,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Our	O
 model	O
 treats	O
@@ -52877,7 +51422,6 @@ obtained	O
 from	O
 Wikipedia	O
 .	O
-
 This	O
 training	O
 enables	O
@@ -52899,7 +51443,6 @@ non	O
 masked	O
 entities	O
 .	O
-
 At	O
 the	O
 inference	O
@@ -52929,7 +51472,6 @@ Figure	O
 1	O
 )	O
 .	O
-
 This	O
 sequential	O
 inference	O
@@ -52947,7 +51489,6 @@ of	O
 disambiguation	O
 decisions	O
 .	O
-
 We	O
 conducted	O
 extensive	O
@@ -52979,7 +51520,6 @@ WNED	B-DatasetName
 -	I-DatasetName
 CWEB	I-DatasetName
 .	O
-
 As	O
 a	O
 result	O
@@ -52993,7 +51533,6 @@ improved	O
 the	O
 performance	O
 .	O
-
 Furthermore	O
 ,	O
 we	O
@@ -53012,7 +51551,6 @@ WNED	B-DatasetName
 -	I-DatasetName
 CWEB	I-DatasetName
 .	O
-
 The	O
 source	O
 code	O
@@ -53038,7 +51576,6 @@ Transformer	O
 based	O
 ED	B-TaskName
 .	O
-
 Several	O
 recent	O
 studies	O
@@ -53089,7 +51626,6 @@ al	O
 2022	O
 )	O
 .	O
-
 Broscheit	B-MethodName
 (	O
 2019	O
@@ -53113,7 +51649,6 @@ the	O
 corresponding	O
 entity	O
 .	O
-
 Similarly	O
 ,	O
 addressed	O
@@ -53129,7 +51664,6 @@ the	O
 corresponding	O
 entities	O
 .	O
-
 Ling	O
 
 Words	O
@@ -53140,7 +51674,6 @@ Input	O
 Position	O
 emb	O
 .	O
-
 (	O
 Lewis	O
 et	O
@@ -53162,7 +51695,6 @@ an	O
 autoregressive	O
 manner	O
 .	O
-
 Barba	O
 et	O
 al	O
@@ -53215,7 +51747,6 @@ of	O
 the	O
 mention	O
 .	O
-
 However	O
 ,	O
 unlike	O
@@ -53242,7 +51773,6 @@ inputs	O
 of	O
 Transformer	B-MethodName
 .	O
-
 Recent	O
 studies	O
 Yamada	O
@@ -53280,7 +51810,6 @@ the	O
 entity	O
 embeddings	O
 .	O
-
 However	O
 ,	O
 these	O
@@ -53298,7 +51827,6 @@ tested	O
 on	O
 ED	B-TaskName
 .	O
-
 We	O
 treat	O
 entities	O
@@ -53353,7 +51881,6 @@ global	O
 contextual	O
 information	O
 .	O
-
 We	O
 adopt	O
 a	O
@@ -53445,6 +51972,7 @@ MASK	O
 entity	O
 )	O
 .	O
+
 The	O
 input	O
 representation	O
@@ -53483,7 +52011,6 @@ the	O
 corresponding	O
 token	O
 .	O
-
 The	O
 matrices	O
 of	O
@@ -53581,7 +52108,6 @@ a	O
 word	O
 sequence	O
 .	O
-
 A	O
 word	O
 and	O
@@ -53608,7 +52134,6 @@ i	O
 ,	O
 respectively	O
 .	O
-
 If	O
 an	O
 entity	O
@@ -53636,7 +52161,6 @@ Figure	O
 2	O
 )	O
 .	O
-
 Following	O
 Devlin	O
 et	O
@@ -53705,7 +52229,6 @@ randomly	O
 masked	O
 entities	O
 .	O
-
 Specifically	O
 ,	O
 we	O
@@ -53749,7 +52272,6 @@ words	O
 in	O
 MLM	O
 .	O
-
 Formally	O
 ,	O
 we	O
@@ -53777,7 +52299,6 @@ Local	B-TaskName
 ED	I-TaskName
 Model	O
 .	O
-
 Our	O
 local	O
 ED	B-TaskName
@@ -53798,7 +52319,6 @@ in	O
 the	O
 document	O
 .	O
-
 The	O
 model	O
 then	O
@@ -53863,7 +52383,6 @@ candidates	O
 ,	O
 respectively	O
 .	O
-
 Note	O
 that	O
 B	O
@@ -53883,12 +52402,10 @@ o	O
 ,	O
 respectively	O
 .	O
-
 Global	B-TaskName
 ED	B-TaskName
 Model	O
 .	O
-
 Our	O
 global	O
 ED	B-TaskName
@@ -53905,7 +52422,6 @@ Algorithm	O
 1	O
 )	O
 .	O
-
 First	O
 ,	O
 the	O
@@ -53923,7 +52439,6 @@ MASK	O
 ]	O
 token	O
 .	O
-
 Then	O
 ,	O
 for	O
@@ -53970,7 +52485,6 @@ entity	O
 to	O
 it	O
 .	O
-
 This	O
 model	O
 is	O
@@ -53980,7 +52494,6 @@ confidence	O
 -	O
 order	O
 .	O
-
 We	O
 also	O
 test	O
@@ -54026,7 +52539,6 @@ al	O
 2019	O
 )	O
 .	O
-
 The	O
 parameters	O
 shared	O
@@ -54045,7 +52557,6 @@ are	O
 initialized	O
 randomly	O
 .	O
-
 We	O
 treat	O
 the	O
@@ -54064,7 +52575,6 @@ of	O
 all	O
 entities	O
 .	O
-
 We	O
 train	O
 the	O
@@ -54078,7 +52588,6 @@ of	O
 entity	O
 predictions	O
 .	O
-
 Further	O
 details	O
 are	O
@@ -54100,7 +52609,6 @@ Titov	O
 2018	O
 )	O
 .	O
-
 In	O
 particular	O
 ,	O
@@ -54158,7 +52666,6 @@ Barbosa	O
 2018	O
 )	O
 .	O
-
 We	O
 consider	O
 only	O
@@ -54172,7 +52679,6 @@ entities	O
 in	O
 Wikipedia	O
 .	O
-
 For	O
 all	O
 datasets	O
@@ -54229,7 +52735,6 @@ al	O
 2015	O
 )	O
 .	O
-
 We	O
 report	O
 the	O
@@ -54256,7 +52761,6 @@ the	O
 other	O
 datasets	O
 .	O
-
 Further	O
 details	O
 of	O
@@ -54302,7 +52806,6 @@ the	O
 KB+YAGO	B-DatasetName
 candidates	O
 .	O
-
 We	O
 mask	O
 90	O
@@ -54335,7 +52838,6 @@ two	O
 epochs	O
 using	O
 AdamW.	O
-
 Additional	O
 details	O
 are	O
@@ -54343,7 +52845,6 @@ provided	O
 in	O
 Appendix	O
 B.	O
-
 Our	O
 global	O
 models	O
@@ -54375,7 +52876,6 @@ expressive	O
 BERT	B-MethodName
 model	O
 .	O
-
 Moreover	O
 ,	O
 the	O
@@ -54393,7 +52893,6 @@ on	O
 most	O
 datasets	O
 .	O
-
 An	O
 analysis	O
 investigating	O
@@ -54439,7 +52938,6 @@ Table	O
 1	O
 )	O
 .	O
-
 However	O
 ,	O
 it	O
@@ -54456,7 +52954,6 @@ Table	O
 2	O
 )	O
 .	O
-
 This	O
 suggests	O
 that	O
@@ -54496,7 +52993,6 @@ the	O
 CWEB	B-DatasetName
 dataset	O
 .	O
-
 This	O
 is	O
 because	O
@@ -54546,7 +53042,6 @@ models	O
 including	O
 ours	O
 .	O
-
 Yang	O
 et	O
 al	O
@@ -54614,7 +53109,6 @@ confidence	O
 order	O
 models	O
 .	O
-
 We	O
 use	O
 the	O
@@ -54631,7 +53125,6 @@ the	O
 YAGO+KB	B-DatasetName
 candidates	O
 .	O
-
 Although	O
 all	O
 models	O
@@ -54670,7 +53163,6 @@ York	O
 Knicks	O
 )	O
 .	O
-
 Global	O
 models	O
 are	O
@@ -54727,7 +53219,6 @@ context	O
 to	O
 resolve	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -54748,7 +53239,6 @@ Australian	O
 rugby	O
 players	O
 .	O
-
 Although	O
 the	O
 local	O
@@ -54797,7 +53287,6 @@ teammates	O
 in	O
 advance	O
 .	O
-
 We	O
 provide	O
 detailed	O
@@ -54832,7 +53321,6 @@ the	O
 CoNLL	B-DatasetName
 dataset	O
 .	O
-
 Following	O
 Ganea	O
 and	O
@@ -54894,7 +53382,6 @@ for	O
 rare	O
 entities	O
 .	O
-
 Furthermore	O
 ,	O
 the	O
@@ -54973,7 +53460,6 @@ in	O
 the	O
 vocabulary	O
 .	O
-
 In	O
 our	O
 future	O
@@ -55055,7 +53541,6 @@ million	O
 entity	O
 annotations	O
 .	O
-
 We	O
 generate	O
 input	O
@@ -55083,7 +53568,6 @@ i.e.	O
 hyperlinks	O
 )	O
 .	O
-
 The	O
 input	O
 text	O
@@ -55106,7 +53590,6 @@ w	O
 000	O
 words	O
 .	O
-
 Similar	O
 to	O
 Ganea	O
@@ -55156,7 +53639,6 @@ approximately	O
 million	O
 parameters	O
 .	O
-
 To	O
 reduce	O
 the	O
@@ -55175,7 +53657,6 @@ initialized	O
 using	O
 BERT	B-MethodName
 .	O
-
 The	O
 other	O
 parameters	O
@@ -55183,7 +53664,6 @@ are	O
 initialized	O
 randomly	O
 .	O
-
 The	O
 model	O
 is	O
@@ -55201,7 +53681,6 @@ for	O
 seven	O
 epochs	O
 .	O
-
 To	O
 stabilize	O
 the	O
@@ -55241,7 +53720,6 @@ remaining	O
 six	O
 epochs	O
 .	O
-
 We	O
 implement	O
 the	O
@@ -55282,14 +53760,12 @@ Tesla	O
 V100	O
 GPUs	O
 .	O
-
 We	O
 optimize	O
 the	O
 model	O
 using	O
 AdamW.	O
-
 The	O
 hyper	O
 -	O
@@ -55335,7 +53811,6 @@ in	O
 Table	O
 5	O
 .	O
-
 We	O
 select	O
 these	O
@@ -55449,7 +53924,6 @@ the	O
 CoNLL	B-DatasetName
 dataset	O
 .	O
-
 The	O
 document	O
 is	O
@@ -55463,7 +53937,6 @@ the	O
 CoNLL	B-DatasetName
 dataset	O
 .	O
-
 As	O
 shown	O
 in	O
@@ -55496,7 +53969,6 @@ challenging	O
 to	O
 resolve	O
 .	O
-
 Notably	O
 ,	O
 the	O
@@ -55549,7 +54021,6 @@ born	O
 in	O
 1964	O
 .	O
-
 This	O
 is	O
 accomplished	O
@@ -55567,7 +54038,6 @@ players	O
 in	O
 advance	O
 .	O
-
 These	O
 two	O
 mentions	O
@@ -55579,7 +54049,6 @@ in	O
 the	O
 figure	O
 .	O
-
 Note	O
 that	O
 our	O
@@ -55646,7 +54115,6 @@ of	O
 downstream	O
 tasks	O
 .	O
-
 A	O
 recent	O
 line	O
@@ -55666,7 +54134,6 @@ models	O
 during	O
 pretraining	O
 .	O
-
 While	O
 most	O
 work	O
@@ -55693,7 +54160,6 @@ variety	O
 of	O
 formalisms	O
 .	O
-
 Any	O
 linguistics	O
 -	O
@@ -55713,7 +54179,6 @@ the	O
 underlying	O
 data	O
 .	O
-
 Can	O
 the	O
 choice	O
@@ -55723,7 +54188,6 @@ affect	O
 probing	O
 results	O
 ?	O
-
 To	O
 investigate	O
 ,	O
@@ -55743,7 +54207,6 @@ in	O
 role	O
 semantics	O
 .	O
-
 We	O
 find	O
 linguistically	O
@@ -55785,7 +54248,6 @@ same	O
 linguistic	O
 formalism	O
 .	O
-
 Our	O
 results	O
 suggest	O
@@ -55843,7 +54305,6 @@ natural	O
 language	O
 processing	O
 .	O
-
 Boosted	O
 by	O
 the	O
@@ -55954,7 +54415,6 @@ BERT	B-MethodName
 -	I-MethodName
 base	I-MethodName
 .	O
-
 Functional	O
 tokens	O
 are	O
@@ -55983,7 +54443,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Indeed	O
 ,	O
 even	O
@@ -55999,7 +54458,6 @@ similarities	O
 (	O
 Fig	O
 .	O
-
 1	O
 )	O
 suggests	O
@@ -56023,7 +54481,6 @@ of	O
 the	O
 model	O
 .	O
-
 A	O
 grounded	O
 investigation	O
@@ -56051,7 +54508,6 @@ downstream	O
 model	O
 development	O
 .	O
-
 Such	O
 investigation	O
 is	O
@@ -56105,7 +54561,6 @@ a	O
 task	O
 level	O
 .	O
-
 However	O
 ,	O
 there	O
@@ -56137,7 +54592,6 @@ formalisms	O
 ,	O
 incl	O
 .	O
-
 Universal	O
 (	O
 Schuster	O
@@ -56179,7 +54633,6 @@ head	O
 attachment	O
 rules	O
 .	O
-
 Any	O
 probing	O
 study	O
@@ -56197,7 +54650,6 @@ the	O
 underlying	O
 data	O
 .	O
-
 The	O
 differences	O
 between	O
@@ -56219,7 +54671,6 @@ the	O
 probing	O
 results	O
 ?	O
-
 This	O
 question	O
 is	O
@@ -56228,7 +54679,6 @@ for	O
 several	O
 reasons	O
 .	O
-
 Lin	O
 -	O
 guistic	O
@@ -56272,7 +54722,6 @@ pre	O
 -	O
 training	O
 .	O
-
 If	O
 ,	O
 alternatively	O
@@ -56302,7 +54751,6 @@ in	O
 fact	O
 encode	O
 .	O
-
 Finally	O
 ,	O
 on	O
@@ -56332,7 +54780,6 @@ language	O
 specific	O
 implementations	O
 .	O
-
 To	O
 the	O
 best	O
@@ -56388,7 +54835,6 @@ and	O
 text	O
 type	O
 .	O
-
 While	O
 many	O
 linguistic	O
@@ -56416,7 +54862,6 @@ task	O
 is	O
 rare	O
 .	O
-
 We	O
 focus	O
 on	O
@@ -56459,7 +54904,6 @@ where	O
 when	O
 etc	O
 .	O
-
 Decades	O
 of	O
 research	O
@@ -56544,7 +54988,6 @@ al	O
 2016	O
 )	O
 .	O
-
 The	O
 SemLink	O
 project	O
@@ -56568,7 +55011,6 @@ FrameNet	B-DatasetName
 for	O
 English	O
 .	O
-
 This	O
 allows	O
 us	O
@@ -56598,7 +55040,6 @@ formalisms	O
 are	O
 identical	O
 .	O
-
 SR3DE	B-MethodName
 (	O
 Mújdricza	O
@@ -56628,7 +55069,6 @@ of	O
 our	O
 results	O
 .	O
-
 Combined	O
 ,	O
 these	O
@@ -56692,7 +55132,6 @@ al	O
 2019	O
 )	O
 .	O
-
 To	O
 the	O
 best	O
@@ -56740,7 +55179,6 @@ phenomena	O
 
 Contributions	O
 .	O
-
 This	O
 work	O
 studies	O
@@ -56754,7 +55192,6 @@ on	O
 probing	O
 results	O
 .	O
-
 We	O
 conduct	O
 cross	O
@@ -56811,7 +55248,6 @@ in	O
 different	O
 languages	O
 .	O
-
 On	O
 the	O
 technical	O
@@ -56866,7 +55302,6 @@ models	O
 '	O
 behaviour	O
 .	O
-
 Finally	O
 ,	O
 advancing	O
@@ -56917,7 +55352,6 @@ the	O
 existing	O
 reports	O
 .	O
-
 Our	O
 results	O
 suggest	O
@@ -56981,7 +55415,6 @@ next	O
 sentence	O
 prediction	O
 .	O
-
 It	O
 uses	O
 WordPiece	O
@@ -57052,7 +55485,6 @@ the	O
 input	O
 sequence	O
 .	O
-
 Thanks	O
 to	O
 the	O
@@ -57118,7 +55550,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Although	O
 several	O
 recent	O
@@ -57218,7 +55649,6 @@ structure	O
 in	O
 BERT	B-MethodName
 .	O
-
 Surface	O
 -	O
 level	O
@@ -57258,7 +55688,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Tenney	O
 et	O
 al	O
@@ -57289,7 +55718,6 @@ classical	O
 NLP	O
 pipeline	O
 .	O
-
 Strengthening	O
 the	O
 claim	O
@@ -57330,7 +55758,6 @@ grained	O
 lexicalsemantic	O
 distinctions	O
 .	O
-
 Rogers	O
 et	O
 al	O
@@ -57378,7 +55805,6 @@ capabilities	O
 is	O
 inconclusive	O
 .	O
-
 Tenney	O
 et	O
 al	O
@@ -57406,7 +55832,6 @@ the	O
 layer	O
 structure	O
 .	O
-
 However	O
 ,	O
 out	O
@@ -57438,7 +55863,6 @@ the	O
 same	O
 pattern	O
 .	O
-
 Kovaleva	O
 et	O
 al	O
@@ -57457,7 +55881,6 @@ for	O
 FrameNet	B-DatasetName
 relations	O
 .	O
-
 However	O
 ,	O
 they	O
@@ -57560,7 +55983,6 @@ proto	O
 role	O
 probes	O
 .	O
-
 It	O
 is	O
 not	O
@@ -57599,7 +56021,6 @@ layer	O
 probing	O
 framework	O
 .	O
-
 The	O
 encoding	O
 produced	O
@@ -57630,7 +56051,6 @@ high	O
 level	O
 abstractions	O
 .	O
-
 Tenney	O
 et	O
 al	O
@@ -57669,7 +56089,6 @@ pre	O
 trained	O
 model	O
 .	O
-
 Tenney	O
 et	O
 al	O
@@ -57700,7 +56119,6 @@ learned	O
 during	O
 training	O
 .	O
-
 We	O
 revisit	O
 this	O
@@ -57726,7 +56144,6 @@ investigation	O
 role	O
 semantics	O
 .	O
-
 For	O
 further	O
 discussion	O
@@ -57739,7 +56156,6 @@ example	O
 :	O
 
 a.	O
-
 Despite	O
 surface	O
 -	O
@@ -57765,7 +56181,6 @@ sentences	O
 are	O
 equivalent	O
 .	O
-
 One	O
 such	O
 representation	O
@@ -57783,7 +56198,6 @@ related	O
 to	O
 syntax	O
 .	O
-
 In	O
 terms	O
 of	O
@@ -57857,7 +56271,6 @@ of	O
 human	O
 language	O
 .	O
-
 The	O
 size	O
 and	O
@@ -57928,7 +56341,6 @@ TMP	O
 )	O
 roles	O
 .	O
-
 Core	O
 roles	O
 are	O
@@ -57975,7 +56387,6 @@ Dowty	O
 1991	O
 )	O
 .	O
-
 The	O
 semantic	O
 interpretation	O
@@ -57996,7 +56407,6 @@ different	O
 categorization	O
 scheme	O
 .	O
-
 Motivated	O
 by	O
 the	O
@@ -58024,7 +56434,6 @@ classes	O
 ILC	O
 )	O
 .	O
-
 This	O
 methodology	O
 has	O
@@ -58050,7 +56459,6 @@ fetch	O
 gain	O
 etc	O
 .	O
-
 A	O
 verb	O
 in	O
@@ -58081,7 +56489,6 @@ licensed	O
 syntactic	O
 transformations	O
 .	O
-
 Unlike	O
 PropBank	O
 ,	O
@@ -58092,7 +56499,6 @@ set	O
 of	O
 approx	O
 .	O
-
 30	O
 thematic	O
 roles	O
@@ -58155,7 +56561,6 @@ to	O
 be	O
 filled	O
 .	O
-
 FrameNet	B-DatasetName
 offers	O
 fine	O
@@ -58180,7 +56585,6 @@ Seller	O
 and	O
 Money	O
 .	O
-
 The	O
 resource	O
 accompanies	O
@@ -58261,7 +56665,6 @@ destroyed	O
 ,	O
 etc	O
 .	O
-
 The	O
 feature	O
 -	O
@@ -58315,7 +56718,6 @@ al	O
 2016	O
 )	O
 .	O
-
 While	O
 being	O
 close	O
@@ -58337,7 +56739,6 @@ to	O
 the	O
 representation	O
 .	O
-
 On	O
 the	O
 opposite	O
@@ -58373,7 +56774,6 @@ al	O
 2017	O
 )	O
 .	O
-
 VerbNet	B-DatasetName
 takes	O
 a	O
@@ -58404,7 +56804,6 @@ modifier	O
 )	O
 roles	O
 .	O
-
 SPR	B-MethodName
 avoids	O
 the	O
@@ -58454,7 +56853,6 @@ our	O
 starting	O
 point	O
 .	O
-
 Edge	O
 probing	O
 aims	O
@@ -58472,7 +56870,6 @@ or	O
 word	O
 encodings	O
 .	O
-
 More	O
 formally	O
 ,	O
@@ -58558,7 +56955,6 @@ e	O
 n	O
 i	O
 .	O
-
 A	O
 trainable	O
 scalar	O
@@ -58677,7 +57073,6 @@ cross	O
 task	O
 comparison	O
 .	O
-
 The	O
 original	O
 setup	O
@@ -58695,7 +57090,6 @@ implementation	O
 Regression	O
 tasks	O
 .	O
-
 The	O
 original	O
 edge	O
@@ -58706,7 +57100,6 @@ considers	O
 classification	O
 tasks	O
 .	O
-
 Many	O
 language	O
 phenomena	O
@@ -58725,7 +57118,6 @@ modeled	O
 as	O
 regression	O
 .	O
-
 We	O
 extend	O
 the	O
@@ -58766,7 +57158,6 @@ value	O
 Flat	O
 model	O
 .	O
-
 To	O
 decrease	O
 the	O
@@ -58798,7 +57189,6 @@ low	O
 as	O
 possible	O
 .	O
-
 While	O
 Tenney	O
 et	O
@@ -58843,7 +57233,6 @@ of	O
 a	O
 word	O
 .	O
-
 To	O
 further	O
 increase	O
@@ -58886,7 +57275,6 @@ Separate	O
 scalar	O
 mixes	O
 .	O
-
 To	O
 enable	O
 fine	O
@@ -58928,7 +57316,6 @@ for	O
 prediction	O
 1	O
 .	O
-
 Indeed	O
 ,	O
 we	O
@@ -58951,7 +57338,6 @@ linguistically	O
 meaningful	O
 -variation	O
 .	O
-
 Combined	O
 with	O
 regressionbased	O
@@ -58980,7 +57366,6 @@ Sentence	O
 level	O
 probes	O
 .	O
-
 Utilizing	O
 the	O
 BERTspecific	O
@@ -59012,7 +57397,6 @@ kit	O
 Anchor	O
 tasks	O
 .	O
-
 We	O
 employ	O
 two	O
@@ -59025,7 +57409,6 @@ layer	O
 probing	O
 setup	O
 .	O
-
 Mixing	B-TaskName
 weight	I-TaskName
 plotting	I-TaskName
@@ -59048,7 +57431,6 @@ a	O
 softmax	O
 function	O
 .	O
-
 Layer	B-HyperparameterName
 center	I-HyperparameterName
 -	O
@@ -59068,7 +57450,6 @@ task	O
 layer	O
 utilization	O
 .	O
-
 While	O
 the	O
 distribution	O
@@ -59136,7 +57517,6 @@ traditional	O
 NLP	O
 pipeline	O
 .	O
-
 A	O
 prominent	O
 property	O
@@ -59157,7 +57537,6 @@ predict	O
 downstream	O
 phenomena	O
 .	O
-
 In	O
 the	O
 context	O
@@ -59179,7 +57558,6 @@ end	O
 feature	O
 extractors	O
 .	O
-
 Following	O
 this	O
 intuition	O
@@ -59220,7 +57598,6 @@ between	O
 the	O
 targets	O
 .	O
-
 The	O
 softmax	O
 transformation	O
@@ -59261,7 +57638,6 @@ layer	O
 during	O
 prediction	O
 .	O
-
 We	O
 use	O
 Kullback	O
@@ -59297,7 +57673,6 @@ and	O
 lemma	O
 )	O
 .	O
-
 Note	O
 that	O
 the	O
@@ -59329,7 +57704,6 @@ of	O
 the	O
 study	O
 .	O
-
 jections	O
 in	O
 the	O
@@ -59393,7 +57767,6 @@ to	O
 predicate	O
 semantics	O
 .	O
-
 We	O
 follow	O
 the	O
@@ -59413,7 +57786,6 @@ and	O
 SPR	B-DatasetName
 data	O
 .	O
-
 The	O
 XNLI	B-DatasetName
 task	O
@@ -59431,7 +57803,6 @@ scalar	O
 mix	O
 analysis	O
 .	O
-
 To	O
 reduce	O
 the	O
@@ -59464,7 +57835,6 @@ most	O
 frequent	O
 labels	O
 .	O
-
 Below	O
 we	O
 define	O
@@ -59503,7 +57873,6 @@ Table	O
 provides	O
 examples	O
 .	O
-
 We	O
 evaluate	O
 the	O
@@ -59534,7 +57903,6 @@ of	O
 a	O
 word	O
 .	O
-
 This	O
 requires	O
 contextual	O
@@ -59575,7 +57943,6 @@ in	O
 the	O
 sentence	O
 .	O
-
 Again	O
 ,	O
 the	O
@@ -59596,7 +57963,6 @@ from	O
 the	O
 wordpieces	O
 .	O
-
 Part	O
 -	O
 of	O
@@ -59619,7 +57985,6 @@ the	O
 given	O
 token	O
 .	O
-
 Lexical	O
 unit	O
 (	O
@@ -59645,7 +58010,6 @@ in	O
 lexical	O
 resources	O
 .	O
-
 We	O
 extract	O
 coarse	O
@@ -59720,7 +58084,6 @@ and	O
 FrameNet	B-DatasetName
 fn	O
 .	O
-
 Note	O
 that	O
 we	O
@@ -59746,7 +58109,6 @@ from	O
 the	O
 data	O
 .	O
-
 Semantic	O
 proto	O
 -	O
@@ -59754,7 +58116,6 @@ role	O
 (	O
 spr	O
 .	O
-
 [	O
 prop	O
 ]	O
@@ -59796,7 +58157,6 @@ an	O
 argument	O
 tgt	O
 .	O
-
 XNLI	B-DatasetName
 is	O
 a	O
@@ -59812,7 +58172,6 @@ the	O
 corresponding	O
 dataset	O
 .	O
-
 Given	O
 two	O
 sentences	O
@@ -59833,7 +58192,6 @@ holds	O
 between	O
 them	O
 .	O
-
 We	O
 use	O
 NLI	O
@@ -59851,7 +58209,6 @@ level	O
 semantic	O
 tasks	O
 .	O
-
 We	O
 extract	O
 the	O
@@ -59884,7 +58241,6 @@ implemented	O
 using	O
 AllenNLP	O
 .	O
-
 2	O
 We	O
 train	O
@@ -59907,7 +58263,6 @@ size	I-HyperparameterName
 of	O
 32	B-HyperparameterValue
 .	O
-
 Due	O
 to	O
 the	O
@@ -59936,7 +58291,6 @@ Tesla	O
 V100	O
 GPU	O
 .	O
-
 In	O
 addition	O
 to	O
@@ -60000,7 +58354,6 @@ in	O
 Table	O
 5	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -60047,7 +58400,6 @@ of	O
 training	O
 data	O
 .	O
-
 Surprisingly	O
 ,	O
 as	O
@@ -60076,7 +58428,6 @@ token.ix	O
 (	O
 0	O
 .	O
-
 learning	O
 to	O
 locate	O
@@ -60144,7 +58495,6 @@ fixed	O
 random	O
 vector	O
 .	O
-
 We	O
 have	O
 confirmed	O
@@ -60188,7 +58538,6 @@ of	O
 the	O
 task	O
 .	O
-
 For	O
 brevity	O
 ,	O
@@ -60232,7 +58581,6 @@ order	O
 in	O
 BERT	B-MethodName
 .	O
-
 We	O
 observe	O
 that	O
@@ -60244,7 +58592,6 @@ tasks	O
 (	O
 Fig	O
 .	O
-
 2	O
 )	O
 generally	O
@@ -60277,7 +58624,6 @@ for	O
 German	O
 probes	O
 .	O
-
 Basic	O
 word	O
 -	O
@@ -60350,7 +58696,6 @@ mBERT	O
 in	O
 detail	O
 .	O
-
 For	O
 both	O
 English	O
@@ -60442,7 +58787,6 @@ de	O
 argument	O
 tokens	O
 .	O
-
 While	O
 the	O
 argument	O
@@ -60478,7 +58822,6 @@ the	O
 chosen	O
 formalism	O
 .	O
-
 In	O
 English	O
 ,	O
@@ -60502,7 +58845,6 @@ previously	O
 published	O
 results	O
 .	O
-
 However	O
 ,	O
 the	O
@@ -60532,7 +58874,6 @@ contain	O
 lexical	O
 information	O
 .	O
-
 Coupled	O
 with	O
 the	O
@@ -60604,7 +58945,6 @@ predicate	O
 classification	O
 strategy	O
 .	O
-
 This	O
 finding	O
 confirms	O
@@ -60672,11 +59012,9 @@ arguments	O
 (	O
 Fig	O
 .	O
-
 3	O
 )	O
 .	O
-
 The	O
 results	O
 reveal	O
@@ -60732,7 +59070,6 @@ and	O
 POS	O
 probes	O
 .	O
-
 Aside	O
 from	O
 the	O
@@ -60752,7 +59089,6 @@ English	O
 and	O
 German	O
 .	O
-
 This	O
 aligns	O
 with	O
@@ -60794,7 +59130,6 @@ al	O
 2009	O
 )	O
 .	O
-
 Note	O
 that	O
 the	O
@@ -60867,7 +59202,6 @@ VerbNet	B-DatasetName
 and	O
 FrameNet	B-DatasetName
 .	O
-
 The	O
 lack	O
 of	O
@@ -60907,7 +59241,6 @@ a	O
 likely	O
 cause	O
 .	O
-
 The	O
 difference	O
 in	O
@@ -60938,7 +59271,6 @@ Table	O
 3	O
 )	O
 .	O
-
 The	O
 data	O
 for	O
@@ -60965,7 +59297,6 @@ Net	I-DatasetName
 and	O
 FrameNet	B-DatasetName
 .	O
-
 Role	O
 annotations	O
 for	O
@@ -61033,7 +59364,6 @@ al	O
 2016	O
 )	O
 .	O
-
 As	O
 a	O
 result	O
@@ -61069,7 +59399,6 @@ within	O
 the	O
 frame	O
 .	O
-
 We	O
 assume	O
 that	O
@@ -61089,7 +59418,6 @@ our	O
 probing	O
 results	O
 .	O
-
 The	O
 ability	O
 of	O
@@ -61141,7 +59469,6 @@ role	O
 labeling	O
 tasks	O
 .	O
-
 Unlike	O
 (	O
 Tenney	O
@@ -61169,7 +59496,6 @@ separate	O
 regression	O
 tasks	O
 .	O
-
 The	O
 results	O
 in	O
@@ -61207,7 +59533,6 @@ small	O
 dataset	O
 size	O
 .	O
-
 We	O
 observe	O
 that	O
@@ -61222,7 +59547,6 @@ to	O
 perform	O
 better	O
 .	O
-
 The	O
 untrained	O
 mBERT	B-MethodName
@@ -61246,7 +59570,6 @@ of	O
 the	O
 task	O
 .	O
-
 Our	O
 fine	O
 -	O
@@ -61273,11 +59596,9 @@ probes	O
 (	O
 Fig	O
 .	O
-
 4	O
 )	O
 .	O
-
 The	O
 results	O
 indicate	O
@@ -61342,7 +59663,6 @@ argument	O
 tokens	O
 tgt	O
 .	O
-
 With	O
 few	O
 exceptions	O
@@ -61417,7 +59737,6 @@ Proto	O
 Agent	O
 property	O
 .	O
-
 The	O
 correspondence	O
 is	O
@@ -61470,7 +59789,6 @@ semantic	O
 probing	O
 results	O
 .	O
-
 We	O
 have	O
 shown	O
@@ -61504,7 +59822,6 @@ trained	O
 mBERT	B-TaskName
 model	O
 .	O
-
 Our	O
 refined	O
 implementation	O
@@ -61533,7 +59850,6 @@ information	O
 within	O
 mBERT	B-TaskName
 .	O
-
 Our	O
 findings	O
 suggest	O
@@ -61552,7 +59868,6 @@ in	O
 probing	O
 studies	O
 .	O
-
 This	O
 prompts	O
 several	O
@@ -61565,7 +59880,6 @@ up	O
 probing	O
 studies	O
 .	O
-
 First	O
 ,	O
 the	O
@@ -61588,7 +59902,6 @@ always	O
 explicitly	O
 specified	O
 .	O
-
 Second	O
 ,	O
 if	O
@@ -61611,7 +59924,6 @@ for	O
 several	O
 languages	O
 .	O
-
 Finally	O
 ,	O
 assembling	O
@@ -61675,7 +59987,6 @@ upon	O
 linguistic	O
 material	O
 .	O
-
 An	O
 investigation	O
 of	O
@@ -61761,7 +60072,6 @@ learning	O
 over	O
 text	O
 .	O
-
 Like	O
 BERT	B-MethodName
 ,	O
@@ -61777,7 +60087,6 @@ given	O
 their	O
 contexts	O
 .	O
-
 However	O
 ,	O
 Electric	O
@@ -61799,7 +60108,6 @@ in	O
 a	O
 context	O
 .	O
-
 Instead	O
 ,	O
 it	O
@@ -61821,7 +60129,6 @@ given	O
 its	O
 context	O
 .	O
-
 We	O
 train	O
 Electric	B-MethodName
@@ -61853,7 +60160,6 @@ pre	O
 training	O
 method	O
 .	O
-
 Electric	O
 performs	O
 well	O
@@ -61893,7 +60199,6 @@ masked	O
 language	O
 models	O
 .	O
-
 Furthermore	O
 ,	O
 it	O
@@ -61945,7 +60250,6 @@ learning	O
 over	O
 text	O
 .	O
-
 BERT	B-MethodName
 (	O
 Devlin	O
@@ -62015,7 +60319,6 @@ fine	O
 -	O
 tuning	O
 .	O
-
 ELECTRA	O
 (	O
 Clark	O
@@ -62037,7 +60340,6 @@ alleviates	O
 these	O
 disadvantages	O
 .	O
-
 Instead	O
 of	O
 masking	O
@@ -62057,7 +60359,6 @@ small	O
 generator	O
 network	O
 .	O
-
 The	O
 pre	O
 -	O
@@ -62073,7 +60374,6 @@ vs.	O
 replaced	O
 tokens	O
 .	O
-
 While	O
 on	O
 the	O
@@ -62099,7 +60399,6 @@ and	O
 cloze	O
 modeling	O
 .	O
-
 In	O
 particular	O
 ,	O
@@ -62123,7 +60422,6 @@ model	I-MethodName
 EBM	O
 )	O
 .	O
-
 Then	O
 we	O
 show	O
@@ -62155,7 +60453,6 @@ for	O
 some	O
 applications	O
 .	O
-
 1	O
 EBMs	O
 learn	O
@@ -62181,7 +60478,6 @@ to	O
 other	O
 inputs	O
 .	O
-
 They	O
 are	O
 flexible	O
@@ -62195,7 +60491,6 @@ compute	O
 normalized	O
 probabilities	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -62231,7 +60526,6 @@ given	O
 its	O
 context	O
 .	O
-
 Unlike	O
 with	O
 BERT	B-MethodName
@@ -62258,7 +60552,6 @@ masked	O
 out	O
 subset	O
 .	O
-
 We	O
 propose	O
 a	O
@@ -62285,7 +60578,6 @@ Hyvärinen	O
 2010	O
 )	O
 .	O
-
 Then	O
 we	O
 show	O
@@ -62350,7 +60642,6 @@ under	O
 performs	O
 ELECTRA	B-MetricName
 .	O
-
 However	O
 ,	O
 Electric	B-MethodName
@@ -62433,7 +60724,6 @@ tokens	O
 masked	O
 out	O
 .	O
-
 In	O
 total	O
 ,	O
@@ -62503,7 +60793,6 @@ the	O
 cloze	O
 task	O
 .	O
-
 These	O
 models	O
 learn	O
@@ -62570,7 +60859,6 @@ special	O
 MASK]placeholder	O
 token	O
 .	O
-
 This	O
 masked	O
 sequence	O
@@ -62592,7 +60880,6 @@ al	O
 2017	O
 )	O
 .	O
-
 Then	O
 the	O
 representation	O
@@ -62650,7 +60937,6 @@ a	O
 softmax	O
 layer	O
 .	O
-
 Electric	O
 first	O
 maps	O
@@ -62689,7 +60975,6 @@ a	O
 transformer	O
 network	O
 .	O
-
 The	O
 model	O
 assigns	O
@@ -62805,7 +61090,6 @@ al	O
 2016	O
 )	O
 .	O
-
 Unlike	O
 with	O
 BERT	B-MethodName
@@ -62836,7 +61120,6 @@ to	O
 the	O
 transformer	O
 .	O
-
 As	O
 a	O
 result	O
@@ -62919,7 +61202,6 @@ is	O
 not	O
 possible	O
 .	O
-
 Instead	O
 ,	O
 we	O
@@ -62967,7 +61249,6 @@ x	O
 \t	O
 )	O
 .	O
-
 NCE	B-MethodName
 learns	O
 the	O
@@ -63004,7 +61285,6 @@ t	O
 \t	O
 )	O
 .	O
-
 First	O
 ,	O
 we	O
@@ -63258,7 +61538,6 @@ Hyvärinen	O
 2010	O
 )	O
 .	O
-
 A	O
 consequence	O
 of	O
@@ -63307,7 +61586,6 @@ in	O
 Algorithm	O
 1	O
 .	O
-
 Taking	O
 the	O
 gradient	O
@@ -63344,7 +61622,6 @@ modelp	O
 
 1	O
 .	O
-
 Initialize	O
 the	O
 loss	O
@@ -63371,10 +61648,8 @@ k•q(xt|x	O
 \t	O
 )	O
 .	O
-
 2	O
 .	O
-
 Sample	O
 k	O
 negative	O
@@ -63394,10 +61669,8 @@ t	O
 \t	O
 )	O
 .	O
-
 3	O
 .	O
-
 For	O
 each	O
 negative	O
@@ -63433,7 +61706,6 @@ of	O
 L(θ	O
 )	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -63474,7 +61746,6 @@ negative	O
 sample	O
 )	O
 .	O
-
 We	O
 propose	O
 a	O
@@ -63496,7 +61767,6 @@ in	O
 Algorithm	O
 2	O
 .	O
-
 It	O
 requires	O
 just	O
@@ -63527,10 +61797,8 @@ q	O
 modelp	O
 θ	O
 .	O
-
 1	O
 .	O
-
 Pick	O
 k	O
 unique	O
@@ -63561,7 +61829,6 @@ n.	O
 
 2	O
 .	O
-
 Replace	O
 the	O
 k	O
@@ -63595,7 +61862,6 @@ R	O
 X	O
 )	O
 .	O
-
 3	O
 .	O
 
@@ -63674,7 +61940,6 @@ k	O
 data	O
 samples	O
 .	O
-
 However	O
 ,	O
 this	O
@@ -63702,7 +61967,6 @@ noised	O
 \t	O
 )	O
 .	O
-
 To	O
 apply	O
 this	O
@@ -63753,7 +62017,6 @@ see	O
 below	O
 )	O
 .	O
-
 This	O
 efficiency	O
 trick	O
@@ -63788,7 +62051,6 @@ match	O
 p	O
 data	O
 .	O
-
 NCE	B-DatasetName
 commonly	O
 employs	O
@@ -63817,7 +62079,6 @@ Ou	O
 2018	O
 )	O
 .	O
-
 In	O
 particular	O
 ,	O
@@ -63859,7 +62120,6 @@ of	O
 each	O
 token	O
 .	O
-
 The	O
 model	O
 runs	O
@@ -63875,7 +62135,6 @@ the	O
 input	O
 sequence	O
 .	O
-
 These	O
 transformers	O
 apply	O
@@ -63901,7 +62160,6 @@ to	O
 -	O
 left	O
 .	O
-
 The	O
 model	O
 's	O
@@ -63979,7 +62237,6 @@ over	O
 the	O
 data	O
 .	O
-
 The	O
 model	O
 producing	O
@@ -64012,7 +62269,6 @@ ELECTRA	O
 pretraining	O
 method	O
 .	O
-
 ELECTRA	B-DatasetName
 also	O
 trains	O
@@ -64040,7 +62296,6 @@ generator	O
 "	O
 network	O
 .	O
-
 However	O
 ,	O
 ELECTRA	B-DatasetName
@@ -64088,7 +62343,6 @@ the	O
 sigmoid	O
 function	O
 .	O
-
 Electric	O
 on	O
 the	O
@@ -64168,7 +62422,6 @@ the	O
 model	O
 directly	O
 .	O
-
 This	O
 difference	O
 is	O
@@ -64202,7 +62455,6 @@ learning	O
 word	O
 embeddings	O
 .	O
-
 A	O
 disadvantage	O
 of	O
@@ -64225,7 +62477,6 @@ of	O
 noise	O
 distribution	O
 .	O
-
 Since	O
 ELECTRA	B-DatasetName
 's	O
@@ -64254,7 +62505,6 @@ the	O
 input	O
 sequence	O
 .	O
-
 Therefore	O
 ELECTRA	O
 can	O
@@ -64273,7 +62523,6 @@ cloze	O
 model	O
 for	O
 q.	O
-
 An	O
 advantage	O
 of	O
@@ -64311,7 +62560,6 @@ text	O
 generation	O
 systems	O
 .	O
-
 The	O
 differences	O
 between	O
@@ -64327,7 +62575,6 @@ Model	O
 Noise	O
 Dist	O
 .	O
-
 Binary	O
 Classifier	O
 Electric	O
@@ -64403,7 +62650,6 @@ comparison	O
 with	O
 GPT-2	B-MethodName
 .	O
-
 The	O
 noise	O
 distribution	O
@@ -64421,7 +62667,6 @@ size	O
 of	O
 Electric	O
 .	O
-
 We	O
 do	O
 no	O
@@ -64436,7 +62681,6 @@ values	O
 as	O
 ELECTRA	B-DatasetName
 .	O
-
 Further	O
 details	O
 on	O
@@ -64483,7 +62727,6 @@ al	O
 2018	O
 )	O
 .	O
-
 We	O
 report	O
 exact	O
@@ -64514,7 +62757,6 @@ inference	I-TaskName
 GLUE	B-DatasetName
 task	O
 .	O
-
 Reported	O
 scores	O
 are	O
@@ -64530,7 +62772,6 @@ different	O
 random	O
 seeds	O
 .	O
-
 We	O
 use	O
 the	O
@@ -64550,7 +62791,6 @@ in	O
 Table	O
 1	O
 .	O
-
 Electric	B-MethodName
 scores	O
 better	O
@@ -64570,7 +62810,6 @@ pre	O
 -	O
 training	O
 .	O
-
 However	O
 ,	O
 Electric	B-MetricName
@@ -64580,7 +62819,6 @@ lower	O
 than	O
 ELECTRA	B-MetricName
 .	O
-
 One	O
 possible	O
 explanation	O
@@ -64607,7 +62845,6 @@ a	O
 masked	O
 LM	O
 .	O
-
 We	O
 tested	O
 this	O
@@ -64626,7 +62863,6 @@ model	O
 as	O
 Electric	B-MethodName
 .	O
-
 Performance	O
 did	O
 indeed	O
@@ -64642,7 +62878,6 @@ half	O
 the	O
 gap	O
 .	O
-
 The	O
 surprising	O
 drop	O
@@ -64728,7 +62963,6 @@ Cho	O
 2019	O
 )	O
 .	O
-
 PLLs	O
 for	O
 Electric	O
@@ -64772,7 +63006,6 @@ or	O
 ASR	B-TaskName
 system	O
 .	O
-
 While	O
 historically	O
 log	O
@@ -64809,7 +63042,6 @@ al	O
 2019	O
 )	O
 .	O
-
 However	O
 ,	O
 computing	O
@@ -64833,7 +63065,6 @@ token	O
 masked	O
 out	O
 .	O
-
 Salazar	O
 et	O
 al	O
@@ -64893,7 +63124,6 @@ a	O
 masked	O
 LM	O
 .	O
-
 We	O
 use	O
 the	O
@@ -64963,7 +63193,6 @@ al	O
 2020	O
 )	O
 .	O
-
 Given	O
 speech	O
 features	O
@@ -65042,7 +63271,6 @@ candidate	O
 output	O
 sequence	O
 x.	O
-
 We	O
 select	O
 the	O
@@ -65126,7 +63354,6 @@ pass	O
 like	O
 Electric	O
 .	O
-
 TwoTower	B-MethodName
 is	O
 a	O
@@ -65150,7 +63377,6 @@ size	O
 as	O
 Electric	B-MethodName
 .	O
-
 ELECTRA	B-DatasetName
 -	I-MethodName
 TT	I-MethodName
@@ -65174,7 +63400,6 @@ masked	O
 language	O
 model	O
 .	O
-
 5	O
 The	O
 noise	O
@@ -65212,7 +63437,6 @@ in	O
 Table	O
 2	O
 .	O
-
 Electric	B-MethodName
 scores	O
 better	O
@@ -65224,7 +63448,6 @@ on	O
 comparable	O
 data	O
 .	O
-
 While	O
 scoring	O
 worse	O
@@ -65238,7 +63461,6 @@ faster	O
 to	O
 run	O
 .	O
-
 It	O
 also	O
 slightly	O
@@ -65270,7 +63492,6 @@ training	O
 language	O
 models	O
 .	O
-
 Furthermore	O
 ,	O
 Electric	B-MethodName
@@ -65296,7 +63517,6 @@ produce	O
 PLL	B-MetricName
 scores	O
 .	O
-
 TwoTower	B-MethodName
 scores	O
 lower	O
@@ -65375,7 +63595,6 @@ tasks	O
 for	O
 NLP	O
 .	O
-
 Unlike	O
 Electric	B-MethodName
 ,	O
@@ -65424,7 +63643,6 @@ al	O
 2007	O
 )	O
 .	O
-
 While	O
 many	O
 training	O
@@ -65474,7 +63692,6 @@ model	O
 per	O
 sample	O
 .	O
-
 We	O
 instead	O
 use	O
@@ -65526,7 +63743,6 @@ al	O
 2016	O
 )	O
 .	O
-
 While	O
 EBMs	O
 have	O
@@ -65581,7 +63797,6 @@ training	O
 NLP	O
 models	O
 .	O
-
 Several	O
 papers	O
 have	O
@@ -65647,7 +63862,6 @@ noise	B-MethodName
 contrastive	I-MethodName
 estimation	I-MethodName
 .	O
-
 Although	O
 Electric	O
 can	O
@@ -65677,7 +63891,6 @@ pre	O
 training	O
 algorithm	O
 .	O
-
 While	O
 slightly	O
 underperforming	O
@@ -65704,7 +63917,6 @@ scores	O
 for	O
 text	O
 .	O
-
 Furthermore	O
 ,	O
 it	O
@@ -65771,7 +63983,6 @@ sentence	I-TaskName
 prediction	I-TaskName
 task	O
 .	O
-
 We	O
 use	O
 the	O
@@ -65796,7 +64007,6 @@ share	O
 token	O
 embeddings	O
 .	O
-
 We	O
 do	O
 not	O
@@ -65819,7 +64029,6 @@ improve	O
 results	O
 too	O
 .	O
-
 We	O
 did	O
 no	O
@@ -65840,7 +64049,6 @@ and	O
 our	O
 baselines	O
 .	O
-
 These	O
 hyperparameters	O
 are	O
@@ -65864,7 +64072,6 @@ in	O
 Table	O
 3	O
 .	O
-
 The	O
 hidden	B-HyperparameterName
 sizes	I-HyperparameterName
@@ -65902,7 +64109,6 @@ size	O
 of	O
 Electric	O
 .	O
-
 We	O
 chose	O
 this	O
@@ -65942,7 +64148,6 @@ ELECTRA	O
 's	O
 generator	O
 .	O
-
 To	O
 make	O
 the	O
@@ -65962,7 +64167,6 @@ ELEC	B-MetricName
 -	I-DatasetName
 TRA	I-DatasetName
 .	O
-
 This	O
 same	O
 generator	O
@@ -65974,7 +64178,6 @@ ELECTRA	B-DatasetName
 -	I-DatasetName
 TT	I-MethodName
 .	O
-
 The	O
 TwoTower	B-MethodName
 baseline	O
@@ -65998,7 +64201,6 @@ compute	O
 to	O
 run	O
 .	O
-
 The	O
 Electric	B-MethodName
 models	I-MethodName
@@ -66080,7 +64282,6 @@ tuning	O
 as	O
 well	O
 .	O
-
 For	O
 GLUE	B-DatasetName
 tasks	O
@@ -66100,7 +64301,6 @@ pre	O
 trained	O
 transformer	O
 .	O
-
 For	O
 SQuAD	B-DatasetName
 ,	O
@@ -66160,7 +64360,6 @@ for	O
 SQuAD	B-DatasetName
 2.0	I-DatasetName
 .	O
-
 ELECTRA	O
 's	O
 hyperparameters	O
@@ -66243,14 +64442,12 @@ tuning	O
 datasets	O
 below	O
 .	O
-
 All	O
 datasets	O
 are	O
 in	O
 English	O
 .	O
-
 GLUE	B-DatasetName
 data	O
 can	O
@@ -66268,7 +64465,6 @@ downloaded	O
 at	O
 https://rajpurkar	O
 .	O
-
 github.io/SQuAD-explorer/.	O
 
 •	O
@@ -66287,7 +64483,6 @@ al	O
 2018	O
 )	O
 .	O
-
 The	O
 task	O
 is	O
@@ -66302,7 +64497,6 @@ grammatical	O
 or	O
 not	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66334,7 +64528,6 @@ al	O
 2013	O
 )	O
 .	O
-
 The	O
 tasks	O
 is	O
@@ -66377,7 +64570,6 @@ Brockett	O
 2005	O
 )	O
 .	O
-
 The	O
 task	O
 is	O
@@ -66392,7 +64584,6 @@ equivalent	O
 or	O
 not	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66420,7 +64611,6 @@ al	O
 2017	O
 )	O
 .	O
-
 The	O
 tasks	O
 is	O
@@ -66439,7 +64629,6 @@ a	O
 5	O
 scale	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66478,7 +64667,6 @@ al	O
 2017	O
 )	O
 .	O
-
 The	O
 task	O
 is	O
@@ -66493,7 +64681,6 @@ are	O
 semantically	O
 equivalent	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66528,7 +64715,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Given	O
 a	O
 premise	O
@@ -66557,7 +64743,6 @@ hypothesis	O
 or	O
 neither	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66570,7 +64755,6 @@ ten	O
 different	O
 sources	O
 .	O
-
 using	O
 dev	O
 -	O
@@ -66644,7 +64828,6 @@ comments	O
 and	O
 suggestions	O
 .	O
-
 Kevin	O
 is	O
 supported	O
@@ -66720,7 +64903,6 @@ al	O
 2016	O
 )	O
 .	O
-
 The	O
 task	O
 is	O
@@ -66738,7 +64920,6 @@ a	O
 question	O
 sentence	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66764,7 +64945,6 @@ al	O
 2007	O
 )	O
 .	O
-
 Given	O
 a	O
 premise	O
@@ -66788,7 +64968,6 @@ hypothesis	O
 or	O
 not	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66822,7 +65001,6 @@ al	O
 2016	O
 )	O
 .	O
-
 Given	O
 a	O
 context	O
@@ -66847,7 +65025,6 @@ answering	O
 the	O
 question	O
 .	O
-
 The	O
 dataset	O
 contains	O
@@ -66877,7 +65054,6 @@ al	O
 2018	O
 )	O
 .	O
-
 This	O
 task	O
 adds	O
@@ -66947,7 +65123,6 @@ the	O
 other	O
 tasks	O
 .	O
-
 We	O
 use	O
 the	O
@@ -66972,7 +65147,6 @@ compute	O
 MCC	B-MetricName
 8	I-MetricName
 .	O
-
 We	O
 use	O
 the	O
@@ -67010,7 +65184,6 @@ in	O
 Table	O
 5	O
 .	O
-
 Following	O
 BERT	B-MethodName
 ,	O
@@ -67047,7 +65220,6 @@ as	O
 classifier	O
 approach	O
 .	O
-
 We	O
 show	O
 dev	O
@@ -67118,12 +65290,10 @@ of	O
 multiple	O
 models	O
 .	O
-
 While	O
 6	O
 https://worksheets	O
 .	O
-
 codalab.org/rest/bundles/	O
 0x6b567e1cf2e041ec80d7098f031c5c9e/	O
 contents	O
@@ -67139,7 +65309,6 @@ generated	O
 /	O
 scipy.stats	O
 .	O
-
 spearmanr.html	O
 
 FIND	O
@@ -67203,7 +65372,6 @@ imperfect	O
 ,	O
 datasets	O
 .	O
-
 These	O
 classifiers	O
 are	O
@@ -67214,7 +65382,6 @@ have	O
 undesirable	O
 properties	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -67239,7 +65406,6 @@ due	O
 to	O
 overfitting	O
 .	O
-
 In	O
 this	O
 paper	O
@@ -67263,7 +65429,6 @@ irrelevant	O
 hidden	O
 features	O
 .	O
-
 Experiments	O
 show	O
 that	O
@@ -67324,7 +65489,6 @@ including	O
 text	B-TaskName
 classification	I-TaskName
 .	O
-
 With	O
 sufficient	O
 and	O
@@ -67342,7 +65506,6 @@ perform	O
 incredibly	O
 well	O
 .	O
-
 However	O
 ,	O
 in	O
@@ -67357,7 +65520,6 @@ datasets	O
 are	O
 scarce	O
 .	O
-
 Often	O
 times	O
 ,	O
@@ -67392,7 +65554,6 @@ al	O
 2018	O
 )	O
 .	O
-
 These	O
 can	O
 lead	O
@@ -67403,7 +65564,6 @@ with	O
 undesirable	O
 properties	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -67451,7 +65611,6 @@ standard	O
 model	O
 fitting	O
 .	O
-
 If	O
 the	O
 weaknesses	O
@@ -67474,7 +65633,6 @@ mitigate	O
 such	O
 weaknesses	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -67507,7 +65665,6 @@ al	O
 2018	O
 )	O
 .	O
-
 Adversarial	O
 training	O
 can	O
@@ -67534,7 +65691,6 @@ al	O
 2018	O
 )	O
 .	O
-
 With	O
 a	O
 limited	O
@@ -67607,7 +65763,6 @@ hoc	O
 error	O
 analysis	O
 .	O
-
 To	O
 rectify	O
 such	O
@@ -67646,7 +65801,6 @@ Kersting	O
 2019	O
 )	O
 .	O
-
 Since	O
 the	O
 models	O
@@ -67666,7 +65820,6 @@ is	O
 not	O
 possible	O
 .	O
-
 Existing	O
 techniques	O
 ,	O
@@ -67682,7 +65835,6 @@ individual	O
 predictions	O
 instead	O
 .	O
-
 Then	O
 ,	O
 additional	O
@@ -67699,7 +65851,6 @@ retrain	O
 the	O
 models	O
 .	O
-
 However	O
 ,	O
 such	O
@@ -67724,7 +65875,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Furthermore	O
 ,	O
 these	O
@@ -67786,7 +65936,6 @@ the	O
 classification	O
 task	O
 .	O
-
 We	O
 name	O
 this	O
@@ -67799,7 +65948,6 @@ aNd	O
 Disabling	O
 )	O
 .	O
-
 FIND	B-MethodName
 exploits	O
 an	O
@@ -67858,7 +66006,6 @@ of	O
 the	O
 model	O
 .	O
-
 This	O
 enables	O
 humans	O
@@ -67888,7 +66035,6 @@ accuracy	O
 during	O
 testing	O
 .	O
-
 The	O
 main	O
 differences	O
@@ -67978,7 +66124,6 @@ usefulness	O
 of	O
 FIND	B-DatasetName
 .	O
-
 For	O
 all	O
 the	O
@@ -68037,7 +66182,6 @@ al	O
 2019	O
 )	O
 .	O
-
 The	O
 overall	O
 results	O
@@ -68066,7 +66210,6 @@ in	O
 the	O
 datasets	O
 .	O
-
 After	O
 the	O
 experiments	O
@@ -68085,7 +66228,6 @@ tasks	O
 and	O
 models	O
 .	O
-
 Overall	O
 ,	O
 the	O
@@ -68138,7 +66280,6 @@ improve	O
 the	O
 classifier	O
 .	O
-
 This	O
 technique	O
 and	O
@@ -68170,7 +66311,6 @@ in	O
 different	O
 scenarios	O
 .	O
-
 The	O
 results	O
 not	O
@@ -68203,7 +66343,6 @@ organized	O
 as	O
 follows	O
 .	O
-
 Section	O
 2	O
 explains	O
@@ -68221,7 +66360,6 @@ debugging	O
 text	O
 classifiers	O
 .	O
-
 Section	O
 3	O
 proposes	O
@@ -68231,7 +66369,6 @@ our	O
 debugging	O
 framework	O
 .	O
-
 Section	O
 4	O
 explains	O
@@ -68250,7 +66387,6 @@ Section	O
 to	O
 7	O
 .	O
-
 Finally	O
 ,	O
 Section	O
@@ -68265,7 +66401,6 @@ concludes	O
 the	O
 paper	O
 .	O
-
 Code	O
 and	O
 datasets	O
@@ -68302,7 +66437,6 @@ neural	O
 NLP	O
 models	O
 .	O
-
 By	O
 visualizing	O
 dense	O
@@ -68341,7 +66475,6 @@ the	O
 input	O
 text	O
 .	O
-
 Karpathy	O
 et	O
 al	O
@@ -68366,7 +66499,6 @@ for	O
 language	O
 modelling	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -68395,7 +66527,6 @@ or	O
 a	O
 quote	O
 .	O
-
 Jacovi	O
 et	O
 al	O
@@ -68436,7 +66567,6 @@ n	O
 -	O
 grams	O
 .	O
-
 Many	O
 recent	O
 papers	O
@@ -68499,7 +66629,6 @@ al	O
 2020	O
 )	O
 .	O
-
 Inspired	O
 by	O
 many	O
@@ -68539,7 +66668,6 @@ useful	O
 for	O
 classification	O
 .	O
-
 Therefore	O
 ,	O
 understanding	O
@@ -68583,7 +66711,6 @@ such	O
 an	O
 understanding	O
 .	O
-
 Explaining	O
 predictions	O
 from	O
@@ -68641,7 +66768,6 @@ Toni	O
 2019	O
 )	O
 .	O
-
 Some	O
 explanation	O
 methods	O
@@ -68680,7 +66806,6 @@ to	O
 model	O
 parameters	O
 .	O
-
 Other	O
 methods	O
 access	O
@@ -68728,7 +66853,6 @@ al	O
 2016	O
 )	O
 .	O
-
 In	O
 this	O
 work	O
@@ -68781,7 +66905,6 @@ computer	O
 interaction	O
 community	O
 .	O
-
 Stumpf	O
 et	O
 al	O
@@ -68807,7 +66930,6 @@ predictions	O
 and	O
 explanations	O
 .	O
-
 Also	O
 ,	O
 some	O
@@ -68838,7 +66960,6 @@ co	O
 training	O
 approach	O
 .	O
-
 Kulesza	O
 et	O
 al	O
@@ -68884,7 +67005,6 @@ adjusting	O
 important	O
 weights	O
 .	O
-
 Even	O
 without	O
 explanations	O
@@ -68924,7 +67044,6 @@ to	O
 the	O
 features	O
 .	O
-
 However	O
 ,	O
 these	O
@@ -68984,7 +67103,6 @@ classifiers	O
 in	O
 general	O
 .	O
-
 Some	O
 of	O
 them	O
@@ -68995,7 +67113,6 @@ traditional	O
 text	O
 classifiers	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -69033,7 +67150,6 @@ in	O
 subsequent	O
 training	O
 .	O
-
 The	O
 process	O
 was	O
@@ -69047,7 +67163,6 @@ improve	O
 the	O
 classifiers	O
 .	O
-
 Teso	O
 and	O
 Kersting	O
@@ -69065,7 +67180,6 @@ interactive	O
 learning	O
 framework	O
 .	O
-
 At	O
 each	O
 iteration	O
@@ -69096,7 +67210,6 @@ from	O
 the	O
 explanation	O
 .	O
-
 CAIPI	B-DatasetName
 then	O
 uses	O
@@ -69111,7 +67224,6 @@ retrain	O
 the	O
 model	O
 .	O
-
 While	O
 these	O
 recent	O
@@ -69150,7 +67262,6 @@ of	O
 the	O
 model	O
 .	O
-
 This	O
 helps	O
 us	O
@@ -69174,7 +67285,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Overall	O
 ,	O
 what	O
@@ -69245,7 +67355,6 @@ into	O
 two	O
 parts	O
 .	O
-
 The	O
 first	O
 part	O
@@ -69273,7 +67382,6 @@ represents	O
 the	O
 input	O
 .	O
-
 There	O
 are	O
 several	O
@@ -69295,7 +67403,6 @@ and	O
 transformer	O
 layers	O
 .	O
-
 The	O
 second	O
 part	O
@@ -69320,7 +67427,6 @@ of	O
 the	O
 classes	O
 .	O
-
 These	O
 deep	O
 classifiers	O
@@ -69349,7 +67455,6 @@ for	O
 feature	O
 extraction	O
 .	O
-
 This	O
 prevents	O
 humans	O
@@ -69406,7 +67511,6 @@ then	O
 becomes	O
 interpretable	O
 .	O
-
 In	O
 this	O
 paper	O
@@ -69418,7 +67522,6 @@ possible	O
 using	O
 LRP	B-MethodName
 .	O
-
 By	O
 understanding	O
 the	O
@@ -69440,7 +67543,6 @@ relevant	O
 for	O
 classification	O
 .	O
-
 Also	O
 ,	O
 the	O
@@ -69459,7 +67561,6 @@ the	O
 right	O
 classes	O
 .	O
-
 If	O
 these	O
 are	O
@@ -69486,7 +67587,6 @@ in	O
 the	O
 model	O
 .	O
-
 Figure	O
 1	O
 shows	O
@@ -69553,11 +67653,8 @@ y	O
 )	O
 ,	O
 .	O
-
 .	O
-
 .	O
-
 ,	O
 (	O
 x	O
@@ -69638,7 +67735,6 @@ feature	O
 f	O
 i	O
 .	O
-
 Specifically	O
 ,	O
 using	O
@@ -69690,7 +67786,6 @@ of	O
 f	O
 i	O
 .	O
-
 After	O
 doing	O
 this	O
@@ -69718,7 +67813,6 @@ the	O
 model	O
 M	O
 .	O
-
 Word	O
 clouds	O
 -For	O
@@ -69750,7 +67844,6 @@ activate	O
 f	O
 i	O
 .	O
-
 This	O
 can	O
 be	O
@@ -69786,7 +67879,6 @@ high	O
 relevance	O
 scores	O
 .	O
-
 Note	O
 that	O
 different	O
@@ -69854,7 +67946,6 @@ of	O
 the	O
 CNNs	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -69895,7 +67986,6 @@ his	O
 etc	O
 .	O
 )	O
-
 whose	O
 font	O
 size	O
@@ -69910,7 +68000,6 @@ bi	O
 -	O
 grams	O
 .	O
-
 This	O
 is	O
 similar	O
@@ -70006,7 +68095,6 @@ the	O
 next	O
 layer	O
 .	O
-
 This	O
 is	O
 possible	O
@@ -70032,7 +68120,6 @@ is	O
 relevant	O
 to	O
 .	O
-
 A	O
 word	O
 cloud	O
@@ -70061,7 +68148,6 @@ in	O
 the	O
 model	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -70108,7 +68194,6 @@ not	O
 correct	O
 here	O
 .	O
-
 If	O
 this	O
 word	O
@@ -70139,7 +68224,6 @@ any	O
 product	O
 category	O
 .	O
-
 Hence	O
 ,	O
 we	O
@@ -70172,7 +68256,6 @@ in	O
 the	O
 classification	O
 .	O
-
 To	O
 enable	O
 this	O
@@ -70219,7 +68302,6 @@ wise	O
 multiplication	O
 operator	O
 .	O
-
 Initially	O
 ,	O
 all	O
@@ -70240,7 +68322,6 @@ and	O
 the	O
 output	O
 .	O
-
 To	O
 disable	O
 feature	O
@@ -70261,7 +68342,6 @@ a	O
 zero	O
 vector	O
 .	O
-
 After	O
 disabling	O
 features	O
@@ -70320,7 +68400,6 @@ in	O
 Table	O
 1	O
 .	O
-
 We	O
 will	O
 explain	O
@@ -70332,7 +68411,6 @@ the	O
 following	O
 sections	O
 .	O
-
 For	O
 each	O
 classification	O
@@ -70367,7 +68445,6 @@ the	O
 three	O
 runs	O
 .	O
-
 Regarding	O
 the	O
 models	O
@@ -70387,7 +68464,6 @@ tasks	O
 and	O
 datasets	O
 .	O
-
 The	O
 convolution	O
 layer	O
@@ -70420,7 +68496,6 @@ d	B-HyperparameterName
 30	B-HyperparameterValue
 )	O
 .	O
-
 All	O
 the	O
 activation	O
@@ -70435,7 +68510,6 @@ the	O
 output	O
 layer	O
 .	O
-
 The	O
 input	O
 documents	O
@@ -70453,7 +68527,6 @@ L	B-HyperparameterName
 150	B-HyperparameterValue
 )	O
 .	O
-
 We	O
 used	O
 pre	O
@@ -70482,7 +68555,6 @@ the	O
 embedding	O
 layers	O
 .	O
-
 All	O
 the	O
 models	O
@@ -70496,7 +68568,6 @@ with	O
 Adam	O
 optimizer	O
 .	O
-
 We	O
 used	O
 iNNvestigate	B-MethodName
@@ -70515,7 +68586,6 @@ on	O
 CNN	O
 features	O
 .	O
-
 In	O
 particular	O
 ,	O
@@ -70537,7 +68607,6 @@ scores	O
 −7	O
 )	O
 .	O
-
 Finally	O
 ,	O
 we	O
@@ -70558,7 +68627,6 @@ features	O
 to	O
 disable	O
 .	O
-
 Each	O
 question	O
 was	O
@@ -70618,7 +68686,6 @@ of	O
 CNN	B-MethodName
 features	O
 .	O
-
 We	O
 trained	O
 CNN	B-MethodName
@@ -70658,7 +68725,6 @@ average	O
 quality	O
 scores	O
 .	O
-
 The	O
 assumption	O
 was	O
@@ -70695,7 +68761,6 @@ using	O
 word	O
 clouds	O
 .	O
-
 We	O
 used	O
 small	O
@@ -70714,7 +68779,6 @@ levels	O
 of	O
 quality	O
 .	O
-
 Some	O
 features	O
 detected	O
@@ -70791,7 +68855,6 @@ McAuley	O
 2016	O
 )	O
 .	O
-
 We	O
 sampled	O
 500	O
@@ -70830,7 +68893,6 @@ ranks	O
 to	O
 features	O
 .	O
-
 As	O
 each	O
 classifier	O
@@ -70865,7 +68927,6 @@ with	O
 10	O
 features	O
 .	O
-
 We	O
 expected	O
 that	O
@@ -70899,7 +68960,6 @@ of	O
 the	O
 model	O
 .	O
-
 To	O
 make	O
 the	O
@@ -70942,7 +69002,6 @@ in	O
 Figure	O
 3	O
 .	O
-
 If	O
 the	O
 answer	O
@@ -70972,7 +69031,6 @@ this	O
 human	O
 response	O
 .	O
-
 For	O
 example	O
 ,	O
@@ -71020,7 +69078,6 @@ are	O
 ,	O
 respectively	O
 .	O
-
 We	O
 collected	O
 ten	O
@@ -71039,7 +69096,6 @@ the	O
 features	O
 descendingly	O
 .	O
-
 After	O
 sorting	O
 ,	O
@@ -71075,7 +69131,6 @@ C	O
 ,	O
 respectively	O
 .	O
-
 3	O
 To	O
 show	O
@@ -71151,7 +69206,6 @@ the	O
 Yelp	B-DatasetName
 dataset	O
 .	O
-
 Examples	O
 of	O
 the	O
@@ -71166,7 +69220,6 @@ in	O
 Figure	O
 5	O
 .	O
-
 We	O
 can	O
 clearly	O
@@ -71178,7 +69231,6 @@ the	O
 three	O
 features	O
 .	O
-
 Some	O
 participants	O
 answered	O
@@ -71224,7 +69276,6 @@ Negative	O
 0.137:-0.135	O
 )	O
 .	O
-
 Interestingly	O
 ,	O
 the	O
@@ -71307,7 +69358,6 @@ each	O
 modified	O
 model	O
 .	O
-
 The	O
 order	O
 of	O
@@ -71369,7 +69419,6 @@ Figure	O
 4	O
 )	O
 .	O
-
 It	O
 confirms	O
 that	O
@@ -71385,7 +69434,6 @@ assess	O
 CNN	O
 features	O
 .	O
-
 Also	O
 ,	O
 it	O
@@ -71414,7 +69462,6 @@ rank	B-MetricName
 C	B-MetricName
 )	O
 .	O
-
 This	O
 shows	O
 that	O
@@ -71462,7 +69509,6 @@ increased	O
 ,	O
 performance	O
 .	O
-
 This	O
 implies	O
 that	O
@@ -71482,7 +69528,6 @@ for	O
 this	O
 classifier	O
 .	O
-
 4	O
 
 6	O
@@ -71517,7 +69562,6 @@ sub	O
 -	O
 populations	O
 .	O
-
 We	O
 hypothesize	O
 that	O
@@ -71586,7 +69630,6 @@ Hovy	O
 2016	O
 )	O
 .	O
-
 For	O
 Biosbias	O
 ,	O
@@ -71626,7 +69669,6 @@ class	O
 1	O
 )	O
 .	O
-
 Due	O
 to	O
 the	O
@@ -71646,7 +69688,6 @@ when	O
 making	O
 predictions	O
 .	O
-
 As	O
 a	O
 result	O
@@ -71662,7 +69703,6 @@ are	O
 often	O
 misclassified	O
 .	O
-
 For	O
 Waseem	O
 ,	O
@@ -71691,7 +69731,6 @@ class	O
 0	O
 )	O
 .	O
-
 Previous	O
 work	O
 found	O
@@ -71714,7 +69753,6 @@ al	O
 2018	O
 )	O
 .	O
-
 In	O
 other	O
 words	O
@@ -71738,7 +69776,6 @@ abusive	O
 at	O
 all	O
 .	O
-
 Also	O
 ,	O
 we	O
@@ -71776,7 +69813,6 @@ of	O
 the	O
 models	O
 .	O
-
 To	O
 quantify	O
 gender	O
@@ -71824,7 +69860,6 @@ the	O
 model	O
 has	O
 .	O
-
 4	O
 We	O
 also	O
@@ -71856,7 +69891,6 @@ Appendix	O
 C	O
 )	O
 .	O
-
 The	O
 results	O
 on	O
@@ -71872,7 +69906,6 @@ as	O
 on	O
 CNNs	B-DatasetName
 .	O
-
 This	O
 might	O
 be	O
@@ -71897,7 +69930,6 @@ reveal	O
 its	O
 behavior	O
 .	O
-
 Unlike	O
 for	O
 CNNs	B-MethodName
@@ -71971,7 +70003,6 @@ be	O
 either	O
 )	O
 .	O
-
 The	O
 feature	O
 will	O
@@ -72048,7 +70079,6 @@ in	O
 Figure	O
 7	O
 .	O
-
 For	O
 Biosbias	O
 ,	O
@@ -72070,7 +70100,6 @@ of	O
 CNN	O
 features	O
 .	O
-
 By	O
 doing	O
 so	O
@@ -72095,7 +70124,6 @@ from	O
 to	O
 0.149	B-MetricValue
 .	O
-
 After	O
 investigating	O
 the	O
@@ -72140,7 +70168,6 @@ nursing	O
 students	O
 "	O
 .	O
-
 Most	O
 of	O
 the	O
@@ -72166,7 +70193,6 @@ were	O
 not	O
 disabled	O
 .	O
-
 However	O
 ,	O
 we	O
@@ -72179,7 +70205,6 @@ contain	O
 gender	O
 biases	O
 .	O
-
 So	O
 ,	O
 we	O
@@ -72221,7 +70246,6 @@ occupation	O
 related	O
 terms	O
 .	O
-
 With	O
 this	O
 new	O
@@ -72257,7 +70281,6 @@ One	O
 )	O
 )	O
 .	O
-
 The	O
 sideeffect	O
 of	O
@@ -72283,7 +70306,6 @@ from	O
 to	O
 0.933	B-MetricValue
 .	O
-
 Hence	O
 ,	O
 our	O
@@ -72329,7 +70351,6 @@ of	O
 CNN	O
 features	O
 .	O
-
 Unlike	O
 Biosbias	B-MethodName
 ,	O
@@ -72351,7 +70372,6 @@ and	O
 Wikitoxic	B-DatasetName
 datasets	O
 .	O
-
 However	O
 ,	O
 we	O
@@ -72405,7 +70425,6 @@ not	O
 yet	O
 disabled	O
 .	O
-
 So	O
 ,	O
 we	O
@@ -72439,7 +70458,6 @@ detected	O
 abusive	O
 words	O
 .	O
-
 By	O
 disabling	O
 18	O
@@ -72472,7 +70490,6 @@ original	O
 value	O
 )	O
 .	O
-
 Another	O
 consequence	O
 was	O
@@ -72495,7 +70512,6 @@ datasets	O
 ,	O
 respectively	O
 .	O
-
 This	O
 finding	O
 is	O
@@ -72563,7 +70579,6 @@ al	O
 2009	O
 )	O
 .	O
-
 Many	O
 classifiers	O
 perform	O
@@ -72590,7 +70605,6 @@ classify	O
 test	O
 documents	O
 .	O
-
 We	O
 hypothesize	O
 that	O
@@ -72626,7 +70640,6 @@ in	O
 this	O
 experiment	O
 .	O
-
 The	O
 first	O
 task	O
@@ -72648,7 +70661,6 @@ Newsgroups	I-DatasetName
 dataset	O
 5	O
 .	O
-
 This	O
 dataset	O
 is	O
@@ -72686,7 +70698,6 @@ of	O
 the	O
 classes	O
 .	O
-
 For	O
 evaluation	O
 ,	O
@@ -72720,7 +70731,6 @@ a	O
 target	O
 dataset	O
 .	O
-
 The	O
 second	O
 task	O
@@ -72728,7 +70738,6 @@ is	O
 sentiment	B-TaskName
 analysis	I-TaskName
 .	O
-
 We	O
 used	O
 ,	O
@@ -72795,7 +70804,6 @@ Experiment	O
 1	O
 )	O
 .	O
-
 Amazon	B-DatasetName
 Music	I-DatasetName
 contains	O
@@ -72831,7 +70839,6 @@ al	O
 2020	O
 )	O
 .	O
-
 Amazon	B-DatasetName
 Mixed	I-DatasetName
 compiles	O
@@ -72873,7 +70880,6 @@ in	O
 Experiment	O
 2	O
 .	O
-
 Simply	O
 put	O
 ,	O
@@ -72944,7 +70950,6 @@ and	O
 ,	O
 respectively	O
 .	O
-
 The	O
 same	O
 metrics	O
@@ -72957,7 +70962,6 @@ are	O
 and	O
 0.799	B-MetricValue
 .	O
-
 This	O
 shows	O
 that	O
@@ -72995,7 +70999,6 @@ Figure	O
 left	O
 )	O
 .	O
-
 This	O
 is	O
 especially	O
@@ -73015,7 +71018,6 @@ around	O
 %	I-MetricValue
 absolute	O
 .	O
-
 We	O
 noticed	O
 from	O
@@ -73056,7 +71058,6 @@ the	O
 Religion	B-DatasetName
 dataset	O
 .	O
-
 Forcing	O
 the	O
 models	O
@@ -73103,7 +71104,6 @@ have	O
 obvious	O
 artifacts	O
 .	O
-
 Still	O
 ,	O
 the	O
@@ -73120,7 +71120,6 @@ disable	O
 6	O
 features	O
 .	O
-
 The	O
 disabled	O
 features	O
@@ -73138,7 +71137,6 @@ the	O
 associated	O
 class	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -73177,9 +71175,7 @@ loves	O
 this	O
 .	O
 "	O
-
 .	O
-
 However	O
 ,	O
 these	O
@@ -73205,7 +71201,6 @@ and	O
 Yelp	B-DatasetName
 )	O
 .	O
-
 Disabling	O
 them	O
 made	O
@@ -73237,7 +71232,6 @@ Figure	O
 right	O
 )	O
 .	O
-
 Nonetheless	O
 ,	O
 the	O
@@ -73283,7 +71277,6 @@ in	O
 most	O
 cases	O
 .	O
-
 6	O
 
 Discussion	O
@@ -73311,7 +71304,6 @@ or	O
 harmful	O
 features	O
 .	O
-
 Using	O
 the	O
 proposed	O
@@ -73409,7 +71401,6 @@ questions	O
 to	O
 consider	O
 .	O
-
 First	O
 ,	O
 what	O
@@ -73422,7 +71413,6 @@ understand	O
 each	O
 feature	O
 ?	O
-
 We	O
 exemplified	O
 this	O
@@ -73461,7 +71451,6 @@ in	O
 the	O
 future	O
 .	O
-
 Second	O
 ,	O
 can	O
@@ -73473,7 +71462,6 @@ features	O
 more	O
 interpretable	O
 ?	O
-
 For	O
 example	O
 ,	O
@@ -73497,7 +71485,6 @@ non	O
 -	O
 negative	O
 .	O
-
 So	O
 ,	O
 they	O
@@ -73534,7 +71521,6 @@ the	O
 irrelevant	O
 ones	O
 .	O
-
 The	O
 process	O
 makes	O
@@ -73544,7 +71530,6 @@ interpretability	O
 more	O
 actionable	O
 .	O
-
 Over	O
 the	O
 past	O
@@ -73599,7 +71584,6 @@ al	O
 2020	O
 )	O
 .	O
-
 We	O
 believe	O
 that	O
@@ -73650,7 +71634,6 @@ features	O
 during	O
 training	O
 .	O
-
 It	O
 is	O
 also	O
@@ -73671,7 +71654,6 @@ required	O
 as	O
 input	O
 .	O
-
 Moreover	O
 ,	O
 it	O
@@ -73705,7 +71687,6 @@ before	O
 using	O
 FIND	O
 .	O
-
 In	O
 general	O
 cases	O
@@ -73745,7 +71726,6 @@ natural	B-TaskName
 language	I-TaskName
 inference	I-TaskName
 .	O
-
 This	O
 will	O
 require	O
@@ -73773,7 +71753,6 @@ has	O
 some	O
 limitations	O
 .	O
-
 First	O
 ,	O
 the	O
@@ -73791,7 +71770,6 @@ to	O
 human	O
 debuggers	O
 .	O
-
 Second	O
 ,	O
 the	O
@@ -73811,7 +71789,6 @@ needs	O
 for	O
 debugging	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -73846,7 +71823,6 @@ to	O
 perform	O
 investigation	O
 .	O
-
 In	O
 this	O
 case	O
@@ -73876,7 +71852,6 @@ al	O
 2019	O
 )	O
 .	O
-
 Third	O
 ,	O
 it	O
@@ -73919,7 +71894,6 @@ others	O
 are	O
 harmful	O
 .	O
-
 Hence	O
 ,	O
 FIND	B-MethodName
@@ -73985,7 +71959,6 @@ al	O
 2015	O
 )	O
 .	O
-
 Originally	O
 ,	O
 it	O
@@ -74014,7 +71987,6 @@ for	O
 the	O
 classification	O
 .	O
-
 Then	O
 Arras	O
 et	O
@@ -74112,7 +72084,6 @@ network	O
 ,	O
 respectively	O
 .	O
-
 We	O
 can	O
 see	O
@@ -74160,7 +72131,6 @@ the	O
 n	O
 neurons	O
 .	O
-
 LRP	B-MethodName
 works	O
 by	O
@@ -74182,7 +72152,6 @@ the	O
 network	O
 proportionally	O
 .	O
-
 We	O
 call	O
 the	O
@@ -74200,7 +72169,6 @@ of	O
 the	O
 neuron	O
 .	O
-
 To	O
 back	O
 propagate	O
@@ -74307,7 +72275,6 @@ of	O
 this	O
 paper	O
 .	O
-
 For	O
 more	O
 details	O
@@ -74353,7 +72320,6 @@ word	O
 embedding	O
 matrix	O
 .	O
-
 After	O
 that	O
 ,	O
@@ -74378,7 +72344,6 @@ word	O
 vector	O
 receives	O
 .	O
-
 However	O
 ,	O
 in	O
@@ -74452,7 +72417,6 @@ multiclass	O
 classification	O
 task	O
 .	O
-
 In	O
 this	O
 setting	O
@@ -74490,7 +72454,6 @@ to	O
 answer	O
 accurately	O
 .	O
-
 With	O
 the	O
 user	O
@@ -74514,7 +72477,6 @@ the	O
 participant	O
 answer	O
 .	O
-
 To	O
 explain	O
 ,	O
@@ -74561,7 +72523,6 @@ feature	O
 f	O
 i	O
 .	O
-
 If	O
 the	O
 participant	O
@@ -74575,7 +72536,6 @@ a	O
 zero	O
 score	O
 .	O
-
 The	O
 distribution	O
 of	O
@@ -74616,7 +72576,6 @@ for	O
 each	O
 feature	O
 .	O
-
 The	O
 first	O
 word	O
@@ -74675,7 +72634,6 @@ Experiment	O
 for	O
 BiLSTMs	B-MethodName
 .	O
-
 Each	O
 direction	O
 of	O
@@ -74715,7 +72673,6 @@ d	B-HyperparameterName
 30	O
 )	O
 .	O
-
 We	O
 adapted	O
 the	O
@@ -74735,7 +72692,6 @@ LRP	O
 on	O
 BiLSTMs	O
 .	O
-
 Regarding	O
 human	O
 feedback	O
@@ -74771,7 +72727,6 @@ of	O
 each	O
 other	O
 .	O
-
 The	O
 answer	O
 of	O
@@ -74846,7 +72801,6 @@ Table	O
 and	O
 5	O
 .	O
-
 Table	O
 4	O
 shows	O
@@ -74856,7 +72810,6 @@ after	O
 disabling	O
 features	O
 .	O
-
 For	O
 instance	O
 ,	O
@@ -74875,7 +72828,6 @@ rank	O
 A	O
 features	O
 .	O
-
 This	O
 suggests	O
 that	O
@@ -74916,7 +72868,6 @@ explain	O
 the	O
 feature	O
 .	O
-
 Nevertheless	O
 ,	O
 another	O
@@ -74949,7 +72900,6 @@ than	O
 5	B-MetricValue
 %	I-MetricValue
 .	O
-
 This	O
 suggests	O
 that	O
@@ -75069,7 +73019,6 @@ female	O
 }	O
 )	O
 .	O
-
 FPR	B-MetricName
 and	O
 FNR	B-MetricName
@@ -75085,7 +73034,6 @@ rate	O
 ,	O
 respectively	O
 .	O
-
 The	O
 subscript	O
 t	O
@@ -75106,7 +73054,6 @@ population	O
 t	O
 only	O
 .	O
-
 We	O
 used	O
 the	O
@@ -75126,7 +73073,6 @@ sub	O
 -	O
 populations	O
 .	O
-
 Male	O
 gender	O
 terms	O
@@ -75284,7 +73230,6 @@ aunt	O
 mom	O
 "	O
 .	O
-
 All	O
 the	O
 bios	O
@@ -75319,7 +73264,6 @@ us	O
 by	O
 email	O
 .	O
-
 We	O
 considered	O
 "	O
@@ -75358,7 +73302,6 @@ downloaded	O
 here	O
 10	O
 .	O
-
 We	O
 used	O
 only	O
@@ -75392,7 +73335,6 @@ scikit	O
 learn	O
 11	O
 .	O
-
 The	O
 header	O
 and	O
@@ -75472,7 +73414,6 @@ for	O
 helpful	O
 comments	O
 .	O
-
 Also	O
 ,	O
 the	O

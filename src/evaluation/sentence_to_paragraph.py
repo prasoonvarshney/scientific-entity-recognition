@@ -1,4 +1,5 @@
 import argparse
+from curses.ascii import isalnum
 
 if __name__ == '__main__':
     '''
@@ -29,20 +30,30 @@ if __name__ == '__main__':
 
     i = 0
     j = 0
-    while i < len(input_lines):
+    print(len(input_lines))
+    while i < len(input_lines) and j < len(dummy_lines):
         # skip whitespace if dummy file doesn't have it
+
         if input_lines[i] == '\n' and dummy_lines[j] != '\n':
             i += 1
 
-        output_lines.append(input_lines[i])
-        i += 1
-        j += 1
+        elif dummy_lines[j] == '\n' and input_lines[i] != '\n':
+            output_lines.append('\n')
+            j += 1
+
+        else:
+            output_lines.append(input_lines[i])
+            i += 1
+            j += 1
 
     # make sure all tokens match our dummy reference CoNLL file
+    print(len(output_lines), len(dummy_lines))
     assert(len(dummy_lines) == len(output_lines))
     for i in range(len(output_lines)):
         dummy_token = dummy_lines[i].split('\t')[0]
         output_token = output_lines[i].split('\t')[0]
+        if dummy_token != output_token:
+            print('{} --- dummy: {} output: {}'.format(i, (dummy_token), (output_token)))
         assert(dummy_token == output_token)
 
     with open(args.outfile, 'w') as f:
