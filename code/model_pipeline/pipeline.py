@@ -13,21 +13,41 @@ from constants import TEST_DATA_FILE_PATH, label2id
 metric = evaluate.load("seqeval")
 
 class TrainingPipeline: 
-    def __init__(self, batch_size=8, lr=5e-5, n_epochs=10, weight_decay=1e-5):
+    def __init__(self, batch_size=8, lr=5e-5, n_epochs=10, weight_decay=1e-5, model_checkpoint='bert-base-cased'):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model_checkpoint = "bert-base-cased"
+
+        self.model_checkpoint = model_checkpoint
+
+        if self.model_checkpoint == "bert-base-cased":
+            self.model_name = "bert_base"
+        elif self.model_checkpoint == "microsoft/deberta-v3-base":
+            self.model_name = "deberta"
+        elif self.model_checkpoint == "allenai/scibert_scivocab_cased":
+            self.model_name = "scibert"
+        elif self.model_checkpoint == "KISTI-AI/scideberta-cs":
+            self.model_name = "scideberta"
+        else:
+            self.mode_name = "others"
+
         self.label2id = label2id
         self.id2label = {v: k for k, v in label2id.items()}
         self.label_names = label2id.keys()
         self.num_labels = len(self.label2id.keys())
+
+        print('Initializing tokenizer from {}'.format(model_checkpoint))
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_checkpoint)
+        if self.model_checkpoint == "KISTI-AI/scideberta-cs" or self.model_checkpoint == "microsoft/deberta-v3-base":
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_checkpoint, add_prefix_space=True)
         self.data_collator = DataCollatorForTokenClassification(tokenizer=self.tokenizer)
+        
+        print('Initializing model from {}...'.format(model_checkpoint))
         self.model = AutoModelForTokenClassification.from_pretrained(
             self.model_checkpoint, 
             id2label=self.id2label, label2id=self.label2id, num_labels=self.num_labels
         )
         self.model.to(self.device)
 
+        print('Loading dataset...')
         self.dataset = DatasetLoader().dataset
         self.tokenized_dataset = self.dataset.map(
             self.tokenize_and_align_labels,
@@ -146,7 +166,13 @@ class TrainingPipeline:
                 unaligned_labels.append(label)
         return unaligned_labels
 
-    def generate_predictions(self, test_data):
+    def generate_predictions(self, test_data=None):
+        if test_data is None:
+            test_data = self.test_data  # use our own test_data
+            filename = "test_predictions_ours_{}.conll".format(self.model_name)
+        else:
+            filename = "test_predictions_{}.conll".format(self.model_name)  # test predictions from ANLP test set
+
         self.model.eval()
         true_labels = []
         pred_labels = []
@@ -184,15 +210,17 @@ class TrainingPipeline:
                 )
                 unaligned_pred_labels.append(unaligned_cur_pred_labels)
                 all_original_spacy_tokens.append(original_spacy_tokens)
-
-        with open(TEST_DATA_FILE_PATH + "test_predictions.conll", 'w') as output_file:
+        
+        print('Saving predictions to {}...'.format(TEST_DATA_FILE_PATH + filename))
+        with open(TEST_DATA_FILE_PATH + filename, 'w') as output_file:
             for i in range(len(all_original_spacy_tokens)):
                 for token, label in zip(all_original_spacy_tokens[i], unaligned_pred_labels[i]):
                     human_label = self.id2label[label]
                     output_file.write(token + "\t" + human_label + "\n")
                 output_file.write("\n")
 
-    
+
+    ## Code below to generate confusion matrix
     def display_confusion_matrix(self, confusion_matrix):
         fig, ax = plt.subplots(figsize=(10, 10))
         confusion_matrix_normalized = copy.deepcopy(confusion_matrix).astype(float)

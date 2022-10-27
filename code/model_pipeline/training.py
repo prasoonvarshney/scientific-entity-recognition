@@ -19,5 +19,11 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    pipeline = TrainingPipeline(batch_size=args.batch_size, lr=args.lr, n_epochs=args.n_epochs, weight_decay=args.weight_decay)
+    pipeline = TrainingPipeline(batch_size=args.batch_size, lr=args.lr, n_epochs=args.epochs, weight_decay=args.weight_decay, model_checkpoint=args.model_checkpoint)
+    print('Training model...')
     pipeline.trainer.train()
+    print('Generating predictions...')
+    # generate predictions from our test data
+    pipeline.generate_predictions()  # this will generate test_predictions.conll (sentence-separated)
+
+
