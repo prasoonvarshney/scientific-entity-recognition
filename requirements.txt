@@ -15,3 +15,5 @@ PyPDF2
 datasets
 evaluate
 transformers[sentencepiece]
+matplotlib
+torch
