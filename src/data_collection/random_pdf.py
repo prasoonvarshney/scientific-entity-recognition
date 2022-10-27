@@ -29,7 +29,7 @@ for file, url in all_files:
     if file not in parsed_pdfs:
         pool.append(url)
 
-chosen = np.random.choice(pool, n)
+chosen = np.random.choice(pool, n, replace=False)
 
 for url in chosen:
-    print(url)
+    print(url[2:])
