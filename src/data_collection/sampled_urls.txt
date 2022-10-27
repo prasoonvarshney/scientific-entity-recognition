@@ -50,3 +50,8 @@ https://aclanthology.org/P15-2083.pdf
 https://aclanthology.org/P15-5002.pdf
 https://aclanthology.org/P15-1070.pdf
 https://aclanthology.org/P15-1056.pdf
+http://www.lrec-conf.org/proceedings/lrec2014/pdf/1154_Paper.pdf
+http://aclanthology.org/P98-2242.pdf
+http://aclanthology.org/W12-1631.pdf
+http://aclanthology.org/2020.eamt-1.30.pdf
+http://aclanthology.org/Y18-1024.pdf

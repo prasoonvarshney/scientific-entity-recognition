@@ -5,6 +5,8 @@ LABEL_STUDIO_URL = "http://ec2-54-175-11-3.compute-1.amazonaws.com:8080"
 LABEL_STUDIO_AUTH_HEADER = {'Authorization': 'Token 8c7f4625665248b9ee072b34791137cdc6fcaf18'}
 
 PROJECT_ID_TO_PAPER_MAPPING = {
+    "5": "2021.findings-acl.212",
+    "6": "P19-1051",
     "9": "P15-2083", 
     "11": "P18-2051", 
     "12": "P16-2007", 
@@ -35,7 +37,7 @@ PROJECT_ID_TO_PAPER_MAPPING = {
     "49": "P16-2056", 
     "51": "2020.ecnlp-1.8", 
     "52": "2022.acl-short.36",
-    
+    "53": "BertyBoy"
 }
 
 FILE_PATH = "./src/data_collection/annotated/"
@@ -101,8 +103,8 @@ def parse_label_studio_output_for_modeling(label_studio_conll_format_output):
 
 def collect_annotated_files_from_label_studio():
     for project_id in PROJECT_ID_TO_PAPER_MAPPING.keys():
-        url = LABEL_STUDIO_URL + "/api/projects/" + project_id + "/export?exportType=CONLL2003&download_all_tasks=true"
-        resp = requests.get(url, headers=LABEL_STUDIO_AUTH_HEADER)
+        url = LABEL_STUDIO_URL + "/api/projects/" + project_id + "/export"
+        resp = requests.get(url, headers=LABEL_STUDIO_AUTH_HEADER, params={"exportType": "CONLL2003", "download_all_tasks": "true"})
         if resp.status_code != 200:
             continue
 

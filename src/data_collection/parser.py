@@ -48,7 +48,7 @@ def parse_pdf(pdf_url, reparse_parsed_files=False):
         logging.error(f"Failed to parse PDF {pdf_url} with exception {e}")
         return None
 
-    full_text = " ".join([add_stop(article['title']), add_stop(article['abstract'])])
+    full_text = " ".join([article['title'], add_stop(article['abstract'])])
     for section in article['sections']: 
         full_text = " ".join([full_text, add_stop(section['heading']), add_stop(section['text'])])
 
