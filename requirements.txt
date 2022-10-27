@@ -11,3 +11,7 @@ djangorestframework==3.13.1
 label-studio==1.6.0
 
 PyPDF2
+
+datasets
+evaluate
+transformers[sentencepiece]

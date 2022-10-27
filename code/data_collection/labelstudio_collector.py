@@ -1,48 +1,9 @@
 import os
 import requests
 
-LABEL_STUDIO_URL = "http://ec2-54-175-11-3.compute-1.amazonaws.com:8080"
-LABEL_STUDIO_AUTH_HEADER = {'Authorization': 'Token 8c7f4625665248b9ee072b34791137cdc6fcaf18'}
+from constants import LABEL_STUDIO_URL, LABEL_STUDIO_AUTH_HEADER, TRAIN_PAPERS, TEST_PAPERS, ANNOTATIONS_FILE_PATH
 
-PROJECT_ID_TO_PAPER_MAPPING = {
-    "5": "2021.findings-acl.212",
-    "6": "P19-1051",
-    "9": "P15-2083", 
-    "11": "P18-2051", 
-    "12": "P16-2007", 
-    "13": "2022.coling-1.308", 
-    "16": "P17-2066", 
-    "18": "2020.coling-main.130", 
-    "20": "2021.semeval-1.12", 
-    "22": "P19-1020", 
-    "23": "2022.acl-long.576", 
-    "24": "2021.eacl-main.224", 
-    "25": "2021.wanlp-1.15", 
-    "27": "2020.emnlp-main.563", 
-    "29": "P19-1128", 
-    "31": "P15-1070", 
-    "29": "P19-1128", 
-    "29": "P19-1128", 
-    "32": "P15-2085", 
-    "33": "P16-1158", 
-    "34": "P17-1038", 
-    "35": "P18-1085",
-    "36": "P18-1182",
-    "37": "2020.findings-emnlp.20", 
-    "40": "2020.acl-main.169",
-    "41": "2020.aacl-main.32",
-    "42": "2021.findings-acl.175", 
-    "43": "P18-3010",
-    "44": "2020.loresmt-1.5", 
-    "49": "P16-2056", 
-    "51": "2020.ecnlp-1.8", 
-    "52": "2022.acl-short.36",
-    "53": "BertyBoy", 
-    "56": "2020.eamt-1.30"
-}
-
-FILE_PATH = "./data/annotated/"
-
+PROJECT_ID_TO_PAPER_MAPPING = TRAIN_PAPERS | TEST_PAPERS
 
 def convert_label_studio_output_to_standard_conll_format(label_studio_conll_output): 
     split_ls_output = label_studio_conll_output.split('\n')
@@ -94,10 +55,10 @@ def parse_label_studio_output_for_modeling(label_studio_conll_format_output):
             # unexpected, handle
             raise Exception(f"Unexpected format in CoNNL format output line: {words}")
 
-    annotations_parsed_per_document = list(reversed(annotations_parsed_per_document))
+    annotations_parsed_per_document = list(annotations_parsed_per_document)
 
-    for sentence in annotations_parsed_per_document:
-        print(f"{sentence['tokens']}\n{sentence['ner_tags']}\n\n")
+    # for sentence in annotations_parsed_per_document:
+    #     print(f"{sentence['tokens']}\n{sentence['ner_tags']}\n\n")
     
     return annotations_parsed_per_document
 
@@ -110,9 +71,33 @@ def collect_annotated_files_from_label_studio():
             continue
 
         labeled_document = convert_label_studio_output_to_standard_conll_format(resp.text)
-        with open(os.path.join(FILE_PATH, PROJECT_ID_TO_PAPER_MAPPING[project_id] + ".conll"), 'w') as f:
+        with open(os.path.join(ANNOTATIONS_FILE_PATH, PROJECT_ID_TO_PAPER_MAPPING[project_id] + ".conll"), 'w') as f:
+            f.write(labeled_document)
+
+
+def generate_train_test_split_data_files(split = "train"):
+    if split == "train": 
+        PROJECT_ID_TO_PAPER_MAPPING = TRAIN_PAPERS
+    elif split == "test" or split == "validation": 
+        PROJECT_ID_TO_PAPER_MAPPING = TEST_PAPERS
+    else: 
+        raise Exception("Split not recognized")
+
+    all_labeled_documents_for_split = []
+    for project_id in PROJECT_ID_TO_PAPER_MAPPING.keys():
+        url = LABEL_STUDIO_URL + "/api/projects/" + project_id + "/export?exportType=CONLL2003&download_all_tasks=true"
+        resp = requests.get(url, headers=LABEL_STUDIO_AUTH_HEADER)
+        if resp.status_code != 200:
+            continue
+
+        labeled_document = convert_label_studio_output_to_standard_conll_format(resp.text)
+        all_labeled_documents_for_split.append(labeled_document)
+
+    with open(os.path.join(FILE_PATH, split + ".conll"), 'w') as f:
+        for labeled_document in all_labeled_documents_for_split:
             f.write(labeled_document)
 
 
 if __name__ == "__main__":
     collect_annotated_files_from_label_studio()
+    generate_train_test_split_data_files()
