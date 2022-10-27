@@ -48,7 +48,7 @@ def collect_train_test_data(split = "train"):
     if split not in ["train", "test"]: 
         return None
 
-    with open(TRAIN_DATA_FILE_PATH + split + ".conll", 'r') as f:
+    with open(os.path.join(TRAIN_DATA_FILE_PATH, split + ".conll"), 'r') as f:
         train_annotations_from_file = f.readlines()
 
     sentences = []

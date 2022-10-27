@@ -1,7 +1,7 @@
 LABEL_STUDIO_URL = "http://ec2-54-175-11-3.compute-1.amazonaws.com:8080"
 LABEL_STUDIO_AUTH_HEADER = {'Authorization': 'Token 8c7f4625665248b9ee072b34791137cdc6fcaf18'}
 ANNOTATIONS_FILE_PATH = "./data/annotated/"
-TRAIN_DATA_FILE_PATH = "./data/data/created_data_train_test_splits"
+TRAIN_DATA_FILE_PATH = "./data/created_data_train_test_splits"
 TEST_DATA_FILE_PATH = "./data/test/"
 TEST_DATA_PARAGRAPHS_FILE = "anlp-sciner-test.txt"
 TEST_DATA_SENTENCES_FILE = "anlp-sciner-test-sentences.txt"
