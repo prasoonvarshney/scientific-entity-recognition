@@ -2,10 +2,11 @@ import copy
 import evaluate
 import numpy as np
 import matplotlib.pyplot as plt
+from transformers import AutoTokenizer, AutoModelForTokenClassification, \
+    DataCollatorForTokenClassification, TrainingArguments, Trainer
 import torch
-from transformers import AutoTokenizer, AutoModelForTokenClassification, DataCollatorForTokenClassification, \
-    DataLoader, TrainingArguments, Trainer
-
+from torch.utils.data import DataLoader
+from tqdm import tqdm
 from dataloader import DatasetLoader
 from constants import TEST_DATA_FILE_PATH, label2id
 
@@ -221,7 +222,7 @@ class TrainingPipeline:
         plt.show()
 
 
-    def evaluate(self, val_data):
+    def generate_confusion_matrix(self, val_data):
         self.model.eval()
         confusion = torch.zeros(self.num_labels+1, self.num_labels+1)
         for i, batch in enumerate(tqdm(val_data)):

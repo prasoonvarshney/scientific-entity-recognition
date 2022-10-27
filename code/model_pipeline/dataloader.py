@@ -22,8 +22,10 @@ class DatasetLoader:
             'ner_tags': Sequence(ClassLabel(names=class_names))
         })
 
+        print(f"Loading train and validation datasets...")
         train_annotations = collect_train_test_data(split="train")
         val_annotations = collect_train_test_data(split="test")
+        print(f"Loading test dataset...")
         test_data = collect_held_out_test_data()
 
         train_df = pd.DataFrame(train_annotations, columns=["tokens", "ner_tags"]).reset_index().rename(columns={'index': 'id'})
@@ -38,6 +40,8 @@ class DatasetLoader:
             "validation": val_dataset, 
             "test": test_dataset
         })
+        print(f"Datasets done...")
+
 
 
 def collect_train_test_data(split = "train"): 

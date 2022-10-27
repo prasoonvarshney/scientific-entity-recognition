@@ -20,4 +20,4 @@ def get_args():
 if __name__ == "__main__":
     args = get_args()
     pipeline = TrainingPipeline(batch_size=args.batch_size, lr=args.lr, n_epochs=args.n_epochs, weight_decay=args.weight_decay)
-    
+    pipeline.trainer.train()
