@@ -37,10 +37,11 @@ PROJECT_ID_TO_PAPER_MAPPING = {
     "49": "P16-2056", 
     "51": "2020.ecnlp-1.8", 
     "52": "2022.acl-short.36",
-    "53": "BertyBoy"
+    "53": "BertyBoy", 
+    "56": "2020.eamt-1.30"
 }
 
-FILE_PATH = "./src/data_collection/annotated/"
+FILE_PATH = "./data/annotated/"
 
 
 def convert_label_studio_output_to_standard_conll_format(label_studio_conll_output): 

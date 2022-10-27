@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 nlp = spacy.load("en_core_web_sm")
 
-FILE_PATH = "./src/data_collection/parsed_pdfs/"
+FILE_PATH = "./data/"
 
 def preprocess(line):
     # print(f"Line: {line}")
@@ -32,7 +32,7 @@ def add_stop(text):
         return text + '.'
 
 def parse_pdf(pdf_url, reparse_parsed_files=False): 
-    file_name = os.path.join(FILE_PATH, pdf_url.split('/')[-1] + ".txt")
+    file_name = os.path.join(FILE_PATH, "parsed_pdfs", pdf_url.split('/')[-1] + ".txt")
 
     if os.path.exists(file_name) and not reparse_parsed_files:
         # If paper already parsed in a previous run, skip re-parsing, but return parsed file name
@@ -48,11 +48,11 @@ def parse_pdf(pdf_url, reparse_parsed_files=False):
         logging.error(f"Failed to parse PDF {pdf_url} with exception {e}")
         return None
 
+    # Add full stops at the end of sections, headings, and abstract (if they don't already exist)
     full_text = " ".join([article['title'], add_stop(article['abstract'])])
     for section in article['sections']: 
         full_text = " ".join([full_text, add_stop(section['heading']), add_stop(section['text'])])
 
-    # print(full_text)
     sentence_splitting_regex = r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s'
     
     full_text_tokenized = [preprocess(line) for line in re.split(sentence_splitting_regex, full_text)]
@@ -69,7 +69,7 @@ def parse_pdf(pdf_url, reparse_parsed_files=False):
 
 
 if __name__ == "__main__":
-    with open("./src/data_collection/sampled_urls.txt", 'r') as f:
+    with open("./code/data_collection/sampled_urls.txt", 'r') as f:
         sampled_urls = f.readlines()
  
     # sampled_urls = random.choices(list(filter(lambda x: "aclanthology" in x, all_urls)), k=500)
@@ -91,5 +91,5 @@ if __name__ == "__main__":
     # Save down summary of URLs and saved processed files
     summary = {"parsed_pdfs": all_parsed_pdfs}
     summary_json = json.dumps(summary, indent=4)
-    with open(os.path.join(FILE_PATH, "summary.json"), 'w') as f: 
+    with open(os.path.join(FILE_PATH, "summary_of_parsed_files.json"), 'w') as f: 
         f.write(summary_json)

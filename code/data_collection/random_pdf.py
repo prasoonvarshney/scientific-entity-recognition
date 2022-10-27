@@ -2,8 +2,6 @@ import numpy as np
 import argparse
 import os
 
-from torch import poisson_nll_loss
-
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", type=str, default="5")
 args = parser.parse_args()

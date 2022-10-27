@@ -35,7 +35,6 @@ https://aclanthology.org/P18-2051.pdf
 https://aclanthology.org/P18-3010.pdf
 https://aclanthology.org/P17-1038.pdf
 https://aclanthology.org/P17-1038.pdf
-https://aclanthology.org/P17-1168.pdf
 https://aclanthology.org/P17-2066.pdf
 https://aclanthology.org/P17-4007.pdf
 https://aclanthology.org/W17-5519.pdf
