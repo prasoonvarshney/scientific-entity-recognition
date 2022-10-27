@@ -486,26 +486,16 @@ For example , when concatenating all headers with a separator " | " , the separa
 To meet this requirement , we employ a header - to - header translation manner in this work , which translates one header at a time .
 Task Definition
 We define a column header as H i = hh 1 , .
-.
-.
-, h n i , where h j is the jth token of the header in the source language .
+. . , h n i , where h j is the jth token of the header in the source language .
 Let C i = ( S i , V i ) denote the context of H i .
 It is made up of a set of selected cell values V i = { v 1 , .
-.
-.
-, v t } of H i and the rest of headers
+. . , v t } of H i and the rest of headers
 S i = [ H 1 , .
-.
-.
-, H i 1 , H i+1 , .
-.
-.
-, H m ]
+. . , H i 1 , H i+1 , .
+. . , H m ]
 in the schema .
 The translation of H i is denoted as Y i = hy 1 , .
-.
-.
-, y m i , where y j is the jth token of the header in the target language .
+. . , y m i , where y j is the jth token of the header in the target language .
 Taking a header H and its corresponding context C as input , the model outputs the header Y in the target language .
 Model
 Basically , our model adopts a Transformer encoderdecoder architecture ( Vaswani et al . , 2017 ) , which takes the source language header with its corresponding context as inputs and generates the translation for the target language header as outputs .
@@ -550,19 +540,13 @@ Then , the target header H , the rest of the headers S , and the selected cell v
 At last , following , an additional source language token " hsrci " is added at the front to help the pretrained model identify the source language .
 The encoder then transforms the final input sequence into a sequence of embedding
 X = [ x 1 , .
-.
-.
-, x l ] .
+. . , x l ] .
 Then we feed them to the relational aware layers and get the final contextualized sequence of embedding X
 0 = [ x 0 1 , .
-.
-.
-, x 0 l ] .
+. . , x 0 l ] .
 Decoder .
 The goal of the decoder is to autoregressively generate the translated column header Y = hy 1 , .
-.
-.
-, y m i.
+. . , y m i.
 Specifically , taking X 0 and the representation of previously output token as input , the decoder predicts the translation token by token until an ending signal hendi is generated .
 Similar to the encoder , a special token htgti which indicates the target language is added at the front to guide the prediction of the target language .
 Experiments
@@ -1021,9 +1005,7 @@ Head - level XL SANs Instead of projecting XL PE to all attention heads , we fee
 As shown in Fig .
 2b , we fist add APE and XL PE for X , respectively :
 We denote the number of XL PE equipped heads as τ ∈ { 0 , .
-.
-.
-, H } .
+. . , H } .
 To perform the attention calculation ,
 In particular , τ = 0 refers to the original Transformer ( Vaswani et al . , 2017 ) and τ = H means that XL PE will propagate over all attention heads .
 We conduct experiments on word order - diverse language pairs : WMT'14 English⇒German ( En - De ) , WAT'17 Japanese⇒English ( Ja - En ) , and WMT'17 Chinese⇔English ( Zh - En & En - Zh ) .
@@ -1179,9 +1161,7 @@ Our sentence - level alignment falls under the general problem of bringing two v
 From a crosslingual alignment perspective , we treat an English sequence S en i and its translation S tr i in another language tr ∈ L as two manifestations of the same semantics .
 At the same time , sentences that are not translations of each other should be further apart in the representation space .
 Given parallel corpora consisting of { ( S en 1 , S tr 1 ) , .
-.
-.
-, ( S en N , S tr N ) } , we align sentence representations in all the different languages together using MoCo .
+. . , ( S en N , S tr N ) } , we align sentence representations in all the different languages together using MoCo .
 We use the pretrained mBERT model to initialize both the query and momentum encoders .
 mBERT is made of 12 Transformer blocks , 12 attention heads , and hidden size d h = 768 .
 For input , instead of feeding the query encoder with English examples and the momentum encoder with translation examples or vice versa , we propose a random input shuffling approach .
@@ -1720,20 +1700,19 @@ The objective is to train models on mentions M train that link to KB train and d
 Zero - shot Entity Linking
 The starting point ( and baselines ) for our work are the state - of - the - art models for zero - shot entity linking , which we briefly describe here ( Wu et al . , 2020;Logeswaran et al . , 2019 ) .
 2 Candidate Generation Our baseline candidate generation approach relies on similarities between mentions and candidates in a vector space to identify the candidates for each mention ( Wu et al . , 2020 ) using two BERT models .
-The first BERT model encodes a mention m along with its context c into a vector representation v m .
-v m is obtained from the pooled representation captured by the [ CLS ] token used in BERT models to indicate the start of a sequence .
+The first BERT model encodes a mention m along with its context c into a vector representation v m . v m is obtained from the pooled representation captured by the [ CLS ] token used in BERT models to indicate the start of a sequence .
 In this encoder , a binary ( 0/1 ) indicator vector is used to identify the mention span .
 The embeddings for this indicator vector ( indicator embeddings ) are added to the token embeddings of the mention as in Logeswaran et al . ( 2019 ) .
 The second unmodified BERT model ( i.e. not containing the indicator embeddings as in the mention encoder ) independently encodes each e ∈ KB into vectors .
-The candidates E for a mention are the K entities whose representations are most similar to v m .
-Both BERT models are fine - tuned jointly using a cross - entropy loss to maximize the similarity between a mention and its corresponding correct entity , when compared to other random entities .
+The candidates E for a mention are the K entities whose representations are most similar to v m . Both BERT models are fine - tuned jointly using a cross - entropy loss to maximize the similarity between a mention and its corresponding correct entity , when compared to other random entities .
 Candidate Re - ranking The candidate reranking approach uses a BERT - based crossattention encoder to jointly encode a mention and its context along with each candidate from E ( Logeswaran et al . , 2019 ) .
 Specifically , the mention m is concatenated with its context on the left ( c l ) , its context on the right ( c r ) , and a single candidate entity e ∈ E. An [ SEP ] token , which is used in BERT to separate inputs from different segments , is used here to separate the mention in context , from the candidate .
 This concatenated string is encoded using BERT 3 to obtain , h m , e a representation for this mention / candidate pair ( from the [ CLS ] token ) .
 Given a candidate list E of size K generated in the previous stage , K scores are generated for each mention , which are subsequently scored using a dot - product with a learned weight vector ( w ) .
 Thus ,
 h m , e = BERT([CLS ] c l m c r [ SEP ] e [ SEP ] ) , score m , e = w T h m , e .
-The candidate with the highest score is chosen as the correct entity , i.e. Linking to Unseen Knowledge Bases
+The candidate with the highest score is chosen as the correct entity , i.e.
+Linking to Unseen Knowledge Bases
 The models in Section 3 were designed to operate in settings where the entities in the target KB were only represented using a textual description .
 For example , the entity Douglas Adams would be represented in such a database using a description as follows : " Douglas Adams was an English author , screenwriter , essayist , humorist , satirist and dramatist .
 He was the author of The Hitchhiker 's Guide to the Galaxy . "
@@ -1744,7 +1723,8 @@ This raises the question of whether such models , that harness the power of pre 
 This section presents multiple ideas to this end .
 Representing Arbitrary Entities using
 Attribute Separators
-One way of using these models for linking against arbitrary KBs is by defining an attribute - to - text function f , that maps arbitrary entities with any set of attributes { k i , v i } n i=1 to a string representation e that can be consumed by BERT , i.e. e = f ( { k i , v i } n i=1 ) .
+One way of using these models for linking against arbitrary KBs is by defining an attribute - to - text function f , that maps arbitrary entities with any set of attributes { k i , v i } n i=1 to a string representation e that can be consumed by BERT , i.e.
+e = f ( { k i , v i } n i=1 ) .
 If all entities in the KB are represented using such string representations , then the models described in Section 3 can directly be used for arbitrary schemas .
 This leads to the question : how can we generate string representations for entities from arbitrary KBs such that they can be used for BERT - based models ?
 Alternatively , what form can f take ?
@@ -1760,8 +1740,7 @@ For example , if an entity seen during inference has a capital attribute with th
 We capture this information using attribute separators , which are reserved tokens ( in the vein of [ SEP ] tokens ) corresponding to attributes .
 In this case ,
 f ( { k i , v i } n i=1 ) = [ K 1 ] v 1 [ K 2 ] v 2 ... [ K n ] v n .
-These Figure 1 illustrates the three instantiations of f .
-In all cases , attribute - value pairs are ordered in descending order of the frequency with which they appear in the training KB .
+These Figure 1 illustrates the three instantiations of f . In all cases , attribute - value pairs are ordered in descending order of the frequency with which they appear in the training KB .
 Finally , since both the candidate generation and candidate re - ranking models we build on use BERT , the techniques discussed here can be applied to both stages , but we only focus on re - ranking .
 Regularization Schemes for Improving Generalization
 Building models for entity linking against unseen KBs requires that such models do not overfit to the training data by memorizing characteristics of the training KB .
@@ -1835,8 +1814,7 @@ Qualitative Analysis
 Beyond the quantitative evaluations above , we further qualitatively analyze the predictions of the best model from Table 3 to provide insights into our modeling decisions and suggest avenues for improvements .
 Improvements over baseline
 First , we categorize all newly correct mentions , i.e. mentions that are correctly linked by the top model but incorrectly linked by the [ SEP]-separation baseline by the entity type of the gold entity .
-This type is one of person ( PER ) , organization ( ORG ) , geo - political entity ( GPE ) , and a catchall unknown 10 The 0 % results are the same as those in Table 3 .
-category ( UKN ) .
+This type is one of person ( PER ) , organization ( ORG ) , geo - political entity ( GPE ) , and a catchall unknown 10 The 0 % results are the same as those in Table 3 . category ( UKN ) .
 11 This categorization reveals that the newly correct mentions represent about 15 % of the total mentions of the ORG , GPE , and UKN categories and as much as 25 % of the total mentions of the PER category .
 This distributed improvement highlights that the relatively higher accuracy of our model is due to a holistic improvement in modeling unseen KBs across all entity types .
 Why does PER benefit more than other entity types ?
@@ -1912,8 +1890,7 @@ On XNLI , our aligned mBERT improves over the original mBERT by 4.7 % for zero -
 For translate - train , where translation of English training data is available in the target language , our model achieves comparable performance to XLM while using far fewer resources .
 On MLQA , we get 2.3 % improvement over mBERT and outperform XLM - R Base for zero - shot transfer .
 Concretely , MoCo employs a dual - encoder architecture .
-Given two views v 1 and v 2 of the same image , v 1 is encoded by the query encoder f q and v 2 by the momentum encoder f k .
-v 1 and v 2 form a positive pair .
+Given two views v 1 and v 2 of the same image , v 1 is encoded by the query encoder f q and v 2 by the momentum encoder f k . v 1 and v 2 form a positive pair .
 Negative examples are views of different source images , and are stored in a queue ∈ K , which is randomly initialized .
 K is usually a large number ( e.g. , K = 65 , 536 for ImageNet ) .
 Negative pairs are formed by comparing v 1 with each item in the queue .
@@ -2093,12 +2070,14 @@ Treating entities as inputs of Transformer .
 Recent studies Yamada et al . , 2020;Sun et al . , 2020 ) have proposed Transformerbased models that treat entities as input tokens to enrich their expressiveness using additional information contained in the entity embeddings .
 However , these models were designed to solve general NLP tasks and not tested on ED .
 We treat entities as input tokens to capture the global context that is shown to be highly effective for ED .
-ED as sequential decision task .Past studies Fang et al . , 2019 ) have solved ED by casting it as a sequential decision task to capture global contextual information .
+ED as sequential decision task .
+Past studies Fang et al . , 2019 ) have solved ED by casting it as a sequential decision task to capture global contextual information .
 We adopt a similar method with an enhanced Transformer architecture , a training task , and an inference method to implement the global ED model based on BERT .
 Model
 Given a document with N mentions , each of which has K entity candidates , our model solves ED by selecting a correct referent entity from the entity candidates for each mention .
 Model Architecture
-Our model is based on BERT and takes words and entities ( Wikipedia entities or the [ MASK ] entity ) .The input representation of a word or an entity is constructed by summing the token , token type , and position embeddings ( see Figure 2 ):
+Our model is based on BERT and takes words and entities ( Wikipedia entities or the [ MASK ] entity ) .
+The input representation of a word or an entity is constructed by summing the token , token type , and position embeddings ( see Figure 2 ):
 Token embedding is the embedding of the corresponding token .
 The matrices of the word and entity token embeddings are represented as A ∈ R Vw×H and B ∈ R Ve×H , respectively , where H is the size of the hidden states of BERT , and V w and V e are the number of items in the word vocabulary and that of the entity vocabulary , respectively .
 Token type embedding represents the type of token , namely word ( C word ) or entity ( C entity ) .
@@ -2114,15 +2093,13 @@ Formally , we predict the original entity corresponding to a masked entity by ap
 ED Model
 Local ED Model .
 Our local ED model takes words and N [ MASK ] tokens corresponding to the mentions in the document .
-The model then computes the embedding m ′ e ∈ R H for each [ MASK ] token using Eq.
-(2 ) and predicts the entity using softmax over the K entity candidates :
+The model then computes the embedding m ′ e ∈ R H for each [ MASK ] token using Eq.(2 ) and predicts the entity using softmax over the K entity candidates :
 where B * ∈ R K×H and b * o ∈ R K consist of the entity token embeddings and the bias corresponding to the entity candidates , respectively .
 Note that B * and b * o are the subsets of B and b o , respectively .
 Global ED Model .
 Our global ED model resolves mentions sequentially for N steps ( see Algorithm 1 ) .
 First , the model initializes the entity of each mention using the [ MASK ] token .
-Then , for each step , it predicts an entity for each [ MASK ] token , selects the prediction with the highest probability produced by the softmax function in Eq.
-(3 ) , and resolves the corresponding mention by assigning the predicted entity to it .
+Then , for each step , it predicts an entity for each [ MASK ] token , selects the prediction with the highest probability produced by the softmax function in Eq.(3 ) , and resolves the corresponding mention by assigning the predicted entity to it .
 This model is denoted as confidence - order .
 We also test a model that selects mentions according to their order of appearance in the document and denote it by natural - order .
 Modeling Details
@@ -2326,7 +2303,8 @@ Anchor tasks .
 We employ two analytical tools from the original layer probing setup .
 Mixing weight plotting compares layer utilization among tasks by visually aligning the respective learned weight distributions transformed via a softmax function .
 Layer center - of - gravity is used as a summary statistic for a task 's layer utilization .
-While the distribution of mixing weights along the layers allows us to estimate the order in which information is processed during encoding , it does n't allow to directly assess the similarity between the layer utilization of the probing tasks .Tenney et al . ( 2019a ) have demonstrated that the order in which linguistic information is stored in BERT mirrors the traditional NLP pipeline .
+While the distribution of mixing weights along the layers allows us to estimate the order in which information is processed during encoding , it does n't allow to directly assess the similarity between the layer utilization of the probing tasks .
+Tenney et al . ( 2019a ) have demonstrated that the order in which linguistic information is stored in BERT mirrors the traditional NLP pipeline .
 A prominent property of the NLP pipelines is their use of low - level features to predict downstream phenomena .
 In the context of layer probing , probing tasks can be seen as end - to - end feature extractors .
 Following this intuition , we define two groups of probing tasks : target tasks -the main tasks under investigation , and anchor tasks -a set of related tasks that serve as a basis for qualitative comparison between the targets .
@@ -2347,8 +2325,7 @@ Again , the task is non - trivial since it requires the words to be assembled fr
 Part - of - speech ( pos ) predicts the languagespecific part - of - speech tag for the given token .
 Lexical unit ( lex.unit ) predicts the lemma and POS of the given word -a common input representation for the entries in lexical resources .
 We extract coarse POS tags by using the first character of the language - specific POS tag .
-Dependency relation ( deprel ) predicts the dependency relation between the parent src and dependent tgt tokens ; Semantic role ( role.
-[frm ] ) predicts the semantic role given a predicate src and an argument tgt token in one of the three role labeling formalisms : PropBank pb , VerbNet vn and FrameNet fn .
+Dependency relation ( deprel ) predicts the dependency relation between the parent src and dependent tgt tokens ; Semantic role ( role.[frm ] ) predicts the semantic role given a predicate src and an argument tgt token in one of the three role labeling formalisms : PropBank pb , VerbNet vn and FrameNet fn .
 Note that we only probe for the role label , and the model has no access to the verb sense information from the data .
 Semantic proto - role ( spr .
 [ prop ] ) is a set of eleven regression tasks predicting the values of the proto - role properties as defined in ( Reisinger et al . , 2015 ) , given a predicate src and an argument tgt .
@@ -2364,8 +2341,7 @@ In addition to pre - trained mBERT we report baseline performance using a frozen
 General Trends
 While absolute performance is secondary to our analysis , we report the probing task scores on respective development sets in Table 5 .
 We observe that grammatical tasks score high , while core role labeling lags behind -in line with the findings of Tenney et al . ( 2019a ) 3 We observe lower scores for German role labeling which we attribute to the lack of training data .
-Surprisingly , as we show below , this does n't prevent the edge probe from task en de * token.ix 0.95 ( 0.93 ) 0.92 ( 0 .
-learning to locate relevant role - semantic information in mBERT 's layers .
+Surprisingly , as we show below , this does n't prevent the edge probe from task en de * token.ix 0.95 ( 0.93 ) 0.92 ( 0 . learning to locate relevant role - semantic information in mBERT 's layers .
 The untrained mBERT baseline expectedly underperforms ; however , we note good baseline results on surface - level tasks for English , which we attribute to memorizing token identity and position : although the weights are set randomly , the frozen encoder still associates each wordpiece input with a fixed random vector .
 We have confirmed this assumption by scalar mix analysis of the untrained mBERT baseline : in our experiments the baseline probes for both English and German attended almost exclusively to the first few layers of the encoder , independent of the task .
 For brevity , here and further we do not examine baseline mixing weights and only report the scores .
@@ -2743,14 +2719,11 @@ Figure 1 shows the overview of our debugging framework , FIND .
 Notation
 Let us consider a text classification task with |C| classes where C is the set of all classes and let V be a set of unique words in the corpus ( the vocabulary ) .
 A training dataset D = { ( x 1 , y 1 ) , .
-.
-.
-, ( x N , y N ) } is given , where x i is the i - th document containing a sequence of L words , [ x i1 , x i2 , ... , x iL ] , and y i ∈ C is the class label of
+. . , ( x N , y N ) } is given , where x i is the i - th document containing a sequence of L words , [ x i1 , x i2 , ... , x iL ] , and y i ∈ C is the class label of
 Understanding the Model
 To understand how the model M works , we analyze the patterns or characteristics of the input that activate each feature f i .
 Specifically , using LRP 1 , for each f i of an example x j in the training dataset , we calculate a relevance vector r ij ∈ R L showing the relevance scores ( the contributions ) of each word in x j for the value of f i .
-After doing this for all d features of all training examples , we can produce word clouds to help the users better understand the model M .
-Word clouds -For each feature f i , we create ( one or more ) word clouds to visualize the patterns in the input texts which highly activate f i .
+After doing this for all d features of all training examples , we can produce word clouds to help the users better understand the model M . Word clouds -For each feature f i , we create ( one or more ) word clouds to visualize the patterns in the input texts which highly activate f i .
 This can be done by analyzing r ij for all x j in the training data and displaying , in the word clouds , words or n - grams which get high relevance scores .
 Note that different model architectures may have different ways to generate the word clouds so as to effectively reveal the behavior of the features .
 For CNNs , the classifiers we experiment with in this paper , each feature has one word cloud containing the n - grams , from the training examples , which were selected by the max - pooling of the CNNs .
