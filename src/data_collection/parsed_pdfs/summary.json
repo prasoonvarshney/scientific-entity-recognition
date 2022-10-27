@@ -2,207 +2,227 @@
     "parsed_pdfs": [
         {
             "url": "https://aclanthology.org/2022.dclrl-1.1.pdf",
-            "file_name": "./src/data_collection/data/2022.dclrl-1.1.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.dclrl-1.1.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.unimplicit-1.3.pdf",
-            "file_name": "./src/data_collection/data/2022.unimplicit-1.3.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.unimplicit-1.3.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.signlang-1.17.pdf",
-            "file_name": "./src/data_collection/data/2022.signlang-1.17.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.signlang-1.17.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.coling-1.308.pdf",
-            "file_name": "./src/data_collection/data/2022.coling-1.308.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.coling-1.308.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.acl-long.576.pdf",
-            "file_name": "./src/data_collection/data/2022.acl-long.576.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.acl-long.576.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.acl-long.1.pdf",
-            "file_name": "./src/data_collection/data/2022.acl-long.1.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.acl-long.1.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2022.acl-short.36.pdf",
-            "file_name": "./src/data_collection/data/2022.acl-short.36.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2022.acl-short.36.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.findings-acl.212.pdf",
-            "file_name": "./src/data_collection/data/2021.findings-acl.212.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.findings-acl.212.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.eacl-main.224.pdf",
-            "file_name": "./src/data_collection/data/2021.eacl-main.224.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.eacl-main.224.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.wanlp-1.15.pdf",
-            "file_name": "./src/data_collection/data/2021.wanlp-1.15.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.wanlp-1.15.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.semeval-1.12.pdf",
-            "file_name": "./src/data_collection/data/2021.semeval-1.12.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.semeval-1.12.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.naacl-main.60.pdf",
-            "file_name": "./src/data_collection/data/2021.naacl-main.60.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.naacl-main.60.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.findings-acl.175.pdf",
-            "file_name": "./src/data_collection/data/2021.findings-acl.175.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.findings-acl.175.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2021.acl-short.14.pdf",
-            "file_name": "./src/data_collection/data/2021.acl-short.14.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2021.acl-short.14.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.emnlp-main.563.pdf",
-            "file_name": "./src/data_collection/data/2020.emnlp-main.563.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.emnlp-main.563.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.coling-main.130.pdf",
-            "file_name": "./src/data_collection/data/2020.coling-main.130.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.coling-main.130.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.lrec-1.130.pdf",
-            "file_name": "./src/data_collection/data/2020.lrec-1.130.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.lrec-1.130.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.findings-emnlp.20.pdf",
-            "file_name": "./src/data_collection/data/2020.findings-emnlp.20.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.findings-emnlp.20.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.isa-1.2.pdf",
-            "file_name": "./src/data_collection/data/2020.isa-1.2.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.isa-1.2.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.acl-main.169.pdf",
-            "file_name": "./src/data_collection/data/2020.acl-main.169.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.acl-main.169.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.aacl-main.32.pdf",
-            "file_name": "./src/data_collection/data/2020.aacl-main.32.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.aacl-main.32.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.loresmt-1.5.pdf",
-            "file_name": "./src/data_collection/data/2020.loresmt-1.5.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.loresmt-1.5.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/2020.ecnlp-1.8.pdf",
-            "file_name": "./src/data_collection/data/2020.ecnlp-1.8.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/2020.ecnlp-1.8.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1051.pdf",
-            "file_name": "./src/data_collection/data/P19-1051.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P19-1051.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1291.pdf",
-            "file_name": "./src/data_collection/data/P19-1291.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P19-1291.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/N19-1423.pdf",
-            "file_name": "./src/data_collection/data/N19-1423.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/N19-1423.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1020.pdf",
-            "file_name": "./src/data_collection/data/P19-1020.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P19-1020.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1291.pdf",
-            "file_name": "./src/data_collection/data/P19-1291.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P19-1291.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P19-1128.pdf",
-            "file_name": "./src/data_collection/data/P19-1128.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P19-1128.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-1122.pdf",
-            "file_name": "./src/data_collection/data/P18-1122.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-1122.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-1182.pdf",
-            "file_name": "./src/data_collection/data/P18-1182.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-1182.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-1085.pdf",
-            "file_name": "./src/data_collection/data/P18-1085.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-1085.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-2097.pdf",
-            "file_name": "./src/data_collection/data/P18-2097.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-2097.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-2051.pdf",
-            "file_name": "./src/data_collection/data/P18-2051.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-2051.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P18-3010.pdf",
-            "file_name": "./src/data_collection/data/P18-3010.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P18-3010.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P17-1038.pdf",
-            "file_name": "./src/data_collection/data/P17-1038.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P17-1038.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P17-1038.pdf",
-            "file_name": "./src/data_collection/data/P17-1038.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P17-1038.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P17-2066.pdf",
-            "file_name": "./src/data_collection/data/P17-2066.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P17-2066.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P17-4007.pdf",
-            "file_name": "./src/data_collection/data/P17-4007.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P17-4007.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/W17-5519.pdf",
-            "file_name": "./src/data_collection/data/W17-5519.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/W17-5519.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-2007.pdf",
-            "file_name": "./src/data_collection/data/P16-2007.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-2007.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-2000.pdf",
-            "file_name": "./src/data_collection/data/P16-2000.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-2000.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-1173.pdf",
-            "file_name": "./src/data_collection/data/P16-1173.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-1173.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-1158.pdf",
-            "file_name": "./src/data_collection/data/P16-1158.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-1158.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-1212.pdf",
-            "file_name": "./src/data_collection/data/P16-1212.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-1212.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P16-2056.pdf",
-            "file_name": "./src/data_collection/data/P16-2056.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P16-2056.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P15-2085.pdf",
-            "file_name": "./src/data_collection/data/P15-2085.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P15-2085.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P15-2083.pdf",
-            "file_name": "./src/data_collection/data/P15-2083.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P15-2083.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P15-5002.pdf",
-            "file_name": "./src/data_collection/data/P15-5002.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P15-5002.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P15-1070.pdf",
-            "file_name": "./src/data_collection/data/P15-1070.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P15-1070.pdf.txt"
         },
         {
             "url": "https://aclanthology.org/P15-1056.pdf",
-            "file_name": "./src/data_collection/data/P15-1056.pdf.txt"
+            "file_name": "./src/data_collection/parsed_pdfs/P15-1056.pdf.txt"
+        },
+        {
+            "url": "http://www.lrec-conf.org/proceedings/lrec2014/pdf/1154_Paper.pdf",
+            "file_name": "./src/data_collection/parsed_pdfs/1154_Paper.pdf.txt"
+        },
+        {
+            "url": "http://aclanthology.org/P98-2242.pdf",
+            "file_name": "./src/data_collection/parsed_pdfs/P98-2242.pdf.txt"
+        },
+        {
+            "url": "http://aclanthology.org/W12-1631.pdf",
+            "file_name": "./src/data_collection/parsed_pdfs/W12-1631.pdf.txt"
+        },
+        {
+            "url": "http://aclanthology.org/2020.eamt-1.30.pdf",
+            "file_name": "./src/data_collection/parsed_pdfs/2020.eamt-1.30.pdf.txt"
+        },
+        {
+            "url": "http://aclanthology.org/Y18-1024.pdf",
+            "file_name": "./src/data_collection/parsed_pdfs/Y18-1024.pdf.txt"
         }
     ]
 }
