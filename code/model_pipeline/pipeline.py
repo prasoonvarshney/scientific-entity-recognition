@@ -88,7 +88,7 @@ class TrainingPipeline:
         # Remove ignored index (special tokens) and convert to labels
         true_labels = [[self.label_classes[l] for l in label if l != -100] for label in labels]
         true_predictions = [
-            [self.label_names[p] for (p, l) in zip(prediction, label) if l != -100]
+            [self.label_classes[p] for (p, l) in zip(prediction, label) if l != -100]
             for prediction, label in zip(predictions, labels)
         ]
         all_metrics = metric.compute(predictions=true_predictions, references=true_labels)
