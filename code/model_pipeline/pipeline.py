@@ -31,7 +31,6 @@ class TrainingPipeline:
 
         self.label2id = label2id
         self.id2label = {v: k for k, v in label2id.items()}
-        self.label_names = label2id.keys()
         self.num_labels = len(self.label2id.keys())
 
         print('Initializing tokenizer from {}'.format(model_checkpoint))
@@ -49,6 +48,8 @@ class TrainingPipeline:
 
         print('Loading dataset...')
         self.dataset = DatasetLoader().dataset
+        self.label_names = self.dataset["train"].features["ner_tags"].features.names
+        print(f"DEBUG!!!!!!!!!!! {self.label_names} {type(self.label_names)}")
         self.tokenized_dataset = self.dataset.map(
             self.tokenize_and_align_labels,
             batched=True,
