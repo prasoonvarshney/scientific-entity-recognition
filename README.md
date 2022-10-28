@@ -13,6 +13,6 @@ This repository contains all required components to do the task:
 3. A collection of 32 manually annotated papers (gold-standard) at data/annotated
     a. Scripts to split and create train and dev sets are located at data/created_data_train_test_splits
     b. Held out test set is located at data/test
-4. Model training pipeline that achieves 0.62 F1 on the held-out set.
+4. Model training pipeline that achieves 0.625 F1 on the held-out set.
 
 
