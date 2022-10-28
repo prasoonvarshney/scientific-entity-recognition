@@ -31,6 +31,7 @@ class TrainingPipeline:
 
         self.label2id = label2id
         self.id2label = {v: k for k, v in label2id.items()}
+        self.label_names = label2id.keys()
         self.num_labels = len(self.label2id.keys())
 
         print('Initializing tokenizer from {}'.format(model_checkpoint))
@@ -48,8 +49,7 @@ class TrainingPipeline:
 
         print('Loading dataset...')
         self.dataset = DatasetLoader().dataset
-        self.label_names = self.dataset["train"].features["ner_tags"].features.names
-        print(f"DEBUG!!!!!!!!!!! {self.label_names} {type(self.label_names)}")
+        self.label_classes = self.dataset["train"].features["ner_tags"].feature.names
         self.tokenized_dataset = self.dataset.map(
             self.tokenize_and_align_labels,
             batched=True,
@@ -86,7 +86,7 @@ class TrainingPipeline:
         predictions = np.argmax(logits, axis=-1)
 
         # Remove ignored index (special tokens) and convert to labels
-        true_labels = [[self.label_names[l] for l in label if l != -100] for label in labels]
+        true_labels = [[self.label_classes[l] for l in label if l != -100] for label in labels]
         true_predictions = [
             [self.label_names[p] for (p, l) in zip(prediction, label) if l != -100]
             for prediction, label in zip(predictions, labels)
