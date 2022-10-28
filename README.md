@@ -3,7 +3,7 @@
 
 ## Run Instructions
 To run the model training and evaluation pipeline, cd into the root folder of the repository and run:
-`python code/model_pipeline/training.py --model-checkpoint microsoft/deberta-v3-base --lr 5e-5 --epochs 10 --weight_decay 1e-5`
+`python code/model_pipeline/sciner.py --model-checkpoint microsoft/deberta-v3-base --lr 5e-5 --epochs 10 --weight_decay 1e-5`
 
 # Assignment Description
 This objective is to perform recognition of scientific entities in research papers. 
