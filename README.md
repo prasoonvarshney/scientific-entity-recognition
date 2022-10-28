@@ -19,53 +19,53 @@ This repository contains all required components to do the task:
 
 ## Directory Tree Structure
 
-advanced-nlp-f22-hw2
-├── code
-│   ├── data_collection
-│   │   ├── annotation_scripts
-│   │   │   ├── bert.conll
-│   │   │   ├── bert_copy.json
-│   │   │   ├── bert_edited.json
-│   │   │   ├── bert.json
-│   │   │   ├── bert_min.json
-│   │   │   ├── generate_mapping.py
-│   │   │   ├── lda_edited.json
-│   │   │   ├── lda.json
-│   │   │   ├── mapping.json
-│   │   │   ├── reverse_mapping.json
-│   │   │   └── rule_based.py
-│   │   ├── constants.py
-│   │   ├── example_scipdf_output.json
-│   │   ├── labelstudio_collector.py
-│   │   ├── parser.py
-│   │   ├── pdf_urls.txt
-│   │   ├── random_pdf.py
-│   │   ├── sampled_urls.txt
-│   │   ├── scrape_all.py
-│   │   └── scrape.py
-│   ├── model_pipeline
-│   │   ├── constants.py
-│   │   ├── dataloader.py
-│   │   ├── pipeline.py
-│   │   └── sciner.py
-│   └── notebooks
-│       ├── ANLP_NER_BertyBoy.ipynb
-│       ├── ANLP_NER_deberta.ipynb
-│       ├── ANLP_NER_SCIBERT.ipynb
-│       ├── ANLP_NER_scideberta.ipynb
-│       └── NER_Model_Pipeline.ipynb
-├── data
-│   ├── annotated
-|   |       (our annotated conll files by paper as exported from Label Studio)
-│   ├── created_data_train_test_splits
-|   |       (our annotations split into train.conll and test.conll)
-│   ├── parsed_pdfs
-|   |       (txt files of parsed papers)
-│   ├── summary_of_parsed_files.json
-│   ├── test
-|   |       (held out test set files and our model predictions on them)
-├── github.txt
-├── LICENSE
-├── README.md
-├── requirements.txt
-└── setup.sh
+advanced-nlp-f22-hw2\
+├── code\
+│   ├── data_collection\
+│   │   ├── annotation_scripts\
+│   │   │   ├── bert.conll\
+│   │   │   ├── bert_copy.json\
+│   │   │   ├── bert_edited.json\
+│   │   │   ├── bert.json\
+│   │   │   ├── bert_min.json\
+│   │   │   ├── generate_mapping.py\
+│   │   │   ├── lda_edited.json\
+│   │   │   ├── lda.json\
+│   │   │   ├── mapping.json\
+│   │   │   ├── reverse_mapping.json\
+│   │   │   └── rule_based.py\
+│   │   ├── constants.py\
+│   │   ├── example_scipdf_output.json\
+│   │   ├── labelstudio_collector.py\
+│   │   ├── parser.py\
+│   │   ├── pdf_urls.txt\
+│   │   ├── random_pdf.py\
+│   │   ├── sampled_urls.txt\
+│   │   ├── scrape_all.py\
+│   │   └── scrape.py\
+│   ├── model_pipeline\
+│   │   ├── constants.py\
+│   │   ├── dataloader.py\
+│   │   ├── pipeline.py\
+│   │   └── sciner.py\
+│   └── notebooks\
+│       ├── ANLP_NER_BertyBoy.ipynb\
+│       ├── ANLP_NER_deberta.ipynb\
+│       ├── ANLP_NER_SCIBERT.ipynb\
+│       ├── ANLP_NER_scideberta.ipynb\
+│       └── NER_Model_Pipeline.ipynb\
+├── data\
+│   ├── annotated\
+|   |       (our annotated conll files by paper as exported from Label Studio)\
+│   ├── created_data_train_test_splits\
+|   |       (our annotations split into train.conll and test.conll)\
+│   ├── parsed_pdfs\
+|   |       (txt files of parsed papers)\
+│   ├── summary_of_parsed_files.json\
+│   ├── test\
+|   |       (held out test set files and our model predictions on them)\
+├── github.txt\
+├── LICENSE\
+├── README.md\
+├── requirements.txt\
+└── setup.sh\
